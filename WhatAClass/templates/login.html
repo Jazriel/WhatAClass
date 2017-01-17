@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}WhatAClass Log In{% endblock %}
+{% block body %}
+    <h1>Login screen.</h1>
+    <form action="{{ url_for('user_mng.login') }}" method="post" id="login_form">
+        {{ form_login.username.label }}: {{ form_login.username(placeholder='Username') }}
+        <br/>
+        {{ form_login.password.label }}: {{ form_login.password }}
+        <br/>
+        {{ form_login.csrf_token }}
+    </form>
+    <button type="submit" form="form_login" value="Submit">Submit</button>
+    <a href={{ url_for('user_mng.sign_up') }}>link to sign up</a>
+{% endblock %}

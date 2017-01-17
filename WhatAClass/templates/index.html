@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block title %}WhatAClass{% endblock %}
+{% block body %}
+    <h1>Welcome to this app.</h1>
+    <a href={{ url_for('user_mng.login') }}>link to login</a>
+    <a href={{ url_for('user_mng.sign_up') }}>link to sign up</a>
+{% endblock %}
