@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField
 from ..util.safe_redirect import RedirectForm, is_safe_url
 from wtforms.validators import DataRequired, Email
 
-user_mng = Blueprint('login', __name__)
+user_mng = Blueprint('user_mng', __name__)
 
 
 class LoginForm(RedirectForm):
@@ -52,4 +52,4 @@ def sign_up():
 
         return redirect(next_url or url_for('index.index'))
 
-    return render_template('login.html', formSignUp=form_sign_up)
+    return render_template('signup.html', form_sign_up=form_sign_up)
