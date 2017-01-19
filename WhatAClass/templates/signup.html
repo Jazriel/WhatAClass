@@ -2,8 +2,6 @@
 {% block title %}WhatAClass Sign Up{% endblock %}
 {% block body %}
     <form action="{{ url_for('user_mng.sign_up') }}" method="post" id="signup_form">
-        {{ form_sign_up.username.label }}: {{ form_sign_up.username(placeholder='Username') }}
-        <br/>
         {{ form_sign_up.email.label }}: {{ form_sign_up.email(placeholder='email@company.domain') }}
         <br/>
         {{ form_sign_up.password.label }}: {{ form_sign_up.password }}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}WhatAClass{% endblock %}
+{% block body %}
+    <h1>password recover screen.</h1>
+    <form action="{{ url_for('user_mng.recover') }}" method="post" id="recover_form">
+        {{ form_recover.password.label }}: {{ form_recover.email(placeholder='email@company.domain') }}
+        {{ form_recover.csrf_token }}
+    </form>
+    <button type="submit" form="recover_form" value="Submit">Submit</button>
+{% endblock %}
