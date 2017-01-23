@@ -32,7 +32,8 @@ def send_email(email, subject, body):
     msg['To'] = email
     msg['Subject'] = subject
     msg.attach(MIMEText(body, 'html'))
-    with SMTP('smtp.gmail.com', 587) as server:
+    with SMTP(host='smtp.gmail.com', port=587) as server:
+        server.ehlo()
         server.starttls()
         password = app.config.get('EMAIL_PASS')
         server.login(from_address, password)

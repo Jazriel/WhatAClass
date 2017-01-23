@@ -1,14 +1,37 @@
 {% extends "layout.html" %}
-{% block title %}WhatAClass Log In{% endblock %}
+{% block title %}WhatAClass: Log In{% endblock %}
 {% block body %}
-    <h1>Login screen.</h1>
-    <form action="{{ url_for('user_mng.login') }}" method="post" id="login_form">
-        {{ form_login.email.label }}: {{ form_login.email(placeholder='email@company.domain') }}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">Login</h1>
         <br/>
-        {{ form_login.password.label }}: {{ form_login.password }}
-        <br/>
-        {{ form_login.csrf_token }}
-    </form>
-    <button type="submit" form="login_form" value="Submit">Submit</button>
-    <a href={{ url_for('user_mng.sign_up') }}>link to sign up</a>
+
+        <form class="form-horizontal" action="{{ url_for('user_mng.login') }}" method="post" id="form">
+        <fieldset>
+
+            <div class="form-group">
+                {{ form.email.label(class="col-md-5 col-sm-5 col-xs-4 text-right") }}
+                <div class="col-md-3 col-sm-4 col-xs-8">
+                    {{ form.email(placeholder="email@company.domain", class="form-control") }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label(class="col-md-5 col-sm-5 col-xs-4 text-right") }}
+                <div class="col-md-3 col-sm-4 col-xs-8">
+                    {{ form.password(class="form-control")}}
+                </div>
+            </div>
+
+            <br/>
+
+            {{ form.csrf_token }}
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-sm center-block" value="Login">Login</button>
+            </div>
+
+        </fieldset>
+        </form>
+
+    </div>
 {% endblock %}

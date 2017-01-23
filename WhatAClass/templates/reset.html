@@ -1,10 +1,32 @@
 {% extends "layout.html" %}
-{% block title %}WhatAClass{% endblock %}
+{% block title %}WhatAClass: Change Password{% endblock %}
 {% block body %}
-    <h1>password reset screen.</h1>
-    <form action="{{ url_for('user_mng.reset') }}" method="post" id="reset_form">
-        {{ form_reset.email.label }}: {{ form_reset.email(placeholder='email@company.domain') }}
-        {{ form_reset.csrf_token }}
-    </form>
-    <button type="submit" form="reset_form" value="Submit">Submit</button>
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">Change my password</h1>
+        <br/>
+        <p>This will send an email with a link that can be used for one day.</p>
+        <br/>
+
+        <form class="form-horizontal" action="{{ url_for('user_mng.reset') }}" method="post" id="form">
+        <fieldset>
+
+            <div class="form-group">
+                {{ form.email.label(class="col-md-5 col-sm-5 col-xs-4 text-right") }}
+                <div class="col-md-3 col-sm-4 col-xs-8">
+                    {{ form.email(placeholder='email@company.domain', class="form-control")}}
+                </div>
+            </div>
+
+            <br/>
+
+            {{ form.csrf_token }}
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-sm center-block" value="Change password">Change password</button>
+            </div>
+
+        </fieldset>
+        </form>
+
+    </div>
 {% endblock %}

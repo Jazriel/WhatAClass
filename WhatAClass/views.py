@@ -1,6 +1,7 @@
 from flask import Blueprint, flash, render_template, request, url_for, abort, redirect
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
+from itsdangerous import BadSignature
 
 from .models import User
 from .util import ts, send_email
@@ -21,6 +22,7 @@ user_mng = Blueprint('user_mng', __name__)
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+
     if form.validate_on_submit():
 
         user = User.query.filter_by(email=form.email.data).first()
@@ -37,7 +39,7 @@ def login():
         flash('Logged in successfully.')
         return redirect(url_for('index.base'))
 
-    return render_template('login.html', form_login=form)
+    return render_template('login.html', form=form)
 
 
 @user_mng.route('/logout')
@@ -49,6 +51,7 @@ def logout():
 @user_mng.route('/signup', methods=['GET', 'POST'])
 def sign_up():
     form = SignUpForm()
+
     if form.validate_on_submit():
 
         user = User(
@@ -76,15 +79,16 @@ def sign_up():
         next_url = request.args.get('next')
         return form.redirect(next_url or url_for('index.base'))
 
-    return render_template('signup.html', form_sign_up=form)
+    return render_template('signup.html', form=form)
 
 
 @user_mng.route('/confirm/<token>')
 def confirm_email(token):
     try:
         email = ts.loads(token, salt=b'email-whataclass-salt-key', max_age=86400)
-    except:
-        abort(404)
+
+    except BadSignature:
+        return abort(404)  # TODO FIXIT
 
     user = User.query.filter_by(email=email).first_or_404()
 
@@ -101,6 +105,7 @@ def confirm_email(token):
 @user_mng.route('/reset', methods=['GET', 'POST'])
 def reset():
     form = EmailForm()
+
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first_or_404()
 
@@ -121,15 +126,15 @@ def reset():
         send_email(user.email, 'Password reset requested', body)
 
         return form.redirect(url_for('index.base'))
-    return render_template('reset.html', form_reset=form)
+    return render_template('reset.html', form=form)
 
 
 @user_mng.route('/recover/<token>', methods=['GET', 'POST'])
 def recover(token):
     try:
         email = ts.loads(token, salt=b'recover-whataclass-key', max_age=86400)
-    except:
-        abort(404)
+    except BadSignature:
+        return abort(404)   # TODO FIXIT
 
     form = PasswordForm()
 
@@ -141,6 +146,9 @@ def recover(token):
         db.session.add(user)
         db.session.commit()
 
+        flash('Password successfully changed.')
+
         return redirect(url_for('user_mng.login'))
 
     return render_template('recover.html', form=form, token=token)
+

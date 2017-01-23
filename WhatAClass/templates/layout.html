@@ -2,18 +2,76 @@
 <html lang="en">
     <head>
         <title>{% block title %}{% endblock %}</title>
+        <link href="../static/css/cosmo.bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="../static/js/jquery-3.1.1.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-             <ul class="flashes">
-                {% for message in messages %}
-                    <div class="message_flash">{{ message }}</div>
-                {% endfor %}
-             </ul>
-        {% endif %}
-    {% endwith %}
-    {% block body %}
-    {% endblock %}
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="{{ url_for('index.base') }}">WhatAClass</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="user_mng">
+                                <li><a href="{{ url_for('user_mng.sign_up') }}">Sign up</a></li>
+                                <li><a href="{{ url_for('user_mng.login') }}">Log in</a></li>
+                                <li><a href="{{ url_for('user_mng.logout') }}">Log out</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="">Noexistent</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="">placeholder</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="">Sure</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <br/>
+        <br/>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="row">
+                    {% for message in messages %}
+                    <br/>
+                    <div class="alert alert-dismissible alert-info col-md-offset-3 col-md-6">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p>{{ message }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <br/>
+        <div class="container-fluid">
+            <div class="row" >
+            {% block body %}
+            {% endblock %}
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted text-center">WhatAClass by <a href="https://github.com/Jazriel">Jazriel</a></p>
+            </div>
+        </footer>
     </body>
 </html>
