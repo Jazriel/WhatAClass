@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Memoir ----
+% Javier Martínez Riberas
+% Universidad de Burgos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% -------------------------------------------------------------
+% Preamble
+% -------------------------------------------------------------
+\documentclass[a4paper,11pt,titlepage]{memoir}
+
+% -------------------------------------------------------------
+% Packages
+% -------------------------------------------------------------
+\usepackage[utf8]{inputenc}  % Unicode support
+\usepackage[T1]{fontenc}  % Font encoding
+\usepackage{lmodern}  % Typeface
+\usepackage{textcomp}  % Special symbols
+\usepackage{graphicx}  % Add pictures
+\usepackage{pgfplots}  % Graphs and charts
+\usepackage{hyperref}  % Add a link to index entries
+\usepackage{amsmath}  % Advanced math typesetting
+\usepackage{amsfonts}  % Mathematical formulas
+\usepackage{amssymb}  % Extended symbol collection
+\usepackage{listings}  % Code formatting and highlighting
+\usepackage{algorithm}  % Pseudocodes
+\usepackage{algorithmic}  % Pseudocodes
+\usepackage{xcolor}  % Color package
+\usepackage{enumitem}  % Customizing lists
+\usepackage{parskip}  % Paragraph styles
+\usepackage[a4paper]{geometry}  % Margins
+\usepackage[numbers,sort]{natbib}  % Bibliography management
+\usepackage{booktabs}  % Tables
+
+% -------------------------------------------------------------
+% Configuration
+% -------------------------------------------------------------
+% Images path
+\graphicspath{ {img/} }
+
+
+% Define style table
+\setlength{\heavyrulewidth}{1.5pt}
+\setlength{\abovetopsep}{4pt}
+
+\begin{document}
+% -------------------------------------------------------------
+% Cover
+% -------------------------------------------------------------
+\author{Javier Martínez Riberas}
+\title{}
+\date{}
+
+\begin{titlepage}
+
+\end{titlepage}
+
+% -------------------------------------------------------------
+% Contents
+% -------------------------------------------------------------
+\newpage
+\tableofcontents
+\begin{appendix}
+  %\listoffigures
+  %\listoftables
+\end{appendix}
+
+% -------------------------------------------------------------
+% Body
+% -------------------------------------------------------------
+\newpage
+
+\section{}
+
+% -------------------------------------------------------------
+% Bibliography
+% -------------------------------------------------------------
+\newpage
+\bibliography{citations}
+\bibliographystyle{plainnat}
+
+\end{document}
