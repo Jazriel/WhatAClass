@@ -1,41 +1,39 @@
-from flask import redirect, url_for
+# -*- coding: utf-8 -*-
+"""
+    WhatAClass.forms
+    ~~~~~
+
+    Forms used by the controller to get input from the user.
+
+
+"""
 from flask_wtf import FlaskForm
-from wtforms import HiddenField, StringField, PasswordField
+from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email
 
 
-from .util import get_redirect_target, is_safe_url
-
-
-class RedirectForm(FlaskForm):
-    next = HiddenField()
-
-    def __init__(self, *args, **kwargs):
-        FlaskForm.__init__(self, *args, **kwargs)
-        if not self.next.data:
-            self.next.data = get_redirect_target() or ''
-
-    def redirect(self, endpoint='index', **values):
-        if is_safe_url(self.next.data):
-            return redirect(self.next.data)
-        target = get_redirect_target()
-        return redirect(target or url_for(endpoint, **values))
-
-
-class LoginForm(RedirectForm):
+class LoginForm(FlaskForm):
+    """Login form which is composed of email and password. uses the same
+    fields as signup form but in case both diverge they have been
+    duplicated."""
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
 
 
-class SignUpForm(RedirectForm):
+class SignUpForm(FlaskForm):
+    """Sign up form which is composed of email and password. uses the same
+    fields as signup form but in case both diverge they have been
+    duplicated."""
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
 
 
-class EmailForm(RedirectForm):
+class EmailForm(FlaskForm):
+    """Email form with only an email address required."""
     email = StringField('Email', validators=[DataRequired(), Email()])
 
 
-class PasswordForm(RedirectForm):
+class PasswordForm(FlaskForm):
+    """Password form with only a password required."""
     password = PasswordField('Password', validators=[DataRequired()])
 

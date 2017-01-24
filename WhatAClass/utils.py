@@ -1,5 +1,13 @@
-from urllib.parse import urlparse, urljoin
-from flask import request
+# -*- coding: utf-8 -*-
+"""
+    WhatAClass.utils
+    ~~~~~
+
+    Utilities for WhatAClass, so that there are no
+    functions scattered around.
+
+
+"""
 from itsdangerous import URLSafeTimedSerializer
 
 from email.mime.text import MIMEText
@@ -11,21 +19,9 @@ from . import app
 ts = URLSafeTimedSerializer(app.config["SECRET_KEY"])
 
 
-def is_safe_url(target):
-    ref_url = urlparse(request.host_url)
-    test_url = urlparse(urljoin(request.host_url, target))
-    return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
-
-
-def get_redirect_target():
-    for target in request.args.get('next'), request.referrer:
-        if not target:
-            continue
-        if is_safe_url(target):
-            return target
-
-
 def send_email(email, subject, body):
+    """Send an email to the specified address."""
+    # TODO move email address and host,port to the instance/config file
     from_address = 'what.a.class.web@gmail.com'
     msg = MIMEMultipart('alternative')
     msg['From'] = from_address
