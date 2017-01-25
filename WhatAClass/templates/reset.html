@@ -1,10 +1,14 @@
 {% extends "layout.html" %}
-{% block title %}WhatAClass{% endblock %}
+{% from "macros.html" import email_form with context %}
+{% block title %}WhatAClass: Change Password{% endblock %}
 {% block body %}
-    <h1>password reset screen.</h1>
-    <form action="{{ url_for('user_mng.reset') }}" method="post" id="reset_form">
-        {{ form_reset.email.label }}: {{ form_reset.email(placeholder='email@company.domain') }}
-        {{ form_reset.csrf_token }}
-    </form>
-    <button type="submit" form="reset_form" value="Submit">Submit</button>
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">Change my password</h1>
+        <br/>
+        <p class="text-center">This will send an email with a link that can be used within one day.</p>
+        <br/>
+
+        {{ email_form(form, url_for('user_mng.reset'), "Change Password") }}
+
+    </div>
 {% endblock %}

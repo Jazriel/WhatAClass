@@ -1,14 +1,12 @@
 {% extends "layout.html" %}
-{% block title %}WhatAClass Sign Up{% endblock %}
+{% from "macros.html" import email_password_form with context %}
+{% block title %}WhatAClass: Sign Up{% endblock %}
 {% block body %}
-    <form action="{{ url_for('user_mng.sign_up') }}" method="post" id="signup_form">
-        {{ form_sign_up.email.label }}: {{ form_sign_up.email(placeholder='email@company.domain') }}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">Sign up!</h1>
         <br/>
-        {{ form_sign_up.password.label }}: {{ form_sign_up.password }}
-        <br/>
-        {{ form_sign_up.csrf_token }}
-    </form>
-    <button type="submit" form="signup_form" value="Submit">Submit</button>
 
-    <a href={{ url_for('user_mng.login') }}>link to login</a>
+        {{ email_password_form(form, url_for('user_mng.sign_up'), "Sign up") }}
+
+    </div>
 {% endblock %}
