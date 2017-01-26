@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
     WhatAClass.utils
-    ~~~~~
+    ~~~~~~~~~~~~~~~~
 
     Utilities for WhatAClass, so that there are no
     functions scattered around.
+
+    :author: Javier Martínez
 
 
 """
@@ -34,5 +36,4 @@ def send_email(email, subject, body):
         password = app.config.get('EMAIL_PASS')
         server.login(from_address, password)
         server.sendmail(from_address, email, msg.as_string())
-
 

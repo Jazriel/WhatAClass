@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
     WhatAClass.models
-    ~~~~~
+    ~~~~~~~~~~~~~~~~~
 
     The usual web-app architecture is the MVC
     (Model-View-Controller). This class implements
     the models of the architecture.
+
+    :author: Javier Martínez
 
 
 """

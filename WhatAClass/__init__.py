@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 """
     WhatAClass
-    ~~~~~
+    ~~~~~~~~~~
 
     Simple web app designed to be the GUI of another app.
     Provides users a simple way to upload files and request
-    results.
+    results. `Repository <https://github.com/Jazriel/WhatAClass>`_
+
+    :copyright: (c) 2017 by Javier Martínez
+    :license: [license_token]
 
 
 """
+
 
 from flask import Flask
 from flask_wtf import CSRFProtect
@@ -43,4 +47,5 @@ login_manager.login_view = 'user_mng.login'
 
 @login_manager.user_loader
 def load_user(user_id):
+    """Method required by flask to identify how user are going to be logged in."""
     return User.query.filter(User.id == user_id).first()

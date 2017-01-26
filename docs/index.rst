@@ -1,20 +1,13 @@
-.. WhatAClass documentation master file, created by
-   sphinx-quickstart on Thu Jan 26 12:55:53 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+
 
 Welcome to WhatAClass's documentation!
 ======================================
 
-.. toctree::
-   :maxdepth: 4
-   :caption: Contents:
+For the moment only the :ref:`API <api>` has docs, maybe in the future the rest of the project will be documented.
 
-.. automodule:: WhatAClass
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
+.. toctree::
+   :maxdepth: 0
+   :caption: Contents:
 
 Indices and tables
 ==================
@@ -22,3 +15,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
     WhatAClass.forms
-    ~~~~~
+    ~~~~~~~~~~~~~~~~
 
     Forms used by the controller to get input from the user.
+
+    :author: Javier Martínez
 
 
 """
