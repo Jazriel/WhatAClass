@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
-{% block title %}WhatAClass{% endblock %}
+{% from "macros.html" import password_form with context %}
+{% block title %}WhatAClass: Change Password{% endblock %}
 {% block body %}
-    <h1>password recover screen.</h1>
-    <form action="{{ url_for('user_mng.recover') }}" method="post" id="recover_form">
-        {{ form_recover.password.label }}: {{ form_recover.email(placeholder='email@company.domain') }}
-        {{ form_recover.csrf_token }}
-    </form>
-    <button type="submit" form="recover_form" value="Submit">Submit</button>
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">Recover your password</h1>
+        <br/>
+
+        {{ password_form(form, url_for('user_mng.recover'), "Recover") }}
+
+    </div>
 {% endblock %}
