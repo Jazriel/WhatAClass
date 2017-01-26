@@ -93,4 +93,4 @@ ENV/
 .idea/
 
 # Files that may not see the light of day
-/scripts/scripts.py
+/scraped
