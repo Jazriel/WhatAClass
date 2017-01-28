@@ -12,8 +12,7 @@
 
 """
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import db, bcrypt
-
+from .extensions import db
 
 class User(db.Model):
     """User class, implemented with the help of SQLalchemy to be persistent.

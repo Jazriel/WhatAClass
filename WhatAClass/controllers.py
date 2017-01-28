@@ -22,8 +22,8 @@ from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from itsdangerous import BadSignature
 
 from .models import User
-from .utils import ts, send_email
-from . import db
+from .utils import send_email
+from .extensions import db, ts
 
 index = Blueprint('index', __name__)
 

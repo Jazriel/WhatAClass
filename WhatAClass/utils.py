@@ -10,15 +10,9 @@
 
 
 """
-from itsdangerous import URLSafeTimedSerializer
-
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from smtplib import SMTP
-
-from . import app
-
-ts = URLSafeTimedSerializer(app.config["SECRET_KEY"])
 
 
 def send_email(email, subject, body):
