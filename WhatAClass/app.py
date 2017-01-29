@@ -1,13 +1,18 @@
 from flask import Flask
 from flask_login import LoginManager
-from itsdangerous import URLSafeTimedSerializer
 
-def create_app():
+
+def create_app(config=None):
+    """Factory that creates the app."""
     app = Flask(__name__, instance_relative_config=True)
 
     # Load instance specific configuration.
     app.config.from_pyfile('config.py')
     app.config.from_object('config.default')
+    # Load argument config.
+    if config is not None:
+        app.config.from_object(config)
+
     # Load configuration from env if it does not exist ignore it.
     app.config.from_envvar('WHATACLASS_CONFIG', silent=True)
 
