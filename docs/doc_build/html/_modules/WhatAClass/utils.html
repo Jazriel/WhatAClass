@@ -48,39 +48,63 @@
 <span class="sd">    ~~~~~~~~~~~~~~~~</span>
 
 <span class="sd">    Utilities for WhatAClass, so that there are no</span>
-<span class="sd">    functions scattered around.</span>
+<span class="sd">    functions scattered around. For now provides</span>
+<span class="sd">    email functionality.</span>
 
 <span class="sd">    :author: Javier Martínez</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">itsdangerous</span> <span class="k">import</span> <span class="n">URLSafeTimedSerializer</span>
-
 <span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
 <span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="k">import</span> <span class="n">MIMEMultipart</span>
 <span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTP</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">app</span>
 
-<span class="n">ts</span> <span class="o">=</span> <span class="n">URLSafeTimedSerializer</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SECRET_KEY&quot;</span><span class="p">])</span>
+<div class="viewcode-block" id="EmailServer"><a class="viewcode-back" href="../../api.html#WhatAClass.utils.EmailServer">[docs]</a><span class="k">class</span> <span class="nc">EmailServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create the EmailServer object, if the config is not specified upon</span>
+<span class="sd">        initialization, the config property will have to be called.</span>
+
+<span class="sd">        :param dict config: This dict should contain:: str FROM, str PASS, str HOST, int PORT</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+
+<div class="viewcode-block" id="EmailServer.send_email"><a class="viewcode-back" href="../../api.html#WhatAClass.utils.EmailServer.send_email">[docs]</a>    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send an email to the specified address.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">(</span><span class="s1">&#39;alternative&#39;</span><span class="p">)</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">))</span>
+        <span class="k">with</span> <span class="n">SMTP</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span> <span class="k">as</span> <span class="n">server</span><span class="p">:</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">)</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write-only property that stores the configuration of the email.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@config</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cf</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter of the configuration.</span>
+
+<span class="sd">        :param dict cf: This dict should contain:: str FROM, str PASS, str HOST, int PORT&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;FROM&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;PASS&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;HOST&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;PORT&#39;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="send_email"><a class="viewcode-back" href="../../api.html#WhatAClass.utils.send_email">[docs]</a><span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Send an email to the specified address.&quot;&quot;&quot;</span>
-    <span class="c1"># TODO move email address and host,port to the instance/config file</span>
-    <span class="n">from_address</span> <span class="o">=</span> <span class="s1">&#39;what.a.class.web@gmail.com&#39;</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">(</span><span class="s1">&#39;alternative&#39;</span><span class="p">)</span>
-    <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_address</span>
-    <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email</span>
-    <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
-    <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">))</span>
-    <span class="k">with</span> <span class="n">SMTP</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">587</span><span class="p">)</span> <span class="k">as</span> <span class="n">server</span><span class="p">:</span>
-        <span class="n">server</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
-        <span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
-        <span class="n">password</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EMAIL_PASS&#39;</span><span class="p">)</span>
-        <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">from_address</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-        <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">from_address</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span></div>
-
+<span class="n">email_server</span> <span class="o">=</span> <span class="n">EmailServer</span><span class="p">()</span>
 </pre></div>
 
           </div>

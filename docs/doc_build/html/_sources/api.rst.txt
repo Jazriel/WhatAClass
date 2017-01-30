@@ -14,22 +14,18 @@ This part of the documentation covers the interfaces of WhatAClass.
 
 .. automodule:: WhatAClass.controllers
    :members:
-   :noindex:
-
 
 
 .. automodule:: WhatAClass.forms
    :members:
-   :noindex:
-
 
 
 .. automodule:: WhatAClass.models
    :members:
-   :noindex:
-
 
 
 .. automodule:: WhatAClass.utils
    :members:
-   :noindex:
+
+.. autoclass:: WhatAClass.utils.EmailServer
+   :members:

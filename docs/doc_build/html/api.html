@@ -63,14 +63,8 @@ results. <a class="reference external" href="https://github.com/Jazriel/WhatACla
 </tr>
 </tbody>
 </table>
-<dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass.html#load_user"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Method required by flask to identify how user are going to be logged in.</p>
-</dd></dl>
-
 </div>
-<div class="section" id="whataclass-controllers">
+<span class="target" id="module-WhatAClass.controllers"></span><div class="section" id="whataclass-controllers">
 <h2>WhatAClass.controllers<a class="headerlink" href="#whataclass-controllers" title="Permalink to this headline">¶</a></h2>
 <p>The usual web-app architecture is the MVC
 (Model-View-Controller). This class implements
@@ -87,52 +81,52 @@ structure and distribute the work among the contributors).</p>
 </tbody>
 </table>
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#base"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.base">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.base" title="Permalink to this definition">¶</a></dt>
 <dd><p>Controller for the index view.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">confirm_email</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#confirm_email"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.confirm_email">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">confirm_email</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#confirm_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.confirm_email" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to see if the token is actually de-cypher-able and try to change
 the user to confirm the email.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#login"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.login">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.login" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to log in the user with the information provided.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#logout"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.logout">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#logout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.logout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Logs the user out, has no effect if there was no one logged in.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">recover</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#recover"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.recover">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">recover</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#recover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.recover" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to get the email from the token and give the chance to change
 password.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#reset"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.reset">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the password given through an email with a time sensitive link.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.controllers.</code><code class="descname">sign_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#sign_up"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.controllers.sign_up">
+<code class="descclassname">WhatAClass.controllers.</code><code class="descname">sign_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/controllers.html#sign_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.controllers.sign_up" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a user from the email and password given and sends an email with
 a time sensitive serialized url to authenticate the user (ts).</p>
 </dd></dl>
 
 </div>
-<div class="section" id="whataclass-forms">
+<span class="target" id="module-WhatAClass.forms"></span><div class="section" id="whataclass-forms">
 <h2>WhatAClass.forms<a class="headerlink" href="#whataclass-forms" title="Permalink to this headline">¶</a></h2>
 <p>Forms used by the controller to get input from the user.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -144,35 +138,35 @@ a time sensitive serialized url to authenticate the user (ts).</p>
 </tbody>
 </table>
 <dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">EmailForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#EmailForm"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.forms.EmailForm">
+<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">EmailForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#EmailForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.forms.EmailForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Email form with only an email address required.</p>
 </dd></dl>
 
 <dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#LoginForm"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.forms.LoginForm">
+<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#LoginForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Login form which is composed of email and password. uses the same
 fields as signup form but in case both diverge they have been
 duplicated.</p>
 </dd></dl>
 
 <dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">PasswordForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#PasswordForm"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.forms.PasswordForm">
+<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">PasswordForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#PasswordForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.forms.PasswordForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Password form with only a password required.</p>
 </dd></dl>
 
 <dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">SignUpForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#SignUpForm"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.forms.SignUpForm">
+<em class="property">class </em><code class="descclassname">WhatAClass.forms.</code><code class="descname">SignUpForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/forms.html#SignUpForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.forms.SignUpForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sign up form which is composed of email and password. uses the same
 fields as signup form but in case both diverge they have been
 duplicated.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="whataclass-models">
+<span class="target" id="module-WhatAClass.models"></span><div class="section" id="whataclass-models">
 <h2>WhatAClass.models<a class="headerlink" href="#whataclass-models" title="Permalink to this headline">¶</a></h2>
 <p>The usual web-app architecture is the MVC
 (Model-View-Controller). This class implements
@@ -186,36 +180,37 @@ the models of the architecture.</p>
 </tbody>
 </table>
 <dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">WhatAClass.models.</code><code class="descname">User</code><span class="sig-paren">(</span><em>email</em>, <em>password</em>, <em>email_confirmed=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/models.html#User"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.models.User">
+<em class="property">class </em><code class="descclassname">WhatAClass.models.</code><code class="descname">User</code><span class="sig-paren">(</span><em>email</em>, <em>password</em>, <em>email_confirmed=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/models.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.models.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>User class, implemented with the help of SQLalchemy to be persistent.
 Basically has a id and an email both unique, a password, a field to know
 if the password has been confirmed and the is_active field needed by flask.</p>
 <dl class="method">
-<dt>
-<code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/models.html#User.get_id"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.models.User.get_id">
+<code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/models.html#User.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.models.User.get_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get id method used by flask&#8217;s login system.</p>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<code class="descname">is_correct_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/models.html#User.is_correct_password"><span class="viewcode-link">[source]</span></a></dt>
+<dt id="WhatAClass.models.User.is_correct_password">
+<code class="descname">is_correct_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/models.html#User.is_correct_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.models.User.is_correct_password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the check to ensure the passwords are the same.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt>
-<code class="descname">password</code></dt>
+<dt id="WhatAClass.models.User.password">
+<code class="descname">password</code><a class="headerlink" href="#WhatAClass.models.User.password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hybrid property to auto-encrypt the password at the setter.</p>
 </dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="whataclass-utils">
+<span class="target" id="module-WhatAClass.utils"></span><div class="section" id="whataclass-utils">
 <h2>WhatAClass.utils<a class="headerlink" href="#whataclass-utils" title="Permalink to this headline">¶</a></h2>
 <p>Utilities for WhatAClass, so that there are no
-functions scattered around.</p>
+functions scattered around. For now provides
+email functionality.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -224,13 +219,24 @@ functions scattered around.</p>
 </tr>
 </tbody>
 </table>
-<dl class="function">
-<dt>
-<code class="descclassname">WhatAClass.utils.</code><code class="descname">send_email</code><span class="sig-paren">(</span><em>email</em>, <em>subject</em>, <em>body</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/utils.html#send_email"><span class="viewcode-link">[source]</span></a></dt>
+</div>
+<dl class="class">
+<dt id="WhatAClass.utils.EmailServer">
+<em class="property">class </em><code class="descclassname">WhatAClass.utils.</code><code class="descname">EmailServer</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/utils.html#EmailServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.utils.EmailServer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="WhatAClass.utils.EmailServer.config">
+<code class="descname">config</code><a class="headerlink" href="#WhatAClass.utils.EmailServer.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write-only property that stores the configuration of the email.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="WhatAClass.utils.EmailServer.send_email">
+<code class="descname">send_email</code><span class="sig-paren">(</span><em>email</em>, <em>subject</em>, <em>body</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/WhatAClass/utils.html#EmailServer.send_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#WhatAClass.utils.EmailServer.send_email" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send an email to the specified address.</p>
 </dd></dl>
 
-</div>
+</dd></dl>
+
 </div>
 
 
