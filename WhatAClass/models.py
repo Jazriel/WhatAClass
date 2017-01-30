@@ -12,7 +12,7 @@
 
 """
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import db, bcrypt
+from .extensions import db, bcrypt
 
 
 class User(db.Model):
@@ -38,7 +38,7 @@ class User(db.Model):
         return self._password
 
     @password.setter
-    def _set_password(self, plaintext):
+    def password(self, plaintext):
         """Part of the hybrid property pattern. Modified setter
         to auto-encrypt."""
         self._password = bcrypt.generate_password_hash(plaintext)
@@ -56,6 +56,4 @@ class User(db.Model):
     def get_id(self):
         """Get id method used by flask's login system."""
         return self.id
-
-
 
