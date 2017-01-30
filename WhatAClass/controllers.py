@@ -22,7 +22,7 @@ from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from itsdangerous import BadSignature
 
 from .models import User
-from .utils import send_email
+from .utils import email_server
 from .extensions import db, ts
 
 index = Blueprint('index', __name__)
@@ -95,7 +95,7 @@ def sign_up():
             'email/activate.html',
             confirm_url=confirm_url)
 
-        send_email(user.email, 'WhatAClass: Confirm your email', email_body)
+        email_server.send_email(user.email, 'WhatAClass: Confirm your email', email_body)
 
         flash('Signed up successfully.')
 
@@ -148,7 +148,7 @@ def reset():
             'email/recover.html',
             reset_url=reset_url)
 
-        send_email(user.email, 'Password reset requested', body)
+        email_server.send_email(user.email, 'Password reset requested', body)
 
         return redirect(url_for('index.base'))
     return render_template('reset.html', form=form)
