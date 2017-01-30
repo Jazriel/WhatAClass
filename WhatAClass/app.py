@@ -12,7 +12,7 @@ def create_app(config=None):
     if config is not None:
         app.config.from_object(config)
 
-    # Load instance specific configuration. Affected by config
+    # Load instance specific configuration. Affected by config.
     app.config.from_pyfile('config.py', silent=app.config['DEBUG'])
 
     # Load configuration from env if it does not exist ignore it.
