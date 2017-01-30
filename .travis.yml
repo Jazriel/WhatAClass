@@ -5,6 +5,15 @@ python:
 
 install: "pip install -r requirements.txt"
 
+addons:
+    code_climate:
+        repo_token: d115b35656471f1c9de68423608acee6d5b645a85adda46c27acab4263b4a929
+
+notifications:
+  slack:
+    rooms:
+      - javiermartineztfg:Ij6ciz8FibQ5nUEtxzlKbdGZ#tools
+
 script:
   - pytest ./tests
 
