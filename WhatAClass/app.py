@@ -16,12 +16,16 @@ def create_app(config=None):
     # Load configuration from env if it does not exist ignore it.
     app.config.from_envvar('WHATACLASS_CONFIG', silent=True)
 
-    from .extensions import db, csrf, bcrypt, configure_ts_secret_key
+    from .extensions import db, csrf, bcrypt, ts
 
     db.init_app(app)
     csrf.init_app(app)
     bcrypt.init_app(app)
-    configure_ts_secret_key(app.config["SECRET_KEY"])
+    ts.secret_key = app.secret_key
+
+    from .utils import email_server
+
+    email_server.config = app.config['EMAIL_CONF']
 
     from .models import User
 
@@ -32,7 +36,6 @@ def create_app(config=None):
 
     login_manager = LoginManager(app=app)
     login_manager.login_view = 'user_mng.login'
-
 
     @login_manager.user_loader
     def load_user(user_id):

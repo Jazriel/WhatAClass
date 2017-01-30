@@ -57,6 +57,9 @@ local_settings.py
 instance/
 .webassets-cache
 
+# Alembic
+alembic.ini
+
 # Scrapy stuff:
 .scrapy
 
@@ -95,3 +98,4 @@ provenv/
 
 # Files that may not see the light of day
 /scraped
+

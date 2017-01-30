@@ -18,6 +18,3 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 csrf = CSRFProtect()
 ts = URLSafeTimedSerializer('NotSecretKey')
-
-def configure_ts_secret_key(secret_key):
-    ts = URLSafeTimedSerializer(secret_key=secret_key)

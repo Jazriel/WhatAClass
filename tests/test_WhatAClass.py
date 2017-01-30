@@ -8,6 +8,9 @@
     in more than one place they will be moved to a
     separate file fixture.py
 
+    These tests are not tested to be run concurrently.
+    With different environments it should work.
+
 
     :author: Javier Martínez
 
@@ -18,24 +21,25 @@ import tempfile
 from pytest import fixture
 from WhatAClass import create_app
 
+
 @fixture
-def _app(self):
+def app():
     """Test application."""
-    if self._s_app is None:
-        self._s_app = create_app('config.test')
-    # with self._s_app.te
-    # return
+    _app = create_app('config.test')
+    with _app.app_context() as context:
+        yield _app
+        return
+
 
 @fixture
 def db(app):
     """Test database."""
     fd, db_path = tempfile.mkstemp(suffix='.db')
-    if os.path.exists(db_path):
-        os.unlink(db_path)
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
 
     from WhatAClass.extensions import db
+
     db.init_app(app)
     db.create_all()
     # alembic apply migrations will go here
@@ -46,12 +50,26 @@ def db(app):
 
 
 @fixture
-def app(app, db):
-
+def fake_client(app, db):
     return app.test_client()
 
-def test_base(app):
-    # app.get
-    pass
+
+def sign_up(app, username, password):
+    return app.post('/signup',
+                    data=dict(username=username,
+                              password=password
+                              ),
+                    follow_redirects=True)
 
 
+def test_base(fake_client):
+    base = fake_client.get('/')
+    assert b'Welcome to this app.' in base.data
+
+
+def test_signup(fake_client):
+    base = fake_client.get('/signup')
+    assert b'Sign up!' in base.data
+    assert b'Email' in base.data
+    assert b'Password' in base.data
+    # TODO actually signup
