@@ -36,10 +36,13 @@ def create_app(config=None):
     for key in app.config['LANGUAGES']:
         LANGUAGES[key] = app.config['LANGUAGES'][key]
 
-    @babel.localeselector
-    def get_locale():
-        """Locale selector for babel."""
-        return request.accept_languages.best_match(LANGUAGES.keys())
+    if babel.locale_selector_func is None:
+
+        @babel.localeselector
+        def get_locale():
+            """Locale selector for babel."""
+            return request.accept_languages.best_match(LANGUAGES.keys())
+
 
     from .utils import email_server
 
