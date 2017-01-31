@@ -67,7 +67,13 @@
 
 <span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">User</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">email_server</span>
-<span class="kn">from</span> <span class="nn">.extensions</span> <span class="k">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">ts</span>
+<span class="kn">from</span> <span class="nn">.extensions</span> <span class="k">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">babel</span><span class="p">,</span> <span class="n">LANGUAGES</span>
+
+
+<span class="nd">@babel</span><span class="o">.</span><span class="n">localeselector</span>
+<span class="k">def</span> <span class="nf">get_locale</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">accept_languages</span><span class="o">.</span><span class="n">best_match</span><span class="p">(</span><span class="n">LANGUAGES</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
 
 <span class="n">index</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 

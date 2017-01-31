@@ -24,7 +24,6 @@ class User(db.Model):
     email = db.Column(db.String(64), unique=True)
     _password = db.Column(db.String(128))
     email_confirmed = db.Column(db.Boolean)
-    is_active = db.Column(db.Boolean)
 
     def __init__(self, email, password, email_confirmed=False):
         self.email = email
@@ -57,3 +56,14 @@ class User(db.Model):
         """Get id method used by flask's login system."""
         return self.id
 
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False

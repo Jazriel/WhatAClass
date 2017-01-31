@@ -1,0 +1,165 @@
+# Translations template for WhatAClass.
+# Copyright (C) 2017 Javier Martínez
+# This file is distributed under the same license as the WhatAClass project.
+# Javier Martinez <javyermartinez@gmail.com>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: v0.1\n"
+"Report-Msgid-Bugs-To: javyermartinez@gmail.com\n"
+"POT-Creation-Date: 2017-01-31 18:06+0100\n"
+"PO-Revision-Date: 2017-01-31 18:06+0100\n"
+"Last-Translator: Javier Martínez <javyermartinez@gmail.com>\n"
+"Language-Team: Javier Martínez <javyermartinez@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: WhatAClass/controllers.py:56
+msgid "Email or password were not correct."
+msgstr "El email o la contraseña no fueron correctos."
+
+#: WhatAClass/controllers.py:60
+msgid "Email was not confirmed yet."
+msgstr "La dirección email no ha sido confirmada."
+
+#: WhatAClass/controllers.py:64
+msgid "Logged in successfully."
+msgstr "Correctamente autenticado."
+
+#: WhatAClass/controllers.py:103
+msgid "WhatAClass: Confirm your email"
+msgstr "WhatAClass: Confirme su email"
+
+#: WhatAClass/controllers.py:105
+msgid "Signed up successfully."
+msgstr "Registrado correctamente."
+
+#: WhatAClass/controllers.py:129
+msgid "Email successfully confirmed."
+msgstr "Email confirmado."
+
+#: WhatAClass/controllers.py:143
+msgid "The email was not confirmed yet."
+msgstr "La dirección email no ha sido confirmada."
+
+#: WhatAClass/controllers.py:156
+msgid "Password reset requested"
+msgstr "Cambio de contraseña pedido."
+
+#: WhatAClass/controllers.py:181
+msgid "Password successfully changed."
+msgstr "Contraseña cambiada correctamente."
+
+#: WhatAClass/templates/index.html:2 WhatAClass/templates/layout.html:19
+msgid "WhatAClass"
+msgstr "WhatAClass"
+
+#: WhatAClass/templates/index.html:4
+msgid "Welcome to this app."
+msgstr "Bienvenido a la aplicación."
+
+#: WhatAClass/templates/layout.html:17
+msgid "Toggle navigation"
+msgstr "Cambiar navegación"
+
+#: WhatAClass/templates/layout.html:17
+msgid "Menu"
+msgstr "Menú"
+
+#: WhatAClass/templates/layout.html:25
+msgid "Account"
+msgstr "Cuenta"
+
+#: WhatAClass/templates/layout.html:27 WhatAClass/templates/signup.html:6
+#: WhatAClass/templates/signup.html:9
+msgid "Sign up"
+msgstr "Registro"
+
+#: WhatAClass/templates/layout.html:28
+msgid "Log in"
+msgstr "Autenticación"
+
+#: WhatAClass/templates/layout.html:29
+msgid "Log out"
+msgstr "Des-autenticar"
+
+#: WhatAClass/templates/layout.html:33 WhatAClass/templates/layout.html:36
+msgid "Placeholder"
+msgstr "Guarda-Sitio"
+
+#: WhatAClass/templates/layout.html:71
+msgid "WhatAClass by"
+msgstr "WhatAClass por"
+
+#: WhatAClass/templates/login.html:3
+msgid "WhatAClass: Log In"
+msgstr "WhatAClass: Autenticacion"
+
+#: WhatAClass/templates/login.html:6 WhatAClass/templates/login.html:8
+msgid "Login"
+msgstr "Autenticacion"
+
+#: WhatAClass/templates/macros.html:15
+msgid "email@company.domain"
+msgstr "email@empresa.dominio"
+
+#: WhatAClass/templates/recover.html:6
+msgid "Recover your password"
+msgstr "Recupera tu contraseña"
+
+#: WhatAClass/templates/recover.html:9
+msgid "Recover"
+msgstr "Recuperar"
+
+#: WhatAClass/templates/reset.html:6
+msgid "Change my password"
+msgstr "Cambia mi contraseña"
+
+#: WhatAClass/templates/reset.html:8
+msgid "This will send an email with a link that can be used within one day."
+msgstr "Esto te enviará un email con un link que se puede usar durante un día."
+
+#: WhatAClass/templates/reset.html:11
+msgid "Change Password"
+msgstr "Cambiar la contraseña"
+
+#: WhatAClass/templates/signup.html:3
+msgid "WhatAClass: Sign Up"
+msgstr "WhatAClass: Registro"
+
+#: WhatAClass/templates/email/activate.html:1
+msgid "Your account was successfully created. Please click the link below"
+msgstr "Su cuenta fue creada con exito. Por favor haga click en el link más abajo"
+
+#: WhatAClass/templates/email/activate.html:2
+msgid "to confirm your email address and activate your account:"
+msgstr "para confirmar su email y activar su cuenta:"
+
+#: WhatAClass/templates/email/activate.html:5
+msgid "Confirm your email."
+msgstr "Confirme su email"
+
+#: WhatAClass/templates/email/recover.html:1
+msgid ""
+"We received a petition to reset your password, if it was not you don't do"
+" anything"
+msgstr "Hemos recivido una peticion de cambio de contraseña, si no fue"
+" usted no haga nada."
+
+#: WhatAClass/templates/email/recover.html:2
+msgid "If you asked to reset the password click the link bellow."
+msgstr "Si pidio cambiar su contraseña haga click en el link más abajo."
+
+#: WhatAClass/templates/email/recover.html:5
+msgid "Password reset."
+msgstr "Cambio de contraseña."
+
+#: WhatAClass/templates/email/recover.html:10
+msgid ""
+"If you have any questions or concerns, please contact us at "
+"javyermartinez+whataclass@gmail.com."
+msgstr "Si tiene preguntas contactenos en javyermartinez+whataclass@gmail.com."
+

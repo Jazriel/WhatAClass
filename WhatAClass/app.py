@@ -1,5 +1,4 @@
-from flask import Flask
-from flask_login import LoginManager
+from flask import Flask, request
 
 
 def create_app(config=None):
@@ -18,12 +17,29 @@ def create_app(config=None):
     # Load configuration from env if it does not exist ignore it.
     app.config.from_envvar('WHATACLASS_CONFIG', silent=True)
 
-    from .extensions import db, csrf, bcrypt, ts
+    from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
 
     db.init_app(app)
     csrf.init_app(app)
     bcrypt.init_app(app)
+    babel.init_app(app)
+    login_manager.init_app(app)
     ts.secret_key = app.secret_key
+
+    login_manager.login_view = 'user_mng.login'
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        """Method required by flask_login to identify how user are going to be logged in."""
+        return User.query.filter(User.id == user_id).first()
+
+    for key in app.config['LANGUAGES']:
+        LANGUAGES[key] = app.config['LANGUAGES'][key]
+
+    @babel.localeselector
+    def get_locale():
+        """Locale selector for babel."""
+        return request.accept_languages.best_match(LANGUAGES.keys())
 
     from .utils import email_server
 
@@ -35,14 +51,6 @@ def create_app(config=None):
 
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
-
-    login_manager = LoginManager(app=app)
-    login_manager.login_view = 'user_mng.login'
-
-    @login_manager.user_loader
-    def load_user(user_id):
-        """Method required by flask to identify how user are going to be logged in."""
-        return User.query.filter(User.id == user_id).first()
 
     return app
 
