@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     WhatAClass.controllers
-    ~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~
 
     The usual web-app architecture is the MVC
     (Model-View-Controller). This class implements
@@ -11,17 +11,21 @@
     be scalable (create a divisional or functional
     structure and distribute the work among the contributors).
 
+    :author: Javier Martínez
+
 
 """
 
 from flask import Blueprint, flash, render_template, url_for, abort, redirect
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user
 from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from itsdangerous import BadSignature
+from flask_babel import gettext as _
 
 from .models import User
-from .utils import ts, send_email
-from . import db
+from .utils import email_server
+from .extensions import db, ts
+
 
 index = Blueprint('index', __name__)
 
@@ -39,6 +43,7 @@ user_mng = Blueprint('user_mng', __name__)
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     """Try to log in the user with the information provided."""
+
     form = LoginForm()
 
     if form.validate_on_submit():
@@ -46,15 +51,15 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
 
         if user is None or not user.is_correct_password(form.password.data):
-            flash('Email or password were not correct.')
+            flash(_('Email or password were not correct.'))
             return redirect(url_for('user_mng.login'))
 
         if not user.email_confirmed:
-            flash('Email was not confirmed yet.')
+            flash(_('Email was not confirmed yet.'))
             return redirect(url_for('user_mng.login'))
 
         login_user(user)
-        flash('Logged in successfully.')
+        flash(_('Logged in successfully.'))
         return redirect(url_for('index.base'))
 
     return render_template('login.html', form=form)
@@ -93,9 +98,9 @@ def sign_up():
             'email/activate.html',
             confirm_url=confirm_url)
 
-        send_email(user.email, 'WhatAClass: Confirm your email', email_body)
+        email_server.send_email(user.email, _('WhatAClass: Confirm your email'), email_body)
 
-        flash('Signed up successfully.')
+        flash(_('Signed up successfully.'))
 
         return redirect(url_for('user_mng.login'))
 
@@ -119,7 +124,7 @@ def confirm_email(token):
     db.session.add(user)
     db.session.commit()
 
-    flash('Email successfully confirmed.')
+    flash(_('Email successfully confirmed.'))
 
     return redirect(url_for('user_mng.login'))
 
@@ -133,7 +138,7 @@ def reset():
         user = User.query.filter_by(email=form.email.data).first_or_404()
 
         if not user.email_confirmed:
-            abort('The email was not confirmed yet.')
+            return abort(_('The email was not confirmed yet.'))
 
         token = ts.dumps(user.email, salt=b'recover-whataclass-key')
 
@@ -146,7 +151,7 @@ def reset():
             'email/recover.html',
             reset_url=reset_url)
 
-        send_email(user.email, 'Password reset requested', body)
+        email_server.send_email(user.email, _('Password reset requested'), body)
 
         return redirect(url_for('index.base'))
     return render_template('reset.html', form=form)
@@ -171,9 +176,10 @@ def recover(token):
         db.session.add(user)
         db.session.commit()
 
-        flash('Password successfully changed.')
+        flash(_('Password successfully changed.'))
 
         return redirect(url_for('user_mng.login'))
 
     return render_template('recover.html', form=form, token=token)
+
 

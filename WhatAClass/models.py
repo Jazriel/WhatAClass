@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 """
     WhatAClass.models
-    ~~~~~
+    ~~~~~~~~~~~~~~~~~
 
     The usual web-app architecture is the MVC
     (Model-View-Controller). This class implements
     the models of the architecture.
 
+    :author: Javier Martínez
+
 
 """
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import db, bcrypt
+from .extensions import db, bcrypt
 
 
 class User(db.Model):
@@ -22,7 +24,6 @@ class User(db.Model):
     email = db.Column(db.String(64), unique=True)
     _password = db.Column(db.String(128))
     email_confirmed = db.Column(db.Boolean)
-    is_active = db.Column(db.Boolean)
 
     def __init__(self, email, password, email_confirmed=False):
         self.email = email
@@ -36,7 +37,7 @@ class User(db.Model):
         return self._password
 
     @password.setter
-    def _set_password(self, plaintext):
+    def password(self, plaintext):
         """Part of the hybrid property pattern. Modified setter
         to auto-encrypt."""
         self._password = bcrypt.generate_password_hash(plaintext)
@@ -55,5 +56,14 @@ class User(db.Model):
         """Get id method used by flask's login system."""
         return self.id
 
+    @property
+    def is_authenticated(self):
+        return True
 
+    @property
+    def is_active(self):
+        return True
 
+    @property
+    def is_anonymous(self):
+        return False

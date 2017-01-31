@@ -1,0 +1,25 @@
+\subsection{Web framework in Python}
+My selection: flask
+Why:
+    Simplicity, if you want a simple web page you can be up and running in 10 lines of code
+    Community, has a great community that can help anyone with most of their problems
+    Documentation, widely documented both by themselves and the community, due to API stability there are tutorials from 2014 and before that are still relevant.
+
+
+
+
+Frameworks:
+    Django [https://www.djangoproject.com/]
+        "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source."
+        Django takes care of user authentication, content administration, site maps, RSS feeds, object-relational mapper, automatic admin interface, robust template system, quick internationalization.
+        Django does things we don't really care about, and being far more complex and equally as nicely documented as flask we
+
+    Pyramid
+        Not full stack ()
+
+Micro-frameworks:
+    bottle
+
+Other:
+    Werkzeug
+

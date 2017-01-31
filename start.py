@@ -1,3 +1,5 @@
 #!flask/bin/python
-from WhatAClass import app
-app.run()
+from WhatAClass import create_app
+if __name__ == '__main__':
+    app = create_app()
+    app.run()

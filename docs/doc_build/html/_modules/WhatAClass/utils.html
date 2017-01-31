@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WhatAClass.utils &#8212; WhatAClass v0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     'v0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for WhatAClass.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    WhatAClass.utils</span>
+<span class="sd">    ~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">    Utilities for WhatAClass, so that there are no</span>
+<span class="sd">    functions scattered around. For now provides</span>
+<span class="sd">    email functionality.</span>
+
+<span class="sd">    :author: Javier Martínez</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="k">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="k">import</span> <span class="n">MIMEMultipart</span>
+<span class="kn">from</span> <span class="nn">smtplib</span> <span class="k">import</span> <span class="n">SMTP</span>
+
+
+<div class="viewcode-block" id="EmailServer"><a class="viewcode-back" href="../../api.html#WhatAClass.utils.EmailServer">[docs]</a><span class="k">class</span> <span class="nc">EmailServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create the EmailServer object, if the config is not specified upon</span>
+<span class="sd">        initialization, the config property will have to be called.</span>
+
+<span class="sd">        :param dict config: This dict should contain:: str FROM, str PASS, str HOST, int PORT</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+
+<div class="viewcode-block" id="EmailServer.send_email"><a class="viewcode-back" href="../../api.html#WhatAClass.utils.EmailServer.send_email">[docs]</a>    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send an email to the specified address.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">(</span><span class="s1">&#39;alternative&#39;</span><span class="p">)</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">))</span>
+        <span class="k">with</span> <span class="n">SMTP</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span> <span class="k">as</span> <span class="n">server</span><span class="p">:</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">)</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write-only property that stores the configuration of the email.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@config</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cf</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter of the configuration.</span>
+
+<span class="sd">        :param dict cf: This dict should contain:: str FROM, str PASS, str HOST, int PORT&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;FROM&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;PASS&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;HOST&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[</span><span class="s1">&#39;PORT&#39;</span><span class="p">]</span></div>
+
+
+<span class="n">email_server</span> <span class="o">=</span> <span class="n">EmailServer</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  <li><a href="../WhatAClass.html">WhatAClass</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Javier Martinez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
