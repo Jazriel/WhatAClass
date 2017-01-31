@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Test config, import default, then modify."""
 from .default import *
 

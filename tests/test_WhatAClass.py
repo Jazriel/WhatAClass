@@ -42,7 +42,7 @@ def db(app):
 
     db.init_app(app)
     db.create_all()
-    # alembic apply migrations will go here
+    # TODO alembic apply migrations will go here
     yield db
 
     os.close(fd)
@@ -50,25 +50,25 @@ def db(app):
 
 
 @fixture
-def fake_client(app, db):
+def client(app, db):
     return app.test_client()
 
+# TODO FIXIT
+def sign_up(client, username, password):
+    return client.post('/signup',
+                       data=dict(username=username,
+                                 password=password
+                                 ),
+                       follow_redirects=True)
 
-def sign_up(app, username, password):
-    return app.post('/signup',
-                    data=dict(username=username,
-                              password=password
-                              ),
-                    follow_redirects=True)
 
-
-def test_base(fake_client):
-    base = fake_client.get('/')
+def test_base(client):
+    base = client.get('/')
     assert b'Welcome to this app.' in base.data
 
 
-def test_signup(fake_client):
-    base = fake_client.get('/signup')
+def test_signup(client):
+    base = client.get('/signup')
     assert b'Sign up!' in base.data
     assert b'Email' in base.data
     assert b'Password' in base.data
