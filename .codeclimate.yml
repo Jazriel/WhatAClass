@@ -1,7 +1,0 @@
-JavaScript: true
-Ruby: false
-Python: true
-PHP: false
-
-exclude_paths:
-- WhatAClass/static/**/*
