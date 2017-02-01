@@ -1,7 +1,7 @@
 from flask import Flask, request
 
 
-def create_app(config=None):
+def create_app(config=None, deploy_db=False):
     """Factory that creates the app."""
     app = Flask(__name__, instance_relative_config=True)
 
