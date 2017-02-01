@@ -18,9 +18,15 @@
 """
 import os
 import tempfile
+from distutils.command.config import config
+
 from pytest import fixture
 from WhatAClass import create_app
+from WhatAClass.models import User
 
+
+confirmed_user = dict(email='jmr@ubu.es',
+                      password='pw')
 
 @fixture
 def app():
@@ -42,6 +48,9 @@ def db(app):
 
     db.init_app(app)
     db.create_all()
+    user = User(confirmed_user['email'], confirmed_user['password'], email_confirmed=True)
+    db.session.add(user)
+    db.session.commit()
     # TODO alembic apply migrations will go here
     yield db
 
@@ -53,11 +62,30 @@ def db(app):
 def client(app, db):
     return app.test_client()
 
+
+def get_csrf_token_from_data(data):
+    pre = b'name="csrf_token" type="hidden" value="'
+    index = data.find(pre)
+    return data[index+len(pre):].split(b'"')[0]
+
+
 # TODO FIXIT
-def sign_up(client, username, password):
+def sign_up(client, email, password):
+    page = client.get('/signup')
     return client.post('/signup',
-                       data=dict(username=username,
-                                 password=password
+                       data=dict(email=email,
+                                 password=password,
+                                 csrf_token=get_csrf_token_from_data(page.data)
+                                 ),
+                       follow_redirects=True)
+
+
+def login(client, email, password):
+    page = client.get('/login')
+    return client.post('/login',
+                       data=dict(email=email,
+                                 password=password,
+                                 csrf_token=get_csrf_token_from_data(page.data)
                                  ),
                        follow_redirects=True)
 
@@ -72,4 +100,20 @@ def test_signup(client):
     assert b'Sign up!' in base.data
     assert b'Email' in base.data
     assert b'Password' in base.data
-    # TODO actually signup
+    base = sign_up(client, 'javyermartinez@gmail.com', '1234')
+    assert b'Signed up successfully.' in base.data
+
+
+def test_non_conf_email_login(client):
+    em = 'javyermartinez@gmail.com'
+    ps = '1234'
+    sign_up(client, em, ps)
+    page = login(client, em, ps)
+    assert b'Email was not confirmed yet.' in page.data
+
+
+def test_login(client):
+    page = login(client, confirmed_user['email'], confirmed_user['password'])
+    assert b'Logged in successfully.' in page.data
+
+

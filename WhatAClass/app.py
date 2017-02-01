@@ -12,7 +12,8 @@ def create_app(config=None):
         app.config.from_object(config)
 
     # Load instance specific configuration. Affected by config.
-    app.config.from_pyfile('config.py', silent=app.config['DEBUG'])
+    if app.config['DEBUG'] is None or not app.config['DEBUG']:
+        app.config.from_pyfile('config.py')
 
     # Load configuration from env if it does not exist ignore it.
     app.config.from_envvar('WHATACLASS_CONFIG', silent=True)
@@ -42,7 +43,6 @@ def create_app(config=None):
         def get_locale():
             """Locale selector for babel."""
             return request.accept_languages.best_match(LANGUAGES.keys())
-
 
     from .utils import email_server
 

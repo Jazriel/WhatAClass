@@ -29,7 +29,6 @@ class User(db.Model):
         self.email = email
         self.password = password
         self.email_confirmed = email_confirmed
-        self.is_active = True
 
     @hybrid_property
     def password(self):
