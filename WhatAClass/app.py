@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, g
 
 
 def create_app(config=None):
@@ -54,6 +54,8 @@ def create_app(config=None):
 
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
+
+    g['DEBUG']=app.config['DEBUG']
 
     return app
 
