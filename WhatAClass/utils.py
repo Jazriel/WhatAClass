@@ -28,11 +28,14 @@ class EmailServer(object):
         self._password = None
         self._host = None
         self._port = None
+        self._send = False
         if config is not None:
             self.config = config
 
     def send_email(self, email, subject, body):
         """Send an email to the specified address."""
+        if not self._send:
+            return
         msg = MIMEMultipart('alternative')
         msg['From'] = self._email
         msg['To'] = email
@@ -58,6 +61,7 @@ class EmailServer(object):
         self._password = cf['PASS']
         self._host = cf['HOST']
         self._port = cf['PORT']
+        self._send = True if cf['PASS'] is not None else False
 
 
 email_server = EmailServer()

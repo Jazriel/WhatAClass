@@ -16,6 +16,7 @@ notifications:
 
 script:
   - pytest ./tests
+  - coverage run pytest ./test --include=WhatAClass/
 
 after_sucess:
   - CODECLIMATE_REPO_TOKEN=d115b35656471f1c9de68423608acee6d5b645a85adda46c27acab4263b4a929 codeclimate-test-reporter

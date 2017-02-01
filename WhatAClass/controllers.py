@@ -16,7 +16,7 @@
 
 """
 
-from flask import Blueprint, flash, render_template, url_for, abort, redirect, g
+from flask import Blueprint, flash, render_template, url_for, abort, redirect
 from flask_login import login_user, logout_user
 from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from itsdangerous import BadSignature
@@ -85,12 +85,6 @@ def sign_up():
             password=form.password.data
         )
 
-        if g['DEBUG']:
-            user.email_confirmed = True
-            db.session.add(user)
-            db.session.commit()
-            return redirect(url_for('user_mng.login'))
-
         db.session.add(user)
         db.session.commit()
 
@@ -120,7 +114,6 @@ def confirm_email(token):
     the user to confirm the email."""
     try:
         email = ts.loads(token, salt=b'email-whataclass-salt-key', max_age=86400)
-
     except BadSignature:
         return abort(404)
 
