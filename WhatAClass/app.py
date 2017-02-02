@@ -3,19 +3,20 @@
 from flask import Flask, request
 
 
-def create_app(config_file=None):
+def create_app(config=None):
     """Factory that creates the app."""
     app = Flask(__name__, instance_relative_config=True)
 
     # Configuration
     app.config.from_object('config.default')
-    # Load argument config.
-    if config_file is not None:
-        app.config.from_object(config_file)
 
-    # TODO REDO move to env variables//Load instance specific configuration. Affected by config.
-    if not app.config['HEROKU'] and not app.config['DEBUG']:
+    if app.config['INSTANCE']:
         app.config.from_pyfile('config.py')
+
+    config = dict() if config is None else config
+    # Load argument config.
+    for key, value in config:
+        app.config[key] = value
 
     from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
 

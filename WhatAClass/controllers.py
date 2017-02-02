@@ -99,7 +99,12 @@ def sign_up():
             'email/activate.html',
             confirm_url=confirm_url)
 
-        email_server.send_email(user.email, _('WhatAClass: Confirm your email'), email_body)
+        if not email_server.send_email(user.email,
+                                       _('WhatAClass: Confirm your email'),
+                                       email_body):
+            user.email_confirmed = True
+            db.session.add(user)
+            db.session.commit()
 
         flash(_('Signed up successfully.'))
 
@@ -151,7 +156,11 @@ def reset():
             'email/recover.html',
             reset_url=reset_url)
 
-        email_server.send_email(user.email, _('Password reset requested'), body)
+        if not email_server.send_email(user.email,
+                                       _('Password reset requested'),
+                                       body):
+            flash(_('Feature not available until the '
+                    'administrator of the service sets an email.'))
 
         return redirect(url_for('index.base'))
     return render_template('reset.html', form=form)

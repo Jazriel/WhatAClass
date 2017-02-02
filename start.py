@@ -1,4 +1,4 @@
 #!flask/bin/python
 from WhatAClass import create_app
 
-app = create_app('config.heroku')
+app = create_app()

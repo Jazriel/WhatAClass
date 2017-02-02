@@ -13,7 +13,7 @@
 """
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from smtplib import SMTP
+from smtplib import SMTP, SMTPException
 
 
 class EmailServer(object):
@@ -35,17 +35,21 @@ class EmailServer(object):
     def send_email(self, email, subject, body):
         """Send an email to the specified address."""
         if not self._send:
-            return
+            return False
         msg = MIMEMultipart('alternative')
         msg['From'] = self._email
         msg['To'] = email
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'html'))
-        with SMTP(host=self._host, port=self._port) as server:
-            server.ehlo()
-            server.starttls()
-            server.login(self._email, self._password)
-            server.sendmail(self._email, email, msg.as_string())
+        try:
+            with SMTP(host=self._host, port=self._port) as server:
+                server.ehlo()
+                server.starttls()
+                server.login(self._email, self._password)
+                server.sendmail(self._email, email, msg.as_string())
+                return True
+        except SMTPException:
+            return False
 
     @property
     def config(self):
