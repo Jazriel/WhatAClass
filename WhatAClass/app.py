@@ -1,22 +1,21 @@
+# -*- coding: utf-8 -*-
+""""""# TODO document
 from flask import Flask, request
 
 
-def create_app(config=None, deploy_db=False):
+def create_app(config_file=None):
     """Factory that creates the app."""
     app = Flask(__name__, instance_relative_config=True)
 
     # Configuration
     app.config.from_object('config.default')
     # Load argument config.
-    if config is not None:
-        app.config.from_object(config)
+    if config_file is not None:
+        app.config.from_object(config_file)
 
-    # Load instance specific configuration. Affected by config.
+    # TODO REDO move to env variables//Load instance specific configuration. Affected by config.
     if app.config['DEBUG'] is None or not app.config['DEBUG']:
         app.config.from_pyfile('config.py')
-
-    # Load configuration from env if it does not exist ignore it.
-    app.config.from_envvar('WHATACLASS_CONFIG', silent=True)
 
     from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
 
