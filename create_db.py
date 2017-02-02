@@ -5,7 +5,8 @@ from WhatAClass.app import create_app
 
 app = create_app()
 
-db.init_app(app)
-db.create_all()
+with app.app_context():
+    db.init_app(app)
+    db.create_all()
 
 # TODO alembic
