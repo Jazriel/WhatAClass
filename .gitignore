@@ -45,8 +45,8 @@ coverage.xml
 *,cover
 .hypothesis/
 
-# Translations // Want the .pot ones to save time
-*.mo
+# Translations // Want the .pot and *.mo ones to deploy
+
 
 # Django stuff:
 *.log

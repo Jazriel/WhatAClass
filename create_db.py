@@ -9,6 +9,7 @@ if os.getenv('HEROKU') is not None:
 else:
     app = create_app()
 
+db.init_app(app)
 db.create_all()
 
 # TODO alembic
