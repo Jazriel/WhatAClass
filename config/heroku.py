@@ -5,6 +5,8 @@ import os
 
 DEBUG = False
 
+HEROKU = True
+
 # : Instance variables
 
 SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:////created/in/test/runtime.db')

@@ -14,7 +14,7 @@ def create_app(config_file=None):
         app.config.from_object(config_file)
 
     # TODO REDO move to env variables//Load instance specific configuration. Affected by config.
-    if app.config['DEBUG'] is None or not app.config['DEBUG']:
+    if not app.config['HEROKU'] and not app.config['DEBUG']:
         app.config.from_pyfile('config.py')
 
     from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
