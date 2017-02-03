@@ -53,7 +53,7 @@ class User(db.Model):
 
     def get_id(self):
         """Get id method used by flask's login system."""
-        return self.id
+        return str(self.id).encode()
 
     @property
     def is_authenticated(self):
@@ -66,3 +66,6 @@ class User(db.Model):
     @property
     def is_anonymous(self):
         return False
+
+
+

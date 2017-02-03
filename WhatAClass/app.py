@@ -32,7 +32,8 @@ def create_app(config=None):
     @login_manager.user_loader
     def load_user(user_id):
         """Method required by flask_login to identify how user are going to be logged in."""
-        return User.query.filter(User.id == user_id).first()
+
+        return User.query.filter(User.id == user_id.decode()).first()
 
     for key in app.config['LANGUAGES']:
         LANGUAGES[key] = app.config['LANGUAGES'][key]
@@ -50,10 +51,11 @@ def create_app(config=None):
 
     from .models import User
 
-    from .controllers import index, user_mng
+    from .controllers import index, user_mng, file_mng
 
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
+    app.register_blueprint(file_mng)
 
     return app
 
