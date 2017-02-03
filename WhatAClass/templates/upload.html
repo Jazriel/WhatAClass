@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import dd_upload with context %}
+{% block title %}{{ _('WhatAClass: File upload') }}{% endblock %}
+{% block body %}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">{{ _('Upload files') }}!</h1>
+        <br/>
+
+        {{ dd_upload() }}
+
+    </div>
+{% endblock %}

@@ -1,13 +1,12 @@
 {#
     Macros.html
-    ~~~~
+    ~~~~~~~~~~~
 
     File with some useful jinja macros, needs bootstrap.
     Is part of the view in the MVC architecture.
 
 
 #}
-
 {% macro email_field(form) %}
 <div class="form-group">
     {{ form.email.label(class='col-md-5 col-sm-5 col-xs-4 text-right') }}
@@ -64,4 +63,18 @@
         {{ submit_button(button_value) }}
     </fieldset>
 </form>
+{% endmacro %}
+
+{% from 'js_upload.html' import js_upload with context %}
+{% macro dd_upload() %}
+    <p>
+        <input id="files-upload" type="file" multiple>
+    </p>
+    <p id="drop-area">
+        <span class="drop-instructions">{{ _('Drag and drop here') }}</span>
+    </p>
+
+    <ul id="file-list">
+        <li class="no-items">{{ _('No files uploaded yet') }}</li>
+    </ul>
 {% endmacro %}
