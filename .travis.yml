@@ -1,9 +1,3 @@
-dist: trusty
-sudo: required
-
-jdk:
-  - oraclejdk8
-
 language: python
 python:
   - "3.5"
@@ -12,11 +6,8 @@ python:
 install: "pip install -r requirements.txt"
 
 addons:
-    code_climate:
-        repo_token: d115b35656471f1c9de68423608acee6d5b645a85adda46c27acab4263b4a929
-  sonarqube:
-    token:
-      secure: "HWJAJCtzPhHC1IacnjO9EJWOV/6wGnd6GPz23u4MIyaTtA3QhrApR6mn8z0KY6OhqjUgDAV0b+MsN1gkWRQqoBs5JdR80JRLVQbsCHi1FrCIMY9FTsmzeCBMZF5nUkmfFDJmXjkeZa5DHKFyP0XKkAAbtOw3fU4C9QjpRNOUyZqe9SsmelDywtFMqKSwFZwXU306lhVNrPdOSvxWvWBwYEQ3K4+j1ran/3ja5Jco4lPl+nMbdV4uj8cFOJQCtXpKBsxMZQFdNyfYETU/mBPFrTJCcagA/C9KGnzwiRq1Ry6rE45AgooxRCmtAkApTPxtjTexC4EDrll4DYcC7onx2FGXOnekHtaKZa48J/LpUH8Hwn8b684H1ppGJaS3ZBqe8lu3fvPfqErysLR+Tt52Ly6ZsQ3Xnxkzy3tMd+vn5nwDGXfkpCyDyA31XW8yccKLt+jmUjFLzSnJeYKUY/I6JyyhrNpebPtFBid2q4ru+eI+6xMxQsjSw4v9Gx/RkSvv0ZObUwT29eUiuDNBjduqZiL2Q9lJK5GKMtMv5HXicygQycQB1Qy/aCbol81zT7XC6SXZc5jdVVkii0pErTOKy0twtMt5+0Ha70B/8kTQchfyF1h6E3+nzCVHvFlzQH2Ess3PnB9fHzXf6019ODeO+E3PZSzXnaNpkMDAOidCpEk="
+  code_climate:
+    repo_token: d115b35656471f1c9de68423608acee6d5b645a85adda46c27acab4263b4a929
 
 
 notifications:
@@ -27,8 +18,3 @@ notifications:
 script:
   - coverage run test.py
   - codeclimate-test-reporter --token d115b35656471f1c9de68423608acee6d5b645a85adda46c27acab4263b4a929
-  - sonar-scanner
-
-cache:
-  directories:
-    - '$HOME/.sonar/cache'
