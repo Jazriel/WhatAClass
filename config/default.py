@@ -17,7 +17,7 @@ LANGUAGES = {
     'es': 'Español'
 }
 
-SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:////created/in/test/runtime.db')
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:////var/lib/whataclass/user_db.db')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'This_key_is_not_a_secret')
 
@@ -25,6 +25,6 @@ EMAIL_CONF = {
     'FROM': os.getenv('EMAIL_FROM', None),
     'PASS': os.getenv('EMAIL_PASS', None),
     'HOST': os.getenv('EMAIL_HOST', None),
-    'PORT': os.getenv('EMAIL_PORT', None),
+    'PORT': os.getenv('EMAIL_PORT', 0),
 }
 

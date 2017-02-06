@@ -16,11 +16,13 @@
 
 """
 
-from flask import Blueprint, flash, render_template, url_for, abort, redirect
-from flask_login import login_user, logout_user
-from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
+from flask import (Blueprint, flash, render_template, url_for, abort,
+                   redirect, request)
+from flask_login import login_user, logout_user, login_required, current_user
+from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from itsdangerous import BadSignature
 from flask_babel import gettext as _
+from sqlalchemy.exc import IntegrityError
 
 from .models import User
 from .utils import email_server
@@ -43,6 +45,9 @@ user_mng = Blueprint('user_mng', __name__)
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     """Try to log in the user with the information provided."""
+    if current_user.is_authenticated:
+        flash(_('There is a logged in user already.'))
+        return redirect(url_for('index.base'))
 
     form = LoginForm()
 
@@ -58,7 +63,8 @@ def login():
             flash(_('Email was not confirmed yet.'))
             return redirect(url_for('user_mng.login'))
 
-        login_user(user)
+        if not login_user(user):
+            abort(_('Something failed, contact your administrator.'))
         flash(_('Logged in successfully.'))
         return redirect(url_for('index.base'))
 
@@ -76,6 +82,10 @@ def logout():
 def sign_up():
     """Creates a user from the email and password given and sends an email with
     a time sensitive serialized url to authenticate the user (ts)."""
+    if current_user.is_authenticated:
+        flash(_('There is a logged in user already.'))
+        return redirect(url_for('index.base'))
+
     form = SignUpForm()
 
     if form.validate_on_submit():
@@ -86,7 +96,10 @@ def sign_up():
         )
 
         db.session.add(user)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except IntegrityError:
+            return abort(_('Only one account for each email. (You can use the + tricks.)'))
 
         token = ts.dumps(user.email, salt=b'email-whataclass-salt-key')
 
@@ -190,5 +203,23 @@ def recover(token):
         return redirect(url_for('user_mng.login'))
 
     return render_template('recover.html', form=form, token=token)
+
+
+file_mng = Blueprint('file_mng', __name__)
+
+
+@file_mng.route('/upload', methods=['GET', 'POST'])
+@login_required
+def upload():
+    """Page where users are going to upload files."""
+    form = UploadForm()
+
+    if form.validate_on_submit():
+
+        # TODO safe file in db with another model.
+
+        return redirect(url_for('file_mng.upload'))
+
+    return render_template('upload.html', form=form)
 
 

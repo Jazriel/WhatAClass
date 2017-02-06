@@ -9,9 +9,15 @@
 
 
 """
+from flask_wtf.file import FileField
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email
+
+
+class UploadForm(FlaskForm):
+    """Form used to upload files."""
+    file = FileField('Email', validators=[DataRequired()])
 
 
 class LoginForm(FlaskForm):
