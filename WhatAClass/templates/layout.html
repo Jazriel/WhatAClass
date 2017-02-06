@@ -36,12 +36,20 @@
                                 <li><a href="{{ url_for('user_mng.logout') }}">{{ _('Log out') }}</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a class="page-scroll" href="">{{ _('Placeholder') }}</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="">{{ _('Placeholder') }}</a>
-                        </li>
+                        {% if current_user.is_authenticated %}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">
+                                    {{ _('Datasets') }}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="">
+                                    <li><a href="{{ url_for('file_mng.upload') }}">{{ _('Upload files') }}</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="">{{ _('Placeholder') }}</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

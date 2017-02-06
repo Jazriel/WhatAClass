@@ -18,7 +18,7 @@
 
 from flask import (Blueprint, flash, render_template, url_for, abort,
                    redirect, request)
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from itsdangerous import BadSignature
 from flask_babel import gettext as _
@@ -45,6 +45,9 @@ user_mng = Blueprint('user_mng', __name__)
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     """Try to log in the user with the information provided."""
+    if current_user.is_authenticated:
+        flash(_('There is a logged in user already.'))
+        return redirect(url_for('index.base'))
 
     form = LoginForm()
 
@@ -79,6 +82,10 @@ def logout():
 def sign_up():
     """Creates a user from the email and password given and sends an email with
     a time sensitive serialized url to authenticate the user (ts)."""
+    if current_user.is_authenticated:
+        flash(_('There is a logged in user already.'))
+        return redirect(url_for('index.base'))
+
     form = SignUpForm()
 
     if form.validate_on_submit():
@@ -201,29 +208,25 @@ def recover(token):
 file_mng = Blueprint('file_mng', __name__)
 
 
-@file_mng.route('/upload')
+@file_mng.route('/upload', methods=['GET', 'POST'])
 @login_required
-def upload_page():
+def upload():
     """Page where users are going to upload files."""
-    render_template('upload.html')
-
-
-@file_mng.route('/upload/file')
-@login_required
-def upload_file():
-    """Url where files are going to be uploaded"""
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
             flash(_('No file part'))
-            return redirect(url_for('file_mng.upload_page'))
+            return redirect(url_for('file_mng.upload'))
         file = request.files['file']
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
             flash(_('No selected file'))
-            return redirect(url_for('file_mng.upload_page') )
+            return redirect(url_for('file_mng.upload'))
         if file:
             # TODO safe file in db with another model.
             file = file
-            return redirect(url_for('file_mng.upload_page'))
+            return redirect(url_for('file_mng.upload'))
+    return render_template('upload.html')
+
+

@@ -50,10 +50,11 @@ def create_app(config=None):
 
     from .models import User
 
-    from .controllers import index, user_mng
+    from .controllers import index, user_mng, file_mng
 
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
+    app.register_blueprint(file_mng)
 
     return app
 

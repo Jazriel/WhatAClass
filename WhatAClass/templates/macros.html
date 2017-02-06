@@ -67,14 +67,16 @@
 
 {% from 'js_upload.html' import js_upload with context %}
 {% macro dd_upload() %}
-    <p>
-        <input id="files-upload" type="file" multiple>
-    </p>
-    <p id="drop-area">
-        <span class="drop-instructions">{{ _('Drag and drop here') }}</span>
-    </p>
+<div id="holder" style="min-height: 11em;margin-top: 50px;margin-bottom: 50px;border: dashed 3px #C1C3C5;text-align: center;">
 
-    <ul id="file-list">
-        <li class="no-items">{{ _('No files uploaded yet') }}</li>
-    </ul>
+    <div class="align-top">Drag and drop here!</div>
+
+</div>
+<p id="upload" class="hidden"><label>Drag and drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
+<p id="filereader">File API and FileReader API not supported</p>
+<p id="formdata">XHR2's FormData is not supported</p>
+<p id="progress">XHR2's upload progress isn't supported</p>
+<p>Upload progress:</p>
+<div class="progress"><div id="uploadprogress" class="progress-bar" style="width:0%;">0</div></div>
+{{ js_upload() }}
 {% endmacro %}

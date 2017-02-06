@@ -1,125 +1,64 @@
 {% macro js_upload() %}
 <script>
-    (function () {
-        /*These 3 ids are hardcoded.*/
-        var filesUpload = document.getElementById("files-upload"),
-            dropArea = document.getElementById("drop-area"),
-            fileList = document.getElementById("file-list");
-
-        function uploadFile (file) {
-            var li = document.createElement("li"),
-                div = document.createElement("div"),
-                img,
-                progressBarContainer = document.createElement("div"),
-                progressBar = document.createElement("div"),
-                reader,
-                xhr,
-                fileInfo;
-
-            li.appendChild(div);
-
-            progressBarContainer.className = "progress";
-            progressBar.className = "progress-bar";
-            progressBarContainer.appendChild(progressBar);
-            li.appendChild(progressBarContainer);
-
-            /*
-                If the file is an image and the web browser supports FileReader,
-                present a preview in the file list
-            */
-            if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
-                img = document.createElement("img");
-                li.appendChild(img);
-                reader = new FileReader();
-                reader.onload = (function (theImg) {
-                    return function (evt) {
-                        theImg.src = evt.target.result;
-                    };
-                }(img));
-                reader.readAsDataURL(file);
-            }
-
-            // Uploading - for Firefox, Google Chrome and Safari
-            xhr = new XMLHttpRequest();
-
-            // Update progress bar
-            xhr.upload.addEventListener("progress", function (evt) {
-                if (evt.lengthComputable) {
-                    progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
-                }
-                else {
-                    // No data to calculate on
-                }
-            }, false);
-
-            // File uploaded
-            xhr.addEventListener("load", function () {
-                progressBarContainer.className += " uploaded";
-                progressBar.innerHTML = {{ _('Uploaded') }};
-            }, false);
-
-            xhr.open("post", {{ url_for('file_mng.upload_file') }}, true);
-
-            // Set appropriate headers
-            xhr.setRequestHeader("Content-Type", "multipart/form-data");
-            xhr.setRequestHeader("X-File-Name", file.name);
-            xhr.setRequestHeader("X-File-Size", file.size);
-            xhr.setRequestHeader("X-File-Type", file.type);
-
-            // Send the file (doh)
-            xhr.send(file);
-
-            // Present file info and append it to the list of files
-            fileInfo = "<div><strong>{{ _('Name:') }}</strong> " + file.name + "</div>";
-            fileInfo += "<div><strong>{{ _('Size:') }}</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
-            fileInfo += "<div><strong>{{ _('Type:') }}</strong> " + file.type + "</div>";
-            div.innerHTML = fileInfo;
-
-            fileList.appendChild(li);
+var holder = document.getElementById('holder'),
+    tests = {
+        filereader: typeof FileReader != 'undefined',
+        dnd: 'draggable' in document.createElement('span'),
+        formdata: !!window.FormData,
+        progress: "upload" in new XMLHttpRequest
+    },
+    support = {
+        filereader: document.getElementById('filereader'),
+        formdata: document.getElementById('formdata'),
+        progress: document.getElementById('progress')
+    },
+    progress = document.getElementById('uploadprogress'),
+    fileupload = document.getElementById('upload');
+    "filereader formdata progress".split(' ').forEach(function (api) {
+        if (tests[api] === false) {
+            support[api].className = 'fail';
+        } else {
+            support[api].className = 'hidden';
         }
+    });
 
-        function traverseFiles (files) {
-            if (typeof files !== "undefined") {
-                for (var i=0, l=files.length; i<l; i++) {
-                    uploadFile(files[i]);
+function readfiles(files) {
+    debugger;
+    var formData = tests.formdata ? new FormData() : null;
+    for (var i = 0; i < files.length; i++) {
+        if (tests.formdata) formData.append('file', files[i]);
+    }
+    // now post a new XHR request
+    if (tests.formdata) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '{{ url_for('file_mng.upload') }}', true);
+        xhr.onload = function() {
+            progress.style.width = progress.innerHTML = "100%";
+        };
+        if (tests.progress) {
+            xhr.upload.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    var complete = (event.loaded / event.total * 100 | 0);
+                    progress.style.width = progress.innerHTML = complete.toString()+"%";
                 }
-            }
-            else {
-                fileList.innerHTML ={{ _('No support for the File API in this web browser') }};
             }
         }
-
-        filesUpload.addEventListener("change", function () {
-            traverseFiles(this.files);
-        }, false);
-
-        dropArea.addEventListener("dragleave", function (evt) {
-            var target = evt.target;
-
-            if (target && target === dropArea) {
-                this.className = "";
-            }
-            evt.preventDefault();
-            evt.stopPropagation();
-        }, false);
-
-        dropArea.addEventListener("dragenter", function (evt) {
-            this.className = "over";
-            evt.preventDefault();
-            evt.stopPropagation();
-        }, false);
-
-        dropArea.addEventListener("dragover", function (evt) {
-            evt.preventDefault();
-            evt.stopPropagation();
-        }, false);
-
-        dropArea.addEventListener("drop", function (evt) {
-            traverseFiles(evt.dataTransfer.files);
-            this.className = "";
-            evt.preventDefault();
-            evt.stopPropagation();
-        }, false);
-    })();
+        xhr.send(formData);
+    }
+}
+if (tests.dnd) {
+    holder.ondragover = function () { this.className = 'hover'; return false; };
+    holder.ondragend = function () { this.className = ''; return false; };
+    holder.ondrop = function (e) {
+        this.className = '';
+        e.preventDefault();
+        readfiles(e.dataTransfer.files);
+    }
+} else {
+    fileupload.className = 'hidden';
+    fileupload.querySelector('input').onchange = function () {
+        readfiles(this.files);
+    };
+}
 </script>
 {% endmacro %}
