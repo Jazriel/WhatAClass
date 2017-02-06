@@ -19,7 +19,7 @@
 from flask import (Blueprint, flash, render_template, url_for, abort,
                    redirect, request)
 from flask_login import login_user, logout_user, login_required, current_user
-from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm
+from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from itsdangerous import BadSignature
 from flask_babel import gettext as _
 from sqlalchemy.exc import IntegrityError
@@ -212,21 +212,14 @@ file_mng = Blueprint('file_mng', __name__)
 @login_required
 def upload():
     """Page where users are going to upload files."""
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash(_('No file part'))
-            return redirect(url_for('file_mng.upload'))
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash(_('No selected file'))
-            return redirect(url_for('file_mng.upload'))
-        if file:
-            # TODO safe file in db with another model.
-            file = file
-            return redirect(url_for('file_mng.upload'))
-    return render_template('upload.html')
+    form = UploadForm()
+
+    if form.validate_on_submit():
+
+        # TODO safe file in db with another model.
+
+        return redirect(url_for('file_mng.upload'))
+
+    return render_template('upload.html', form=form)
 
 

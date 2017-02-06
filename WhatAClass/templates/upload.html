@@ -6,7 +6,7 @@
         <h1 class="text-center">{{ _('Upload files') }}!</h1>
         <br/>
 
-        {{ dd_upload() }}
+        {{ dd_upload(form, url_for('file_mng.upload')) }}
 
     </div>
 {% endblock %}
