@@ -17,7 +17,7 @@
 """
 
 from flask import (Blueprint, flash, render_template, url_for, abort,
-                   redirect, request)
+                   redirect)
 from flask_login import login_user, logout_user, login_required, current_user
 from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from itsdangerous import BadSignature
@@ -55,20 +55,23 @@ def login():
 
         user = User.query.filter_by(email=form.email.data).first()
 
-        if user is None or not user.is_correct_password(form.password.data):
-            flash(_('Email or password were not correct.'))
-            return redirect(url_for('user_mng.login'))
+        check_and_login(form.password.data, user)
 
-        if not user.email_confirmed:
-            flash(_('Email was not confirmed yet.'))
-            return redirect(url_for('user_mng.login'))
-
-        if not login_user(user):
-            abort(_('Something failed, contact your administrator.'))
         flash(_('Logged in successfully.'))
         return redirect(url_for('index.base'))
 
     return render_template('login.html', form=form)
+
+
+def check_and_login(password, user):
+    """Launch exception (that should be used [flask, werkzeug...]) if
+    something does not match with what is expected."""
+    if user is None or not user.is_correct_password(password):
+        abort(_('Email or password were not correct.'))
+    if not user.email_confirmed:
+        abort(_('Email was not confirmed yet.'))
+    if not login_user(user):
+        abort(_('Something failed, contact your administrator.'))
 
 
 @user_mng.route('/logout')
