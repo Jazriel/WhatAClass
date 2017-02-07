@@ -35,8 +35,8 @@ def create_app(config=None):
 
         return User.query.filter(User.id == user_id.decode()).first()
 
-    for key in app.config['LANGUAGES']:
-        LANGUAGES[key] = app.config['LANGUAGES'][key]
+    for key, value in app.config['LANGUAGES']:
+        LANGUAGES[key] = value
 
     if babel.locale_selector_func is None:
 

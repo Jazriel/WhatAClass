@@ -17,4 +17,6 @@ notifications:
 
 script:
   - coverage run test.py
+
+after_success:
   - codeclimate-test-reporter --token d115b35656471f1c9de68423608acee6d5b645a85adda46c27acab4263b4a929
