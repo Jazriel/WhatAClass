@@ -1,0 +1,36 @@
+\select@language {spanish}
+\select@language {spanish}
+\contentsline {chapter}{\'{I}ndice general}{\es@scroman {iii}}{section*.1}
+\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {v}}{section*.2}
+\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {vi}}{section*.3}
+\contentsline {chapter}{Introducci\IeC {\'o}n}{1}{chapter*.4}
+\contentsline {chapter}{Objetivos del proyecto}{2}{chapter*.5}
+\contentsline {section}{\numberline {2.1}Objetivos principales}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Objetivos parte mineria}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}Objetivos parte web app}{2}{section.2.3}
+\contentsline {section}{\numberline {2.4}Objetivos proceso de desarrollo}{3}{section.2.4}
+\contentsline {section}{\numberline {2.5}Objetivos t\IeC {\'e}cnicos en cuanto al proceso de desarrollo}{3}{section.2.5}
+\contentsline {section}{\numberline {2.6}Objetivos personales}{3}{section.2.6}
+\contentsline {chapter}{Conceptos te\IeC {\'o}ricos}{4}{chapter*.6}
+\contentsline {section}{\numberline {3.1}DevOps}{4}{section.3.1}
+\contentsline {subsection}{La 'cadena de herramientas' de DevOps}{4}{section*.7}
+\contentsline {chapter}{T\IeC {\'e}cnicas y herramientas}{6}{chapter*.8}
+\contentsline {section}{\numberline {4.1}Metodolog\IeC {\'\i }a}{6}{section.4.1}
+\contentsline {section}{\numberline {4.2}Patrones de dise\IeC {\~n}o}{7}{section.4.2}
+\contentsline {subsection}{Model-View-Controller}{7}{section*.9}
+\contentsline {section}{\numberline {4.3}Control de versiones}{7}{section.4.3}
+\contentsline {section}{\numberline {4.4}Integraci\IeC {\'o}n continua}{8}{section.4.4}
+\contentsline {section}{\numberline {4.5}Quality Assurance}{8}{section.4.5}
+\contentsline {section}{\numberline {4.6}Tests}{8}{section.4.6}
+\contentsline {subsection}{Recubrimiento}{8}{section*.10}
+\contentsline {section}{\numberline {4.7}Dependencias}{9}{section.4.7}
+\contentsline {section}{\numberline {4.8}Comunicaci\IeC {\'o}n}{9}{section.4.8}
+\contentsline {section}{\numberline {4.9}Documentaci\IeC {\'o}n}{9}{section.4.9}
+\contentsline {subsection}{En c\IeC {\'o}digo}{9}{section*.11}
+\contentsline {subsection}{Fuera de c\IeC {\'o}digo}{9}{section*.12}
+\contentsline {section}{\numberline {4.10}Editor de texto}{9}{section.4.10}
+\contentsline {section}{\numberline {4.11}Bibliotecas}{10}{section.4.11}
+\contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{11}{chapter*.13}
+\contentsline {chapter}{Trabajos relacionados}{12}{chapter*.14}
+\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{13}{chapter*.15}
+\contentsline {chapter}{Bibliograf\'{\i }a}{14}{section*.17}

@@ -1,0 +1,14 @@
+\subsection{Web framework in Python}
+My selection: pytest
+Why:
+    Better error messages, this point may seem unimportant but is incredibly helpful when an error raises also you can use the built-in assert instead of something along the lines of self.assertEquals in other frameworks.
+    Same functionality as other modules for simple things.
+    Fixtures as an improvement over the classic set_up and tear_down, when a test needs a set_up it receives the parameter needed that way you only set_up necessary variables, another advantage of using fixtures is the ease to create one: just use the @pytest.fixture decorator.
+    It has also parametrization and dependency injection capabilities in the fixtures and are modular so you could call one from another one.
+CON:
+    as this library adapts language expressions like assert for its own use it can cause compatibility issues with other frameworks.
+
+
+unittest: standard library, offers an API easy to use if you are used to xUnittest (jUnit...). The api is really verbose.
+
+nose: deprecated in favour of nose2
