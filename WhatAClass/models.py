@@ -43,7 +43,7 @@ class User(db.Model):
 
     def is_correct_password(self, password):
         """Returns the check to ensure the passwords are the same."""
-        return bcrypt.check_password_hash(self.password, password)
+        return bcrypt.check_password_hash(self.password, password.encode('utf-8'))
 
     def __repr__(self):
         """Representation of User."""
