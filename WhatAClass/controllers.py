@@ -45,6 +45,8 @@ user_mng = Blueprint('user_mng', __name__)
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     """Try to log in the user with the information provided."""
+    view = 'login.html'
+
     if current_user.is_authenticated:
         flash(_('There is a logged in user already.'))
         return redirect(url_for('index.base'))
@@ -55,23 +57,28 @@ def login():
 
         user = User.query.filter_by(email=form.email.data).first()
 
-        check_and_login(form.password.data, user)
+        if not check_and_login(form.password.data, user):
+            return render_template(view, form=form)
 
         flash(_('Logged in successfully.'))
         return redirect(url_for('index.base'))
 
-    return render_template('login.html', form=form)
+    return render_template(view, form=form)
 
 
 def check_and_login(password, user):
     """Launch exception (that should be used [flask, werkzeug...]) if
     something does not match with what is expected."""
     if user is None or not user.is_correct_password(password):
-        abort(_('Email or password were not correct.'))
+        flash(_('Email or password were not correct.'))
+        return False
     if not user.email_confirmed:
-        abort(_('Email was not confirmed yet.'))
+        flash(_('Email was not confirmed yet.'))
+        return False
     if not login_user(user):
-        abort(_('Something failed, contact your administrator.'))
+        flash(_('Something failed, contact your administrator.'))
+        return False
+    return True
 
 
 @user_mng.route('/logout')
@@ -85,6 +92,8 @@ def logout():
 def sign_up():
     """Creates a user from the email and password given and sends an email with
     a time sensitive serialized url to authenticate the user (ts)."""
+    view = 'signup.html'
+
     if current_user.is_authenticated:
         flash(_('There is a logged in user already.'))
         return redirect(url_for('index.base'))
@@ -102,7 +111,8 @@ def sign_up():
         try:
             db.session.commit()
         except IntegrityError:
-            return abort(_('Only one account for each email. (You can use the + tricks.)'))
+            flash(_('Only one account for each email. (You can use the + tricks.)'))
+            return render_template(view, form=form)
 
         token = ts.dumps(user.email, salt=b'email-whataclass-salt-key')
 
@@ -126,7 +136,7 @@ def sign_up():
 
         return redirect(url_for('user_mng.login'))
 
-    return render_template('signup.html', form=form)
+    return render_template(view, form=form)
 
 
 @user_mng.route('/confirm/<token>')
@@ -155,11 +165,14 @@ def reset():
     """Reset the password given through an email with a time sensitive link."""
     form = EmailForm()
 
+    view = 'reset.html'
+
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first_or_404()
 
         if not user.email_confirmed:
-            return abort(_('The email was not confirmed yet.'))
+            flash(_('The email was not confirmed yet.'))
+            return render_template(view, form=form)
 
         token = ts.dumps(user.email, salt=b'recover-whataclass-key')
 
@@ -179,7 +192,7 @@ def reset():
                     'administrator of the service sets an email.'))
 
         return redirect(url_for('index.base'))
-    return render_template('reset.html', form=form)
+    return render_template(view, form=form)
 
 
 @user_mng.route('/recover/<token>', methods=['GET', 'POST'])

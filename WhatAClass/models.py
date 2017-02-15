@@ -22,7 +22,7 @@ class User(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(64), unique=True)
-    _password = db.Column(db.String(128))
+    _password = db.Column(db.Binary(128))
     email_confirmed = db.Column(db.Boolean)
 
     def __init__(self, email, password, email_confirmed=False):
