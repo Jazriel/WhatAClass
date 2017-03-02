@@ -1,23 +1,24 @@
 from setuptools import setup
+
 setup(
     name='WhatAClass',
     packages=['WhatAClass'],
     include_package_data=True,
-    install_requires=[
-        'flask',
-        'flask-bcrypt',
+    install_requires=[       
+        'alembic',
         'bcrypt',
-        'flask-login',
-        'flask-sqlalchemy',
-        'flask-wtf',
-        'wtforms',
-        'click',
+        'Flask',
+        'Flask-Babel',
+        'Flask-Bcrypt',
+        'Flask-Login',
+        'Flask-SQLAlchemy',
+        'Flask-WTF',
         'itsdangerous',
-        'jinja2',
-        'click',
-        'sqlalchemy',
-        'werkzeug',
-        'jinja2',
+        'Jinja2',
+        'psycopg2',
+        'SQLAlchemy',
+        'Werkzeug',
+        'WTForms',
     ],
     setup_requires=[
         'pytest-runner',

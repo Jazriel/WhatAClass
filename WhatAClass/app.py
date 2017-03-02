@@ -58,4 +58,3 @@ def create_app(config=None):
     app.register_blueprint(file_mng)
 
     return app
-
