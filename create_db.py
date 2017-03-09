@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-""""""# TODO document
-from WhatAClass.extensions import db
+"""
+Basic script to create the database from the model.
+:author: Javier Martínez
+"""
 from WhatAClass.app import create_app
+from WhatAClass.utils import create_all_tables
 
-app = create_app()
+if __name__ == '__main__':
+    application = create_app()
+    create_all_tables(app=application)
 
-with app.app_context():
-    db.init_app(app)
-    db.drop_all()
-    db.create_all()
-
-# TODO alembic

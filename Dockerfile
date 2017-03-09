@@ -1,17 +1,22 @@
 FROM tiangolo/uwsgi-nginx-flask:flask-python3.5
 MAINTAINER Javier Martinez "javyermartinez@gmail.com"
 
-# Copy app and apps config files
-COPY ./WhatAClass /app/WhatAClass
-COPY ./config /app/config
-COPY requirements-prod.txt /app
-COPY setup.py /app
-COPY wsgi.py /app
-COPY uwsgi.ini /app
-COPY ./WhatAClass/static /app/static
-
-ENV PYTHONPATH "$PYTHONPATH:/WhatAClass:/WhatAClass/WhatAClass"
-
+# Set where are we working from, note that from this point onward most '.' will be replaceable with /app
 WORKDIR /app
 
-RUN pip install --editable .
+# Copy app and apps config files
+COPY ./WhatAClass ./WhatAClass
+COPY ./WhatAClass/static ./static
+COPY ./config ./config
+# Dependencies
+COPY requirements-prod.txt .
+COPY setup.py .
+# Web Server Gateway Interface with uWSGI
+COPY wsgi.py .
+COPY uwsgi.ini .
+# Database initialization script
+COPY create_db.py .
+# Make sure everything is accesible
+ENV PYTHONPATH "$PYTHONPATH:/WhatAClass:/WhatAClass/WhatAClass"
+
+RUN pip3 install --editable .

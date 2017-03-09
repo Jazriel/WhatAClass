@@ -1,6 +1,43 @@
 # -*- coding: utf-8 -*-
-""""""# TODO document
+"""
+    WhatAClass.app
+    ~~~~~~~~~~~~~~~~~~~~~~
+
+    Basic factory to initialize the app with its extensions.
+
+    Loads blueprints and configuration, depending on which
+    method you use it also initializes the db schema.
+
+    :author: Javier Martínez
+
+
+"""
+
 from flask import Flask, request
+from WhatAClass.extensions import db
+
+
+def _create_all_tables(app):
+    """Creates all the tables with retries to give some time to the db to initialize,
+    does not recreate existing tables"""
+    print('Trying to create tables')
+    max_attemps = 5
+    with app.app_context():
+        for n in range(max_attemps):
+            try:
+                db.init_app(app)
+                db.create_all()
+            except Exception as e:
+                print('Attempt failed ({}/{}): {}'.format(n+1, max_attemps, e))
+                from time import sleep
+                sleep(5)
+                # Could not create db: failing
+                if n+1 == max_attemps:
+                    print('Could not create db')
+                    raise
+            else:
+                print('Finished creating tables')
+                return
 
 
 def create_app(config=None):
@@ -57,4 +94,10 @@ def create_app(config=None):
     app.register_blueprint(user_mng)
     app.register_blueprint(file_mng)
 
+    return app
+
+
+def create_app_and_db(config=None):
+    app = create_app(config)
+    _create_all_tables(app)
     return app

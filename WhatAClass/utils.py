@@ -16,6 +16,7 @@ from email.mime.multipart import MIMEMultipart
 from smtplib import SMTP, SMTPException
 
 
+
 class EmailServer(object):
 
     def __init__(self, config=None):
