@@ -9,8 +9,6 @@
     method you use it also initializes the db schema.
 
     :author: Javier Martínez
-
-
 """
 
 from flask import Flask, request
@@ -19,7 +17,7 @@ from WhatAClass.extensions import db
 
 def _create_all_tables(app):
     """Creates all the tables with retries to give some time to the db to initialize,
-    does not recreate existing tables"""
+    does not recreate existing tables."""
     print('Trying to create tables')
     max_attemps = 5
     with app.app_context():
@@ -98,6 +96,8 @@ def create_app(config=None):
 
 
 def create_app_and_db(config=None):
+    """"Factory that creates the app and creates all the tables with retries to give some time to the db to initialize,
+    (up to 25 seconds). Does not recreate existing tables."""
     app = create_app(config)
     _create_all_tables(app)
     return app
