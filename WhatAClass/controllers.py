@@ -12,8 +12,6 @@
     structure and distribute the work among the contributors).
 
     :author: Javier Martínez
-
-
 """
 
 from flask import (Blueprint, flash, render_template, url_for, abort,
