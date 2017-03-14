@@ -17,7 +17,7 @@ from wtforms.validators import DataRequired, Email
 
 class UploadForm(FlaskForm):
     """Form used to upload files."""
-    file = FileField('Email', validators=[DataRequired()])
+    file = FileField('File', validators=[DataRequired()])
 
 
 class LoginForm(FlaskForm):

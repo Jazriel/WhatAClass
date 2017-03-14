@@ -15,6 +15,7 @@ setup(
         'Flask-WTF',
         'itsdangerous',
         'Jinja2',
+        'paramiko',
         'psycopg2',
         'SQLAlchemy',
         'Werkzeug',

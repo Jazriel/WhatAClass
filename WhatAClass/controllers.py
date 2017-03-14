@@ -15,15 +15,20 @@
 """
 
 from flask import (Blueprint, flash, render_template, url_for, abort,
-                   redirect)
+                   redirect, request)
 from flask_login import login_user, logout_user, login_required, current_user
-from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from itsdangerous import BadSignature
 from flask_babel import gettext as _
 from sqlalchemy.exc import IntegrityError
 
+
+from flask_wtf import FlaskForm
+
+from paramiko import SSHClient, AutoAddPolicy
+
+from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from .models import User
-from .utils import email_server
+from .util import email_server, ssh_config # TODO
 from .extensions import db, ts
 
 
@@ -237,3 +242,28 @@ def upload():
     return render_template('upload.html', form=form)
 
 
+neuralnet_mng = Blueprint('neuralnet_mng', __name__)
+
+
+
+@neuralnet_mng.route('/autoretrain', methods=['GET', 'POST'])
+# @login_required
+def retrain():
+    """Page to retrain inceptionv3."""
+
+    form = FlaskForm()
+
+    if request.method == 'POST':
+
+        ssh = SSHClient()
+        ssh.load_system_host_keys()
+        ssh.set_missing_host_key_policy(AutoAddPolicy())
+        ssh.connect(ssh_config['HOST'], port=int(ssh_config['PORT']), username=ssh_config['USER'], key_filename='/root/.ssh/id_rsa')
+        #  ssh.exec_command('python3 /tensorflow/tensorflow/examples/image_retraining/retrain.py --bottleneck_dir=/tf_bottlenecks --how_many_training_steps 500 --output_graph=/output/retrained_graph.pb --output_labels=/output/retrained_labels.txt --image_dir /images')
+        _, stdout, _ = ssh.exec_command('echo hello')
+        print(stdout.read())
+        ssh.close()
+
+        return redirect(url_for('neuralnet_mng.retrain'))
+
+    return render_template('retrain.html', form=form)

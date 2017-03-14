@@ -8,6 +8,7 @@ Flask-SQLAlchemy==2.1
 Flask-WTF==0.14.2
 itsdangerous==0.24
 Jinja2==2.9.5
+paramiko==2.1.2
 psycopg2==2.6.2
 SQLAlchemy==1.1.5
 Werkzeug==0.11.15

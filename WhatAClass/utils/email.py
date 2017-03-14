@@ -1,20 +1,14 @@
-# -*- coding: utf-8 -*-
 """
-    WhatAClass.utils
-    ~~~~~~~~~~~~~~~~
+    WhatAClass.utils.email
+    ~~~~~~~~~~~~~~~~~~~~~~
 
-    Utilities for WhatAClass, so that there are no
-    functions scattered around. For now provides
-    email functionality.
+    Provides email functionality.
 
     :author: Javier Martínez
-
-
 """
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from smtplib import SMTP, SMTPException
-
 
 
 class EmailServer(object):
@@ -69,4 +63,3 @@ class EmailServer(object):
         self._send = True if cf['PASS'] is not None else False
 
 
-email_server = EmailServer()

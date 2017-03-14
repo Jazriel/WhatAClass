@@ -9,11 +9,15 @@ COPY ./WhatAClass ./WhatAClass
 COPY ./WhatAClass/static ./static
 COPY ./config ./config
 # Dependencies
-COPY requirements-prod.txt .
 COPY setup.py .
 # Web Server Gateway Interface with uWSGI
 COPY wsgi.py .
 COPY uwsgi.ini .
+# ssh config
+RUN mkdir -p ~/.ssh
+COPY resources/id_rsa .
+RUN cp id_rsa ~/.ssh/id_rsa && cp id_rsa ~/.ssh/known_hosts && rm id_rsa
+
 # Database initialization script
 COPY create_db.py .
 # Make sure everything is accesible

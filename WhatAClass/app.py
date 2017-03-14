@@ -74,23 +74,26 @@ def create_app(config=None):
         LANGUAGES[key] = value
 
     if babel.locale_selector_func is None:
-
         @babel.localeselector
         def get_locale():
             """Locale selector for babel."""
             return request.accept_languages.best_match(LANGUAGES.keys())
 
-    from .utils import email_server
+    from .util import email_server, ssh_config
 
     email_server.config = app.config['EMAIL_CONF']
 
+    for key in app.config['SSH_CONF']:
+        ssh_config[key] = app.config['SSH_CONF'][key]
+
     from .models import User
 
-    from .controllers import index, user_mng, file_mng
+    from .controllers import index, user_mng, file_mng, neuralnet_mng
 
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
     app.register_blueprint(file_mng)
+    app.register_blueprint(neuralnet_mng)
 
     return app
 

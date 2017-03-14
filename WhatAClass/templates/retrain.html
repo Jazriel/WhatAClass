@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import submit_button with context %}
+{% block title %}{{ _('WhatAClass: Network train') }}{% endblock %}
+{% block body %}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">{{ _('Train neural net') }}!</h1>
+        <br/>
+        <form class="form-horizontal" action="{{ action }}" method="post" id="form">
+            <fieldset>
+                {{ form.csrf_token }}
+                {{ submit_button(_('Retrain')) }}
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

@@ -28,3 +28,9 @@ EMAIL_CONF = {
     'PORT': os.getenv('EMAIL_PORT', 0),
 }
 
+SSH_CONF = {
+    'HOST': os.getenv('WORKER_HOST_NAME', 'worker'),
+    'PORT': os.getenv('WORKER_PORT', 22),
+    'USER': os.getenv('WORKER_USER', 'root'),
+    'PASS': os.getenv('WORKER_PASSWORD', 'screencast'),
+}
