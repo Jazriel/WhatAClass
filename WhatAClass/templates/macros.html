@@ -67,8 +67,8 @@
 
 {% from "js_upload.html" import js_upload %}
 {% macro dd_upload(form, action) %}
-<form method="post" action="{{ action }}" enctype="multipart/form-data">
-    <input id="file-input" type="file" formenctype="multipart/form-data" />
+<form method="POST" action="{{ action }}" enctype="multipart/form-data">
+    <input id="file-input" name="file" type="file" />
     {{ submit_button(_('Upload files')) }}
     <div id="holder" style="min-height: 11em;margin-top: 50px;margin-bottom: 50px;border: dashed 3px #C1C3C5;text-align: center;">
         Drag and drop here!

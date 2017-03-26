@@ -7,6 +7,7 @@ WORKDIR /app
 # Copy app and apps config files
 COPY ./WhatAClass ./WhatAClass
 COPY ./WhatAClass/static ./static
+RUN mkdir -p ./static/images
 COPY ./config ./config
 # Dependencies
 COPY setup.py .
@@ -17,6 +18,9 @@ COPY uwsgi.ini .
 RUN mkdir -p ~/.ssh
 COPY resources/id_rsa .
 RUN cp id_rsa ~/.ssh/id_rsa && cp id_rsa ~/.ssh/known_hosts && rm id_rsa
+# Directory for file uploads
+RUN mkdir -p /images
+
 
 # Database initialization script
 COPY create_db.py .

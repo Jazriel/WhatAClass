@@ -21,16 +21,16 @@ from itsdangerous import BadSignature
 from flask_babel import gettext as _
 from sqlalchemy.exc import IntegrityError
 
-
 from flask_wtf import FlaskForm
 
 from paramiko import SSHClient, AutoAddPolicy
+from werkzeug.utils import secure_filename
+from os import path
 
 from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from .models import User
-from .util import email_server, ssh_config # TODO
+from .util import email_server, ssh_config
 from .extensions import db, ts
-
 
 index = Blueprint('index', __name__)
 
@@ -234,7 +234,6 @@ def upload():
     form = UploadForm()
 
     if form.validate_on_submit():
-
         # TODO safe file in db with another model.
 
         return redirect(url_for('file_mng.upload'))
@@ -245,22 +244,95 @@ def upload():
 neuralnet_mng = Blueprint('neuralnet_mng', __name__)
 
 
+@neuralnet_mng.route('/fit', methods=['GET', 'POST'])
+# @login_required TODO
+def fit():
+    """Page where users are going to upload files."""
+    form = UploadForm()
+
+    if request.method == 'POST':
+
+        # Standard save file
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(url_for('neuralnet_mng.fit'))
+
+        file = request.files['file']
+
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(url_for('neuralnet_mng.fit'))
+
+        filename = secure_filename(file.filename)
+        web_filename = path.join('/static', filename)
+        file.save(web_filename)
+
+        # Start ssh
+        ssh = SSHClient()
+        ssh.load_system_host_keys()
+        ssh.set_missing_host_key_policy(AutoAddPolicy())
+        ssh.connect(ssh_config['HOST'],
+                    port=int(ssh_config['PORT']),
+                    username=ssh_config['USER'],
+                    key_filename='/root/.ssh/id_rsa')
+
+        _, stdout, stderr = ssh.exec_command(
+            'python3 '
+            '/scripts/run_inference.py'
+            ' {} {} {} {}'.format(path.join('/images', filename),
+                                  '/graphs/inceptionv3_model.pb',
+                                  '/graphs/inceptionv3_labels.txt',
+                                  '/graphs/inceptionv3_label_map_proto.pbtxt'))
+
+        output = stdout.read().decode()
+
+        pairs = output.split(';')
+        classes = list()
+        probs = list()
+
+        for pair in pairs:
+            if pair is not '':
+                class_, prob = pair.split(':')
+                classes.append(class_)
+                probs.append(prob)
+
+        ssh.close()
+
+        if len(classes) < 3 or len(probs) < 3:
+            print(output)
+            print(stderr.read().decode())
+            return render_template('error.html')
+
+        return render_template('fitted.html',
+                               classes=classes,
+                               probs=probs,
+                               image_path=filename[filename.find('images'):])
+
+    return render_template('fit.html', form=form)
+
 
 @neuralnet_mng.route('/autoretrain', methods=['GET', 'POST'])
-# @login_required
+# @login_required TODO
 def retrain():
     """Page to retrain inceptionv3."""
 
     form = FlaskForm()
 
     if request.method == 'POST':
-
         ssh = SSHClient()
         ssh.load_system_host_keys()
         ssh.set_missing_host_key_policy(AutoAddPolicy())
-        ssh.connect(ssh_config['HOST'], port=int(ssh_config['PORT']), username=ssh_config['USER'], key_filename='/root/.ssh/id_rsa')
-        #  ssh.exec_command('python3 /tensorflow/tensorflow/examples/image_retraining/retrain.py --bottleneck_dir=/tf_bottlenecks --how_many_training_steps 500 --output_graph=/output/retrained_graph.pb --output_labels=/output/retrained_labels.txt --image_dir /images')
-        _, stdout, _ = ssh.exec_command('echo hello')
+        ssh.connect(ssh_config['HOST'],
+                    port=int(ssh_config['PORT']),
+                    username=ssh_config['USER'],
+                    key_filename='/root/.ssh/id_rsa')
+        # ssh.exec_command('python3 /tensorflow/tensorflow/examples/image_retraining/retrain.py
+        # --bottleneck_dir=/tf_bottlenecks
+        # --how_many_training_steps 500
+        # --output_graph=/output/retrained_graph.pb
+        # --output_labels=/output/retrained_labels.txt
+        # --image_dir /images')
+        _, stdout, _ = ssh.exec_command('')  # TODO retrain
         print(stdout.read())
         ssh.close()
 
