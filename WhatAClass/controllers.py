@@ -21,8 +21,6 @@ from itsdangerous import BadSignature
 from flask_babel import gettext as _
 from sqlalchemy.exc import IntegrityError
 
-from flask_wtf import FlaskForm
-
 from paramiko import SSHClient, AutoAddPolicy
 from werkzeug.utils import secure_filename
 from os import path
@@ -31,6 +29,7 @@ from .forms import LoginForm, SignUpForm, EmailForm, PasswordForm, UploadForm
 from .models import User
 from .util import email_server, ssh_config
 from .extensions import db, ts
+
 
 index = Blueprint('index', __name__)
 
@@ -224,30 +223,13 @@ def recover(token):
     return render_template('recover.html', form=form, token=token)
 
 
-file_mng = Blueprint('file_mng', __name__)
-
-
-@file_mng.route('/upload', methods=['GET', 'POST'])
-@login_required
-def upload():
-    """Page where users are going to upload files."""
-    form = UploadForm()
-
-    if form.validate_on_submit():
-        # TODO safe file in db with another model.
-
-        return redirect(url_for('file_mng.upload'))
-
-    return render_template('upload.html', form=form)
-
-
 neuralnet_mng = Blueprint('neuralnet_mng', __name__)
 
 
 @neuralnet_mng.route('/fit', methods=['GET', 'POST'])
 # @login_required TODO
 def fit():
-    """Page where users are going to upload files."""
+    """Page where users are going to upload files to get their predictions."""
     form = UploadForm()
 
     if request.method == 'POST':
@@ -264,8 +246,7 @@ def fit():
             return redirect(url_for('neuralnet_mng.fit'))
 
         filename = secure_filename(file.filename)
-        web_filename = path.join('/static', filename)
-        file.save(web_filename)
+        file.save(path.join('/app/static/images', filename))
 
         # Start ssh
         ssh = SSHClient()
@@ -306,36 +287,7 @@ def fit():
         return render_template('fitted.html',
                                classes=classes,
                                probs=probs,
-                               image_path=filename[filename.find('images'):])
+                               image_path=path.join('images', filename))
 
     return render_template('fit.html', form=form)
 
-
-@neuralnet_mng.route('/autoretrain', methods=['GET', 'POST'])
-# @login_required TODO
-def retrain():
-    """Page to retrain inceptionv3."""
-
-    form = FlaskForm()
-
-    if request.method == 'POST':
-        ssh = SSHClient()
-        ssh.load_system_host_keys()
-        ssh.set_missing_host_key_policy(AutoAddPolicy())
-        ssh.connect(ssh_config['HOST'],
-                    port=int(ssh_config['PORT']),
-                    username=ssh_config['USER'],
-                    key_filename='/root/.ssh/id_rsa')
-        # ssh.exec_command('python3 /tensorflow/tensorflow/examples/image_retraining/retrain.py
-        # --bottleneck_dir=/tf_bottlenecks
-        # --how_many_training_steps 500
-        # --output_graph=/output/retrained_graph.pb
-        # --output_labels=/output/retrained_labels.txt
-        # --image_dir /images')
-        _, stdout, _ = ssh.exec_command('')  # TODO retrain
-        print(stdout.read())
-        ssh.close()
-
-        return redirect(url_for('neuralnet_mng.retrain'))
-
-    return render_template('retrain.html', form=form)

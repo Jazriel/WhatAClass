@@ -31,7 +31,9 @@ function readfiles(files) {
     // now post a new XHR request
     if (tests.formdata) {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '{{ url_for('file_mng.upload') }}', true);
+        xhr.open('POST', '{{ url_for('neuralnet_mng.fit') }}', true);
+
+        // xhr.open('POST', '{ url_for('file_mng.upload') }}', true);
         xhr.onload = function() {
             progress.style.width = progress.innerHTML = "100%";
         };

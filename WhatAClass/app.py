@@ -88,11 +88,10 @@ def create_app(config=None):
 
     from .models import User
 
-    from .controllers import index, user_mng, file_mng, neuralnet_mng
+    from .controllers import index, user_mng, neuralnet_mng
 
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
-    app.register_blueprint(file_mng)
     app.register_blueprint(neuralnet_mng)
 
     return app
