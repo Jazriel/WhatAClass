@@ -267,7 +267,10 @@
   \label{tabla:#4}
   \end{center}
 }
+%%%%%%%%%%%%%%%%%%%USER DEFINED MACROS%%%%%%%%%%%%\newcommand{name}[num][default]{definition}
 
+\newcommand{\concept}[1]{\textbf{#1}}
+\newcommand{\tool}[1]{\textbf{#1}}
 
 
 
@@ -318,7 +321,7 @@
   \null
   \thispagestyle{empty}
   % Cabecera ----------------
-\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}%
+\noindent\includegraphics[width=\textwidth]{cabecera.pdf}\vspace{1cm}%
   \vfill
   % Título proyecto y escudo informática ----------------
   \colorbox{cpardoBox}{%
@@ -333,7 +336,7 @@
 
   }%
   \hfill\begin{minipage}{.20\textwidth}
-    \includegraphics[width=\textwidth]{escudoInfor}
+    \includegraphics[width=\textwidth]{escudoInfor.pdf}
   \end{minipage}
   \vfill
   % Datos de alumno, curso y tutores ------------------
@@ -370,7 +373,7 @@
 \thispagestyle{empty}
 
 
-\noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
+\noindent\includegraphics[width=\textwidth]{cabecera.pdf}\vspace{1cm}
 
 \noindent D. José Francisco Díez Pastor y D. César Ignacio García Osorio, profesores del departamento de Ingeniería Civil, área de Lenguajes y Sistemas Informáticos.
 
@@ -415,7 +418,12 @@ D. César Ignacio García Osorio
 % Abstract en castellano
 \renewcommand*\abstractname{Resumen}
 \begin{abstract}
-Investigar es dificil -> investigar redes neuronales tambien -> se busca agilizar el proceso de investigación y estudio de nuevas tecnologias. En concreto se busca el poder obtener datos(serian residuales) a los cuales se les pueda aplicar mineria.
+
+Los sistemas informáticos, en la actualidad tienen varios problemas, entre ellos están: la escalabilidad, tanto en el número de personas a las que proporciona servicio como el numero de servicios que ofrece, y la arquitectura ya que esta última debe ser escalable y poder ser mantenida fácilmente.
+
+En este trabajo se busca proponer una arquitectura fácilmente escalable en ambos sentidos cuyo reflejo en código no es complejo. También se intenta proporcionar un framework para que los futuros proyectos que quieran usar un control básico de usuarios puedan.
+
+Para exponer cómo se resuelve el añadir más servicios se ha expuesto un servicio que usa Deep Learning para clasificar imágenes sobre un conjunto de clases (Imagenet).
 \end{abstract}
 
 \renewcommand*\abstractname{Descriptores}
