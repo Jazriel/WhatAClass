@@ -226,9 +226,9 @@ def recover(token):
 neuralnet_mng = Blueprint('neuralnet_mng', __name__)
 
 
-@neuralnet_mng.route('/fit', methods=['GET', 'POST'])
+@neuralnet_mng.route('/predict', methods=['GET', 'POST'])
 # @login_required TODO
-def fit():
+def predict():
     """Page where users are going to upload files to get their predictions."""
     form = UploadForm()
 

@@ -9,7 +9,7 @@ Flask-WTF==0.14.2
 itsdangerous==0.24
 Jinja2==2.9.5
 paramiko==2.1.2
-psycopg2==2.6.2
+psycopg2==2.7.1
 SQLAlchemy==1.1.5
 Werkzeug==0.11.15
 WTForms==2.1
