@@ -33,7 +33,4 @@
 \contentsline {subsection}{Fuera de c\IeC {\'o}digo}{13}{section*.13}
 \contentsline {section}{\numberline {4.10}Editor de texto}{13}{section.4.10}
 \contentsline {section}{\numberline {4.11}Bibliotecas}{14}{section.4.11}
-\contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{15}{chapter*.14}
-\contentsline {chapter}{Trabajos relacionados}{16}{chapter*.15}
-\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{17}{chapter*.16}
-\contentsline {chapter}{Bibliograf\'{\i }a}{18}{section*.18}
+\contentsline {chapter}{Bibliograf\'{\i }a}{15}{section*.15}
