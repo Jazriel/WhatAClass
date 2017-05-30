@@ -12,5 +12,4 @@ It will have user control and a few more features which will be detailed later.
 
 For the moment it is not installable via pip but if there is enough time it will be.
 
-Installation: Install python 3.x (latest), download, (optional) create virtual environment, cd to WhatAClass root, run `pip install -r requirements.txt` to install dependencies and execute `python3 start.py` or `python start.py` depending on your system.
- 
+Installation: Install python 3.x (latest), (optional) create virtual environment, install git and pip3 (apt install git python3-pip), clone the project (git clone https://github.com/Jazriel/WhatAClass.git), move to the project's dir (cd WhatAClass), install dependencies (sudo pip3 install -r requirements.txt).
