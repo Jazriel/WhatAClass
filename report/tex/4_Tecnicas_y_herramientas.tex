@@ -1,0 +1,118 @@
+\capitulo{4}{Técnicas y herramientas}
+
+En esta parte de la memoria se detallan tanto técnicas y herramientas como metodologías y librerías usadas.
+
+
+\section{Metodología}
+
+Al no haber una metodología concreta que se adapte al trabajo de una sola persona se ha buscado un conjunto de metodologías que se pudiesen conjuntar para dar una metodología conjunta más aplicable a la situación particular que se tiene. 
+
+De \concept{DevOps} se ha extraído la toolchain (cadena de herramientas) para minimizar riesgos totales del proyecto y se ha buscado reducir la deuda técnica nacida de la necesidad de desplegar el producto y no estar preparado para ello, algo que resulta ser más habitual de lo que debería ser.
+
+De \concept{Scrum} recogemos las herramientas como los sprint y las reuniones cada sprint tanto para concretar el siguiente sprint como para hacer una retrospectiva del anterior. 
+
+Se ha estudiado también \concept{extreme programming} (XP) y se ha visto que no es viable para el proyecto por la cantidad de esfuerzo que requiere para una sola persona hacer el trabajo de dos como es el \concept{pair programming}. 
+
+De todos los métodos ágiles se ha adquirido la mentalidad de no intentar planificar todo desde el principio e intentar planear las cosas con el conocimiento adquirido en cada iteración. Se intenta decidir en todo lo más tarde posible para intentar conseguir el máximo conocimiento posible para mejorar las decisiones.
+
+Se ha decidido que la recopilación de información de los sprints y este tipo de documentación se va a hacer en un tablero \tool{kanban}, la herramienta que nos proporciona este  sistema va a ser \tool{Zenhub}, se usa por la facilidad y el nivel de integración que nos da con otros sistemas también elegidos.
+
+
+\section{Patrones de diseño}
+
+Se ha intentado usar los patrones de diseño para conseguir una arquitectura mejor y más simple para nuevos desarrolladores. También hay que tener en cuenta que no todos los patrones tienen sentido en un lenguaje de programación como python por su naturaleza dinámica.
+
+\subsection{Model-View-Controller}
+
+El patrón modelo vista controlador nos ayuda a simplificar mucho la estructura de los archivos de una página web o aplicación que dependa de vistas. Esto es especialmente beneficioso cuando se introduzca a un miembro nuevo al proyecto ya que permite conocer rápidamente como funciona mucha cantidad de código, de manera que si necesitase realizar cambios lo tuviese fácil.
+
+
+\section{Control de versiones}
+
+El control de versiones es una necesidad hoy en día tanto en sistemas compuestos de uno o múltiples desarrolladores, esto nos permite poder dejar ciertas features que empecemos a implementar y se dificulten sin terminar para seguir con otras que den más valor al cliente y luego continuar con las dificultades o dejarlas de lado según beneficie al cliente.
+
+Este solo es un ejemplo de las ventajas entre las que se cuentan: recuperación de versiones estables, visualización de los cambios que han dado resultado a un bug\ldots
+
+El sistema de hosting lo usaremos para facilitar el acceso a la información contenida en el sistema, también, al ser externo (no estar en el mismo ordenador que se use) nos servirá de sistema de copias de seguridad.
+
+Usaremos \concept{git} por razones de documentación y conocimiento ya adquirido, aunque existen otros sistemas como subversion.
+
+Las alternativas principales de sistema de hosteo de git son: Bitbucket, Github, Gitlab.
+
+Se ha elegido Github por una mezcla de razones históricas con razones de integración con otros sistemas como el sistema kanban (Zenhub).
+
+Históricamente se conocía Github y se sabe que los proyectos open source no tienen ninguna limitación, la fácil integración con otros sistemas como \tool{travis} y \tool{slack} si hiciese falta.
+
+
+\section{Integración continua}
+
+La integración continua es el método por el cuál intentamos integrar todos nuestros productos continuamente para ver si funcionan correctamente en conjunto. Nos va a ayudar a minimizar el riesgo de fallo del proyecto sobre todo si se mantiene en desarrollo un largo periodo de tiempo.
+
+La herramienta que se va a usar es \tool{travis}, esto se debe a la gran documentación, facilidad de integración con git y gihub, y otras integraciones que nos ayudaran con otras secciones. Otra ventaja es que al ejecutar tu build y tests en sus servidores no te tienes que preocupar de casi nada.
+
+Otras opciones que se podrían usar son Jenkins que como ventaja es Open Source y tiene gran cantidad de plugins.
+
+
+\section{Quality Assurance}
+
+Dado que no tenemos departamento de QA como deberíamos para llevar una toolchain como la especificada en DevOps usaremos herramientas automatizadas, que aunque no tengan la calidad de una revisión humana es lo mejor que disponemos. 
+
+La herramienta que se ha elegido es \tool{CodeClimate}, se ha usado por que no ha sido demasiado complicado el incluir esta herramienta en la linea de producción que ya teníamos (Github+travis). Se ha intentado usar SonarQube pero no ha sido tan sencillo.(Se intento introducir dentro de la toolchain automática, no manualmente). 
+
+
+\section{Tests}
+
+Los tests se han realizado con \tool{pytest}. Esta herramienta es muy parecida a unittest (la herramienta de tests en la biblioteca standard de python). Tiene ventajas, facilita el debug al decirte exactamente que ha fallado y con que valores, y los métodos como setup y teardown. Se integró esta herramienta con travis.
+
+Otras librerías pueden ser unittest o nose2.
+
+
+\subsection{Recubrimiento}
+
+La forma más sencilla para ver el recubrimiento de un test en Python es coverage, tiene varias opciones como report para salida en consola o html para un html con el cubrimiento bien señalado. Se consiguió integrar esta herramienta con travis, pytest y CodeClimate de manera que se ejecuta con la integración continua.
+
+
+\section{Dependencias}
+
+Para el control de dependencias (seguridad, últimas versiones y licencias) se ha usado VersionEye, integrado con Github, esta herramienta se adhiere mediante un webhook a Github y nos dice si se ha descubierto alguna brecha de seguridad en nuestras herramientas, cuales son sus últimas versiones y si las estamos usando y si las licencias del proyecto son compatibles con la que tenemos.
+
+
+\section{Comunicación}
+
+La comunicación se ha hecho de diferentes maneras: Email, Slack y de manera física. Email se ha usado para casi toda la comunicación a distancia. Slack se ha usado para integrar herramientas y notificar sobre estas. La comunicación física es el medio que más se ha usado, esto no se debe a ningún motivo en particular simplemente ha sido el medio más natural para todos.
+
+
+\section{Documentación}
+
+La documentación se ha basado en dos sistemas: en código y fuera de código. 
+
+\subsection{En código}
+
+En el código se ha usado la documentación recomendada por la comunidad de python en el PEP 287, este recomienda usar \tool{reStructuredText} (rst).
+
+Se han seguido las guidelines (guías) de pocoo, esto es para poder usar Sphinx (generador de documentación) para transformar esas cadenas de documentación en una documentación tanto en html o en Latex si hiciese falta.
+
+\subsection{Fuera de código}
+
+Para la documentación que se esta leyendo se ha usado la plantilla oficial de la ubu para crear documentos Latex aunque se ha considerado usar rst al igual que en el código ya que si hiciese falta se podría transformar a Latex o a html siendo mucho más flexible. No se ha hecho por que no existe una plantilla y la barrera de entrada es algo alta.
+
+
+\section{Editor de texto}
+
+Se ha mirado tanto en editores de texto más simples como vim, atom, sublime\ldots Estos cuentan con suficientes plugins que acaban siendo una IDE.
+
+Las IDEs también se han mirado y se han considerado tanto Spyder, Lyclipse como Pycharm.
+
+De todos estos no hay ventajas en usar unos u otros ya que todos acaban teniendo la misma capacidad gracias a plugins, se ha decidido usar Pycharm por que era la única IDE que todavía no se había probado.
+
+
+\section{Bibliotecas}
+
+Se ha usado Flask como microframework ya que sirve tanto para implementar el patrón MVC como para crear un sistema altamente escalable. 
+
+Para facilitar ciertas funcionalidades como control de usuarios, seguridad\ldots se han usado las extensiones: flask-babel y babel(internacionalización), flask-login (control de usuarios), flask-sqlalchemy y psycopg2(acceso a la base de datos), flask-wtf y WTForms (Formularios html) y flask-bcrypt y Bcrypt para seguridad.
+
+Como podemos ver muchas de estas extensiones de flask tienen el mismo nombre pero con flask añadido, esto se debe a que son wrappers de la librería en cuestión pero facilitados para inicializarse con flask (generalmente añaden un constructor y un constructor lazy).
+
+Se ha usado el modulo paramiko para simplificar el uso de SSH.
+

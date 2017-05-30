@@ -1,0 +1,44 @@
+\capitulo{2}{Objetivos del proyecto}
+
+A continuación se indican los objetivos, tanto teóricos marcados por los requisitos como objetivos que se persiguen con el proyecto. También se incluyen ciertos requisitos que no tienen por que ser obvios pero que en la actualidad se esperan de cualquier aplicación web.
+
+
+
+\section{Objetivos principales} 
+\begin{list}{-}{}
+\item Facilitar investigacion y explotación de transformadores.
+\item Unificar una interfaz para interactuar con transformadores.
+\item Posibilitar el uso de las características anteriores mediante una aplicación web.
+\end{list}
+
+\section{Objetivos parte mineria}
+\begin{list}{-}{}
+
+\item Facilidad de incremento en el numero de transformadores 
+\item Flexibilidad en los posibles transformadores
+\item Flexibilidad en el origen de los transformadores
+\item Extraccion de datos desechables
+\item Flexibilidad en los datasets introcucibles
+
+\end{list}
+
+\section{Objetivos parte web app}
+\begin{list}{-}{}
+\item Arquitectura MVC (Model View Controller)
+\item Facilidad usable
+\item Internacionalizacion posible
+\item Responsiveness
+\end{list}
+
+\section{Objetivos proceso de desarrollo}
+\begin{list}{-}{}
+\item Usar algún sistema para el control de dependencias y despliegue de el proyecto y dependencias
+\item Utilizar un sistema de control de versiones
+\item Tener un proceso de CI (Continuous integration) 
+\item Programar con agilidad, no agilmente. 
+\item Programar siguiendo el Manifesto for Software Craftsmanship
+\item Distribuir el proyecto con alguna herramienta de fácil uso
+\item 
+\end{list}
+
+

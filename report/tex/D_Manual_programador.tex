@@ -1,0 +1,77 @@
+\apendice{Documentación técnica de programación}
+
+\section{Introducción}
+
+El proyecto al estar descompuesto en microservicios tiene varias partes bien diferenciadas. Esto se refleja en todas las partes del proyecto. 
+
+\section{Estructura de directorios}
+
+La estructura de directorios depende del proyecto, en el proyecto web la estructura es:
+\begin{list}{-}{}
+\item alembic: carpeta autogenerada por alembic, control de versiones de la base de datos.
+\item babel: carpeta que guarda las traducciones generadas por babel.
+\item config: carpeta con los archivos de configuración, algunos son fuentes en python.
+\item docs: carpeta donde se guarda lo necesario para ejecutar sphinx (generación de documentacion incode).
+\item report: carpeta donde reside la documentación out of code.
+\item tests: tests para la aplicación.
+\item WhatAClass: carpeta donde se mantienen la mayoría de los fuentes, estos fuentes sirven para contener todas las partes del proyecto, algunos solo direccionan a las carpetas donde están los fuentes .
+\item WhatAClass/translations: carpeta para las traducciones ya compiladas para no tener que incluirlo en cada ejecución o despliegue.
+\item WhatAClass/static: para tener archivos que se pueden servir independientemente de manera estática.
+\item WhatAClass/templates: plantillas a ser interpretadas con jinja2.
+\item WhatAClass/** : el resto de carpetas se usan para guardar código de una manera más organizada que simplemente no tener carpetas.
+\item El resto de archivos que se extienden a partir de la raiz del microservicio son para control de versiones, integración continua, despliegue, instalación, tests...
+\begin{list}{*}{}
+\item .coveragerc: recubrimiento de los test.
+\item .gitignore: control de versiones.
+\item .travis.yml: integración continua.
+\item Dockerfile: docker y contenerización.
+\item Procfile: despliegue en heroku.
+\item README.md: documentación.
+\item babel.cfg: configuración de la traducción.
+\item create_db.py: script para crear la base de datos posiblemente sea eliminado.
+\item docker-compose.yml: docker compose para despliegue con la base de datos directamente.
+\item requirements-prod.txt: para instalación.
+\item requirements.txt: para instalación.
+\item run.py: ejecución con el servidor que proporciona flask, solo para debug, no usar en producción.
+\item runtime.txt: heroku, especificación de la versión.
+\item setup.cfg: instalación con pip, más automática y transparente al usuario. 
+\item setup.py: instalación con pip, más automática y transparente al usuario. 
+\item start.py: script para generar la app, no genera base de datos.
+\item test.py: script para testear la app. 
+\item uwsgi.ini: configuración para que uwsgi conozca donde esta el script de ejecución en producción.
+\item wsgi.py: script que genera la aplicación y la base de datos, esta preparado para ser llamado por uwsgi en producción.
+\end{list} 
+\end{list}
+\section{Manual del programador}
+
+Se recomienda usar un IDE aunque no es necesario. Con el script run.py podemos ejecutar la aplicación para debug. 
+
+Para añadir cosas a la página web necesitaremos de conocimientos de flask o de un framework web similar, Spring (Java) es similar a como funciona flask, aunque como cabe esperar tiene diferencias considerables.
+
+Tras conocer flask debemos conocer sus blueprints. Estas son una herramienta que principalmente nos deja descomponer el código en varios apartados permitiendo mantener distintas partes de la aplicación por distintas personas.
+
+Para añadir la blueprint a la aplicación nos debemos dirigir a WhatAClass/app.py ya que es el archivo donde esta la factoría de la aplicación. Ya hay ejemplos codificados de esto en app.py y solo tenemos que verlos y los lugares de donde hemos importado esas blueprints para saber cómo seguir desarrollando sistemas similares.
+
+
+ 
+
+\section{Compilación, instalación y ejecución del proyecto}
+
+Pasos para novatos de python y ubuntu (o otros linux con paquetería debian). Se recomienda usar un gestor de entornos virtuales como venv, pyenv, conda...:
+
+ - sudo apt install git python3-pip
+ - git clone https://github.com/Jazriel/WhatAClass.git
+ - cd WhatAClass
+ - sudo pip3 install -r requirements.txt
+
+La instalación se puede hacer desde los fuentes con 'sudo pip3 install -r requirements.txt' o con 'sudo pip3 install --editable .'. Esto usa o requirements.txt o setup.py para instalar las dependencias. Al ser python un lenguaje interpretado no necesitamos compilarlo manualmente, se compilará JIT (just in time).
+
+Para ejecutar en desarrollo lo mejor sería usar el script run.py aunque se puede usar un script listo para producción, no se recomienda ya que los errores son menos descriptivos y mucho más difíciles de solventar.
+
+Se puede ejecutar con docker pero se recomienda usar docker-compose:
+user@machine:~/folder\$ docker-compose build && docker-compose up 
+
+
+\section{Pruebas del sistema}
+
+Las pruebas se pueden ejecutar con test.py que lanza los tests de la carpeta tests/. si queremos ver el recubrimiento de el codigo podemos usar una herramienta como coverage y ejecutar test.py a traves de esa herramienta.  
