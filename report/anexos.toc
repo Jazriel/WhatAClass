@@ -24,9 +24,9 @@
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{4}{section.Alph4.2}
 \contentsline {section}{\numberline {D.3}Manual del programador}{6}{section.Alph4.3}
 \contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{6}{section.Alph4.4}
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{6}{section.Alph4.5}
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{7}{appendix.Alph5}
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{7}{section.Alph5.1}
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{7}{section.Alph5.2}
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{7}{section.Alph5.3}
-\contentsline {section}{\numberline {E.4}Manual del usuario}{7}{section.Alph5.4}
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{7}{section.Alph4.5}
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{8}{appendix.Alph5}
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{8}{section.Alph5.1}
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{8}{section.Alph5.2}
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{8}{section.Alph5.3}
+\contentsline {section}{\numberline {E.4}Manual del usuario}{8}{section.Alph5.4}
