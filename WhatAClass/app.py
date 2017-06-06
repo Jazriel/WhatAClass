@@ -41,28 +41,24 @@ def _create_all_tables(app):
 def create_app(config=None):
     """Factory that creates the app."""
     app = Flask(__name__, instance_relative_config=True)
+    app = configure_app(app, config)
+    app = initialize_extensions(app)
+    expose_user_loader()
+    app = register_blueprints(app)
+    return app
 
-    # Configuration
-    app.config.from_object('config.default')
 
-    if app.config['INSTANCE']:
-        app.config.from_pyfile('config.py')
+def register_blueprints(app):
+    from .controllers import index, user_mng, tensorflow_mng
+    app.register_blueprint(index)
+    app.register_blueprint(user_mng)
+    app.register_blueprint(tensorflow_mng)
+    return app
 
-    config = dict() if config is None else config
-    # Load argument config.
-    for key, value in config:
-        app.config[key] = value
 
-    from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
-
-    db.init_app(app)
-    csrf.init_app(app)
-    bcrypt.init_app(app)
-    babel.init_app(app)
-    login_manager.init_app(app)
-    ts.secret_key = app.secret_key
-
-    login_manager.login_view = 'user_mng.login'
+def expose_user_loader():
+    from .models import User
+    from .extensions import login_manager
 
     @login_manager.user_loader
     def load_user(user_id):
@@ -70,30 +66,39 @@ def create_app(config=None):
 
         return User.query.filter(User.id == user_id.decode()).first()
 
+
+def initialize_extensions(app):
+    from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
+    db.init_app(app)
+    csrf.init_app(app)
+    bcrypt.init_app(app)
+    babel.init_app(app)
+    login_manager.init_app(app)
+    ts.secret_key = app.secret_key
+    login_manager.login_view = 'user_mng.login'
     for key, value in app.config['LANGUAGES']:
         LANGUAGES[key] = value
-
     if babel.locale_selector_func is None:
         @babel.localeselector
         def get_locale():
             """Locale selector for babel."""
             return request.accept_languages.best_match(LANGUAGES.keys())
-
     from .util import email_server, ssh_config
-
     email_server.config = app.config['EMAIL_CONF']
-
     for key in app.config['SSH_CONF']:
         ssh_config[key] = app.config['SSH_CONF'][key]
+    return app
 
-    from .models import User
 
-    from .controllers import index, user_mng, neuralnet_mng
-
-    app.register_blueprint(index)
-    app.register_blueprint(user_mng)
-    app.register_blueprint(neuralnet_mng)
-
+def configure_app(app, config):
+    # Configuration
+    app.config.from_object('config.default')
+    if app.config['INSTANCE']:
+        app.config.from_pyfile('config.py')
+    config = dict() if config is None else config
+    # Load argument config.
+    for key, value in config:
+        app.config[key] = value
     return app
 
 

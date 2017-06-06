@@ -14,6 +14,11 @@ from WhatAClass.extensions import db, ts, login_manager
 user_mng = Blueprint('user_mng', __name__)
 
 
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     """Try to log in the user with the information provided."""
