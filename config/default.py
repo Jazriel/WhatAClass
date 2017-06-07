@@ -21,6 +21,11 @@ SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:////var/lib/whatacla
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'This_key_is_not_a_secret')
 
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID',  '1053761769020-93r9rhndvmp6ln89n3a644nmsbs8mrl9.apps.googleusercontent.com')
+
+GOOGLE_SECRET = os.getenv('GOOGLE_SECRET', '3o8PiPk3EE33u6ribuLVsssV')
+
+
 EMAIL_CONF = {
     'FROM': os.getenv('EMAIL_FROM', None),
     'PASS': os.getenv('EMAIL_PASS', None),

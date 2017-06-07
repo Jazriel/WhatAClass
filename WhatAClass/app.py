@@ -11,7 +11,7 @@
     :author: Javier Martínez
 """
 
-from flask import Flask, request
+from flask import Flask, request, session
 from WhatAClass.extensions import db
 
 
@@ -49,10 +49,11 @@ def create_app(config=None):
 
 
 def register_blueprints(app):
-    from .controllers import index, user_mng, tensorflow_mng
+    from .controllers import index, user_mng, tensorflow_mng, oauth_google
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
     app.register_blueprint(tensorflow_mng)
+    app.register_blueprint(oauth_google)
     return app
 
 
@@ -63,30 +64,82 @@ def expose_user_loader():
     @login_manager.user_loader
     def load_user(user_id):
         """Method required by flask_login to identify how user are going to be logged in."""
-
         return User.query.filter(User.id == user_id.decode()).first()
 
 
 def initialize_extensions(app):
-    from .extensions import db, csrf, bcrypt, ts, babel, login_manager, LANGUAGES
+    from .extensions import db, csrf, bcrypt, ts, babel, login_manager, oauth
+
     db.init_app(app)
     csrf.init_app(app)
     bcrypt.init_app(app)
     babel.init_app(app)
     login_manager.init_app(app)
+    oauth.init_app(app)
+
     ts.secret_key = app.secret_key
+
     login_manager.login_view = 'user_mng.login'
+
+    app = configure_babel(app, babel)
+
+    app = configure_email_and_ssh(app)
+
+    app = configure_oauth(app, oauth)
+
+    return app
+
+
+def configure_oauth(app, oauth):
+    from .extensions import oauths
+
+    google = oauth.remote_app(
+        'google',
+        consumer_key=app.config.get('GOOGLE_CLIENT_ID'),
+        consumer_secret=app.config.get('GOOGLE_SECRET'),
+        request_token_params={
+            'scope': 'email'
+        },
+        base_url='https://www.googleapis.com/oauth2/v1/',
+        request_token_url=None,
+        access_token_method='POST',
+        access_token_url='https://accounts.google.com/o/oauth2/token',
+        authorize_url='https://accounts.google.com/o/oauth2/auth',
+    )
+
+    oauths['google'] = google
+
+    @google.tokengetter
+    def get_google_oauth_token():
+        return session.get('google_token')
+
+    return app
+
+
+def configure_email_and_ssh(app):
+    from .util import email_server, ssh_config
+
+    email_server.config = app.config['EMAIL_CONF']
+
+    for key in app.config['SSH_CONF']:
+        ssh_config[key] = app.config['SSH_CONF'][key]
+
+    return app
+
+
+def configure_babel(app, babel):
+
+    from .extensions import LANGUAGES
+
     for key, value in app.config['LANGUAGES']:
         LANGUAGES[key] = value
+
     if babel.locale_selector_func is None:
         @babel.localeselector
         def get_locale():
             """Locale selector for babel."""
             return request.accept_languages.best_match(LANGUAGES.keys())
-    from .util import email_server, ssh_config
-    email_server.config = app.config['EMAIL_CONF']
-    for key in app.config['SSH_CONF']:
-        ssh_config[key] = app.config['SSH_CONF'][key]
+
     return app
 
 

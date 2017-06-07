@@ -9,7 +9,7 @@ from WhatAClass.forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from WhatAClass.models import User
 from WhatAClass.util import email_server
 from WhatAClass.extensions import db, ts, login_manager
-
+from .oauth import oauth_google
 
 user_mng = Blueprint('user_mng', __name__)
 
