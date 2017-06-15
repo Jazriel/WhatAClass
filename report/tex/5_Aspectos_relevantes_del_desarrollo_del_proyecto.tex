@@ -1,7 +1,18 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
-%Este apartado pretende recoger los aspectos más interesantes del desarrollo del proyecto, comentados por los autores del mismo.
+Inicio 
 
+Interes del deep learning: curiosidad e interes personal
+Interes del desarrollo web: interes profesional y no se le ha dado suficiente importancia en la carrera
+
+
+Formación
+El proyecto requerı́a una serie de conocimientos técnicos de los que no
+se disponı́a en un principio.
+
+Cotinuous integration (pipeline), web dev (python), docker, docker-compose, swarm vs kubernetes vs apache mesos
+
+%Este apartado pretende recoger los aspectos más interesantes del desarrollo del proyecto, comentados por los autores del mismo.
 
 
 %Debe incluir desde la exposición del ciclo de vida utilizado, hasta los detalles de mayor relevancia de las fases de análisis, diseño e implementación.
@@ -9,7 +20,7 @@
 Ciclo de vida
 
 
-Primero la pagina web
+Primero la pagina web quiza fue scope creep el hacer el login de usuarios.
 Análisis y diseño -> MVC, referencias 
 Implementacion tutorial en python2 a python3 solo ligeras diferencias pero algo difíciles de encontrar.
 Se decidió refactorizar al acabar este punto. Introduciendo un patrón factoría que a pesar de ser recomendado en la documentación oficial supuso gran cantidad de dificultades, lo cual me hace pensar que haya sido una decisión errónea. Ya que las ventajas de poder tener el paquete importado sin el esfuerzo de crear la aplicación.
@@ -34,3 +45,16 @@ Docker se empezó a usar docker a continuación, la adaptación fué compleja y 
 
 
 %Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y por sí mismo justifica que la memoria se convierta en un documento útil, fuente de referencia para los autores, los tutores y futuros alumnos.
+
+\section{Alembic y versionado en bases de datos}
+
+
+alembic init alembic
+
+alembic.ini-> sqlalchemy.url = driver://user:pass@localhost/dbname
+
+alembic revision -m "message"
+
+
+
+

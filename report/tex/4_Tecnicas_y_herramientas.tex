@@ -35,7 +35,7 @@ Este solo es un ejemplo de las ventajas entre las que se cuentan: recuperación 
 
 El sistema de hosting lo usaremos para facilitar el acceso a la información contenida en el sistema, también, al ser externo (no estar en el mismo ordenador que se use) nos servirá de sistema de copias de seguridad.
 
-Usaremos \concept{git} por razones de documentación y conocimiento ya adquirido, aunque existen otros sistemas como subversion.
+Usaremos \tool{git} por razones de documentación y conocimiento ya adquirido, aunque existen otros sistemas como subversion.
 
 Las alternativas principales de sistema de hosteo de git son: Bitbucket, Github, Gitlab.
 
@@ -57,7 +57,7 @@ Otras opciones que se podrían usar son Jenkins que como ventaja es Open Source 
 
 Dado que no tenemos departamento de QA como deberíamos para llevar una toolchain como la especificada en DevOps usaremos herramientas automatizadas, que aunque no tengan la calidad de una revisión humana es lo mejor que disponemos. 
 
-La herramienta que se ha elegido es \tool{CodeClimate}, se ha usado por que no ha sido demasiado complicado el incluir esta herramienta en la linea de producción que ya teníamos (Github+travis). Se ha intentado usar SonarQube pero no ha sido tan sencillo.(Se intento introducir dentro de la toolchain automática, no manualmente). 
+La herramienta que se ha elegido es \tool{CodeClimate}, se ha usado por que no ha sido demasiado complicado el incluir esta herramienta en la linea de producción que ya teníamos (Github+travis). Se ha intentado usar SonarQube pero no ha sido tan sencillo. (Se intento introducir dentro de la toolchain automática, no manualmente). 
 
 
 \section{Tests}
@@ -88,9 +88,9 @@ La documentación se ha basado en dos sistemas: en código y fuera de código.
 
 \subsection{En código}
 
-En el código se ha usado la documentación recomendada por la comunidad de python en el PEP 287, este recomienda usar \tool{reStructuredText} (rst).
+En el código se ha usado la documentación recomendada por la comunidad de python en el PEP 287\cite{pep287}, este recomienda usar \tool{reStructuredText} (rst).
 
-Se han seguido las guidelines (guías) de pocoo, esto es para poder usar Sphinx (generador de documentación) para transformar esas cadenas de documentación en una documentación tanto en html o en Latex si hiciese falta.
+Se han seguido las guidelines (guías) de un equipo de programadores de la comunidad de python: pocoo\cite{pocoo}, esto es para poder usar Sphinx (generador de documentación) para transformar esas cadenas de documentación en una documentación tanto en html o en Latex si hiciese falta.
 
 \subsection{Fuera de código}
 
@@ -110,7 +110,7 @@ De todos estos no hay ventajas en usar unos u otros ya que todos acaban teniendo
 
 Se ha usado Flask como microframework ya que sirve tanto para implementar el patrón MVC como para crear un sistema altamente escalable. 
 
-Para facilitar ciertas funcionalidades como control de usuarios, seguridad\ldots se han usado las extensiones: flask-babel y babel(internacionalización), flask-login (control de usuarios), flask-sqlalchemy y psycopg2(acceso a la base de datos), flask-wtf y WTForms (Formularios html) y flask-bcrypt y Bcrypt para seguridad.
+Para facilitar ciertas funcionalidades como control de usuarios, seguridad\ldots se han usado las extensiones: flask-babel y babel (internacionalización), flask-login (control de usuarios), flask-oauthlib y oauthlib (uso de oauth simplificado), flask-sqlalchemy y psycopg2 (acceso a la base de datos), flask-wtf y WTForms (Formularios html) y flask-bcrypt y Bcrypt para seguridad.
 
 Como podemos ver muchas de estas extensiones de flask tienen el mismo nombre pero con flask añadido, esto se debe a que son wrappers de la librería en cuestión pero facilitados para inicializarse con flask (generalmente añaden un constructor y un constructor lazy).
 

@@ -4,33 +4,33 @@
 \contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {vii}}{section*.2}
 \contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {viii}}{section*.3}
 \contentsline {chapter}{Introducci\IeC {\'o}n}{1}{chapter*.4}
-\contentsline {chapter}{Objetivos del proyecto}{2}{chapter*.5}
-\contentsline {section}{\numberline {2.1}Objetivos principales}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}Servidor web y p\IeC {\'a}gina web}{2}{section.2.2}
-\contentsline {section}{\numberline {2.3}Servicio de Miner\IeC {\'\i }a}{2}{section.2.3}
-\contentsline {section}{\numberline {2.4}Proceso de desarrollo}{3}{section.2.4}
-\contentsline {section}{\numberline {2.5}Objetivos personales}{3}{section.2.5}
-\contentsline {chapter}{Conceptos te\IeC {\'o}ricos}{4}{chapter*.6}
-\contentsline {section}{\numberline {3.1}Deuda t\IeC {\'e}cnica}{4}{section.3.1}
-\contentsline {section}{\numberline {3.2}Integraci\IeC {\'o}n continua (Continuous Integration)}{6}{section.3.2}
-\contentsline {subsection}{Entrega continua (Continuous Delivery)}{6}{section*.7}
-\contentsline {section}{\numberline {3.3}DevOps}{6}{section.3.3}
-\contentsline {subsection}{La 'cadena de herramientas' de DevOps}{6}{section*.8}
-\contentsline {section}{\numberline {3.4}Microservicios}{7}{section.3.4}
-\contentsline {chapter}{T\IeC {\'e}cnicas y herramientas}{10}{chapter*.9}
-\contentsline {section}{\numberline {4.1}Metodolog\IeC {\'\i }a}{10}{section.4.1}
-\contentsline {section}{\numberline {4.2}Patrones de dise\IeC {\~n}o}{11}{section.4.2}
-\contentsline {subsection}{Model-View-Controller}{11}{section*.10}
-\contentsline {section}{\numberline {4.3}Control de versiones}{11}{section.4.3}
-\contentsline {section}{\numberline {4.4}Integraci\IeC {\'o}n continua}{12}{section.4.4}
-\contentsline {section}{\numberline {4.5}Quality Assurance}{12}{section.4.5}
-\contentsline {section}{\numberline {4.6}Tests}{12}{section.4.6}
-\contentsline {subsection}{Recubrimiento}{12}{section*.11}
-\contentsline {section}{\numberline {4.7}Dependencias}{13}{section.4.7}
-\contentsline {section}{\numberline {4.8}Comunicaci\IeC {\'o}n}{13}{section.4.8}
-\contentsline {section}{\numberline {4.9}Documentaci\IeC {\'o}n}{13}{section.4.9}
-\contentsline {subsection}{En c\IeC {\'o}digo}{13}{section*.12}
-\contentsline {subsection}{Fuera de c\IeC {\'o}digo}{13}{section*.13}
-\contentsline {section}{\numberline {4.10}Editor de texto}{13}{section.4.10}
-\contentsline {section}{\numberline {4.11}Bibliotecas}{14}{section.4.11}
-\contentsline {chapter}{Bibliograf\'{\i }a}{15}{section*.15}
+\contentsline {chapter}{Objetivos del proyecto}{3}{chapter*.5}
+\contentsline {section}{\numberline {2.1}Objetivos principales}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Servidor web y p\IeC {\'a}gina web}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}Servicio de Miner\IeC {\'\i }a}{4}{section.2.3}
+\contentsline {section}{\numberline {2.4}Proceso de desarrollo}{4}{section.2.4}
+\contentsline {section}{\numberline {2.5}Objetivos personales}{4}{section.2.5}
+\contentsline {chapter}{Conceptos te\IeC {\'o}ricos}{5}{chapter*.6}
+\contentsline {section}{\numberline {3.1}Deuda t\IeC {\'e}cnica}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Integraci\IeC {\'o}n continua (\textit {Continuous Integration})}{6}{section.3.2}
+\contentsline {subsection}{Entrega continua (Continuous Delivery)}{7}{section*.7}
+\contentsline {section}{\numberline {3.3}DevOps}{7}{section.3.3}
+\contentsline {subsection}{La 'cadena de herramientas' de DevOps}{8}{section*.8}
+\contentsline {section}{\numberline {3.4}Microservicios}{8}{section.3.4}
+\contentsline {chapter}{T\IeC {\'e}cnicas y herramientas}{11}{chapter*.9}
+\contentsline {section}{\numberline {4.1}Metodolog\IeC {\'\i }a}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Patrones de dise\IeC {\~n}o}{12}{section.4.2}
+\contentsline {subsection}{Model-View-Controller}{12}{section*.10}
+\contentsline {section}{\numberline {4.3}Control de versiones}{12}{section.4.3}
+\contentsline {section}{\numberline {4.4}Integraci\IeC {\'o}n continua}{13}{section.4.4}
+\contentsline {section}{\numberline {4.5}Quality Assurance}{13}{section.4.5}
+\contentsline {section}{\numberline {4.6}Tests}{13}{section.4.6}
+\contentsline {subsection}{Recubrimiento}{13}{section*.11}
+\contentsline {section}{\numberline {4.7}Dependencias}{14}{section.4.7}
+\contentsline {section}{\numberline {4.8}Comunicaci\IeC {\'o}n}{14}{section.4.8}
+\contentsline {section}{\numberline {4.9}Documentaci\IeC {\'o}n}{14}{section.4.9}
+\contentsline {subsection}{En c\IeC {\'o}digo}{14}{section*.12}
+\contentsline {subsection}{Fuera de c\IeC {\'o}digo}{14}{section*.13}
+\contentsline {section}{\numberline {4.10}Editor de texto}{14}{section.4.10}
+\contentsline {section}{\numberline {4.11}Bibliotecas}{15}{section.4.11}
+\contentsline {chapter}{Bibliograf\'{\i }a}{16}{section*.15}

@@ -17,7 +17,7 @@ tensorflow_mng = Blueprint('tensorflow_mng', __name__)
 @login_required
 def predict():
     """Page where users are going to upload files to get their predictions."""
-    # TODO refactor SSH out of the blueprints
+    # TODO technical debt: refactor SSH out of the blueprints
     form = UploadForm()
 
     if request.method == 'POST':
@@ -66,6 +66,7 @@ def predict():
                 probs.append(prob)
 
         ssh.close()
+        path.join('/app/static/images', filename)
 
         if len(classes) < 3 or len(probs) < 3:
             print(output)

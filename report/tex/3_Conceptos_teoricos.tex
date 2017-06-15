@@ -5,39 +5,41 @@ Algunos conceptos teóricos tanto de la parte técnica como de la parte de proce
 
 \section{Deuda técnica}
 
-La deuda técnica es una metáfora para el coste que conlleva el dejar código que no tiene un buen diseño en el proyecto. Si seguimos manteniendo el proyecto esta deuda cada vez costará más el arreglarla.
+La metáfora de deuda nació cómo una forma de expresar la diferencia entre el entendimiento del programa (la abstracción) y su implementación \cite{cu09}.
 
-Las razones de incremento de la deuda con el paso del tiempo son que simplemente se le olvide al programador como funciona exactamente cada linea del código y que se incremente la cantidad de código dependiente del anterior (ya que aunque tenga bajo acoplamiento puede dar problemas).
+Con el tiempo nació un termino similar la deuda técnica que es la metáfora que expresa el coste que conlleva el dejar código que no tiene un buen diseño en el proyecto. Si seguimos manteniendo el proyecto esta deuda cada vez costará más el arreglarla y tendremos que pagar los intereses \cite{fow03}.
+
+Las razones de incremento de la deuda con el paso del tiempo pueden ser el simple hecho de olvidar como funciona cada linea de código, o la complejidad emergente del acoplamiento de código antiguo con otro nuevo sin cambiar las abstracciones ni desacoplar el código.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{deuda1.png}
-	\caption{Deuda técnica: Beneficiosa y perjudicial.}\label{fig:deuda1.png}
+	\caption{Deuda técnica: Beneficiosa y perjudicial.\cite{kni13}}\label{fig:deuda1.png}
 \end{figure}
 
 
-Este tipo de deuda se ve como necesaria, según algunos autores se debe incurrir en deuda técnica ya que es beneficioso para el desarrollo. Esto se debe a que a corto plazo es imposible prever cómo se va a desarrollar el proyecto y unos cambios demasiado tempranos pueden ser un mal diseño a medio o largo plazo. La deuda 'buena' o beneficiosa se suele considerar como aquella que como mucho dura una semana, una vez existe por más tiempo pasa a ser cada vez más costosa de solucionar o 'pagar'.
+Este tipo de deuda se ve como necesaria, según algunos autores \cite{kni13} se debe incurrir en deuda técnica ya que es beneficioso para el desarrollo. Esto se debe a que a corto plazo es imposible prever cómo se va a desarrollar el proyecto y unos cambios demasiado tempranos pueden ser un mal diseño a medio o largo plazo. La deuda `buena' o beneficiosa se suele considerar como aquella que como mucho dura una semana, una vez existe por más tiempo pasa a ser cada vez más costosa de solucionar o `pagar'.
 
 
 Una característica importante de esta deuda es que una vez dejas de soportar el mantenimiento de un proyecto la deuda técnica desaparece, al contrario que la deuda financiera.
 
 Se puede idealizar la deuda técnica y considerar que todas las semanas en las que se dedica una cantidad de tiempo a solucionarla esta deuda técnica desaparece, pero esto no corresponde con la realidad. Normalmente la deuda aunque se solucione suele ir incrementando poco a poco debido a la complejidad de un sistema mantenido a lo largo de una gran cantidad de tiempo.
 
-La manera de tener esto en cuenta es tener un 'techo de deuda' este techo debería ser lo suficientemente alto como para que no se alcance todos los meses pero no demasiado alto como para que cuando se llegue el proyecto sea directamente un fracaso o demasiado caro de pagar.
+La manera de tener esto en cuenta es tener un `techo de deuda' este techo debería ser lo suficientemente alto como para que no se alcance todos los meses pero no demasiado alto como para que cuando se llegue el proyecto sea directamente un fracaso o demasiado caro de pagar.
 
 La opinión de algunas personas parece ser que se debe llegar al techo cada 6 meses, desde mi propia inexperiencia creo que deberíamos evaluar la deuda a los 4 meses para ver si la re-estructuración del proyecto es viable e intentar buscar un punto de tiempo en el que el pagar la deuda técnica sea algo más simple ya que si esperamos hasta los 6 meses probablemente no podamos elegir un momento óptimo. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{deuda2.png}
-	\caption{Deuda técnica: Techo y base}\label{fig:deuda2.png}
+	\caption{Deuda técnica: Techo y base \cite{kni13}}\label{fig:deuda2.png}
 \end{figure}
 
-Me gustaría añadir que la deuda técnica tiene otros razonamientos para tener que mantenerse baja: al que menos importancia parece darse es que la deuda técnica es algo difícilmente cuantificable hasta que se refactoriza.
+Es importante destacar que la deuda técnica tiene otros razonamientos para tener que mantenerse baja: al que menos importancia parece darse es que la deuda técnica es algo difícilmente cuantificable hasta que se refactoriza, si no la reducimos no sabemos cuanta tenemos.
 
-\section{Integración continua (Continuous Integration)}
+\section{Integración continua (\textit{Continuous Integration})}
 
-Normalmente acortado con las siglas CI, es un método habitual para reducir la deuda técnica. Es la práctica de ejecutar y testear conjuntamente todas los servicios que deban ir relacionados una vez se inicie el despliegue en producción. Esto nos asegura que van a funcionar en producción la mayoría de las veces, la minoría habrá problemas por la escalabilidad\ldots Un ejemplo es si ejecutamos java y los test no fallan pero al ponerlo en producción le damos a la JVM más de 200 GB de memoria RAM, esto causa comportamientos inesperados. 
+Normalmente acortado con las siglas CI, es un método habitual para reducir la deuda técnica. Es la práctica de ejecutar y testear conjuntamente todas los servicios que deban ir relacionados una vez se inicie el despliegue en producción. Esto nos asegura que van a funcionar en producción la mayoría de las veces, la minoría habrá problemas por la escalabilidad, errores dado el cambio del hardware, problemas con el rendimiento\ldots Un ejemplo es si ejecutamos java y los test no fallan pero al ponerlo en producción le damos a la JVM más de 200 GB de memoria RAM, esto causa comportamientos inesperados.
 
 \subsection{Entrega continua (Continuous Delivery)}
 
@@ -46,9 +48,9 @@ Es un término asociado a CI, consiste en un proyecto que dispone de CI y buena 
 
 \section{DevOps}
 
-DevOps es un acrónimo inglés de: 'software \textbf{Dev}elopment and information technology \textbf{Op}eration\textbf{s}' es un termino que engloba un conjunto de prácticas de colaboración y comunicación entre desarrolladores software y técnicos informáticos. Los objetivos de esta comunicación y colaboración son una construcción de software más consistente y confiable. Este proceso heredero de las técnicas ágiles se basa en una \textit{cadena de herramientas}. Esta cadena de herramientas es algo que no esta completamente definida pero más o menos la podemos concretar, cabe tener en cuenta que esta cadena cambia según a quien le preguntes.
+DevOps es un acrónimo inglés de: `software \textbf{Dev}elopment and information technology \textbf{Op}eration\textbf{s}' es un termino que engloba un conjunto de prácticas de colaboración y comunicación entre desarrolladores software y técnicos informáticos. Los objetivos de esta comunicación y colaboración son una construcción de software más consistente y confiable. Este proceso heredero de las técnicas ágiles se basa en una \textit{cadena de herramientas}. Esta cadena de herramientas es algo que no esta completamente definida pero más o menos la podemos concretar, cabe tener en cuenta que esta cadena cambia según a quien le preguntes.
 
-\subsection{La 'cadena de herramientas' de DevOps}
+\subsection{La `cadena de herramientas' de DevOps}
 
 Esta cadena de herramientas se basa en siete procesos con sus correspondientes herramientas:
 
@@ -69,11 +71,11 @@ Los microservicios son una arquitectura y un patrón de diseño, que no se ha in
 
 Un microservicio es un servicio pequeño y autónomo que puede trabajar junto a otros, es importante que este centrado en hacer una cosa bien.
 
-Esto esta reforzado por el concepto del Principio de responsabilidad única de C. Martin: "Juntar aquellas cosas que cambian por la misma razón y separar aquellas que cambian por razones diferentes."
+Esto esta reforzado por el concepto del Principio de responsabilidad única de C. Martin\cite{martin03} "Juntar aquellas cosas que cambian por la misma razón y separar aquellas que cambian por razones diferentes."
 
 El tamaño de un microservicio es algo muy discutido, pero generalmente se requiere que sea mantenible por un equipo 'pequeño' (6-10 personas), y se pueda reescribir en 2 semanas.
 
-Esto se debe conseguir mediante una interfaz de programación de aplicación (API: application programming interface), que permita a lso clientes acceder al servicio sin causar acoplamiento, algo más difícil de hacer que de decir.
+Esto se debe conseguir mediante una interfaz de programación de aplicación (API: application programming interface), que permita a los clientes acceder al servicio sin causar acoplamiento, algo más difícil de hacer que de decir.
 
 Los principales beneficios son:
 \begin{enumerate}
@@ -100,7 +102,7 @@ Estos beneficios por supuesto vienen con desventajas:
 \item Test a nivel de sistema: Los tests a nivel de sistema incrementan algo su complejidad ya que vamos a tener que usar microservicios falsos como mocks o similares casi siempre a no ser que estemos en un sistema pequeño.
 \end{enumerate}
 
-Por ultimo vale la pena hablar del coste en productividad, esto no es una ventaja ni un perjuicio, es un trade-off, un intercambio.
+Por ultimo vale la pena hablar del coste en productividad, esto no es una ventaja ni un perjuicio, es un \textit{trade-off}, un intercambio.
 
 En un sistema monolítico tenemos menos coste en productividad hasta que llegamos a un punto crítico en el que la complejidad aumenta demasiado o necesitamos escalar.
 

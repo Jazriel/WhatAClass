@@ -24,6 +24,7 @@ class User(db.Model):
     email = db.Column(db.String(64), unique=True)
     _password = db.Column(db.Binary(128))
     email_confirmed = db.Column(db.Boolean)
+    oauth_token = db.Column(db.String(64), unique=True)
 
     def __init__(self, email, password, email_confirmed=False):
         self.email = email

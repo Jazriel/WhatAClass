@@ -2,12 +2,110 @@
 
 \section{Introducción}
 
+La planificación es un punto importante en cualquier proyecto. Estimar el trabajo, el tiempo y el dinero que va a suponer la realización del proyecto aunque vaya a cambiar más tarde es interesante para saber si puede haber posibilidades de que sea viable. Para ello, debemos analizar cuidadosamente los componentes del proyecto. Con este análisis pretendemos conocer los requisitos del proyecto y pretendemos que mediante modificaciones siga sirviendo en un futuro.
+
 \section{Planificación temporal}
+En un principio se planteo seguir una metodología ágil, esta sería scrum ya que existía experiencia anterior. Por supuesto no se pudo usar completamente ya que no se tenía un equipo, no se hicieron reuniones diarias\ldots
+
+Se empezo a usar ZenHub como tablero kanban donde se situarían las tareas con sus costes.
+
 
 \section{Estudio de viabilidad}
+En este apartado se estudiaran los costes en los que se incurren al desarrollar este proyecto.
 
 \subsection{Viabilidad económica}
+El proyecto incurre en distintos tipos de costes
+
+\subsubsection{Costes de personal}
+El proyecto se lleva a cabo por un desarrollador junior empleado a tiempo parcial (30h/semana) durante cuatro meses. Se considera el siguiente salario:
+
+\begin{table}[]
+\centering
+\caption{Costes de personal}
+\label{Salario}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Concepto & Coste \\ \midrule
+Salario neto & 1000 \\
+Retención IRPF (19 \%) & 360.53 \\
+Seguridad social (28,30 \%) & 537.00 \\
+Salario bruto & 1897.53 \\ \midrule
+4 meses tiempo parcial(3/4) & 5692.59 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Costes de material: hardware y software}
+
+Como material podemos considerar lo mínimo necesario para llevar un proyecto así:
+
+Un único coste puntual (ordenador portátil) que aproximamos en 600€ y en la tabla se pondrá su coste amortizado contando con una amortización a 4 años. Se ha comprobado que internet está incluido en el alquiler de la oficina.
+
+\begin{table}[]
+\centering
+\caption{Costes de material al mes}
+\label{Costes mensualmente}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Concepto & Coste \\ \midrule
+Ordenador portátil & 25 \\
+Alquiler de oficina & 99 \\
+1 mes & 124 \\ \midrule
+4 meses  & 496 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Costes totales}
+El sumatorio de todos los costes es de 6188,59€. Podríamos recortar más en ciertos puntos pero debido a que no se va a llevar a cabo como esta planteado aquí, esto solo es una aproximación del coste de oportunidad.
+
+
+
+
+\subsection{Beneficios}
+Si nuestro interés fuese vender el proyecto este no sería el proyecto que venderíamos, tendríamos que añadir medidas de tiempo computacional en cada operación.
+
+Una vez consigamos calcular tiempos de computación podemos restringir a cada usuario una cantidad de tiempo. De esta manera podemos crear planes para cada usuario, podemos plantearnos hacer un plan gratuito y varios planes de pago según cantidad de tiempo computacional que se le permita usar al cliente. 
+
 
 \subsection{Viabilidad legal}
+
+https://spdx.org/licenses/LGPL-2.1.html
+
+La licencia necesaria para nuestro proyecto debido a las dependencias que tiene tendrá que ser compatible con aquellas de las bibliotecas que hemos usado, la licencia más restrictiva que hemos usado es la de paramiko siendo LGPL (2.1 y 3.0) , esta licencia esta pensada para librerías e incluye el siguiente párrafo:
+
+5. A program that contains no derivative of any portion of the Library, but is designed to work with the Library by being compiled or linked with it, is called a "work that uses the Library". Such a work, in isolation, is not a derivative work of the Library, and therefore falls outside the scope of this License. 
+
+Por lo que las restricciones de esa licencia no se nos aplican. Esto quiere decir que podemos publicar nuestro codigo bajo la licencia que mejor nos parezca o incluso podríamos mantenerlo privado como un Secreto de negocio (Trade Secret) ya que proporcionamos SaaS (Software as a Service). Basandome en las licencias más comunes open source, ya que me parece interesante el hecho de que otras personas puedan usar el código, y con ayuda de las recomendaciones de gnu, se ha decidido usar la Apache License 2.0
+
+
+https://www.gnu.org/licenses/license-recommendations.html
+https://www.gnu.org/licenses/
+
+
+pallets/flask is licensed under the
+BSD 3-clause "New" or "Revised" License
+https://github.com/pallets/flask/blob/master/LICENSE
+
+ tensorflow/tensorflow is licensed under the
+Apache License 2.0
+https://github.com/tensorflow/tensorflow/blob/master/LICENSE
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+Derechos concedidos             & Dominio público & Licencia de software libre permisiva (BSD-like) & Licencia de software libre no permisiva (copyleft) & \begin{tabular}[c]{@{}l@{}}Sofware de uso (parcial/total) gratuito (\\ Freeware/Freemium )\end{tabular} & Software propietario & Secreto de negocio                                    \\ \midrule
+Se retiene el copyright         & No              & Sí                                              & Sí                                                 & Sí                                                                                                      & Sí                   & Sí                                                    \\
+Derechos de explotación         & Sí              & Sí                                              & Sí                                                 & Sí                                                                                                      & Sí                   & No                                                    \\
+Derecho de comunicación publica & Sí              & Sí                                              & Sí                                                 & Sí                                                                                                      & Sí                   & No                                                    \\
+Derecho de reproducción         & Sí              & Sí                                              & Sí                                                 & A veces                                                                                                 & No                   & No                                                    \\
+Derecho de modificación         & Sí              & Sí                                              & Sí                                                 & No                                                                                                      & No                   & No                                                    \\
+Derecho de distribución         & Sí              & Sí, con la misma licencia                       & Sí, con la misma licencia                          & A veces                                                                                                 & No                   & No                                                    \\
+Derecho de sublicencia          & Sí              & Sí                                              & No                                                 & No                                                                                                      & No                   & No                                                    \\
+Ejemplos                        & SQLite          & Flask, Tensorflow                               & Kernel de linux                                    & WinRAR                                                                                                  & Windows              & Código que no es accesible (el codigo de un servidor) \\ \bottomrule
+\end{tabular}
+\end{table}
 
 
