@@ -8,25 +8,42 @@
 \contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n temporal}{1}{section.Alph1.2}
 \contentsline {section}{\numberline {A.3}Estudio de viabilidad}{1}{section.Alph1.3}
 \contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{1}{section*.4}
-\contentsline {subsection}{Viabilidad legal}{1}{section*.5}
-\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{2}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{2}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Objetivos generales}{2}{section.Alph2.2}
-\contentsline {section}{\numberline {B.3}Catalogo de requisitos}{2}{section.Alph2.3}
-\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{2}{section.Alph2.4}
-\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{3}{appendix.Alph3}
-\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{3}{section.Alph3.1}
-\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{3}{section.Alph3.2}
-\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{3}{section.Alph3.3}
-\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{3}{section.Alph3.4}
-\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{4}{appendix.Alph4}
-\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{4}{section.Alph4.1}
-\contentsline {section}{\numberline {D.2}Estructura de directorios}{4}{section.Alph4.2}
-\contentsline {section}{\numberline {D.3}Manual del programador}{6}{section.Alph4.3}
-\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{6}{section.Alph4.4}
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{7}{section.Alph4.5}
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{8}{appendix.Alph5}
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{8}{section.Alph5.1}
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{8}{section.Alph5.2}
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{8}{section.Alph5.3}
-\contentsline {section}{\numberline {E.4}Manual del usuario}{8}{section.Alph5.4}
+\contentsline {subsubsection}{Costes de personal}{2}{section*.5}
+\contentsline {subsubsection}{Costes de material: hardware y software}{2}{section*.6}
+\contentsline {subsubsection}{Costes totales}{2}{section*.7}
+\contentsline {subsection}{Beneficios}{2}{section*.8}
+\contentsline {subsection}{Viabilidad legal}{3}{section*.9}
+\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{4}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{4}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Objetivos generales}{4}{section.Alph2.2}
+\contentsline {section}{\numberline {B.3}Catalogo de requisitos}{4}{section.Alph2.3}
+\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{4}{section.Alph2.4}
+\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{5}{appendix.Alph3}
+\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{5}{section.Alph3.1}
+\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{5}{section.Alph3.2}
+\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{5}{section.Alph3.3}
+\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{5}{section.Alph3.4}
+\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{6}{appendix.Alph4}
+\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{6}{section.Alph4.1}
+\contentsline {section}{\numberline {D.2}Estructura de directorios}{6}{section.Alph4.2}
+\contentsline {section}{\numberline {D.3}Manual del programador}{8}{section.Alph4.3}
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{8}{section.Alph4.4}
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{9}{section.Alph4.5}
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{10}{appendix.Alph5}
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{10}{section.Alph5.1}
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{10}{section.Alph5.2}
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{10}{section.Alph5.3}
+\contentsline {section}{\numberline {E.4}Manual del usuario}{10}{section.Alph5.4}
+\contentsline {chapter}{GNU Free Documentation License}{11}{section*.11}
+\contentsline {section}{1. APPLICABILITY AND DEFINITIONS}{12}{section*.12}
+\contentsline {section}{2. VERBATIM COPYING}{13}{section*.13}
+\contentsline {section}{3. COPYING IN QUANTITY}{14}{section*.14}
+\contentsline {section}{4. MODIFICATIONS}{14}{section*.15}
+\contentsline {section}{5. COMBINING DOCUMENTS}{17}{section*.16}
+\contentsline {section}{6. COLLECTIONS OF DOCUMENTS}{17}{section*.17}
+\contentsline {section}{7. AGGREGATION WITH INDEPENDENT WORKS}{17}{section*.18}
+\contentsline {section}{8. TRANSLATION}{18}{section*.19}
+\contentsline {section}{9. TERMINATION}{18}{section*.20}
+\contentsline {section}{10. FUTURE REVISIONS OF THIS LICENSE}{19}{section*.21}
+\contentsline {section}{11. RELICENSING}{19}{section*.22}
+\contentsline {section}{ADDENDUM: How to use this License for your documents}{20}{section*.23}

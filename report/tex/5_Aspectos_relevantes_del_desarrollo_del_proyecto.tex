@@ -1,60 +1,119 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
-Inicio 
-
-Interes del deep learning: curiosidad e interes personal
-Interes del desarrollo web: interes profesional y no se le ha dado suficiente importancia en la carrera
+[No se sabe si faltan parrafos de introduccion y definiciones de conceptos o así esta bien]
 
 
-Formación
-El proyecto requerı́a una serie de conocimientos técnicos de los que no
-se disponı́a en un principio.
+\section{Idea e inicio}
 
-Cotinuous integration (pipeline), web dev (python), docker, docker-compose, swarm vs kubernetes vs apache mesos
+Se eligió un proyecto con relación con el deep learning ya que existía un interés previo tanto a nivel personal como a nivel profesional. La gran versatilidad de este tipo de redes, ya sea en clasificación con los modelos profundos, compresión con los autoencoders o incluso generación de imágenes con las revolucionarias GAN, esta claramente demostrada, ahora queda buscarles nuevos usos que supongan una aplicación práctica más directa y útil. 
 
-%Este apartado pretende recoger los aspectos más interesantes del desarrollo del proyecto, comentados por los autores del mismo.
+A nivel personal la importancia que tienen las redes neuronales en el mundo actual hizo que surgiese una gran curiosidad. Un ejemplo de la aplicación de este tipo de tecnología podrían ser los coches automáticos o aplicaciones surgidas últimamente, como la viral durante un par de días FaceApp. 
 
-
-%Debe incluir desde la exposición del ciclo de vida utilizado, hasta los detalles de mayor relevancia de las fases de análisis, diseño e implementación.
-
-Ciclo de vida
-
-
-Primero la pagina web quiza fue scope creep el hacer el login de usuarios.
-Análisis y diseño -> MVC, referencias 
-Implementacion tutorial en python2 a python3 solo ligeras diferencias pero algo difíciles de encontrar.
-Se decidió refactorizar al acabar este punto. Introduciendo un patrón factoría que a pesar de ser recomendado en la documentación oficial supuso gran cantidad de dificultades, lo cual me hace pensar que haya sido una decisión errónea. Ya que las ventajas de poder tener el paquete importado sin el esfuerzo de crear la aplicación.
-
-Tras pagina web -> pipeline de desarrollo
-la pipeline de desarrollo se buscó un sistema flexible lo cual fue conseguido con git en github enlazandolo con travis para una integración continua y con otras herramientas como slack para comunicación con el resto del equipo.
-
-CodeClimate fue usado como la herramienta elegida para comprobar la calidad del código y el recubrimiento de los test. VersionEye para el control de versiones.
-
-
-Llegados a este punto pareció interesante desplegar el proyecto en un sitio web. Se eligió heroku. Para facilitar el uso de heroku se hizo un cambio a como funcionaba la configuración (refactorización). 
-
-Docker se empezó a usar docker a continuación, la adaptación fué compleja y costosa debido a un desconocimiento total de la tecnología. Al principio se consiguió meter la aplicación en un contenedor de manera simple.
-
-
-%Se busca que no sea una mera operación de copiar y pegar diagramas y extractos del código fuente, sino que realmente se justifiquen los caminos de solución que se han tomado, especialmente aquellos que no sean triviales.
+A nivel profesional el deep learning se ha posicionado como uno de los algoritmos que mejor resultados han dado en muchos campos, esto abre tanto puertas profesionales y posibilidades de trabajo en industria como posibilidades de investigación y estudio en academia. 
 
 
 
-%Puede ser el lugar más adecuado para documentar los aspectos más interesantes del diseño y de la implementación, con un mayor hincapié en aspectos tales como el tipo de arquitectura elegido, los índices de las tablas de la base de datos, normalización y desnormalización, distribución en ficheros3, reglas de negocio dentro de las bases de datos (EDVHV GH GDWRV DFWLYDV), aspectos de desarrollo relacionados con el WWW...
+\section{Formación}
+El proyecto requería una serie de conocimientos de los que no se disponía en un principio, como es normal en cualquier proyecto no trivial. Algunos de los conocimientos necesarios se aprendieron durante la carrera pero por supuesto en un campo tan grande y cambiante como es la informática la gran mayoría de tecnologías se tuvieron que investigar y aprender por cuenta propia.
+
+Lo necesario para llevar a cabo el proyecto se expondrá en las siguientes secciones, se intentaran omitir detalles que parezcan triviales o de muy poco interés para el lector de manera que la lectura no sea demasiado pesada.
+
+Antes de hacer nada más lo principalmente necesario fue el conseguir un entorno con integración continua. 
+
+Esto se presenta como una dificultad bastante grande ya que el único libro conocido sobre el tema [ref] aunque parece fiable según algunas personas es mucho más largo de lo que debería, y teniendo en cuenta que esta centrado para java se ha decidido intentar evitarlo.
+
+Los materiales alternativos a este libro han sido  generalmente entradas de blogs y hablando con gente que lo ha usado (aunque quizá no suficientemente experimentados). [https://martinfowler.com/articles/continuousIntegration.html]
+[https://www.atlassian.com/agile/continuous-integration]
+
+Otras cosas que se han tenido que aprender han sido tensorflow[ref] y metodologías de uso de git[gitflow]. 
+
+Tensorflow se estudió con los tutoriales oficiales relevantes para las partes a los que se quería dar uso. Aunque quizá no fuese necesario también se revisó la tensorflow con[youtube ref] para comprobar tanto la escalabilidad como las posibilidades más punteras en servidor y de distribución de los modelos en otros dispositivos.
+
+Gitflow se siguió conforme a la guía en datasift. [https://datasift.github.io/gitflow/IntroducingGitFlow.html] 
 
 
+\section{Página web y versionado de bases de datos}
 
-%Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y por sí mismo justifica que la memoria se convierta en un documento útil, fuente de referencia para los autores, los tutores y futuros alumnos.
+No se conocía el desarrollo web con python ni con flask. Para adquirir el conocimiento sobre esto se usó los tutoriales [explore flask] y [megatutorial de flask].
 
-\section{Alembic y versionado en bases de datos}
+Hay que tener cuidado porque el primer tutorial está en python2. Esto generalmente no da casi ningún problema ya que flask se ocupa de muchos de los problemas de versión pero a la hora de usar SQLAlchemy los hash de las contraseñas en python2 se pueden guardar como string pero en python3 se deben guardar como objetos de bytes.
 
+Una de las lecciones más importantes aprendidas de estos tutoriales es la importancia del versionado del modelo de la base de datos. Esto se hace para poder migrar de una versión a otra de forma automática. 
+
+Es una manera bastante fácil de mantener la base de datos en buenas condiciones. Esto se debe a que si al hacer alguna migración falla, se cancela y no perdemos datos, de manera que si alguna migración falla podemos añadir lógica al como migrar para facilitar el proceso.
+
+A parte de poder hacer versiones o 'commits' a mano, podemos hacer versionado automático de la base de datos lo que infiere a partir de los modelos el cambio que ha ocurrido en la base de datos. Esta opción no se ha trabajado ya que no se ha llegado a necesitar.
+
+\subsection{Alembic: primeros pasos}
+
+Alembic nos permite de forma efectiva versionar las bases de datos de la misma manera que versionamos el código. Para poder empezar a usar alembic en un proyecto debemos ir a la carpeta del proyecto y ejecutar el comando:
 
 alembic init alembic
 
-alembic.ini-> sqlalchemy.url = driver://user:pass@localhost/dbname
+Este comando creará tanto la carpeta alembic como el archivo alembic.ini, ambos colgando de la ruta desde donde hayamos ejecutado el comando. 
+
+En la carpeta se almacenan las versiones y scripts de migración entre ellas. El archivo ini tiene la configuración de alembic y para que sepa donde tenemos la base de datos tendremos que cambiar la ruta de la base de datos a donde tengamos la nuestra. Esta ruta se guarda en el parámetro sqlalchemy.url
+
+sqlalchemy.url = driver://user:pass@localhost/dbname
+
+Para crear una revisión (commit inicial en este caso) debemos usar el comando:
 
 alembic revision -m "message"
 
+Cabe destacar que esto influye sobre todo en el mantenimiento de sistemas en producción ya que si no esta en producción los datos son más fáciles de recuperar y se pueden recurrir a alternativas menos ortodoxas (hacerlo a mano, usar scripts hechos a mano\ldots).
 
 
 
+\section{Heroku y transición a contenedores}
+
+Tras tener la versión básica de la página web se decidió hacer un despliegue en heroku, una de las páginas que nos permiten publicar nuestra página web dinámica. 
+
+Heroku en concreto funciona con contenedores pero nos quita gran parte del peso del aprendizaje, la versión gratuita nos limita a un contenedor (donde dejamos nuestro proyecto como si fuera un ordenador normal) y nos deja un segundo contenedor limitado a una base de datos postgresql con unos limites de tamaño. 
+
+Tras conseguir completar el despliegue en heroku y tener que integrar tensorflow en el proyecto, para facilitar la integración, el despliegue en otros sistema y el mantenimiento del software se decidió hacer los contenedores de forma explicita. La alternativa elegida fue docker, por ser la opción más madura. 
+
+Para aprender a usar docker se usó la documentación oficial [link] y el libro [pack docker]. [hacer una explicación basica de docker al estilo de la de alembic?]
+
+\section{Docker compose y microservicios}
+
+Docker compose sirve para organizar nuestros contenedores en despliegues concretos de manera que se puedan usar en cualguier momento, por ejemplo podríamos tener varios docker compose con distintas configuraciones según nuestras necesidades, tanto para distintos servicios de alojamiento como para distintas configuraciones de despliegue. Esto último es algo bastante complicado y que si nos propusiesemos hacerlo tendría que ser con antelación o refactorizaciones decentemente grandes.
+
+El aprendizaje de docker compose fue sobre todo mediante la documentación oficial auque el libro [cita al packt] también se usó. [explicar docker compose al estilo de alembic si/no] 
+
+Se puede desplegar con docker compose pero con una gran limitación y es que no nos permite usar varios ordenadores de la manera que los servicios de orquestración nos lo permiten.
+
+Los microservicios como arquitectura se conocieron debido a su popularidad actual, muchos blogs han hecho artículos sobre ellos y algunos newsletter como el de O'Reilly o el de Nginx les han dado mucha importancia últimamente, adjuntando tutoriales y conferencias con las ultimas noticias.
+
+
+\section{Orquestración}
+
+Los conocidos como orquestradores nos permiten, como su nombre indica, orquestrar servicios entre varios ordenadores lo cual nos permite elegir configuraciones más versátiles y acordes a nuestras necesidades. 
+
+Los orquestradores son docker swarm, kubernetes y Openshift. [explicar kubernetes... si/no?]
+
+Docker swarm fue el servicio que se intentó usar debido a la existencia de secretos, que son ficheros con contraseñas o archivos que no deberían ser públicos. Estos secretos no están en docker compose, pero si en swarm aunque el tamaño del enjambre sea uno, que es equivalente a compose, lo que parece una estrategia comercial más que un diseño bien planteado.
+
+Usar docker swarm dio gran cantidad de problemas y tras una investigación online la opinión general es que ya está listo para entornos de producción, la experiencia que podemos relatar es que swarm da problemas extra, que son difíciles de diagnosticar, quizá sea un caso concreto o que se hizo algo de manera incorrecta pero tras bastante tiempo perdido sin ser capaces de avanzar se decidió continuar con otras partes del proyecto.
+
+
+\section{Conclusiones}
+
+\subsection{Gitflow, scrum y metodologías pensadas para equipos}
+
+Gitflow es un sistema complejo y que requiere conocimiento medio de git para poder llevarse a cabo. Realmente no se necesita para proyectos tan pequeños como los de una sola persona y el trabajo que requiere realmente se vio que no merecía la pena. Aunque parece beneficiosa para equipos no se ha podido comprobar y cabe considerar que existen criticas de la metodología en cuestión [ref].
+
+Scrum también es parecido, se ha visto como funciona en otros entornos y es sin duda beneficioso sobre todo para equipos de tamaño mediano. Una cosa que sí que merece la pena de scrum es el tablero kanban, aunque solo seas una persona merece la pena como forma de tener claras que partes del proyecto están hechas hasta que punto.
+
+\subsection{Tensorflow, versiones provisionales y tecnología punta}
+
+Tras aprender tensorflow el verano pasado y no seguir usándolo tan activamente durante el primer cuatrimestre se presento un problema, tensorflow al estar en versiones de desarrollo al sacar la versión 1.0 se perdió parte del conocimiento adquirido, la api cambió, algunos de los scripts dejaron de funcionar y se desarrollaron librerías  más maduras y de más alto nivel, dejando otra parte del conocimiento adquirido parcialmente obsoleto.
+
+Como ya se ha comentado docker swarm también dio problemas, la suposición es que se hizo algo incorrecto en docker o docker compose que hizo que swarm no funcionase correctamente. Al ser tecnología punta no hay tantas preguntas respondidas en stack overflow o foros similares sobre el tipo de problemas que nos encontramos.
+
+Docker compose también dio problemas, más ligeros que docker swarm, con las configuraciones de red.
+Suponemos lo mismo pero estos si que se pudieron arreglar.
+
+
+\subsection{Microservicios}
+
+[ Reescribir: Esta muy bien cuando quieres proporcionar un servicio muy ampliable pero para los proyectos de menos de 3 servicios separados no se ven, sobre todo pensado para proyectos a largo plazo no a corto plazo, añade demasiado trabajo que hacer sin proporcionar suficientes beneficios ]

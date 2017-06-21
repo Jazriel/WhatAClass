@@ -38,7 +38,7 @@ Salario bruto & 1897.53 \\ \midrule
 
 Como material podemos considerar lo mínimo necesario para llevar un proyecto así:
 
-Un único coste puntual (ordenador portátil) que aproximamos en 600€ y en la tabla se pondrá su coste amortizado contando con una amortización a 4 años. Se ha comprobado que internet está incluido en el alquiler de la oficina.
+Un único coste puntual (ordenador portátil) que aproximamos en 600 y en la tabla se pondrá su coste amortizado contando con una amortización a 4 años. Se ha comprobado que internet está incluido en el alquiler de la oficina.
 
 \begin{table}[]
 \centering
@@ -56,7 +56,7 @@ Alquiler de oficina & 99 \\
 
 
 \subsubsection{Costes totales}
-El sumatorio de todos los costes es de 6188,59€. Podríamos recortar más en ciertos puntos pero debido a que no se va a llevar a cabo como esta planteado aquí, esto solo es una aproximación del coste de oportunidad.
+El sumatorio de todos los costes es de 6188,59. Podríamos recortar más en ciertos puntos pero debido a que no se va a llevar a cabo como esta planteado aquí, esto solo es una aproximación del coste de oportunidad.
 
 
 
@@ -69,43 +69,11 @@ Una vez consigamos calcular tiempos de computación podemos restringir a cada us
 
 \subsection{Viabilidad legal}
 
-https://spdx.org/licenses/LGPL-2.1.html
+La licencia necesaria para nuestro proyecto debido a las dependencias que tiene tendrá que ser compatible con aquellas de las bibliotecas que hemos usado, la licencia más restrictiva que hemos usado es la de paramiko siendo LGPL (2.1 y 3.0)\cite{LGPL} , esta licencia esta pensada para librerías e incluye el siguiente párrafo:
 
-La licencia necesaria para nuestro proyecto debido a las dependencias que tiene tendrá que ser compatible con aquellas de las bibliotecas que hemos usado, la licencia más restrictiva que hemos usado es la de paramiko siendo LGPL (2.1 y 3.0) , esta licencia esta pensada para librerías e incluye el siguiente párrafo:
+\begin{quotation}5. A program that contains no derivative of any portion of the Library, but is designed to work with the Library by being compiled or linked with it, is called a "work that uses the Library". Such a work, in isolation, is not a derivative work of the Library, and therefore falls outside the scope of this License.
+\end{quotation}
 
-5. A program that contains no derivative of any portion of the Library, but is designed to work with the Library by being compiled or linked with it, is called a "work that uses the Library". Such a work, in isolation, is not a derivative work of the Library, and therefore falls outside the scope of this License. 
+Por lo que las restricciones de esa licencia no se nos aplican. Esto quiere decir que podemos publicar nuestro codigo bajo la licencia que mejor nos parezca o incluso podríamos mantenerlo privado como un Secreto de negocio (Trade Secret) ya que proporcionamos SaaS (Software as a Service). Basandome en las licencias más comunes open source, ya que me parece interesante el hecho de que otras personas puedan usar el código, y con ayuda de las recomendaciones de gnu\cite{gnurecs}, se ha decidido usar la GNU GPL 3.0.
 
-Por lo que las restricciones de esa licencia no se nos aplican. Esto quiere decir que podemos publicar nuestro codigo bajo la licencia que mejor nos parezca o incluso podríamos mantenerlo privado como un Secreto de negocio (Trade Secret) ya que proporcionamos SaaS (Software as a Service). Basandome en las licencias más comunes open source, ya que me parece interesante el hecho de que otras personas puedan usar el código, y con ayuda de las recomendaciones de gnu, se ha decidido usar la Apache License 2.0
-
-
-https://www.gnu.org/licenses/license-recommendations.html
-https://www.gnu.org/licenses/
-
-
-pallets/flask is licensed under the
-BSD 3-clause "New" or "Revised" License
-https://github.com/pallets/flask/blob/master/LICENSE
-
- tensorflow/tensorflow is licensed under the
-Apache License 2.0
-https://github.com/tensorflow/tensorflow/blob/master/LICENSE
-
-\begin{table}[]
-\centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{@{}lllllll@{}}
-\toprule
-Derechos concedidos             & Dominio público & Licencia de software libre permisiva (BSD-like) & Licencia de software libre no permisiva (copyleft) & \begin{tabular}[c]{@{}l@{}}Sofware de uso (parcial/total) gratuito (\\ Freeware/Freemium )\end{tabular} & Software propietario & Secreto de negocio                                    \\ \midrule
-Se retiene el copyright         & No              & Sí                                              & Sí                                                 & Sí                                                                                                      & Sí                   & Sí                                                    \\
-Derechos de explotación         & Sí              & Sí                                              & Sí                                                 & Sí                                                                                                      & Sí                   & No                                                    \\
-Derecho de comunicación publica & Sí              & Sí                                              & Sí                                                 & Sí                                                                                                      & Sí                   & No                                                    \\
-Derecho de reproducción         & Sí              & Sí                                              & Sí                                                 & A veces                                                                                                 & No                   & No                                                    \\
-Derecho de modificación         & Sí              & Sí                                              & Sí                                                 & No                                                                                                      & No                   & No                                                    \\
-Derecho de distribución         & Sí              & Sí, con la misma licencia                       & Sí, con la misma licencia                          & A veces                                                                                                 & No                   & No                                                    \\
-Derecho de sublicencia          & Sí              & Sí                                              & No                                                 & No                                                                                                      & No                   & No                                                    \\
-Ejemplos                        & SQLite          & Flask, Tensorflow                               & Kernel de linux                                    & WinRAR                                                                                                  & Windows              & Código que no es accesible (el codigo de un servidor) \\ \bottomrule
-\end{tabular}
-\end{table}
-
-
+Para la documentación se ha decidido que la mejor licencia para las necesidades era la GNU FDL (GNU Free Documentation License). La otra alternativa más interesante era Creative Commons.

@@ -1,3 +1,64 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
+
+\bibitem{scala09}
+Martin~L Abbott and Michael~T Fisher.
+\newblock {\em The art of scalability: Scalable web architecture, processes,
+  and organizations for the modern enterprise}.
+\newblock Pearson Education, 2009.
+
+\bibitem{bondi00}
+Andr{\'e}~B Bondi.
+\newblock Characteristics of scalability and their impact on performance.
+\newblock In {\em Proceedings of the 2nd international workshop on Software and
+  performance}, pages 195--203. ACM, 2000.
+
+\bibitem{cu09}
+Ward Cunningham.
+\newblock \href{https://www.youtube.com/watch?v=pqeJFYwnkjE}{Debt Metaphor},
+  2009.
+
+\bibitem{fow03}
+Martin Fowler.
+\newblock
+  \href{https://martinfowler.com/bliki/TechnicalDebt.html}{TechnicalDebt},
+  2003.
+
+\bibitem{pep287}
+David Goodger.
+\newblock \href{https://www.python.org/dev/peps/pep-0287/}{PEP 287}, 2002.
+
+\bibitem{svlops}
+Michael Hausenblas.
+\newblock {\em Serverless Ops}.
+\newblock O’Reilly Media, 2016.
+
+\bibitem{hill90}
+Mark~D Hill.
+\newblock What is scalability?
+\newblock {\em ACM SIGARCH Computer Architecture News}, 18(4):18--21, 1990.
+
+\bibitem{imnet}
+\href{http://image-net.org/about-people}{Image-net Team}.
+\newblock \href{http://image-net.org/}{Image-net}.
+
+\bibitem{svless}
+\href{https://serverless.com/company/team/}{Serverless Team}.
+\newblock \href{https://serverless.com/}{Serverless}.
+
+\bibitem{pocoo}
+\href{http://www.pocoo.org/}{Image-net Team}.
+\newblock \href{http://www.pocoo.org/internal/styleguide/}{Image-net}.
+
+\bibitem{kni13}
+Henrik Kniberg.
+\newblock
+  \href{http://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt}{Good
+  and Bad Technical Debt}, 2013.
+
+\bibitem{martin03}
+R.C. Martin.
+\newblock {\em \href{https://books.google.es/books?id=0HYhAQAAIAAJ}{Agile
+  Software Development: Principles, Patterns, and Practices}}.
+\newblock Alan Apt series. Pearson Education, 2003.
 
 \end{thebibliography}
