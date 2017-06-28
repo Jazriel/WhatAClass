@@ -1,5 +1,26 @@
+% This is set up to run with pdflatex.
+%---------The file header---------------------------------------------
+\documentclass[a4paper,12pt]{book}
+
+\usepackage[english]{babel} %language selection
+\selectlanguage{english}
+
+\pagenumbering{arabic}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks, 
+           citecolor=black,
+           filecolor=black,
+           linkcolor=black,
+           urlcolor=black,
+           bookmarksopen=true,
+           pdftex}
+
+\hfuzz = .6pt % avoid black boxes
+           
+\begin{document}
 %---------------------------------------------------------------------
-\chapter*{GNU Free Documentation License}
+\chapter*{\rlap{GNU Free Documentation License}}
 \phantomsection  % so hyperref creates bookmarks
 \addcontentsline{toc}{chapter}{GNU Free Documentation License}
 %\label{label_fdl}
@@ -23,7 +44,7 @@
 
 
 \begin{center}
-{\large Preamble}
+{\bf\large Preamble}
 \end{center}
 
 The purpose of this License is to make a manual, textbook, or other
@@ -49,7 +70,7 @@ principally for works whose purpose is instruction or reference.
 
 
 \begin{center}
-{\Large 1. APPLICABILITY AND DEFINITIONS\par}
+{\Large\bf 1. APPLICABILITY AND DEFINITIONS\par}
 \phantomsection
 \addcontentsline{toc}{section}{1. APPLICABILITY AND DEFINITIONS}
 \end{center}
@@ -144,7 +165,7 @@ no effect on the meaning of this License.
 
 
 \begin{center}
-{\Large 2. VERBATIM COPYING\par}
+{\Large\bf 2. VERBATIM COPYING\par}
 \phantomsection
 \addcontentsline{toc}{section}{2. VERBATIM COPYING}
 \end{center}
@@ -164,7 +185,7 @@ you may publicly display copies.
 
 
 \begin{center}
-{\Large 3. COPYING IN QUANTITY\par}
+{\Large\bf 3. COPYING IN QUANTITY\par}
 \phantomsection
 \addcontentsline{toc}{section}{3. COPYING IN QUANTITY}
 \end{center}
@@ -207,7 +228,7 @@ them a chance to provide you with an updated version of the Document.
 
 
 \begin{center}
-{\Large 4. MODIFICATIONS\par}
+{\Large\bf 4. MODIFICATIONS\par}
 \phantomsection
 \addcontentsline{toc}{section}{4. MODIFICATIONS}
 \end{center}
@@ -327,7 +348,7 @@ imply endorsement of any Modified Version.
 
 
 \begin{center}
-{\Large 5. COMBINING DOCUMENTS\par}
+{\Large\bf 5. COMBINING DOCUMENTS\par}
 \phantomsection
 \addcontentsline{toc}{section}{5. COMBINING DOCUMENTS}
 \end{center}
@@ -356,7 +377,7 @@ and any sections Entitled ``Dedications''.  You must delete all sections
 Entitled ``Endorsements''.
 
 \begin{center}
-{\Large 6. COLLECTIONS OF DOCUMENTS\par}
+{\Large\bf 6. COLLECTIONS OF DOCUMENTS\par}
 \phantomsection
 \addcontentsline{toc}{section}{6. COLLECTIONS OF DOCUMENTS}
 \end{center}
@@ -374,7 +395,7 @@ other respects regarding verbatim copying of that document.
 
 
 \begin{center}
-{\Large 7. AGGREGATION WITH INDEPENDENT WORKS\par}
+{\Large\bf 7. AGGREGATION WITH INDEPENDENT WORKS\par}
 \phantomsection
 \addcontentsline{toc}{section}{7. AGGREGATION WITH INDEPENDENT WORKS}
 \end{center}
@@ -399,7 +420,7 @@ aggregate.
 
 
 \begin{center}
-{\Large 8. TRANSLATION\par}
+{\Large\bf 8. TRANSLATION\par}
 \phantomsection
 \addcontentsline{toc}{section}{8. TRANSLATION}
 \end{center}
@@ -425,7 +446,7 @@ title.
 
 
 \begin{center}
-{\Large 9. TERMINATION\par}
+{\Large\bf 9. TERMINATION\par}
 \phantomsection
 \addcontentsline{toc}{section}{9. TERMINATION}
 \end{center}
@@ -458,7 +479,7 @@ not give you any rights to use it.
 
 
 \begin{center}
-{\Large 10. FUTURE REVISIONS OF THIS LICENSE\par}
+{\Large\bf 10. FUTURE REVISIONS OF THIS LICENSE\par}
 \phantomsection
 \addcontentsline{toc}{section}{10. FUTURE REVISIONS OF THIS LICENSE}
 \end{center}
@@ -485,7 +506,7 @@ Document.
 
 
 \begin{center}
-{\Large 11. RELICENSING\par}
+{\Large\bf 11. RELICENSING\par}
 \phantomsection
 \addcontentsline{toc}{section}{11. RELICENSING}
 \end{center}
@@ -520,7 +541,7 @@ provided the MMC is eligible for relicensing.
 
 
 \begin{center}
-{\Large ADDENDUM: How to use this License for your documents\par}
+{\Large\bf ADDENDUM: How to use this License for your documents\par}
 \phantomsection
 \addcontentsline{toc}{section}{ADDENDUM: How to use this License for your documents}
 \end{center}
@@ -561,3 +582,4 @@ free software license, such as the GNU General Public License,
 to permit their use in free software.
 
 %---------------------------------------------------------------------
+\end{document}

@@ -17,11 +17,33 @@ Ward Cunningham.
 \newblock \href{https://www.youtube.com/watch?v=pqeJFYwnkjE}{Debt Metaphor},
   2009.
 
+\bibitem{vin10}
+Vincent Driessen.
+\newblock \href{http://nvie.com/posts/a-successful-git-branching-model/}{ A
+  successful Git branching model }, 2010.
+
+\bibitem{cont07}
+Paul~M Duvall.
+\newblock {\em Continuous integration}.
+\newblock Pearson Education India, 2007.
+
 \bibitem{fow03}
 Martin Fowler.
 \newblock
   \href{https://martinfowler.com/bliki/TechnicalDebt.html}{TechnicalDebt},
   2003.
+
+\bibitem{fow06}
+Martin Fowler.
+\newblock
+  \href{https://martinfowler.com/articles/continuousIntegration.html}{Continuous
+  Integration}, 2006.
+
+\bibitem{fow14}
+Martin Fowler.
+\newblock
+  \href{https://martinfowler.com/articles/microservices.html}{Microservices},
+  2014.
 
 \bibitem{pep287}
 David Goodger.
@@ -60,5 +82,11 @@ R.C. Martin.
 \newblock {\em \href{https://books.google.es/books?id=0HYhAQAAIAAJ}{Agile
   Software Development: Principles, Patterns, and Practices}}.
 \newblock Alan Apt series. Pearson Education, 2003.
+
+\bibitem{dancont}
+Dan Radigan.
+\newblock
+  \href{https://www.atlassian.com/agile/continuous-integration}{Reaching true
+  agility with continuous integration}.
 
 \end{thebibliography}

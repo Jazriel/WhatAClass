@@ -39,7 +39,7 @@ Es importante destacar que la deuda técnica tiene otros razonamientos para tene
 
 \section{Integración continua (\textit{Continuous Integration})}
 
-Normalmente acortado con las siglas CI, es un método habitual para reducir la deuda técnica. Es la práctica de ejecutar y testear conjuntamente todas los servicios que deban ir relacionados una vez se inicie el despliegue en producción. Esto nos asegura que van a funcionar en producción la mayoría de las veces, la minoría habrá problemas por la escalabilidad, errores dado el cambio del hardware, problemas con el rendimiento\ldots Un ejemplo es si ejecutamos java y los test no fallan pero al ponerlo en producción le damos a la JVM más de 200 GB de memoria RAM, esto causa comportamientos inesperados.
+Normalmente acortado con las siglas CI, es un método habitual para reducir la deuda técnica. Es la práctica de ejecutar y testear conjuntamente todos los servicios que deban ir relacionados una vez se inicie el despliegue en producción. Esto nos asegura que van a funcionar en producción la mayoría de las veces, la minoría habrá problemas por la escalabilidad, errores dado el cambio del hardware, problemas con el rendimiento\ldots Un ejemplo es si ejecutamos java y los test no fallan pero al ponerlo en producción le damos a la JVM más de 200 GB de memoria RAM, esto causa comportamientos inesperados.
 
 \subsection{Entrega continua (Continuous Delivery)}
 
@@ -71,11 +71,11 @@ Los microservicios son una arquitectura y un patrón de diseño, que no se ha in
 
 Un microservicio es un servicio pequeño y autónomo que puede trabajar junto a otros, es importante que este centrado en hacer una cosa bien.
 
-Esto esta reforzado por el concepto del Principio de responsabilidad única de C. Martin\cite{martin03} "Juntar aquellas cosas que cambian por la misma razón y separar aquellas que cambian por razones diferentes."
+Esto esta reforzado por el concepto del Principio de responsabilidad única de C. Martin\cite{martin03} ``Juntar aquellas cosas que cambian por la misma razón y separar aquellas que cambian por razones diferentes."
 
-El tamaño de un microservicio es algo muy discutido, pero generalmente se requiere que sea mantenible por un equipo 'pequeño' (6-10 personas), y se pueda reescribir en 2 semanas.
+El tamaño de un microservicio es algo muy discutido, pero generalmente se requiere que sea mantenible por un equipo `pequeño' (6-10 personas), y se pueda reescribir en 2 semanas.
 
-Esto se debe conseguir mediante una interfaz de programación de aplicación (API: application programming interface), que permita a los clientes acceder al servicio sin causar acoplamiento, algo más difícil de hacer que de decir.
+Esto se debe conseguir mediante una interfaz de programación de aplicación (API: Application Programming Interface), que permita a los clientes acceder al servicio sin causar acoplamiento, algo más difícil de hacer que de decir.
 
 Los principales beneficios son:
 \begin{enumerate}
@@ -90,7 +90,7 @@ Los principales beneficios son:
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{microvsmono.png}
-	\caption{Arquitecturas monolítica y microservicios.}\label{fig:microvsmono.png}
+	\caption{Arquitecturas monolítica y microservicios.\cite{fow14}}\label{fig:microvsmono.png}
 \end{figure}
 
 Estos beneficios por supuesto vienen con desventajas:
