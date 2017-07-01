@@ -6,6 +6,14 @@ Martin~L Abbott and Michael~T Fisher.
   and organizations for the modern enterprise}.
 \newblock Pearson Education, 2009.
 
+\bibitem{tfds}
+Multiple authors.
+\newblock
+  \href{https://events.withgoogle.com/tensorflow-dev-summit/}{TensorFlow Dev
+  Summit 2017}, 2017.
+\newblock \href{Disponible en youtube:
+  https://goo.gl/0sySqI}{https://goo.gl/0sySqI}.
+
 \bibitem{bondi00}
 Andr{\'e}~B Bondi.
 \newblock Characteristics of scalability and their impact on performance.
@@ -16,11 +24,13 @@ Andr{\'e}~B Bondi.
 Ward Cunningham.
 \newblock \href{https://www.youtube.com/watch?v=pqeJFYwnkjE}{Debt Metaphor},
   2009.
+\newblock \url{https://www.youtube.com/watch?v=pqeJFYwnkjE}.
 
 \bibitem{vin10}
 Vincent Driessen.
 \newblock \href{http://nvie.com/posts/a-successful-git-branching-model/}{ A
   successful Git branching model }, 2010.
+\newblock \url{http://nvie.com/posts/a-successful-git-branching-model/}.
 
 \bibitem{cont07}
 Paul~M Duvall.
@@ -32,22 +42,34 @@ Martin Fowler.
 \newblock
   \href{https://martinfowler.com/bliki/TechnicalDebt.html}{TechnicalDebt},
   2003.
+\newblock \url{https://martinfowler.com/bliki/TechnicalDebt.html}.
 
 \bibitem{fow06}
 Martin Fowler.
 \newblock
   \href{https://martinfowler.com/articles/continuousIntegration.html}{Continuous
   Integration}, 2006.
+\newblock \url{https://martinfowler.com/articles/continuousIntegration.html}.
 
 \bibitem{fow14}
 Martin Fowler.
 \newblock
   \href{https://martinfowler.com/articles/microservices.html}{Microservices},
   2014.
+\newblock \url{https://martinfowler.com/articles/microservices.html}.
+
+\bibitem{rst}
+David Goodger.
+\newblock
+  \href{http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html}{reStructuredText},
+  2002.
+\newblock
+  \url{http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html}.
 
 \bibitem{pep287}
 David Goodger.
 \newblock \href{https://www.python.org/dev/peps/pep-0287/}{PEP 287}, 2002.
+\newblock \url{https://www.python.org/dev/peps/pep-0287/}.
 
 \bibitem{svlops}
 Michael Hausenblas.
@@ -62,20 +84,36 @@ Mark~D Hill.
 \bibitem{imnet}
 \href{http://image-net.org/about-people}{Image-net Team}.
 \newblock \href{http://image-net.org/}{Image-net}.
+\newblock \url{http://image-net.org/}.
 
 \bibitem{svless}
 \href{https://serverless.com/company/team/}{Serverless Team}.
 \newblock \href{https://serverless.com/}{Serverless}.
+\newblock \url{https://serverless.com/}.
 
 \bibitem{pocoo}
-\href{http://www.pocoo.org/}{Image-net Team}.
-\newblock \href{http://www.pocoo.org/internal/styleguide/}{Image-net}.
+\href{http://www.pocoo.org/}{Pocoo}.
+\newblock \href{http://www.pocoo.org/internal/styleguide/}{Pocoo Styleguide}.
+\newblock \url{http://www.pocoo.org/internal/styleguide/}.
 
 \bibitem{kni13}
 Henrik Kniberg.
 \newblock
   \href{http://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt}{Good
   and Bad Technical Debt}, 2013.
+\newblock
+  \url{http://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt}.
+
+\bibitem{alexnet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1097--1105, 2012.
+
+\bibitem{lecun98}
+Yann LeCun, L{\'e}on Bottou, Yoshua Bengio, and Patrick Haffner.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
 
 \bibitem{martin03}
 R.C. Martin.
@@ -88,5 +126,23 @@ Dan Radigan.
 \newblock
   \href{https://www.atlassian.com/agile/continuous-integration}{Reaching true
   agility with continuous integration}.
+\newblock \url{https://www.atlassian.com/agile/continuous-integration}.
+
+\bibitem{gfharm}
+Adam Ruka.
+\newblock \href{http://endoflineblog.com/gitflow-considered-harmful}{GitFlow
+  considered harmful}, 2015.
+\newblock \url{http://endoflineblog.com/gitflow-considered-harmful}.
+
+\bibitem{ran17}
+Randall Smith.
+\newblock {\em Docker Orchestration}.
+\newblock Packt Publishing, 2017.
+
+\bibitem{incep}
+Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and
+  Zbig-niew Wojna.
+\newblock Rethinking the inception architecture for computer vision. corr
+  abs/1512.00567 (2015), 2015.
 
 \end{thebibliography}

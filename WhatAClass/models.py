@@ -58,14 +58,17 @@ class User(db.Model):
 
     @property
     def is_authenticated(self):
+        """Needed by flask_login."""
         return True
 
     @property
     def is_active(self):
+        """Needed by flask_login."""
         return True
 
     @property
     def is_anonymous(self):
+        """Needed by flask_login."""
         return False
 
 

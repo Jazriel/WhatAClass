@@ -1,12 +1,10 @@
 {% extends 'layout.html' %}
 {% from 'macros.html' import dd_upload with context %}
-{% block title %}{{ _('WhatAClass: Fit') }}{% endblock %}
+{% block title %}{{ _('WhatAClass: Predict') }}{% endblock %}
 {% block body %}
     <div class="well col-md-8 col-md-offset-2">
-        <h1 class="text-center">{{ _('Upload a file to fit') }}!</h1>
+        <h1 class="text-center">{{ _('Upload a file to predict') }}!</h1>
         <br/>
-
-        {{ dd_upload(form, url_for('neuralnet_mng.fit')) }}
-
+        {{ dd_upload(form, url_for('tensorflow_mng.predict')) }}
     </div>
 {% endblock %}

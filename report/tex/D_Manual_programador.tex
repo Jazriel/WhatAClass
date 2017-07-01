@@ -82,13 +82,18 @@ La instalación se puede hacer desde los fuentes con 'sudo pip3 install -r requi
 
 Para ejecutar en desarrollo lo mejor sería usar el script run.py (script específico para desarrollo, no se puede usar en producción), aunque se puede usar un script listo para producción no se recomienda ya que los errores son menos descriptivos y mucho más difíciles de solventar.
 
-Para desplegar esta preparado para ser desplegado con docker cuya instalación se puede encontrar en el siguiente enlace:
-   https://docs.docker.com/engine/installation/linux/ubuntu/\# install-using-the-repository
+\section{Despliegue}
 
+Para desplegar esta preparado para ser desplegado con docker cuya instalación se puede encontrar en el siguiente enlace:\href{https://docs.docker.com/engine/installation}{ instalación de docker} 
+	
 
 Se puede ejecutar con docker pero se recomienda usar docker-compose:
 
 user@machine:~/folder\$ docker-compose build \& \& docker-compose up 
+
+Esto nos permite saltarnos toda la instalación de programador, ya que todo eso se hace automáticamente.
+
+Hay gente que avoca por tener el entorno de programación dentro de un contenedor. Según las necesidades de la persona y del proyecto en particular esto puede ser una buena idea. 
 
 
 \section{Pruebas del sistema}

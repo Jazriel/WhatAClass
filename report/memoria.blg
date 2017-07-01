@@ -1,53 +1,52 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: memoria.aux
-A level-1 auxiliary file: ./tex/0_Abstract.aux
 A level-1 auxiliary file: ./tex/1_Introduccion.aux
 A level-1 auxiliary file: ./tex/2_Objetivos_del_proyecto.aux
 A level-1 auxiliary file: ./tex/3_Conceptos_teoricos.aux
 A level-1 auxiliary file: ./tex/4_Tecnicas_y_herramientas.aux
 A level-1 auxiliary file: ./tex/5_Aspectos_relevantes_del_desarrollo_del_proyecto.aux
-A level-1 auxiliary file: ./LICENSE.aux
+A level-1 auxiliary file: ./tex/6_Conclusiones_Lineas_de_trabajo_futuras.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
-You've used 17 entries,
+You've used 24 entries,
             2118 wiz_defined-function locations,
-            574 strings with 6068 characters,
-and the built_in function-call counts, 3791 in all, are:
-= -- 345
-> -- 125
-< -- 1
-+ -- 54
-- -- 36
-* -- 142
-:= -- 625
-add.period$ -- 42
-call.type$ -- 17
-change.case$ -- 65
+            619 strings with 7790 characters,
+and the built_in function-call counts, 5982 in all, are:
+= -- 564
+> -- 222
+< -- 2
++ -- 93
+- -- 68
+* -- 259
+:= -- 982
+add.period$ -- 73
+call.type$ -- 24
+change.case$ -- 101
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 159
-empty$ -- 397
-format.name$ -- 36
-if$ -- 826
+cite$ -- 24
+duplicate$ -- 235
+empty$ -- 580
+format.name$ -- 68
+if$ -- 1297
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 10
-newline$ -- 77
-num.names$ -- 34
-pop$ -- 135
+int.to.str$ -- 24
+missing$ -- 14
+newline$ -- 122
+num.names$ -- 48
+pop$ -- 209
 preamble$ -- 1
-purify$ -- 52
+purify$ -- 82
 quote$ -- 0
-skip$ -- 145
+skip$ -- 187
 stack$ -- 0
-substring$ -- 137
-swap$ -- 27
-text.length$ -- 1
+substring$ -- 243
+swap$ -- 46
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 86
 warning$ -- 0
-while$ -- 39
-width$ -- 19
-write$ -- 150
+while$ -- 58
+width$ -- 26
+write$ -- 242

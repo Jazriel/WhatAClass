@@ -51,7 +51,6 @@ def db(app):
     user = User(confirmed_user['email'], confirmed_user['password'], email_confirmed=True)
     db.session.add(user)
     db.session.commit()
-    # TODO alembic apply migrations will go here
     yield db
 
     os.close(fd)
@@ -60,17 +59,19 @@ def db(app):
 
 @fixture
 def client(app, db):
+    """Create test client."""
     return app.test_client()
 
 
 def get_csrf_token_from_data(data):
+    """Get csrf token, as its needed."""
     pre = b'name="csrf_token" type="hidden" value="'
     index = data.find(pre)
     return data[index+len(pre):].split(b'"')[0]
 
 
-# TODO FIXIT
 def sign_up(client, email, password):
+    """Sing up to the app."""
     page = client.get('/signup')
     return client.post('/signup',
                        data=dict(email=email,
@@ -81,6 +82,7 @@ def sign_up(client, email, password):
 
 
 def login(client, email, password):
+    """Login to the app."""
     page = client.get('/login')
     return client.post('/login',
                        data=dict(email=email,

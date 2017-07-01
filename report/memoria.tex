@@ -7,6 +7,8 @@
 \usepackage{placeins}
 \usepackage{cite}
 \usepackage{listings}
+\usepackage[T1]{fontenc}
+
 
 \RequirePackage{booktabs}
 \RequirePackage[table]{xcolor}
@@ -276,8 +278,9 @@
 
 \newcommand{\mytitle}{Framework web de uso de sistemas de machine learning.}
 
+\newcommand{\eng}[1]{\emph{#1}}
 
-
+\newcommand{\hfoot}[2]{\href{#1}{#2}\footnote{\href{#1}{#2: #1}.}}
 
 
 
@@ -348,7 +351,11 @@
     \noindent\LARGE
     Presentado por \@author{}\\ 
     en Universidad de Burgos --- \@date{}\\
-    Tutores: \@tutor{}\\
+    \begin{tabbing}
+    Tutores: \= Dr. José Francisco Díez Pastor \kill
+    Tutores: \= Dr. José Francisco Díez Pastor \\
+    \> Dr. César Ignacio García Osorio
+    \end{tabbing}
   }%
   \end{center}%
   \null
@@ -427,7 +434,8 @@ D. César Ignacio García Osorio
 
 % Abstract en castellano
 \renewcommand*\abstractname{Resumen}
-\begin{abstract}\include{./tex/0_Abstract}
+\begin{abstract}
+\input{./tex/0_Abstract}
 \end{abstract}
 
 \renewcommand*\abstractname{Descriptores}

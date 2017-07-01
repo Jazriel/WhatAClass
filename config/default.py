@@ -12,6 +12,8 @@ INSTANCE = os.getenv('WAC_INSTANCE', False)
 
 HEROKU = os.getenv('HEROKU', False)
 
+TENSORFLOW = os.getenv('TENSORFLOW', False)
+
 LANGUAGES = {
     'en': 'English',
     'es': 'Español'
