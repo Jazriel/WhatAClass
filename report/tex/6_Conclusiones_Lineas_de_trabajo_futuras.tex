@@ -1,8 +1,30 @@
 \capitulo{6}{Conclusiones y Líneas de trabajo futuras}
 
-Todo proyecto debe incluir las conclusiones que se derivan de su desarrollo. Éstas pueden ser de diferente índole, dependiendo de la tipología del proyecto, pero normalmente van a estar presentes un conjunto de conclusiones relacionadas con los resultados del proyecto y un conjunto de conclusiones técnicas. 
-Además, resulta muy útil realizar un informe crítico indicando cómo se puede mejorar el proyecto, o cómo se puede continuar trabajando en la línea del proyecto realizado. 
+En esta sección se exponen los resultados de la experiencia con el trabajo y lineas futuras con las que mejorar y dar continuidad al proyecto.
 
+\section{Conclusiones}
 
-Redis o MySQL para la 3er eje de la escalabilidad. 
+Tras trabajar en un proyecto de tanta envergadura puedo decir sin temor a equivocarme que ha sido demasiado amplio, por culpa de mi propia ambición, tocando muchos temas de los cuales no salimos suficientemente preparados de la carrera:
+
+\begin{itemize}
+\item \textbf{Desarrollo web:} Es una de las partes de las que más trabajo tienen ahora mismo, debido a la cantidad de empresas que quieren tener una página web. Acabamos con una mínima preparación en C#, y sin suficiente conocimiento de la infraestructura física (servidores, \eng{switches}, \eng{routers}...), ni lógica (balanceadores de carga, \eng{reverse proxies}, servidores web...) que se necesitan para poner una página web en funcionamiento.
+\item \textbf{Redes neuronales convolucionales profundas:} Tras cursar la asignatura de Computación neuronal y evolutiva destacó el desconocimiento de como modelar redes neuronales y que las convolucionales, que ahora mismo parecen el futuro de campos como la conducción automática, reconocimiento y generación de imágenes..., casi ni se mencionasen.
+\end{itemize}
+
+Otros temas como la virtualización de los entornos de despliegue no parece tan importante, ya que la mayoría de las aplicaciones pueden desarrollarse y desplegarse cómodamente sin este tipo de servicios. Quizá valga la pena cierta mención de este tipo de soluciones con las ventajas e inconvenientes de contenedores y maquinas virtuales. 
+
+Personalmente pienso que la orquestración de servicios sin tener el hardware necesario es demasiado difícil. A pesar de su dificultad probablemente acabe siendo necesario el conocimiento de este tipo de sistemas para el desarrollo de software del tipo \eng{Software as a Service} (SaaS), otra alternativa a este tipo de servicios es usar la `nube', de empresas como heroku, amazon (aws)...
+
+El proyecto ha llegado hasta un punto en el que puedo decir, que estoy satisfecho con lo conseguido, y a pesar de tener que recortar en ciertos aspectos como la investigación relacionada con el \eng{deep learning}, el conocimiento adquirido durante este periodo parece invaluable. Por último querría recomendar a cualquiera que lea este trabajo que tenga cuidado con uno de los problemas más grandes con el desarrollo ágil, el \eng{scope creep}, esta es la idea de que, según trabajamos en un proyecto, surjan nuevas e interesantes lineas de desarrollo, investigación o oportunidades y al perseguirlas acabemos ampliando el enfoque del proyecto a cubrir más temas, sin tener en cuenta si esto es suficientemente beneficioso o implica el recortar de otras partes del proyecto.
+ 
+
+\section{Líneas de trabajo futuras}
+Las lineas de trabajo futuras son más o menos claras:
+
+\begin{itemize}
+\item Nginx: Estudiar Nginx y su configuración como balanceador de carga, \eng{reverse proxy} y servidor de http y https. 
+\item Redis: Investigar sobre servicios similares a Redis y memcache que, básicamente, mejoran la eficiencia de uso de una base de datos mediante el cache en memoria principal de las consultas realizadas.
+\item NoSQL: No se recomienda usar NoSQL como fuente de escalabilidad a no ser que sea el único lugar del cuál podemos aumentar el rendimiento. Algunas posibilidades son Apache Cassandra y MongoDB.
+\item DNS: Se cree necesario investigar cómo hacer balance de carga a nivel de DNS, porque es una forma aparentemente sencilla de escalar una aplicación geográficamente, es decir permitir balance de carga según el tiempo de respuesta de distintos servidores que tengamos a nuestra disposición.
+\end{itemize}
 
