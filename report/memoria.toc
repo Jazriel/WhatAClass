@@ -37,17 +37,19 @@
 \contentsline {section}{\numberline {4.10}Editor de texto}{18}{section.4.10}
 \contentsline {section}{\numberline {4.11}Bibliotecas}{19}{section.4.11}
 \contentsline {subsection}{Tensorflow}{19}{section*.16}
-\contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{20}{chapter*.17}
-\contentsline {section}{\numberline {5.1}Idea e inicio}{20}{section.5.1}
-\contentsline {section}{\numberline {5.2}Formaci\IeC {\'o}n}{20}{section.5.2}
-\contentsline {section}{\numberline {5.3}P\IeC {\'a}gina web y versionado de bases de datos}{21}{section.5.3}
-\contentsline {subsection}{Alembic: primeros pasos}{22}{section*.18}
-\contentsline {section}{\numberline {5.4}Heroku y transici\IeC {\'o}n a contenedores}{22}{section.5.4}
-\contentsline {section}{\numberline {5.5}Docker Compose y microservicios}{23}{section.5.5}
-\contentsline {section}{\numberline {5.6}Orquestraci\IeC {\'o}n}{23}{section.5.6}
-\contentsline {section}{\numberline {5.7}Conclusiones}{24}{section.5.7}
-\contentsline {subsection}{Gitflow, scrum y metodolog\IeC {\'\i }as pensadas para equipos}{24}{section*.19}
-\contentsline {subsection}{Tensorflow, versiones provisionales y tecnolog\IeC {\'\i }a punta}{24}{section*.20}
-\contentsline {subsection}{Microservicios}{25}{section*.21}
-\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{26}{chapter*.22}
-\contentsline {chapter}{Bibliograf\'{\i }a}{27}{section*.24}
+\contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{21}{chapter*.17}
+\contentsline {section}{\numberline {5.1}Idea e inicio}{21}{section.5.1}
+\contentsline {section}{\numberline {5.2}Formaci\IeC {\'o}n}{21}{section.5.2}
+\contentsline {section}{\numberline {5.3}P\IeC {\'a}gina web y versionado de bases de datos}{22}{section.5.3}
+\contentsline {subsection}{Alembic: primeros pasos}{23}{section*.18}
+\contentsline {section}{\numberline {5.4}Heroku y transici\IeC {\'o}n a contenedores}{23}{section.5.4}
+\contentsline {section}{\numberline {5.5}Docker Compose y microservicios}{24}{section.5.5}
+\contentsline {section}{\numberline {5.6}Orquestraci\IeC {\'o}n}{24}{section.5.6}
+\contentsline {section}{\numberline {5.7}Conclusiones}{25}{section.5.7}
+\contentsline {subsection}{Gitflow, scrum y metodolog\IeC {\'\i }as pensadas para equipos}{25}{section*.19}
+\contentsline {subsection}{Tensorflow, versiones provisionales y tecnolog\IeC {\'\i }a punta}{25}{section*.20}
+\contentsline {subsection}{Microservicios}{26}{section*.21}
+\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{27}{chapter*.22}
+\contentsline {section}{\numberline {6.1}Conclusiones}{27}{section.6.1}
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas de trabajo futuras}{28}{section.6.2}
+\contentsline {chapter}{Bibliograf\'{\i }a}{29}{section*.24}

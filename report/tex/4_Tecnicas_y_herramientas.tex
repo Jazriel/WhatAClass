@@ -1,26 +1,26 @@
 \capitulo{4}{Técnicas y herramientas}
 
-En esta parte de la memoria se detallan tanto técnicas y herramientas como metodologías y bibliotecas usadas.
+En esta parte de la memoria se detallan tanto técnicas y herramientas, como metodologías y bibliotecas usadas.
 
 
 \section{Metodología}
 
-Al no haber una metodología concreta que se adapte al trabajo de una sola persona, se ha buscado un conjunto de metodologías que se pudiesen conjuntar para dar una metodología conjunta más aplicable a la situación particular que se tiene. 
+Al no haber una metodología concreta que se adapte al trabajo de una sola persona, se ha buscado un conjunto de metodologías que se pudiesen combinar para dar una metodología conjunta más aplicable a la situación particular que se tiene. 
 
 De \concept{DevOps} se ha extraído la \eng{toolchain} (cadena de herramientas) para minimizar riesgos totales del proyecto y se ha buscado reducir la deuda técnica nacida de la necesidad de desplegar el producto y no estar preparado para ello, algo que resulta ser más habitual de lo que debería ser.
 
-De \concept{Scrum} recogemos las herramientas como los \eng{sprint} y las reuniones tras cada \eng{sprint} tanto para concretar el siguiente \eng{sprint} como para hacer una retrospectiva del anterior. 
+De \concept{Scrum} recogemos las herramientas como los \eng{sprint} y las reuniones tras cada \eng{sprint}, tanto para concretar el siguiente \eng{sprint}, como para hacer una retrospectiva del anterior. 
 
 Se ha estudiado también \concept{extreme programming} (XP) y se ha visto que no es viable para el proyecto por la cantidad de esfuerzo que requiere para una sola persona hacer el trabajo de dos como es el \concept{pair programming}. 
 
-De todos los métodos ágiles se ha adquirido la mentalidad de no intentar planificar todo desde el principio e intentar planear las cosas con el conocimiento adquirido en cada iteración. Se intenta decidir en todo lo más tarde posible para intentar conseguir el máximo conocimiento posible, para mejorar las decisiones.
+De todos los métodos ágiles se ha adquirido la mentalidad de no intentar planificar todo desde el principio e intentar planear las cosas con el conocimiento adquirido en cada iteración. Se intenta decidir en todo lo más tarde posible, para intentar conseguir el máximo conocimiento posible, para mejorar las decisiones.
 
 Se ha decidido que la recopilación de información de los \eng{sprints} y este tipo de documentación se va a hacer en un tablero \tool{kanban}, la herramienta que nos proporciona este  sistema va a ser \tool{\hfoot{https://www.zenhub.com/}{ZenHub}}, se usa por la facilidad y el nivel de integración que nos da con otros sistemas también elegidos.
 
 
 \section{Patrones de diseño}
 
-Se ha intentado usar los patrones de diseño para conseguir una arquitectura mejor y más simple para nuevos desarrolladores. También hay que tener en cuenta que no todos los patrones tienen sentido en un lenguaje de programación como Python por su naturaleza dinámica.
+Se ha intentado usar los patrones de diseño para conseguir una arquitectura mejor y más simple para nuevos desarrolladores. También hay que tener en cuenta que no todos los patrones tienen sentido en un lenguaje de programación como Python, por su naturaleza dinámica.
 
 \subsection{Model-View-Controller}
 
@@ -41,21 +41,21 @@ Las alternativas principales de sistema de hospedaje de Git son: \hfoot{https://
 
 Se ha elegido GitHub por una mezcla de razones históricas con razones de integración con otros sistemas como el sistema kanban (ZenHub).
 
-Previamente se conocía GitHub y se sabe que los proyectos \eng{open source} no tienen ninguna limitación, además GitHub ofrece fácil integración con otros sistemas como \tool{\hfoot{https://travis-ci.org/}{Travis}} y \tool{\hfoot{https://slack.com/}{Slack}} si hiciese falta.
+Previamente se conocía GitHub y se sabe que los proyectos \eng{open source} no tienen ninguna limitación, además GitHub ofrece fácil integración con otros sistemas como \tool{\hfoot{https://travis-ci.org/}{Travis}} y \tool{\hfoot{https://slack.com/}{Slack}}, si hiciese falta.
 
 
 \section{Integración continua}
 
-La integración continua es el método por el cuál intentamos integrar todos nuestros productos continuamente para ver si funcionan correctamente en conjunto. Nos va a ayudar a minimizar el riesgo de fallo del proyecto sobre todo si se mantiene en desarrollo un largo periodo de tiempo.
+La integración continua es el método por el cuál intentamos integrar todos nuestros productos continuamente para ver si funcionan correctamente en conjunto. Nos va a ayudar a minimizar el riesgo de fallo del proyecto, sobre todo si se mantiene en desarrollo un largo periodo de tiempo.
 
-La herramienta que se va a usar es \tool{Travis}, esto se debe a la gran documentación, facilidad de integración con Git y GitHub, y otras integraciones que nos ayudaran con otras secciones. Otra ventaja es que al ejecutar tu \eng{build} y test en sus servidores no te tienes que preocupar de casi nada.
+La herramienta que se va a usar es \tool{Travis}, esto se debe a la gran documentación, facilidad de integración con Git y GitHub, y otras integraciones que nos ayudaran con otras secciones. Otra ventaja es que, al ejecutar tu \eng{build} y test en sus servidores, no te tienes que preocupar de casi nada.
 
-Otras opciones que se podrían usar son \hfoot{https://jenkins.io/}{Jenkins} que como ventaja es Open Source y tiene gran cantidad de \eng{plugins}. La desventaja principal es que requiere de más trabajo por nuestra parte.
+Otras opciones que se podrían usar son \hfoot{https://jenkins.io/}{Jenkins} que como ventaja es \eng{open source} y tiene gran cantidad de \eng{plugins}. La desventaja principal es que requiere de más trabajo por nuestra parte.
 
 
 \section{Quality Assurance}
 
-Dado que no tenemos departamento de QA, como deberíamos, para llevar una \eng{toolchain} como la especificada en DevOps, usaremos herramientas automatizadas, que aunque no tengan la calidad de una revisión humana, es lo mejor que disponemos. 
+Dado que no tenemos departamento de QA, como deberíamos, para llevar una \eng{toolchain} como la especificada en DevOps, usaremos herramientas automatizadas, que aunque no tengan la calidad de una revisión humana, es lo mejor de que disponemos. 
 
 La herramienta que se ha elegido es \tool{\hfoot{https://codeclimate.com/}{CodeClimate}}, se ha usado por que no ha sido demasiado complicado el incluir esta herramienta en la línea de producción que ya teníamos (Github+Travis). Se ha intentado usar \hfoot{https://sonarqube.com/}{SonarQube}, pero no ha sido tan sencillo (se intento introducir dentro de la \eng{toolchain} automática, no manualmente). 
 
@@ -64,22 +64,22 @@ La herramienta que se ha elegido es \tool{\hfoot{https://codeclimate.com/}{CodeC
 
 Los test se han realizado con \tool{\hfoot{https://docs.pytest.org/en/latest/}{pytest}}. Esta herramienta es muy parecida a \hfoot{https://docs.python.org/3/library/unittest.html}{unittest} (la herramienta de test en la biblioteca standard de Python). Tiene ventajas, facilita el depurado al decirte exactamente qué ha fallado y con qué valores, y los métodos como \eng{setup} y \eng{teardown}. Se integró esta herramienta con Travis.
 
-Otras librerías pueden ser unittest o \hfoot{http://nose2.readthedocs.io/en/latest/index.html}{nose2}.
+Otras bibliotecas pueden ser unittest o \hfoot{http://nose2.readthedocs.io/en/latest/index.html}{nose2}.
 
 
 \subsection{Recubrimiento}
 
-La forma más sencilla para ver el recubrimiento de un test en Python es \hfoot{https://coverage.readthedocs.io/en/coverage-4.4.1/}{Coverage.py}, tiene varias opciones como report para salida en consola o html para un html con el cubrimiento bien señalado. Se consiguió integrar esta herramienta con Travis, pytest y CodeClimate de manera que se ejecuta con la integración continua.
+La forma más sencilla para ver el recubrimiento de un test en Python es \hfoot{https://coverage.readthedocs.io/en/coverage-4.4.1/}{Coverage.py}, tiene varias opciones como \emph{report} para salida en consola o html para un html con el cubrimiento bien señalado. Se consiguió integrar esta herramienta con Travis, pytest y CodeClimate de manera que se ejecuta con la integración continua.
 
 
 \section{Dependencias}
 
-Para el control de dependencias (seguridad, últimas versiones y licencias) se ha usado \hfoot{https://www.versioneye.com/}{VersionEye}, integrado con GitHub, esta herramienta se adhiere mediante un \eng{webhook} a GitHub y nos dice si se ha descubierto alguna brecha de seguridad en nuestras herramientas, cuáles son sus últimas versiones y si las estamos usando y si las licencias del proyecto son compatibles con la que tenemos.
+Para el control de dependencias (seguridad, últimas versiones y licencias) se ha usado \hfoot{https://www.versioneye.com/}{VersionEye}, integrado con GitHub, esta herramienta se adhiere mediante un \eng{webhook} a GitHub y nos dice si se ha descubierto alguna brecha de seguridad en nuestras herramientas, cuáles son sus últimas versiones, si las estamos usando, o si las licencias del proyecto son compatibles con la que tenemos.
 
 
 \section{Comunicación}
 
-La comunicación se ha hecho de diferentes maneras: Correo electrónico, Slack, \eng{issues} de GitHub y de manera física. Correo electrónico se ha usado para casi toda la comunicación a distancia. Slack se ha usado para integrar herramientas y notificar sobre estas. La comunicación física es el medio que más se ha usado, esto no se debe a ningún motivo en particular, simplemente ha sido el medio más natural para todos.
+La comunicación se ha hecho de diferentes maneras: correo electrónico, Slack, \eng{issues} de GitHub y de manera física. El correo electrónico se ha usado para casi toda la comunicación a distancia. Slack se ha usado para integrar herramientas y notificar sobre estas. La comunicación física es el medio que más se ha usado, esto no se debe a ningún motivo en particular, simplemente ha sido el medio más natural para todos.
 
 
 \section{Documentación}
@@ -90,7 +90,7 @@ La documentación se ha basado en dos sistemas: en código y fuera de código.
 
 En el código se ha usado la documentación recomendada por la comunidad de python en el PEP 287\cite{pep287}, este recomienda usar \tool{reStructuredText\footnote{Es un lenguaje de marcado con indicaciones intuitivas para marcar la estructura de un documento ver \cite{rst}} } (rst).
 
-Se han seguido las guidelines (guías) de un equipo de programadores de la comunidad de Python: pocoo\cite{pocoo}, esto es para poder usar \hfoot{http://www.sphinx-doc.org/en/stable/index.html}{Sphinx} (generador de documentación) para transformar esas cadenas de documentación en una documentación tanto en html o en \LaTeX  si hiciese falta.
+Se han seguido las \emph{guidelines} (guías) de un equipo de programadores de la comunidad de Python: pocoo\cite{pocoo}, esto es para poder usar \hfoot{http://www.sphinx-doc.org/en/stable/index.html}{Sphinx} (generador de documentación) para transformar esas cadenas de documentación en una documentación tanto en html o en \LaTeX  si hiciese falta.
 
 \subsection{Fuera de código}
 
@@ -103,25 +103,25 @@ Se ha mirado tanto en editores de texto más simples como \hfoot{http://www.vim.
 
 Las IDEs también se han mirado y se han considerado tanto \hfoot{https://github.com/spyder-ide/spyder}{Spyder}, \hfoot{https://www.liclipse.com/}{LiClipse} como \hfoot{https://www.jetbrains.com/pycharm/}{PyCharm}.
 
-De todos estos no hay ventajas en usar unos u otros, ya que todos acaban teniendo la misma capacidad gracias a \eng{plugins}, se ha decidido usar Pycharm por que era la única IDE que todavía no se había probado.
+De todos estos no hay ventajas en usar unos u otros, ya que todos acaban teniendo la misma capacidad gracias a \eng{plugins}, se ha decidido usar PyCharm por que era la única IDE que todavía no se había probado.
 
 
 \section{Bibliotecas}
 
-Se ha usado \hfoot{http://flask.pocoo.org/}{Flask} como \eng{microframework} ya que sirve tanto para implementar el patrón MVC como para crear un sistema altamente escalable. 
+Se ha usado \hfoot{http://flask.pocoo.org/}{Flask} como \eng{microframework}, ya que sirve tanto para implementar el patrón MVC, como para crear un sistema altamente escalable. 
 
 Para facilitar ciertas funcionalidades como control de usuarios, seguridad... se han usado las extensiones: \hfoot{https://github.com/python-babel/flask-babel}{flask-babel} y \hfoot{http://babel.pocoo.org/en/latest/}{babel} (internacionalización), \hfoot{https://flask-login.readthedocs.io/en/latest/}{flask-login} (control de usuarios), \hfoot{https://flask-oauthlib.readthedocs.io/en/latest/}{flask-oauthlib} y \hfoot{https://oauthlib.readthedocs.io/en/latest/index.html}{oauthlib} (uso de oauth simplificado), \hfoot{http://flask-sqlalchemy.pocoo.org/2.1/}{flask-sqlalchemy}, \hfoot{https://www.sqlalchemy.org/}{sqlalchemy} y \hfoot{http://initd.org/psycopg/}{psycopg2} (acceso a la base de datos), \hfoot{https://flask-wtf.readthedocs.io/en/stable/}{flask-wtf} y \hfoot{https://wtforms.readthedocs.io/en/latest/}{WTForms} (Formularios html) y \hfoot{https://flask-bcrypt.readthedocs.io/en/latest/}{flask-bcrypt} y \hfoot{https://pypi.python.org/pypi/bcrypt/3.1.0}{Bcrypt} para encriptación.
 
-Como podemos ver muchas de estas extensiones de flask tienen el mismo nombre pero con flask añadido, esto se debe a que son envoltorios (también llamados \eng{wrappers}) de la biblioteca en cuestión pero facilitados para inicializarse con Flask (generalmente añaden un constructor y un constructor \eng{lazy}).
+Como podemos ver, muchas de estas extensiones de flask tienen el mismo nombre pero con flask añadido, esto se debe a que son envoltorios (también llamados \eng{wrappers}) de la biblioteca en cuestión, pero adaptados para inicializarse con Flask (generalmente añaden un constructor y un constructor \eng{lazy}).
 
 Se ha usado el módulo \hfoot{http://www.paramiko.org/}{Paramiko} para simplificar el control de errores de SSH.
 
 \subsection{Tensorflow}
 \hfoot{https://www.tensorflow.org/}{Tensorflow™} es la biblioteca de \eng{machine learning} más popular\footnote{La metrica de popularidad fue el número de `\eng{stars}' en GitHub.} en Python. Es una biblioteca \eng{Open Source} que permite computación numérica a partir de grafos.
 
-El nombre de \eng{tensor} se le da ya que los vectores de datos que se pasan entre operaciones tienen este nombre. Las operaciones se representan como nodos en el grafo. Tiene compatibilidad con GPUs y procesamiento distribuido pensado para sistemas distribuidos. 
+El nombre de \eng{tensor} se le da ya que los vectores de datos que se pasan entre operaciones tienen este nombre. Las operaciones se representan como nodos en el grafo. Tiene compatibilidad con GPUs y esta preparado para poder ejecutarse en sistemas distribuidos. 
 
-Originalmente la biblioteca fue desarrollada por Google, es importante destacar que aunque el modelado y entrenamiento este pensado para hacerse en Python se pueden usar los modelos una vez entrenados en gran variedad de lenguajes de programación, entre los que se incluyen C++, Go, Java... 
+Originalmente la biblioteca fue desarrollada por Google. Es importante destacar que aunque el modelado y entrenamiento esté pensado para hacerse en Python, se pueden usar los modelos una vez entrenados en gran variedad de lenguajes de programación, entre los que se incluyen C++, Go, Java... 
 
 Como curiosidad, la forma de programar los modelos es parecida a la funcional. Se declara el orden de las capas u operaciones y se ejecutan pasando una entrada y pidiendo el resultado de una o varias capas, lo cual devolverá una serie de tensores. 
 

@@ -7,6 +7,7 @@
 \usepackage{placeins}
 \usepackage{cite}
 \usepackage{listings}
+\lstset{basicstyle=\ttfamily\small, showstringspaces=false}
 \usepackage[T1]{fontenc}
 
 
@@ -282,7 +283,7 @@
 
 \newcommand{\hfoot}[2]{\href{#1}{#2}\footnote{\href{#1}{#2: #1}.}}
 
-
+\usepackage{xspace} \let\oldLaTeX\LaTeX \renewcommand{\LaTeX}{\oldLaTeX\xspace} 
 
 
 
@@ -467,7 +468,7 @@ keywords separated by commas.
 
 \clearpage
 
-\listoftables
+%\listoftables
 \clearpage
 
 \mainmatter
