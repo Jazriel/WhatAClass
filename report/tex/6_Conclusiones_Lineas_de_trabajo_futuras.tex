@@ -24,7 +24,7 @@ Las lineas de trabajo futuras son más o menos claras:
 \begin{itemize}
 \item Nginx: Estudiar Nginx y su configuración como balanceador de carga, \eng{reverse proxy} y servidor de http y https. 
 \item Redis: Investigar sobre servicios similares a Redis y memcache que, básicamente, mejoran la eficiencia de uso de una base de datos mediante el cache en memoria principal de las consultas realizadas.
-\item NoSQL: No se recomienda usar NoSQL como fuente de escalabilidad a no ser que sea el único lugar del cuál podemos aumentar el rendimiento, esto se debe a que páginas como Facebook usan MySQL para los usuarios, las bases de datos NoSQL son para cargas mucho más pesadas, como estadísticas captadas en tiempo real. Algunas posibilidades son Apache Cassandra y MongoDB.
+\item NoSQL: No se recomienda usar NoSQL como fuente de escalabilidad a no ser que sea el único lugar del cuál podemos aumentar el rendimiento, esto se debe a que páginas como Facebook usan MySQL para los usuarios, las bases de datos NoSQL son para cargas mucho más pesadas, como estadísticas captadas en tiempo real. Algunas posibilidades son Apache Cassandra (\hfoot{https://pycassa.github.io/pycassa/}{Pycassa}) y MongoDB (\hfoot{https://api.mongodb.com/python/current/}{Pymongo}).
 \item DNS: Se cree necesario investigar cómo hacer balance de carga a nivel de DNS, porque es una forma aparentemente sencilla de escalar una aplicación geográficamente, es decir permitir balance de carga según el tiempo de respuesta de distintos servidores que tengamos a nuestra disposición.
 \end{itemize}
 
