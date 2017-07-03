@@ -45,13 +45,13 @@ La estructura de directorios depende del proyecto, en el proyecto web la estruct
 
 \section{Manual del programador}
 
-Se recomienda usar un IDE aunque no es necesario. Con el script run.py podemos ejecutar la aplicación para debug. 
+Se recomienda usar un IDE aunque no es necesario. Con el \emph{script} `run.py' podemos ejecutar la aplicación para \emph{debug}. 
 
-Para añadir cosas a la página web necesitaremos de conocimientos de flask o de un framework web similar, Spring (Java) es similar a como funciona flask, aunque como cabe esperar tiene diferencias considerables.
+Para añadir cosas a la página web necesitaremos de conocimientos de Flask o de un \emph{framework} web similar, Spring (Java) es similar a como funciona Flask, aunque como cabe esperar tiene diferencias considerables.
 
-Tras conocer flask debemos conocer sus blueprints. Estas son una herramienta que principalmente nos deja descomponer el código en varios apartados permitiendo mantener distintas partes de la aplicación por distintas personas.
+Tras conocer Flask debemos conocer sus \emph{blueprints}. Estas son una herramienta que principalmente nos deja descomponer el código en varios apartados permitiendo mantener distintas partes de la aplicación por distintas personas.
 
-Para añadir la blueprint a la aplicación nos debemos dirigir a WhatAClass/app.py ya que es el archivo donde esta la factoría de la aplicación. Ya hay ejemplos codificados de esto en app.py y solo tenemos que verlos y los lugares de donde hemos importado esas blueprints para saber cómo seguir desarrollando sistemas similares.
+Para añadir la \emph{blueprint} a la aplicación nos debemos dirigir a WhatAClass/app.py ya que es el archivo donde esta la factoría de la aplicación. Ya hay ejemplos codificados de esto en `app.py' y solo tenemos que verlos y los lugares de donde hemos importado esas \emph{blueprints} para saber cómo seguir desarrollando sistemas similares.
 
 
  
@@ -61,14 +61,12 @@ Para añadir la blueprint a la aplicación nos debemos dirigir a WhatAClass/app.
 Se recomienda usar un gestor de entornos virtuales como venv, pyenv, conda\ldots
 
 Para este ejemplo usaremos el recomendado por la documentación oficial de python venv: 
-	Para crearlo:
-python3 -m venv ./venv
 	
-	Para activarlo:
-source venv/bin/activate
+Para crearlo: `python3 -m venv ./venv'
+	
+Para activarlo: `source venv/bin/activate'
 
-	Para desactivarlo
-deactivate
+Para desactivarlo: `deactivate'
 
 Los pasos para instalar el servicio web son:
 \begin{list}{-}{}
@@ -78,9 +76,9 @@ Los pasos para instalar el servicio web son:
 \item sudo pip3 install -r requirements.txt
 \end{list}
 
-La instalación se puede hacer desde los fuentes con 'sudo pip3 install -r requirements.txt' o con 'sudo pip3 install --editable .'. Esto usa o requirements.txt o setup.py para instalar las dependencias, ahora mismo se favorece la instalación con el primer comando. Al ser python un lenguaje interpretado no necesitamos compilarlo manualmente, se compilará JIT (just in time).
+La instalación se puede hacer desde los fuentes con `sudo pip3 install -r requirements.txt' o con `sudo pip3 install --editable .'. Esto usa o requirements.txt o setup.py para instalar las dependencias, ahora mismo se favorece la instalación con el primer comando. Al ser Python un lenguaje interpretado no necesitamos compilarlo manualmente, se compilará JIT (just in time).
 
-Para ejecutar en desarrollo lo mejor sería usar el script run.py (script específico para desarrollo, no se puede usar en producción), aunque se puede usar un script listo para producción no se recomienda ya que los errores son menos descriptivos y mucho más difíciles de solventar.
+Para ejecutar en desarrollo lo mejor sería usar el \emph{script} `run.py' (\emph{script} específico para desarrollo, no se puede usar en producción), aunque se puede usar un \emph{script} listo para producción no se recomienda ya que los errores son menos descriptivos y mucho más difíciles de solventar.
 
 \section{Despliegue}
 
@@ -101,4 +99,8 @@ Hay gente que avoca por tener el entorno de programación dentro de un contenedo
 Las pruebas se pueden ejecutar con test.py que lanza los tests de la carpeta tests/. si queremos ver el recubrimiento de el codigo podemos usar una herramienta como coverage y ejecutar test.py a traves de esa herramienta.  
 
 
+\section{Microservicios}
 
+Todo esto es sólo la estructura de la parte web y de control de sesión de la aplicación, ya que se dispone de la parte de minería la cual tiene su propia estructura de archivos...
+
+Al ser tan simple como es, no se ha considerado necesario explicar todo lo que contiene. Los .py son \eng{scripts} para ejecutar las funciones necesarias, la carpeta test tiene los test y el Dockerfile, como en el punto anterior, tiene los pasos para la construcción del contenedor.

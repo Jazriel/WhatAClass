@@ -6,41 +6,55 @@
 \contentsline {appendix}{\chapternumberline {A}Plan de Proyecto Software}{1}{appendix.Alph1}
 \contentsline {section}{\numberline {A.1}Introducci\IeC {\'o}n}{1}{section.Alph1.1}
 \contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n temporal}{1}{section.Alph1.2}
-\contentsline {section}{\numberline {A.3}Estudio de viabilidad}{2}{section.Alph1.3}
-\contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{2}{section*.4}
-\contentsline {subsubsection}{Costes de personal}{2}{section*.5}
-\contentsline {subsubsection}{Costes de material: hardware y software}{2}{section*.6}
-\contentsline {subsubsection}{Costes totales}{2}{section*.7}
-\contentsline {subsection}{Beneficios}{3}{section*.8}
-\contentsline {subsection}{Viabilidad legal}{3}{section*.9}
-\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{4}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{4}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Objetivos generales}{4}{section.Alph2.2}
-\contentsline {section}{\numberline {B.3}Catalogo de requisitos}{4}{section.Alph2.3}
-\contentsline {subsection}{Requisitos funcionales}{4}{section*.10}
-\contentsline {subsection}{Requisitos no funcionales}{5}{section*.11}
-\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{5}{section.Alph2.4}
-\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{10}{appendix.Alph3}
-\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{10}{section.Alph3.1}
-\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{10}{section.Alph3.2}
-\contentsline {subsection}{Paso de datos}{11}{section*.12}
-\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{11}{section.Alph3.3}
-\contentsline {subsection}{Model View Controller (MVC)}{11}{section*.13}
-\contentsline {subsection}{Factory Method}{12}{section*.14}
-\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o procedimental}{13}{section.Alph3.4}
-\contentsline {section}{\numberline {C.5}Dise\IeC {\~n}o de paquetes}{13}{section.Alph3.5}
-\contentsline {subsection}{Aplicaci\IeC {\'o}n}{13}{section*.15}
-\contentsline {subsection}{Configuraci\IeC {\'o}n}{14}{section*.16}
-\contentsline {subsection}{Tensorflow}{14}{section*.17}
-\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{15}{appendix.Alph4}
-\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{15}{section.Alph4.1}
-\contentsline {section}{\numberline {D.2}Estructura de directorios}{15}{section.Alph4.2}
-\contentsline {section}{\numberline {D.3}Manual del programador}{17}{section.Alph4.3}
-\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{17}{section.Alph4.4}
-\contentsline {section}{\numberline {D.5}Despliegue}{18}{section.Alph4.5}
-\contentsline {section}{\numberline {D.6}Pruebas del sistema}{18}{section.Alph4.6}
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{19}{appendix.Alph5}
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{19}{section.Alph5.1}
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{19}{section.Alph5.2}
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{19}{section.Alph5.3}
-\contentsline {section}{\numberline {E.4}Manual del usuario}{19}{section.Alph5.4}
+\contentsline {subsection}{Sistema de \emph {sprints}}{2}{section*.4}
+\contentsline {subsubsection}{Sprints antes del cuatrimestre}{2}{section*.5}
+\contentsline {subsubsection}{Sprint 1}{2}{section*.6}
+\contentsline {subsubsection}{Sprint 2}{2}{section*.7}
+\contentsline {subsubsection}{Sprint 3}{2}{section*.8}
+\contentsline {subsubsection}{Sprint 4-6}{3}{section*.9}
+\contentsline {subsubsection}{Sprint 7}{3}{section*.10}
+\contentsline {subsubsection}{Docker}{3}{section*.11}
+\contentsline {subsubsection}{Transfer learning}{3}{section*.12}
+\contentsline {subsubsection}{Docker Compose y Swarm}{3}{section*.13}
+\contentsline {subsubsection}{Microservicios}{4}{section*.14}
+\contentsline {subsubsection}{Escalabilidad y despliegue de p\IeC {\'a}ginas web}{4}{section*.15}
+\contentsline {section}{\numberline {A.3}Estudio de viabilidad}{4}{section.Alph1.3}
+\contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{4}{section*.16}
+\contentsline {subsubsection}{Costes de personal}{4}{section*.17}
+\contentsline {subsubsection}{Costes de material: hardware y software}{4}{section*.18}
+\contentsline {subsubsection}{Costes totales}{5}{section*.19}
+\contentsline {subsection}{Beneficios}{5}{section*.20}
+\contentsline {subsection}{Viabilidad legal}{5}{section*.21}
+\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{7}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{7}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Objetivos generales}{7}{section.Alph2.2}
+\contentsline {section}{\numberline {B.3}Catalogo de requisitos}{7}{section.Alph2.3}
+\contentsline {subsection}{Requisitos funcionales}{7}{section*.22}
+\contentsline {subsection}{Requisitos no funcionales}{8}{section*.23}
+\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{8}{section.Alph2.4}
+\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{13}{appendix.Alph3}
+\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{13}{section.Alph3.1}
+\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{13}{section.Alph3.2}
+\contentsline {subsection}{Paso de datos}{14}{section*.24}
+\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{14}{section.Alph3.3}
+\contentsline {subsection}{Model View Controller (MVC)}{14}{section*.25}
+\contentsline {subsection}{Factory Method}{15}{section*.26}
+\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o procedimental}{16}{section.Alph3.4}
+\contentsline {section}{\numberline {C.5}Dise\IeC {\~n}o de paquetes}{16}{section.Alph3.5}
+\contentsline {subsection}{Aplicaci\IeC {\'o}n}{16}{section*.27}
+\contentsline {subsection}{Configuraci\IeC {\'o}n}{17}{section*.28}
+\contentsline {subsection}{Tensorflow}{17}{section*.29}
+\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{18}{appendix.Alph4}
+\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{18}{section.Alph4.1}
+\contentsline {section}{\numberline {D.2}Estructura de directorios}{18}{section.Alph4.2}
+\contentsline {section}{\numberline {D.3}Manual del programador}{20}{section.Alph4.3}
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{20}{section.Alph4.4}
+\contentsline {section}{\numberline {D.5}Despliegue}{21}{section.Alph4.5}
+\contentsline {section}{\numberline {D.6}Pruebas del sistema}{21}{section.Alph4.6}
+\contentsline {section}{\numberline {D.7}Microservicios}{21}{section.Alph4.7}
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{22}{appendix.Alph5}
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{22}{section.Alph5.1}
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{22}{section.Alph5.2}
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{22}{section.Alph5.3}
+\contentsline {section}{\numberline {E.4}Manual del usuario}{22}{section.Alph5.4}
+\contentsline {chapter}{Bibliograf\'{\i }a}{25}{section*.31}

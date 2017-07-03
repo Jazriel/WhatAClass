@@ -2,16 +2,16 @@
 \select@language {spanish}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Diagrama de casos de uso}}{6}{figure.Alph2.1}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Diagrama de casos de uso}}{9}{figure.Alph2.1}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Diagrama entidad relacci\IeC {\'o}n}}{11}{figure.Alph3.1}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Arquitectura de la aplicaci\IeC {\'o}n}}{12}{figure.Alph3.2}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Diagrama de secuencia}}{13}{figure.Alph3.3}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Diagrama entidad relacci\IeC {\'o}n}}{14}{figure.Alph3.1}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Arquitectura de la aplicaci\IeC {\'o}n}}{15}{figure.Alph3.2}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Diagrama de secuencia}}{16}{figure.Alph3.3}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Punto de entrada a la aplicaci\IeC {\'o}n}}{20}{figure.Alph5.1}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla de registro de usuario}}{20}{figure.Alph5.2}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Pantalla de inicio de sesi\IeC {\'o}n}}{20}{figure.Alph5.3}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Inicios de sesi\IeC {\'o}n alternativos}}{20}{figure.Alph5.4}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Pantalla de acceso a el servicio de clasificaci\IeC {\'o}n}}{21}{figure.Alph5.5}
-\contentsline {figure}{\numberline {E.6}{\ignorespaces Cambio de las zonas accesibles al iniciar sesi\IeC {\'o}n}}{21}{figure.Alph5.6}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Punto de entrada a la aplicaci\IeC {\'o}n}}{23}{figure.Alph5.1}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla de registro de usuario}}{23}{figure.Alph5.2}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Pantalla de inicio de sesi\IeC {\'o}n}}{23}{figure.Alph5.3}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Inicios de sesi\IeC {\'o}n alternativos}}{24}{figure.Alph5.4}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Cambio de las zonas accesibles al iniciar sesi\IeC {\'o}n}}{24}{figure.Alph5.5}
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Pantalla de acceso a el servicio de clasificaci\IeC {\'o}n}}{24}{figure.Alph5.6}
