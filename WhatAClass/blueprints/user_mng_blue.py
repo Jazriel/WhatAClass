@@ -1,5 +1,5 @@
 from flask import (Blueprint, flash, render_template, url_for, abort,
-                   redirect)
+                   redirect, session)
 from flask_login import login_user, logout_user, current_user
 from itsdangerous import BadSignature
 from flask_babel import gettext as _
@@ -9,7 +9,6 @@ from WhatAClass.forms import LoginForm, SignUpForm, EmailForm, PasswordForm
 from WhatAClass.models import User
 from WhatAClass.util import email_server
 from WhatAClass.extensions import db, ts, login_manager
-from .oauth import oauth_google
 
 user_mng = Blueprint('user_mng', __name__)
 
@@ -62,6 +61,7 @@ def check_and_login(password, user):
 def logout():
     """Logs the user out, has no effect if there was no one logged in."""
     logout_user()
+    session.clear()
     return redirect(url_for('index.base'))
 
 
@@ -196,3 +196,9 @@ def recover(token):
         return redirect(url_for('user_mng.login'))
 
     return render_template('recover.html', form=form, token=token)
+
+
+@user_mng.route('/other/login', methods=['GET', 'POST'])
+def other_logins():
+    """For logins that are not the usual in the app."""
+    return render_template('other_logins.html')

@@ -26,10 +26,11 @@ class User(db.Model):
     email_confirmed = db.Column(db.Boolean)
     oauth_token = db.Column(db.String(64), unique=True)
 
-    def __init__(self, email, password, email_confirmed=False):
+    def __init__(self, email, password, email_confirmed=False, oauth_token=None):
         self.email = email
         self.password = password
         self.email_confirmed = email_confirmed
+        self.oauth_token = oauth_token
 
     @hybrid_property
     def password(self):
@@ -40,7 +41,10 @@ class User(db.Model):
     def password(self, plaintext):
         """Part of the hybrid property pattern. Modified setter
         to auto-encrypt."""
-        self._password = bcrypt.generate_password_hash(plaintext)
+        if plaintext is not None:
+            self._password = bcrypt.generate_password_hash(plaintext)
+        else:
+            self._password = None
 
     def is_correct_password(self, password):
         """Returns the check to ensure the passwords are the same."""

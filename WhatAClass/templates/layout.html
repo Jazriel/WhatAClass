@@ -35,6 +35,7 @@
                             <ul class="dropdown-menu" aria-labelledby="user_mng">
                                 <li><a href="{{ url_for('user_mng.sign_up') }}">{{ _('Sign up') }}</a></li>
                                 <li><a href="{{ url_for('user_mng.login') }}">{{ _('Log in') }}</a></li>
+                                <li><a href="{{ url_for('user_mng.other_logins') }}">{{ _('Other login') }}</a></li>
                                 <li><a href="{{ url_for('user_mng.logout') }}">{{ _('Log out') }}</a></li>
                             </ul>
                         </li>
@@ -45,11 +46,8 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="">
-                                    <li><a href="{{ url_for('file_mng.upload') }}">{{ _('Upload files') }}</a></li>
+                                    <li><a href="{{ url_for('tensorflow_mng.predict') }}">{{ _('Classify image') }}</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a class="page-scroll" href="">{{ _('Placeholder') }}</a>
                             </li>
                         {% endif %}
                     </ul>

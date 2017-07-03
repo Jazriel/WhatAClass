@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import  with context %}
+{% block title %}{{ _('WhatAClass: upload dataset') }}{% endblock %}
+{% block body %}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">{{ _('Upload dataset') }}</h1>
+        <br/>
+        <h2>{{ _('The dataset has to be a zip file with jpg images.') }}</h2>
+        <br/>
+        {{ dd_upload(form, url_for('tensorflow_mng.upload_dataset')) }}
+    </div>
+{% endblock %}

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, session, redirect, url_for, flash
 from flask_babel import gettext as _
 from flask_login import login_user
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, OperationalError
 
 from WhatAClass.extensions import oauths, db
 from WhatAClass.models import User
@@ -31,7 +31,12 @@ def authorized():
             request.args['error_description']
         )
 
-    user = User.query.filter_by(oauth_token=resp['access_token']).first()
+    session['google_token'] = (resp['access_token'], '')
+
+    try:
+        user = User.query.filter_by(oauth_token=str(google_.get('userinfo').data.get('id'))).first()
+    except OperationalError:
+        user = None  # we'll register the user instead
 
     if not check_and_login_or_register(user, google_.get('userinfo')):
         return redirect(url_for('index.base'))
@@ -42,8 +47,11 @@ def authorized():
 def check_and_login_or_register(user, google_user):
     """Login or register, if there are problems return flashes."""
     if user is None:
+
         user = User(
-            email=google_user.data.email # TODO check access to email
+            email=google_user.data.get('email'),
+            password=None,
+            oauth_token=str(google_user.data.get('id'))
         )
         user.email_confirmed = True
 
@@ -58,3 +66,6 @@ def check_and_login_or_register(user, google_user):
         flash(_('Something failed, contact your administrator.'))
         return False
     return True
+
+
+

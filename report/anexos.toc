@@ -37,7 +37,8 @@
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{15}{section.Alph4.2}
 \contentsline {section}{\numberline {D.3}Manual del programador}{17}{section.Alph4.3}
 \contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{17}{section.Alph4.4}
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{18}{section.Alph4.5}
+\contentsline {section}{\numberline {D.5}Despliegue}{18}{section.Alph4.5}
+\contentsline {section}{\numberline {D.6}Pruebas del sistema}{18}{section.Alph4.6}
 \contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{19}{appendix.Alph5}
 \contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{19}{section.Alph5.1}
 \contentsline {section}{\numberline {E.2}Requisitos de usuarios}{19}{section.Alph5.2}
