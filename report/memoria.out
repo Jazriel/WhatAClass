@@ -1,40 +1,39 @@
 \BOOKMARK [0][-]{section*.1}{\315ndice general}{}% 1
 \BOOKMARK [0][-]{section*.2}{\315ndice de figuras}{}% 2
-\BOOKMARK [0][-]{section*.3}{\315ndice de tablas}{}% 3
-\BOOKMARK [0][-]{chapter*.4}{Introducci\363n}{}% 4
-\BOOKMARK [0][-]{chapter*.5}{Objetivos del proyecto}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Objetivos principales}{chapter*.5}% 6
-\BOOKMARK [1][-]{section.2.2}{Servidor web y p\341gina web}{chapter*.5}% 7
-\BOOKMARK [1][-]{section.2.3}{Servicio de Miner\355a}{chapter*.5}% 8
-\BOOKMARK [1][-]{section.2.4}{Proceso de desarrollo}{chapter*.5}% 9
-\BOOKMARK [1][-]{section.2.5}{Objetivos personales}{chapter*.5}% 10
-\BOOKMARK [0][-]{chapter*.6}{Conceptos te\363ricos}{}% 11
-\BOOKMARK [1][-]{section.3.1}{Deuda t\351cnica}{chapter*.6}% 12
-\BOOKMARK [1][-]{section.3.2}{Integraci\363n continua \(Continuous Integration\)}{chapter*.6}% 13
-\BOOKMARK [1][-]{section.3.3}{DevOps}{chapter*.6}% 14
-\BOOKMARK [1][-]{section.3.4}{Microservicios}{chapter*.6}% 15
-\BOOKMARK [1][-]{section.3.5}{Deep Learning}{chapter*.6}% 16
-\BOOKMARK [0][-]{chapter*.11}{T\351cnicas y herramientas}{}% 17
-\BOOKMARK [1][-]{section.4.1}{Metodolog\355a}{chapter*.11}% 18
-\BOOKMARK [1][-]{section.4.2}{Patrones de dise\361o}{chapter*.11}% 19
-\BOOKMARK [1][-]{section.4.3}{Control de versiones}{chapter*.11}% 20
-\BOOKMARK [1][-]{section.4.4}{Integraci\363n continua}{chapter*.11}% 21
-\BOOKMARK [1][-]{section.4.5}{Quality Assurance}{chapter*.11}% 22
-\BOOKMARK [1][-]{section.4.6}{Test}{chapter*.11}% 23
-\BOOKMARK [1][-]{section.4.7}{Dependencias}{chapter*.11}% 24
-\BOOKMARK [1][-]{section.4.8}{Comunicaci\363n}{chapter*.11}% 25
-\BOOKMARK [1][-]{section.4.9}{Documentaci\363n}{chapter*.11}% 26
-\BOOKMARK [1][-]{section.4.10}{Editor de texto}{chapter*.11}% 27
-\BOOKMARK [1][-]{section.4.11}{Bibliotecas}{chapter*.11}% 28
-\BOOKMARK [0][-]{chapter*.17}{Aspectos relevantes del desarrollo del proyecto}{}% 29
-\BOOKMARK [1][-]{section.5.1}{Idea e inicio}{chapter*.17}% 30
-\BOOKMARK [1][-]{section.5.2}{Formaci\363n}{chapter*.17}% 31
-\BOOKMARK [1][-]{section.5.3}{P\341gina web y versionado de bases de datos}{chapter*.17}% 32
-\BOOKMARK [1][-]{section.5.4}{Heroku y transici\363n a contenedores}{chapter*.17}% 33
-\BOOKMARK [1][-]{section.5.5}{Docker Compose y microservicios}{chapter*.17}% 34
-\BOOKMARK [1][-]{section.5.6}{Orquestraci\363n}{chapter*.17}% 35
-\BOOKMARK [1][-]{section.5.7}{Conclusiones}{chapter*.17}% 36
-\BOOKMARK [0][-]{chapter*.22}{Conclusiones y L\355neas de trabajo futuras}{}% 37
-\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter*.22}% 38
-\BOOKMARK [1][-]{section.6.2}{L\355neas de trabajo futuras}{chapter*.22}% 39
-\BOOKMARK [0][-]{section*.24}{Bibliograf\355a}{}% 40
+\BOOKMARK [0][-]{chapter*.3}{Introducci\363n}{}% 3
+\BOOKMARK [0][-]{chapter*.4}{Objetivos del proyecto}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Objetivos principales}{chapter*.4}% 5
+\BOOKMARK [1][-]{section.2.2}{Servidor web y p\341gina web}{chapter*.4}% 6
+\BOOKMARK [1][-]{section.2.3}{Servicio de Miner\355a}{chapter*.4}% 7
+\BOOKMARK [1][-]{section.2.4}{Proceso de desarrollo}{chapter*.4}% 8
+\BOOKMARK [1][-]{section.2.5}{Objetivos personales}{chapter*.4}% 9
+\BOOKMARK [0][-]{chapter*.5}{Conceptos te\363ricos}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Deuda t\351cnica}{chapter*.5}% 11
+\BOOKMARK [1][-]{section.3.2}{Integraci\363n continua \(Continuous Integration\)}{chapter*.5}% 12
+\BOOKMARK [1][-]{section.3.3}{DevOps}{chapter*.5}% 13
+\BOOKMARK [1][-]{section.3.4}{Microservicios}{chapter*.5}% 14
+\BOOKMARK [1][-]{section.3.5}{Deep Learning}{chapter*.5}% 15
+\BOOKMARK [0][-]{chapter*.10}{T\351cnicas y herramientas}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Metodolog\355a}{chapter*.10}% 17
+\BOOKMARK [1][-]{section.4.2}{Patrones de dise\361o}{chapter*.10}% 18
+\BOOKMARK [1][-]{section.4.3}{Control de versiones}{chapter*.10}% 19
+\BOOKMARK [1][-]{section.4.4}{Integraci\363n continua}{chapter*.10}% 20
+\BOOKMARK [1][-]{section.4.5}{Quality Assurance}{chapter*.10}% 21
+\BOOKMARK [1][-]{section.4.6}{Test}{chapter*.10}% 22
+\BOOKMARK [1][-]{section.4.7}{Dependencias}{chapter*.10}% 23
+\BOOKMARK [1][-]{section.4.8}{Comunicaci\363n}{chapter*.10}% 24
+\BOOKMARK [1][-]{section.4.9}{Documentaci\363n}{chapter*.10}% 25
+\BOOKMARK [1][-]{section.4.10}{Editor de texto}{chapter*.10}% 26
+\BOOKMARK [1][-]{section.4.11}{Bibliotecas}{chapter*.10}% 27
+\BOOKMARK [0][-]{chapter*.16}{Aspectos relevantes del desarrollo del proyecto}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Idea e inicio}{chapter*.16}% 29
+\BOOKMARK [1][-]{section.5.2}{Formaci\363n}{chapter*.16}% 30
+\BOOKMARK [1][-]{section.5.3}{P\341gina web y versionado de bases de datos}{chapter*.16}% 31
+\BOOKMARK [1][-]{section.5.4}{Heroku y transici\363n a contenedores}{chapter*.16}% 32
+\BOOKMARK [1][-]{section.5.5}{Docker Compose y microservicios}{chapter*.16}% 33
+\BOOKMARK [1][-]{section.5.6}{Orquestaci\363n}{chapter*.16}% 34
+\BOOKMARK [1][-]{section.5.7}{Conclusiones}{chapter*.16}% 35
+\BOOKMARK [0][-]{chapter*.21}{Conclusiones y l\355neas de trabajo futuras}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter*.21}% 37
+\BOOKMARK [1][-]{section.6.2}{L\355neas de trabajo futuras}{chapter*.21}% 38
+\BOOKMARK [0][-]{section*.23}{Bibliograf\355a}{}% 39
