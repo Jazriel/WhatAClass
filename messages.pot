@@ -1,18 +1,17 @@
-# Spanish translations for PROJECT.
+# Translations template for PROJECT.
 # Copyright (C) 2017 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2017-07-03 08:07+0200\n"
-"PO-Revision-Date: 2017-07-03 08:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,9 +85,7 @@ msgstr "WhatAClass: Error"
 msgid ""
 "There was an error with your request, if this persist contact the "
 "administrator."
-msgstr ""
-"Hubo un problema con la petición, si esto continua contacte con el "
-"administrador."
+msgstr "Hubo un problema con la petición, si esto continua contacte con el administrador."
 
 #: WhatAClass/templates/index.html:2 WhatAClass/templates/layout.html:21
 msgid "WhatAClass"
@@ -245,9 +242,7 @@ msgstr "Confirme su email."
 msgid ""
 "We received a petition to reset your password, if it was not you don't do"
 " anything"
-msgstr ""
-"Hemos recibido una petición para cambiar su contraseña, si no fue usted, "
-"no haga nada"
+msgstr "Hemos recibido una petición para cambiar su contraseña, si no fue usted, no haga nada"
 
 #: WhatAClass/templates/email/recover.html:2
 msgid "If you asked to reset the password click the link bellow."
@@ -261,5 +256,6 @@ msgstr "Cambio de contraseña"
 msgid ""
 "If you have any questions or concerns, please contact us at "
 "javyermartinez+whataclass@gmail.com."
-msgstr "Si tiene preguntas contacte a javyermartinez+whataclass@gmail.com."
+msgstr "Si tiene preguntas contacte a "
+"javyermartinez+whataclass@gmail.com."
 
