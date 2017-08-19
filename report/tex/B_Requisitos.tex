@@ -74,13 +74,6 @@ Además se pide que todo esto se haga de una manera escalable, desplegable y con
 \section{Especificación de requisitos}
 En esta sección se desarrollarán los casos de uso de la aplicación, cabe destacar que los actores del sistema corresponden a la misma persona en distintos momentos de su uso de la aplicación.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{usecase.png}
-	\caption{Diagrama de casos de uso}\label{fig:usecase.png}
-\end{figure}
-
-
 
 \begin{longtable}[H]{@{}ll@{}}
 \toprule
@@ -335,13 +328,81 @@ Alta\strut
 \bottomrule%------------------------------------------------------------
 \caption{CU-04 Clasificación de imagen.}
 \end{longtable}
+%------------------------------------------------------------------------------------------
+
+
+\begin{longtable}[H]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.26\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+\textbf{CU-05}\strut
+\end{minipage} & \begin{minipage}[b]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+\textbf{Subida de datasets}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Autor}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Javier Martínez Riberas\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Requisitos asociados}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+RF-3.2\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Descripción}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+Permite al usuario subir un conjunto de imágenes para re-entrenar la red neuronal.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Precondición}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+El usuario debe de estar autenticado.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Acciones}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  El usuario elige un dataset en su ordenador para subir.
+\item
+  El dataset debe tener una estructura de carpetas equivalentes a las clases.
+\item
+  Cada carpeta equivalente a una clase debe contener imágenes en jpg de la clase en cuestión.
+\end{enumerate}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Postcondición}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+El usuario tras un periodo de tiempo tiene disponible un dataset para re-entrenar el modelo.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Excepciones}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+\begin{itemize}
+\tightlist
+\item
+  Fallo a la hora de subir el zip.
+\end{itemize}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+\textbf{Importancia}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
+Media-Alta\strut
+\end{minipage}\tabularnewline
+\bottomrule%------------------------------------------------------------
+\caption{CU-05 Subida de datasets.}
+\end{longtable}
 
 %------------------------------------------------------------------------------------------
 
 \begin{longtable}[H]{@{}ll@{}}
 \toprule
 \begin{minipage}[b]{0.26\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
-\textbf{CU-05}\strut
+\textbf{CU-06}\strut
 \end{minipage} & \begin{minipage}[b]{0.68\columnwidth}\raggedright\strut%-----------------------------------------------------------------------
 \textbf{Re-entrenado de modelos}\strut
 \end{minipage}\tabularnewline
@@ -376,7 +437,7 @@ El usuario debe de estar autenticado y haber subido un dataset.\strut
 \item
   El usuario elige un dataset.
 \item
-  El usuario debe esperar una cantidad decente de tiempo y tendrá el modelo disponible.
+  El usuario debe esperar una cantidad decente de tiempo (mínimo media hora) y tendrá el modelo disponible.
 \end{enumerate}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
@@ -399,5 +460,16 @@ El usuario tras un periodo de tiempo tiene disponible un modelo.\strut
 Media-Alta\strut
 \end{minipage}\tabularnewline
 \bottomrule%------------------------------------------------------------
-\caption{CU-05 Re-entrenado de modelos.}
+\caption{CU-06 Re-entrenado de modelos.}
 \end{longtable}
+
+\newpage
+Por último se expone el diagrama de casos de uso como resumen de la especificación de requisitos.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{usecase.png}
+	\caption{Diagrama de casos de uso}\label{fig:usecase.png}
+\end{figure}
+
+

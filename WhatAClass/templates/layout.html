@@ -35,20 +35,24 @@
                             <ul class="dropdown-menu" aria-labelledby="user_mng">
                                 <li><a href="{{ url_for('user_mng.sign_up') }}">{{ _('Sign up') }}</a></li>
                                 <li><a href="{{ url_for('user_mng.login') }}">{{ _('Log in') }}</a></li>
-                                <li><a href="{{ url_for('user_mng.other_logins') }}">{{ _('Other login') }}</a></li>
+                                <li><a href="{{ url_for('user_mng.other_logins') }}">{{ _('Other logins') }}</a></li>
                                 <li><a href="{{ url_for('user_mng.logout') }}">{{ _('Log out') }}</a></li>
                             </ul>
                         </li>
                         {% if current_user.is_authenticated %}
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">
-                                    {{ _('Datasets') }}
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="">
-                                    <li><a href="{{ url_for('tensorflow_mng.predict') }}">{{ _('Classify image') }}</a></li>
-                                </ul>
-                            </li>
+                            {% if config.get('ADDONS')['TENSORFLOW'] != False %}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">
+                                        {{ _('Tensorflow') }}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="">
+                                        <li><a href="{{ url_for('tensorflow_mng.upload_dataset') }}">{{ _('Upload dataset') }}</a></li>
+                                        <li><a href="{{ url_for('tensorflow_mng.retrain') }}">{{ _('Retrain model') }}</a></li>
+                                        <li><a href="{{ url_for('tensorflow_mng.predict') }}">{{ _('Classify image') }}</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
                         {% endif %}
                     </ul>
                 </div>

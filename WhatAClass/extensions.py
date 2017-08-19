@@ -23,7 +23,7 @@ bcrypt = Bcrypt()
 csrf = CSRFProtect()
 babel = Babel()
 login_manager = LoginManager()
-ts = URLSafeTimedSerializer('NotSecretKey')
+ts = URLSafeTimedSerializer('NotSecretKey')  # TODO: MOVE TO CONFIG
 LANGUAGES = dict()
 oauth = OAuth()
 

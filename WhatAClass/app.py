@@ -53,7 +53,7 @@ def register_blueprints(app):
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
     app.register_blueprint(oauth_google)
-    if app.config['TENSORFLOW'] is not False:
+    if app.config['ADDONS']['TENSORFLOW'] is not False:
         # May be a string with True instead of the boolean True
         app.register_blueprint(tensorflow_mng)
     return app

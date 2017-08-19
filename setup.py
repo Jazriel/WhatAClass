@@ -12,6 +12,7 @@ setup(
         'Flask-Bcrypt',
         'Flask-Login',
         'Flask-SQLAlchemy',
+        'Flask-Oauthlib',
         'Flask-WTF',
         'itsdangerous',
         'Jinja2',

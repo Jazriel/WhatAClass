@@ -88,3 +88,17 @@
 {% macro link_google_images(search) %}
     <a href="{{  'https://www.google.com/search?q={}'.format(search.replace(' ', '+'))  }}&tbm=isch"> {{ search }} </a>
 {% endmacro %}
+
+{% macro select_form(form, options, button_value) %}
+<form class="form-horizontal" action="{{ action }}" method="post" id="form">
+    <select title="options_title" name="options" required>
+        <option autofocus disabled value="{{ _('None') }}">{{ _('None') }}</option>
+        {% for option in options %}
+            <option value="{{ option }}"> {{ option }} </option>
+        {% endfor %}
+    </select>
+    {{ submit_button(button_value) }}
+    {{ form.csrf_token }}
+</form>
+{% endmacro %}
+

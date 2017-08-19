@@ -2,24 +2,26 @@
 """Default configuration that should not change in normal circumstances."""
 import os
 
+# SQLALCHEMY
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_ECHO = False
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:////var/lib/whataclass/user_db.db')
 
+# BCRYPT
 BCRYPT_LOG_ROUNDS = 12
 
+
 DEBUG = os.getenv('DEBUG', False)
-INSTANCE = os.getenv('WAC_INSTANCE', False)
 
-HEROKU = os.getenv('HEROKU', False)
+INSTANCE = os.getenv('WAC_INSTANCE', False)  # TODO CHECK
 
-TENSORFLOW = os.getenv('TENSORFLOW', True)
+HEROKU = os.getenv('HEROKU', False)  # TODO Stop suporting heroku
 
+# Internationalization
 LANGUAGES = {
     'en': 'English',
     'es': 'Español'
 }
-
-SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:////var/lib/whataclass/user_db.db')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'This_key_is_not_a_secret')
 
@@ -41,3 +43,11 @@ SSH_CONF = {
     'USER': os.getenv('WORKER_USER', 'root'),
     'PASS': os.getenv('WORKER_PASSWORD', 'screencast'),
 }
+
+
+
+ADDONS = {
+    'TENSORFLOW': os.getenv('TENSORFLOW', False),
+    # Add optional displays depending on deploy
+}
+

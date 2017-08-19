@@ -68,8 +68,6 @@ El proyecto se lleva a cabo por un desarrollador junior empleado a tiempo parcia
 
 \begin{table}[]
 \centering
-\caption{Costes de personal}
-\label{Salario}
 \begin{tabular}{@{}ll@{}}
 \toprule
 Concepto & Coste \\ \midrule
@@ -79,6 +77,8 @@ Seguridad social (28,30 \%) & 537.00 \\
 Salario bruto & 1897.53 \\ \midrule
 4 meses tiempo parcial(3/4) & 5692.59 \\ \bottomrule
 \end{tabular}
+\caption{Costes de personal}
+\label{Salario}
 \end{table}
 
 \subsubsection{Costes de material: hardware y software}
@@ -89,8 +89,6 @@ Un único coste puntual (ordenador portátil) que aproximamos en 600 y en la tab
 
 \begin{table}[]
 \centering
-\caption{Costes de material al mes}
-\label{Costes mensualmente}
 \begin{tabular}{@{}ll@{}}
 \toprule
 Concepto & Coste \\ \midrule
@@ -99,6 +97,8 @@ Alquiler de oficina & 99 \\
 1 mes & 124 \\ \midrule
 4 meses  & 496 \\ \bottomrule
 \end{tabular}
+\caption{Costes de material al mes}
+\label{Costes mensualmente}
 \end{table}
 
 
@@ -124,3 +124,47 @@ La licencia necesaria para nuestro proyecto debido a las dependencias que tiene 
 Por lo que las restricciones de esa licencia no se nos aplican. Esto quiere decir que podemos publicar nuestro codigo bajo la licencia que mejor nos parezca o incluso podríamos mantenerlo privado como un Secreto de negocio (Trade Secret) ya que proporcionamos SaaS (Software as a Service). Basandome en las licencias más comunes open source, ya que me parece interesante el hecho de que otras personas puedan usar el código, y con ayuda de las recomendaciones de gnu\cite{gnurecs}, se ha decidido usar la GNU GPL 3.0.
 
 Para la documentación se ha decidido que la mejor licencia para las necesidades era la GNU FDL (GNU Free Documentation License). La otra alternativa más interesante era Creative Commons.
+
+Para completar la documentación sobre la viabilidad legal se adjunta una tabla con todas las dependencias del proyecto.
+
+\begin{table}[]
+\centering
+\begin{tabular}{lll}
+\hline
+Dependencia & Versión & Licencia \\ \hline
+Alembic & 0.9.3 & MIT \\
+Bcrypt & 3.1.3 & Apache 2.0 \\
+Flask & 0.12.2 & BSD \\
+Flask-Babel & 0.11.0 & BSD \\
+Flask-Bcrypt & 0.7.1 & BSD \\
+Flask-Login & 0.4.0 & MIT \\
+Flask-SQLAlchemy & 2.2 & BSD \\
+Flask-Oauthlib & 0.9.4 & BSD \\
+Flask-WTF & 0.14.2 & BSD \\
+itsdangerous & 0.24 & BSD \\
+Jinja2 & 2.9.6 & BSD \\
+Paramiko & 2.2.1 & LGPL-3.0 \\
+Psycopg2 & 2.7.1 & LGPL-3.0 \\
+SQLAlchemy &1.1.11 & MIT \\
+Werkzeug & 0.12.2 & BSD \\
+WTForms & 2.1 & BSD \\ \hline
+\end{tabular}
+\caption{Dependencias del proyecto en produccin}
+\label{Dependencias en produccin}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{lll}
+\hline
+Dependencia & Versión & Licencia \\ \hline
+codeclimate-test-reporter & 0.2.3 & MIT \\
+coverage & 4.4.1 & Apache 2.0 \\ 
+Pytest & 3.1.3 & MIT \\ \hline
+\end{tabular}
+\caption{Dependencias exclusivas del desarrollo}
+\label{Dependencias exclusivas en desarrollo}
+\end{table}
+
+

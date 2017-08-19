@@ -27,11 +27,11 @@ Dentro de esta configuración tentemos que tener en cuenta que sólo el modelo d
 
 \subsection{Paso de datos}
 
-El paso de datos entre los servicios ahora mismo se hace a través de SSH, esto se hace ya que nos proporciona seguridad. Otra opción es tener micro servidores de flask para exponer una \emph{API Rest} que nos permita hacer las operaciones de una forma más elegante. Esto dificulta algo la configuración interna poniendo más peso en el equipo de \emph{devops} pero nos permite tener un sistema mucho más desacoplado lo cual facilita el mantenimiento de ambas partes por separado.
+El paso de datos entre los servicios se hace a través de SSH, esto se hace ya que nos proporciona seguridad. Otra opción es tener micro servidores de flask para exponer una \emph{API Rest} que nos permita hacer las operaciones de una forma más elegante. Esto dificulta algo la configuración interna poniendo más peso en el equipo de \emph{devops} pero nos permite tener un sistema mucho más desacoplado lo cual facilita el mantenimiento de ambas partes por separado.
 
 
 \section{Diseño arquitectónico}
-El diseño arquitectónico de la aplicación es uno reconocido ya que se usa en muchas páginas web para permitir mayor escalabilidad. Simplemente se basa en permitir ejecutar múltiples instancias de los mismos objetos. Se podría ampliar la escalabilidad mediante \emph{reverse proxies} en distintos puntos de la arquitectura y con un servicio de caché como \href{https://redis.io/}{\emph{Redis}} antes de las bases de datos para permitir mayor velocidad de acceso. Si quisiésemos replicar micro servicios deberíamos poner un \emph{reverse proxy} o unirlos desde el que ya está.
+El diseño arquitectónico de la aplicación es uno muy parecido los que se usan en muchas páginas web para permitir mayor escalabilidad y picos de servicio sin caída del mismo. Simplemente se basa en permitir ejecutar múltiples instancias de los mismos objetos. Se podría ampliar la escalabilidad mediante \emph{reverse proxies} en distintos puntos de la arquitectura y con un servicio de caché como \href{https://redis.io/}{\emph{Redis}} antes de las bases de datos para permitir mayor velocidad de acceso. Si quisiésemos replicar micro servicios deberíamos poner un \emph{reverse proxy} o unirlos desde el que ya está.
 
 
 \begin{figure}
@@ -45,6 +45,17 @@ El diseño arquitectónico de la aplicación es uno reconocido ya que se usa en 
 La parte de la aplicación tiene algo más de diseño en su interior. Para facilitar el desarrollo de futuros desarrolladores se ha decidido seguir la arquitectura ampliamente conocida como Modelo Vista Controlador o MVC. 
 
 De esta manera logramos separar la vista con la cual interaccionará el usuario, con la lógica de interacción con la aplicación y del modelo de nuestro negocio. Gracias a esta abstracción podemos ocultar toda la complejidad de cada capa a los desarrolladores de las otras dos en caso de que nuestro negocio crezca hasta ese punto.
+
+En nuestra estructura de archivos las vistas están bajo WhatAClass/WhatAClass/templates, los controladores se encuentran en WhatAClass/WhatAClass/blueprints y el único modelo explícito es el de usuario, situado en WhatAClass/WhatAClass/models, el resto son estructuras lógicas sobre el sistema de archivos.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{mvc.png}
+	\caption{Model view controller}\label{fig:mvc.png}
+\end{figure}
+
+
 
 \subsection{Factory Method}
 
@@ -67,6 +78,9 @@ Como se puede observar la secuencia pasa por nginx para poder servir archivos es
 
 
 \section{Diseño de paquetes}
+
+
+Programación a traves de metaclases (blueprints)
 
 
 \subsection{Aplicación}
