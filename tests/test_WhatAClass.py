@@ -93,11 +93,13 @@ def login(client, email, password):
 
 
 def test_base(client):
+    """Test for the index."""
     base = client.get('/')
     assert b'Welcome to this app.' in base.data
 
 
 def test_signup(client):
+    """Test for the signup."""
     base = client.get('/signup')
     assert b'Sign up!' in base.data
     assert b'Email' in base.data
@@ -107,6 +109,7 @@ def test_signup(client):
 
 
 def test_non_conf_email_login(client):
+    """Test a failed login."""
     em = 'javyermartinez@gmail.com'
     ps = '1234'
     sign_up(client, em, ps)
@@ -118,6 +121,7 @@ def test_non_conf_email_login(client):
 
 
 def test_login(client):
+    """Test for a successful login."""
     page = login(client, confirmed_user['email'], confirmed_user['password'])
     assert b'Logged in successfully.' in page.data
 

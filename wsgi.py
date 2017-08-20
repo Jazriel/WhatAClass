@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+    wsgi
+    ~~~~~~~~~~~~~~~~~~~~~~
+    Entry point to start the server as 0.0.0.0:80 so that nginx can proxy the traffic.
+
+
+    :author: Javier Martínez
+"""
+
 from WhatAClass.app import create_app_and_db
 
 application = create_app_and_db()

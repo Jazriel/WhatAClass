@@ -27,18 +27,11 @@ Dentro de esta configuración tentemos que tener en cuenta que sólo el modelo d
 
 \subsection{Paso de datos}
 
-El paso de datos entre los servicios se hace a través de SSH, esto se hace ya que nos proporciona seguridad. Otra opción es tener micro servidores de flask para exponer una \emph{API Rest} que nos permita hacer las operaciones de una forma más elegante. Esto dificulta algo la configuración interna poniendo más peso en el equipo de \emph{devops} pero nos permite tener un sistema mucho más desacoplado lo cual facilita el mantenimiento de ambas partes por separado.
+El paso de datos entre los servicios se hace a través de SSH, esto se hace ya que nos proporciona seguridad. Otra opción es tener micro servidores de flask para exponer una \emph{API Rest} que nos permita hacer las operaciones de una forma más elegante. Esto dificulta algo la configuración interna poniendo más peso en el equipo de \emph{devops} pero nos permite tener un sistema mucho más desacoplado lo cual facilita el mantenimiento de ambas partes por separado. Si se quisiera tener seguridad tras ese cambio las comunicaciones se deberían hacer con SSL. 
 
 
 \section{Diseño arquitectónico}
-El diseño arquitectónico de la aplicación es uno muy parecido los que se usan en muchas páginas web para permitir mayor escalabilidad y picos de servicio sin caída del mismo. Simplemente se basa en permitir ejecutar múltiples instancias de los mismos objetos. Se podría ampliar la escalabilidad mediante \emph{reverse proxies} en distintos puntos de la arquitectura y con un servicio de caché como \href{https://redis.io/}{\emph{Redis}} antes de las bases de datos para permitir mayor velocidad de acceso. Si quisiésemos replicar micro servicios deberíamos poner un \emph{reverse proxy} o unirlos desde el que ya está.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{Arquitecture.png}
-	\caption{Arquitectura de la aplicación}\label{fig:Arquitecture.png}
-\end{figure}
+La decisión de proporcionar el servicio como una página web ha condicionado la arquitectura. Al buscar la escalabilidad dentro del diseño se ha tenido que tener en cuenta para el diseño final. A continuación se exponen las partes más conocidas del diseño y el resultado final.
 
 \subsection{Model View Controller (MVC)}
 
@@ -57,11 +50,31 @@ En nuestra estructura de archivos las vistas están bajo WhatAClass/WhatAClass/t
 
 
 
-\subsection{Factory Method}
+\subsection{Builder}
 
-En la aplicación que hemos creado se ha usado un factory method para permitir la creación de varias instancias de la aplicación de manera que se pueda escalar verticalmente (añadiendo más recursos en la misma máquina).
+En la aplicación que hemos creado se ha usado un builder para permitir la creación de varias instancias de la aplicación de manera sencilla, ya que la aplicación es un agregado de varios compuestos. Ademas permite que se pueda escalar verticalmente (añadiendo más recursos en la misma máquina).
 
-Esto también facilita la creación de la aplicación para programadores nuevos que desconozcan nuestro proyecto. Esto se debe a que las partes del factory method están bien establecidas y un programador que no conozca toda la aplicación puede solo añadir un par de líneas en el método que corresponda.
+Esto también facilita la creación de la aplicación para programadores nuevos que desconozcan nuestro proyecto. Esto se debe a que los componentes están bien establecidos y un programador que no conozca toda la aplicación puede solo añadir un par de líneas en el método que corresponda, si las necesidades cambian mucho entre varios despliegues, lo suficiente para que no solo se tengan que hacer un par de cambios triviales, podríamos mantener varios métodos builder.
+
+
+\subsection{Iterator}
+Aunque no se ha implementado explicitamente python permite la iteración sobre elementos de una colección de manera transparente. Esto podría no considerarse como un patrón de diseño ya que está incorporado en el lenguaje.
+
+
+\subsection{Null Object}
+El objeto de comunicación con el servidor de E-mail hace la función de un objeto nulo cuando esta funcionalidad no está habilitada. Esto permite un cambio de comportamiento de manera simple sin condicionales excesivas en sitios inadecuados para tratar con el cambio en el comportamiento al estar habilitada la funcionalidad.
+
+
+\subsection{Arquitectura final}
+
+El diseño arquitectónico final es uno muy parecido a los que se usan en muchas páginas web para permitir mayor escalabilidad y picos de servicio sin caída del mismo. Simplemente se basa en permitir ejecutar múltiples instancias de los mismos objetos. Se podría ampliar la escalabilidad mediante \emph{reverse proxies} en distintos puntos de la arquitectura y con un servicio de caché como \href{https://redis.io/}{\emph{Redis}} antes de las bases de datos para permitir mayor velocidad de acceso. Si quisiésemos replicar micro servicios deberíamos poner un \emph{load balancer} o unirlos desde el que ya está.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Arquitecture.png}
+	\caption{Arquitectura de la aplicación}\label{fig:Arquitecture.png}
+\end{figure}
 
 
 \section{Diseño procedimental}
@@ -78,24 +91,119 @@ Como se puede observar la secuencia pasa por nginx para poder servir archivos es
 
 
 \section{Diseño de paquetes}
+El diseño de la organización de las diferentes partes de la aplicación en paquetes, tradicionalmente, se puede hacer de dos maneras: descomposición funcional o divisional.
+
+A continuación se pone un ejemplo de cada descomposición. 
+
+\subsection{Descomposición funcional}
+
+\begin{tabbing}
+your\= app/ \\
+\> \_\_init\_\_.py \\
+\> stat\= ic/ \\
+\> templates/ \\
+\> \> home/ \\
+\> \> control\_panel/ \\
+\> views/ \\
+\>\>\_\_init\_\_.py \\
+\> \> home.py \\
+\> \> control\_panel.py \\
+\> models.py \\
+\end{tabbing}
 
 
-Programación a traves de metaclases (blueprints)
+\subsection{Descomposición divisional}
+
+\begin{tabbing}
+your\= app/ \\
+\> \_\_in\= it\_\_.py \\
+\> home/ \\
+\> \> \_\_init\_\_.py \\
+\> \> views.py \\
+\> \> static/ \\
+\> \> templates/ \\
+\> control\_panel/ \\
+\> \> \_\_init\_\_.py \\
+\> \> views.py \\
+\> \> static/ \\
+\> \> templates/ \\
+\> models.py \\
+\end{tabbing}
+
+\subsection{Descomposición de la aplicación}
+La que se ha elegido en el proyecto es la funcional. 
+
+Como se puede ver, python no necesita una clase para guardar código, esto resulta en un diagrama de clases más simple que en otros lenguajes como java.
+
+
+\begin{tabbing}
+\hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \\
+WhatAClass/ \\
+\> blueprints/ \\
+\> \> oauth/ \\
+\> \> \> \_\_init\_\_.py\\
+\> \> \> google.py\\
+\> \> \_\_init\_\_.py\\
+\> \> index\_blue.py\\
+\> \> tensorflow\_mng\_blue.py\\
+\> \> user\_mng\_blue.py\\
+\> static/ \\
+\> \> css/ \\
+\> \> fonts/\\
+\> \> js/\\
+\> \> favicon.ico\\
+\> templates/\\
+\> \> tensorflow\_mng/\\
+\> \> \> predict.html\\
+\> \> \> predicted.html\\
+\> \> \> retrain.html\\
+\> \> \> upload\_ds.html\\
+\> \> user\_mng/\\
+\> \> \> emai\= l/\\
+\> \> \> \> activate.html \\
+\> \> \> \> recover.html \\
+\> \> \> login.html \\
+\> \> \> other\_logins.html \\
+\> \> \> recover.html \\
+\> \> \> reset.html \\
+\> \> \> signup.html \\
+\> \> error.html \\
+\> \> index.html \\
+\> \> js\_upload.html \\
+\> \> layout.html \\
+\> \> macros.html \\
+\> translations/ \\
+\> utils/ \\
+\> \> \_\_init\_\_.py\\
+\> \> email.py\\
+\> \_\_init\_\_.py\\
+\> app.py\\
+\> controllers.py\\
+\> extensions.py\\
+\> forms.py\\
+\> models.py\\
+\> util.py\\
+\end{tabbing}
 
 
 \subsection{Aplicación}
-La aplicación esta descompuesta en el factory method (``app.py''), extensiones, formularios, modelo, utilidades y controladores.
+Como se puede ver la aplicación esta descompuesta en el builder (``app.py''), extensiones, formularios(``templates''), modelo, utilidades y controladores.
 
-Los controladores están en la carpeta blueprints pero se incluyen dentro de ``controllers.py'' para reducir el acoplamiento con el factory method.
+Los controladores están en la carpeta blueprints pero se incluyen dentro de ``controllers.py'' para reducir el acoplamiento.
 
 Las utilidades tienen una configuración parecida a los controladores, las utilidades están el ``utils'' y se importan con ``util.py''.
 
 
 \subsection{Configuración}
-La configuración en general se implementa en la carpeta ``config'', de momento solo se dispone de una configuración (default) esto se debe a que gracias al uso de \emph{docker} y \emph{docker compose} podemos cambiar la configuración mediante las variables de entorno que estos pueden modificar, esto simplifica las configuraciones situacionales, ya que de esta manera toda la configuración que debamos cambiar podemos cambiarla en el archivo ``docker-compose.yml''.
+En la jerarquía de carpetas superior al código de la aplicación esta la carpeta ``config'' usada por el patrón builder para generar la aplicación.
+
+En este momento solo se dispone de una configuración (default) esto se debe a que gracias al uso de \emph{docker} y \emph{docker compose} podemos cambiar la configuración mediante las variables de entorno que estos pueden modificar, esto simplifica las configuraciones situacionales, ya que de esta manera toda la configuración que debamos cambiar podemos cambiarla en el archivo ``docker-compose.yml''.
 
 \subsection{Tensorflow}
 En el microservicio de tensorflow no necesitamos una estructura compleja ya que la biblioteca es suficientemente completa como para poder usarla con scripts sencillos.
+
+
+
 
 
 

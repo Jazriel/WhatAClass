@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+    WhatAClass.blueprints.oauth.google
+    ~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+    :author: Javier Martínez
+"""
 from flask import Blueprint, request, session, redirect, url_for, flash
 from flask_babel import gettext as _
 from flask_login import login_user

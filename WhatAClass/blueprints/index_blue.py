@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+    WhatAClass.blueprints.index_blue
+    ~~~~~~~~~~~~~~~~~~~~~~
+    Index blueprint, to add a simple index to the webpage.
+
+
+    :author: Javier Martínez
+"""
+
 from flask import Blueprint, render_template
 
 index = Blueprint('index', __name__)

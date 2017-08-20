@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+    WhatAClass.blueprints.user_mng_blue
+    ~~~~~~~~~~~~~~~~~~~~~~
+    Blueprint that adds a user management system to the app.
+
+
+    :author: Javier Martínez
+"""
+
 from flask import (Blueprint, flash, render_template, url_for, abort,
                    redirect, session)
 from flask_login import login_user, logout_user, current_user
@@ -21,7 +31,7 @@ def load_user(id):
 @user_mng.route('/login', methods=['GET', 'POST'])
 def login():
     """Try to log in the user with the information provided."""
-    view = 'login.html'
+    view = 'user_mng/login.html'
 
     if current_user.is_authenticated:
         flash(_('There is a logged in user already.'))
@@ -69,7 +79,7 @@ def logout():
 def sign_up():
     """Creates a user from the email and password given and sends an email with
     a time sensitive serialized url to authenticate the user (ts)."""
-    view = 'signup.html'
+    view = 'user_mng/signup.html'
 
     if current_user.is_authenticated:
         flash(_('There is a logged in user already.'))
@@ -91,7 +101,7 @@ def sign_up():
             flash(_('Only one account for each email. (You can use the + tricks.)'))
             return render_template(view, form=form)
 
-        token = ts.dumps(user.email, salt=b'email-whataclass-salt-key')
+        token = ts.dumps(user.email, salt=b'email-whataclass-salt-key')  # TODO Technical debt: refactor to conf
 
         confirm_url = url_for(
             'user_mng.confirm_email',
@@ -99,7 +109,7 @@ def sign_up():
             _external=True)
 
         email_body = render_template(
-            'email/activate.html',
+            'user_mng/email/activate.html',
             confirm_url=confirm_url)
 
         if not email_server.send_email(user.email,
@@ -121,7 +131,7 @@ def confirm_email(token):
     """Try to see if the token is actually de-cypher-able and try to change
     the user to confirm the email."""
     try:
-        email = ts.loads(token, salt=b'email-whataclass-salt-key', max_age=86400)
+        email = ts.loads(token, salt=b'email-whataclass-salt-key', max_age=86400)  # TODO Tech debt: refactor to conf
     except BadSignature:
         return abort(404)
 
@@ -142,7 +152,7 @@ def reset():
     """Reset the password given through an email with a time sensitive link."""
     form = EmailForm()
 
-    view = 'reset.html'
+    view = 'user_mng/reset.html'
 
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first_or_404()
@@ -151,7 +161,7 @@ def reset():
             flash(_('The email was not confirmed yet.'))
             return render_template(view, form=form)
 
-        token = ts.dumps(user.email, salt=b'recover-whataclass-key')
+        token = ts.dumps(user.email, salt=b'recover-whataclass-key')  # TODO Technical debt: refactor to conf
 
         reset_url = url_for(
             'user_mng.recover',
@@ -159,7 +169,7 @@ def reset():
             _external=True)
 
         body = render_template(
-            'email/recover.html',
+            'user_mng/email/recover.html',
             reset_url=reset_url)
 
         if not email_server.send_email(user.email,
@@ -177,7 +187,7 @@ def recover(token):
     """Try to get the email from the token and give the chance to change
     password."""
     try:
-        email = ts.loads(token, salt=b'recover-whataclass-key', max_age=86400)
+        email = ts.loads(token, salt=b'recover-whataclass-key', max_age=86400)  # TODO Technical debt: refactor to conf
     except BadSignature:
         return abort(404)
 
@@ -195,10 +205,10 @@ def recover(token):
 
         return redirect(url_for('user_mng.login'))
 
-    return render_template('recover.html', form=form, token=token)
+    return render_template('user_mng/recover.html', form=form, token=token)
 
 
 @user_mng.route('/other/login', methods=['GET', 'POST'])
 def other_logins():
     """For logins that are not the usual in the app."""
-    return render_template('other_logins.html')
+    return render_template('user_mng/other_logins.html')

@@ -12,6 +12,7 @@ from smtplib import SMTP, SMTPException
 
 
 class EmailServer(object):
+    """Email server object, communicates with the real server with SMTP, and MIME"""
 
     def __init__(self, config=None):
         """Create the EmailServer object, if the config is not specified upon

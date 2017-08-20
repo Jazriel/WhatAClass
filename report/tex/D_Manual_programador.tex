@@ -6,43 +6,57 @@ El proyecto al estar descompuesto en microservicios tiene varias partes bien dif
 
 \section{Estructura de directorios}
 
-La estructura de directorios depende del proyecto, en el proyecto web la estructura es:
-\begin{list}{-}{}
-\item alembic: carpeta autogenerada por alembic, control de versiones de la base de datos.
-\item babel: carpeta que guarda las traducciones generadas por babel.
-\item config: carpeta con los archivos de configuración, algunos son fuentes en python.
-\item docs: carpeta donde se guarda lo necesario para ejecutar sphinx (generación de documentacion incode).
-\item report: carpeta donde reside la documentación out of code.
-\item tests: tests para la aplicación.
-\item WhatAClass: carpeta donde se mantienen la mayoría de los fuentes, estos fuentes sirven para contener todas las partes del proyecto, algunos solo direccionan a las carpetas donde están los fuentes .
-\item WhatAClass/translations: carpeta para las traducciones ya compiladas para no tener que incluirlo en cada ejecución o despliegue.
-\item WhatAClass/static: para tener archivos que se pueden servir independientemente de manera estática.
-\item WhatAClass/templates: plantillas a ser interpretadas con jinja2.
-\item WhatAClass/** : el resto de carpetas se usan para guardar código de una manera más organizada que simplemente no tener carpetas.
-\item El resto de archivos que se extienden a partir de la raiz del microservicio son para control de versiones, integración continua, despliegue, instalación, tests...
-\end{list}
-\begin{list}{*}{}
-\item .coveragerc: recubrimiento de los test.
-\item .gitignore: control de versiones.
-\item .travis.yml: integración continua.
-\item Dockerfile: docker y contenerización.
-\item Procfile: despliegue en heroku.
-\item README.md: documentación.
-\item babel.cfg: configuración de la traducción.
-\item create\textunderscore db.py: script para crear la base de datos posiblemente sea eliminado.
-\item docker-compose.yml: docker compose para despliegue con la base de datos directamente.
-\item requirements-prod.txt: para instalación.
-\item requirements.txt: para instalación.
-\item run.py: ejecución con el servidor que proporciona flask, solo para debug, no usar en producción.
-\item runtime.txt: heroku, especificación de la versión.
-\item setup.cfg: instalación con pip, más automática y transparente al usuario. 
-\item setup.py: instalación con pip, más automática y transparente al usuario. 
-\item start.py: script para generar la app, no genera base de datos.
-\item test.py: script para testear la app. 
-\item uwsgi.ini: configuración para que uwsgi conozca donde esta el script de ejecución en producción.
-\item wsgi.py: script que genera la aplicación y la base de datos, esta preparado para ser llamado por uwsgi en producción.
-\end{list} 
+\begin{tabbing}
+\hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{quadruple tabula}\= \kill\\
+WhatAClass/ \> \> \> \> \> \textit{Principal localización para nuestro código fuente}\\
+\> blueprints/ \> \> \> \> \textit{Localización de los controladores}\\
+\> \> oauth/ \> \> \> \textit{Controladores de OAuth}\\
+\> static/ \> \> \> \> \textit{Archivos estáticos (bootstrap y favicon)}\\
+\> templates/ \> \> \> \> \textit{Plantillas de Jinja2 para generar html o javascript}\\
+\> \> tensorflow\_mng/ \> \> \> \textit{Plantillas para tensorflow}\\
+\> \> user\_mng/\> \> \> \textit{Plantillas para el control de usuarios}\\
+\> \> \> email/ \> \> \textit{Plantillas para los email}\\
+\> translations/ \> \> \> \> \textit{Mensajes traducidos (compilación)} \\
+\> utils/ \> \> \> \> \textit{Utilidades} \\
+\> \> email.py \> \> \> \textit{Utilidad de email}\\
+\> app.py \> \> \> \> \textit{Builder}\\
+\> extensions.py \> \> \> \> \textit{Extesiones de flask}\\
+\> forms.py \> \> \> \> \textit{Formularios}\\
+\> models.py \> \> \> \> \textit{Modelos}\\
+Alembic/ \> \> \> \> \> \textit{Versionado de la DB}\\
+\> versions/ \> \> \> \> \textit{Scripts de migración entre versiones de la DB}\\
+babel/ \> \> \> \> \> \textit{Mensajes con sus traducciones}\\
+config/ \> \> \> \> \> \textit{Configuración de la aplicación}\\
+\> default.py \> \> \> \> \textit{Configuración por defecto}\\
+docs/ \> \> \> \> \> \textit{Documentación autogenerada}\\
+report/ \> \> \> \> \> \textit{Documentación manual}\\
+resources/\> \> \> \> \> \textit{Recursos como claves rsa}\\
+tests/ \> \> \> \> \> \textit{Tests de la aplicación}\\
+.coveragerc \> \> \> \> \> \textit{Que código se ignora por el cubrimiento}\\
+.dockerignore \> \> \> \> \> \textit{Que ignora docker}\\
+.gitignore \> \> \> \> \> \textit{Que ignora git}\\
+.travis.yml \> \> \> \> \> \textit{Configuración de travis}\\
+babel.cfg \> \> \> \> \> \textit{Configuración de babel (internacionalización)}\\
+create\_db.py \> \> \> \> \> \textit{Script de creación de la DB a partir del modelo}\\
+docker-compose.yml \> \> \> \> \> \textit{Configuración de docker compose (solo webapp)}\\
+Dockerfile \> \> \> \> \> \textit{Descripción de construcción del contenedor}\\
+LICENSE \> \> \> \> \> \textit{Licencia}\\
+messages.pot \> \> \> \> \> \textit{Mensajes traducidos}\\
+Procfile \> \> \> \> \> \textit{Comandos para heroku}\\
+README.md \> \> \> \> \> \textit{Readme para Github}\\
+requirements.txt \> \> \> \> \> \textit{Requisitos para desarrollador y para VersionEye}\\
+requirements-prod.txt \> \> \> \> \> \textit{Requisitos para despliegue}\\
+run.py \> \> \> \> \> \textit{Punto de entrada para debug} \\
+runtime.txt \> \> \> \> \> \textit{Establece la versión de python para heroku}\\
+setup.cfg \> \> \> \> \> \textit{Alias para test}\\
+setup.py \> \> \> \> \> \textit{Instalación de las dependencias}\\
+start.py \> \> \> \> \> \textit{Punto de entrada sin configuración adicional}\\
+test.py \> \> \> \> \> \textit{Punto de entrada para los test}\\
+uwsgi.ini  \> \> \> \> \> \textit{Configuración para que uwsgi encuentra la aplicación}\\
+wsgi.py  \> \> \> \> \> \textit{Punto de entrada para uwsgi}\\
+\end{tabbing}
 
+%_______________________________________________
 \section{Manual del programador}
 
 Se recomienda usar un IDE aunque no es necesario. Con el \emph{script} `run.py' podemos ejecutar la aplicación para \emph{debug}. 

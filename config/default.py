@@ -13,8 +13,6 @@ BCRYPT_LOG_ROUNDS = 12
 
 DEBUG = os.getenv('DEBUG', False)
 
-INSTANCE = os.getenv('WAC_INSTANCE', False)  # TODO CHECK
-
 HEROKU = os.getenv('HEROKU', False)  # TODO Stop suporting heroku
 
 # Internationalization

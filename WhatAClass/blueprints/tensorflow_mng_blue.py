@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+    WhatAClass.blueprints.tensorflow_mng_blue
+    ~~~~~~~~~~~~~~~~~~~~~~
+    Blueprint that communicates with a tensorflow instance via SSH.
+
+
+    :author: Javier Martínez
+"""
+
 from flask import (Blueprint, flash, render_template, url_for,
                    redirect, request)
 from flask_login import login_required, current_user
@@ -18,6 +28,7 @@ tensorflow_mng = Blueprint('tensorflow_mng', __name__)
 @tensorflow_mng.route('/upload-dataset', methods=['GET', 'POST'])
 @login_required
 def upload_dataset():
+    """Page where users upload datasets to be able to fit the model later"""
     form = UploadForm()
 
     if request.method == 'POST':
@@ -33,12 +44,13 @@ def upload_dataset():
             flash(_('There was an error while saving the dataset, please try again.'))
             return redirect(url_for('tensorflow_mng.upload_dataset'))
 
-    return render_template('upload_ds.html', form=form)
+    return render_template('tensorflow_mng/upload_ds.html', form=form)
 
 
 @tensorflow_mng.route('/retrain', methods=['GET', 'POST'])
 @login_required
 def retrain():
+    """Page where users are going to retrain the model to fit their dataset."""
     dataset_select = SelectDatasetForm()
     # dataset_select.choice.choices = [datasets_to_encoded_pairs(split_zip(get_datasets()))]
 
@@ -51,7 +63,7 @@ def retrain():
         output = stdout.read().decode()
         ssh.close()
 
-    return render_template('retrain.html', form=dataset_select, datasets=list(get_datasets()))
+    return render_template('tensorflow_mng/retrain.html', form=dataset_select, datasets=list(get_datasets()))
 
 
 @tensorflow_mng.route('/predict', methods=['GET', 'POST'])
@@ -78,12 +90,12 @@ def predict():
             print(stderr.read().decode())
             return render_template('error.html')
 
-        return render_template('predicted.html',
+        return render_template('tensorflow_mng/predicted.html',
                                classes=classes,
                                probs=probs,
                                image_path=path.join('images', filename))
 
-    return render_template('predict.html', form=form)
+    return render_template('tensorflow_mng/predict.html', form=form)
 
 
 def ssh_predict(filename):

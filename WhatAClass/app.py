@@ -49,6 +49,8 @@ def create_app(config=None):
 
 
 def register_blueprints(app):
+    """Register the blueprints to the app, this allows you to change the behaviour of the app
+    depending on the instance, and which addons are added and which are not."""
     from .controllers import index, user_mng, tensorflow_mng, oauth_google
     app.register_blueprint(index)
     app.register_blueprint(user_mng)
@@ -60,6 +62,7 @@ def register_blueprints(app):
 
 
 def expose_user_loader():
+    """Add the method that flask login needs to identify how users are going to be logged in."""
     from .models import User
     from .extensions import login_manager
 
@@ -70,6 +73,7 @@ def expose_user_loader():
 
 
 def initialize_extensions(app):
+    """Start the extensions that are going to be used in the app."""
     from .extensions import db, csrf, bcrypt, ts, babel, login_manager, oauth
 
     db.init_app(app)
@@ -93,6 +97,7 @@ def initialize_extensions(app):
 
 
 def configure_oauth(app, oauth):
+    """Configure oauth. Only the google is added right now."""
     from .extensions import oauths
 
     google = oauth.remote_app(
@@ -119,6 +124,7 @@ def configure_oauth(app, oauth):
 
 
 def configure_email_and_ssh(app):
+    """Configure email and ssh, loading configuration from the configuration of the app."""
     from .util import email_server, ssh_config
 
     email_server.config = app.config['EMAIL_CONF']
@@ -130,7 +136,8 @@ def configure_email_and_ssh(app):
 
 
 def configure_babel(app, babel):
-
+    """Configure babel with the languages that have been added and add the localization selector.
+    In this case the localization selector checks for the best matches in the browser request."""
     from .extensions import LANGUAGES
 
     for key, value in app.config['LANGUAGES']:
@@ -146,10 +153,10 @@ def configure_babel(app, babel):
 
 
 def configure_app(app, config):
+    """Load default configuration, then modify it with the param configuration.
+    The default configuration already depends on env variables to ease the configuration for different environments."""
     # Configuration
     app.config.from_object('config.default')
-    if app.config['INSTANCE']:
-        app.config.from_pyfile('config.py')
     config = dict() if config is None else config
     # Load argument config.
     for key, value in config:

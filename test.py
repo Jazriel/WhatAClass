@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+    test
+    ~~~~~~~~~~~~~~~~~~~~~~
+    Entry point to start tests.
+
+
+    :author: Javier Martínez
+"""
 import pytest
 
 

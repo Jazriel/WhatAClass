@@ -1,3 +1,2 @@
-
 # Ignore builds so that the code analysis tools dont freak out
 doc_build/
