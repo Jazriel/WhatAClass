@@ -9,10 +9,14 @@
 \contentsline {figure}{\numberline {C.3}{\ignorespaces Arquitectura de la aplicaci\IeC {\'o}n}}{17}{figure.Alph3.3}
 \contentsline {figure}{\numberline {C.4}{\ignorespaces Diagrama de secuencia}}{18}{figure.Alph3.4}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Clonaci\IeC {\'o}n de los repositorios}}{26}{figure.Alph4.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces Creaci\IeC {\'o}n de entorno virtual e instalaci\IeC {\'o}n de dependencias}}{28}{figure.Alph4.2}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces Prueba de uso de pip freeze}}{29}{figure.Alph4.3}
+\contentsline {figure}{\numberline {D.4}{\ignorespaces Proceso de traducci\IeC {\'o}n}}{33}{figure.Alph4.4}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Punto de entrada a la aplicaci\IeC {\'o}n}}{27}{figure.Alph5.1}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla de registro de usuario}}{27}{figure.Alph5.2}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Pantalla de inicio de sesi\IeC {\'o}n}}{27}{figure.Alph5.3}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Inicios de sesi\IeC {\'o}n alternativos}}{28}{figure.Alph5.4}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Cambio de las zonas accesibles al iniciar sesi\IeC {\'o}n}}{28}{figure.Alph5.5}
-\contentsline {figure}{\numberline {E.6}{\ignorespaces Pantalla de acceso a el servicio de clasificaci\IeC {\'o}n}}{28}{figure.Alph5.6}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Punto de entrada a la aplicaci\IeC {\'o}n}}{42}{figure.Alph5.1}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla de registro de usuario}}{42}{figure.Alph5.2}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Pantalla de inicio de sesi\IeC {\'o}n}}{42}{figure.Alph5.3}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Inicios de sesi\IeC {\'o}n alternativos}}{43}{figure.Alph5.4}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Cambio de las zonas accesibles al iniciar sesi\IeC {\'o}n}}{43}{figure.Alph5.5}
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Pantalla de acceso a el servicio de clasificaci\IeC {\'o}n}}{43}{figure.Alph5.6}

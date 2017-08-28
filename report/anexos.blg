@@ -8,47 +8,49 @@ A level-1 auxiliary file: ./tex/D_Manual_programador.aux
 A level-1 auxiliary file: ./tex/E_Manual_usuario.aux
 The style file: plain.bst
 Database file #1: bibliografiaAnexos.bib
+Warning--I didn't find a database entry for "py3"
 Warning--to sort, need author or key in LGPL
 Warning--to sort, need author or key in gnurecs
-You've used 2 entries,
+Warning--to sort, need author or key in ppl
+You've used 3 entries,
             2118 wiz_defined-function locations,
-            508 strings with 4199 characters,
-and the built_in function-call counts, 320 in all, are:
-= -- 25
-> -- 2
+            512 strings with 4243 characters,
+and the built_in function-call counts, 474 in all, are:
+= -- 38
+> -- 3
 < -- 0
-+ -- 2
++ -- 4
 - -- 0
-* -- 13
-:= -- 38
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 6
+* -- 19
+:= -- 53
+add.period$ -- 3
+call.type$ -- 3
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 14
-empty$ -- 47
+cite$ -- 6
+duplicate$ -- 21
+empty$ -- 70
 format.name$ -- 0
-if$ -- 76
+if$ -- 114
 int.to.chr$ -- 0
-int.to.str$ -- 2
+int.to.str$ -- 3
 missing$ -- 0
-newline$ -- 9
+newline$ -- 12
 num.names$ -- 0
-pop$ -- 17
+pop$ -- 26
 preamble$ -- 1
-purify$ -- 4
+purify$ -- 6
 quote$ -- 0
-skip$ -- 18
+skip$ -- 26
 stack$ -- 0
-substring$ -- 10
-swap$ -- 2
+substring$ -- 16
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 2
+type$ -- 12
+warning$ -- 3
 while$ -- 0
-width$ -- 3
-write$ -- 13
-(There were 2 warnings)
+width$ -- 4
+write$ -- 19
+(There were 4 warnings)

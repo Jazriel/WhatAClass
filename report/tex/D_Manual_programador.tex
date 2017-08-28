@@ -6,13 +6,19 @@ El proyecto al estar descompuesto en microservicios tiene varias partes bien dif
 
 \section{Estructura de directorios}
 
+
+\subsection{Aplicación web}
+La aplicación web tiene una estructura de directorios algo compleja, por lo que algunos elementos se han omitido del esquema.
+
 \begin{tabbing}
 \hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{quadruple tabula}\= \kill\\
-WhatAClass/ \> \> \> \> \> \textit{Principal localización para nuestro código fuente}\\
-\> blueprints/ \> \> \> \> \textit{Localización de los controladores}\\
-\> \> oauth/ \> \> \> \textit{Controladores de OAuth}\\
+WhatAClass/ \> \> \> \> \> \textit{Principal localización para nuestro código} \\
+\> \> \> \> \> \textit{fuente}\\
+\> blueprints/ \> \> \> \> \textit{Localización de los controladores} \\
+\> \> oauth/ \> \> \> \textit{Controladores de OAuth} \\
 \> static/ \> \> \> \> \textit{Archivos estáticos (bootstrap y favicon)}\\
-\> templates/ \> \> \> \> \textit{Plantillas de Jinja2 para generar html o javascript}\\
+\> templates/ \> \> \> \> \textit{Plantillas de Jinja2 para generar html o} \\ 
+\> \> \> \> \> \textit{javascript} \\
 \> \> tensorflow\_mng/ \> \> \> \textit{Plantillas para tensorflow}\\
 \> \> user\_mng/\> \> \> \textit{Plantillas para el control de usuarios}\\
 \> \> \> email/ \> \> \textit{Plantillas para los email}\\
@@ -56,65 +62,679 @@ uwsgi.ini  \> \> \> \> \> \textit{Configuración para que uwsgi encuentra la apl
 wsgi.py  \> \> \> \> \> \textit{Punto de entrada para uwsgi}\\
 \end{tabbing}
 
-%_______________________________________________
+\subsection{Microservicio de tensorflow}
+\begin{tabbing}
+
+\hphantom{tab tab tab tab tab tab tab tab }\= \kill\\
+dataset/ \> \textit{Estructura de archivos en producción para facilitar} \\
+\> \textit{los test} \\
+graphs/ \> \textit{Estructura de archivos de producción para los test} \\
+images/ \> \textit{Estructura de archivos de producción para los test} \\
+test/ \> \textit{Carpeta donde se guardan los test} \\
+Dockerfile \> \textit{Descripción de construcción del contenedor} \\
+fit\_dataset.py \> \textit{Script para ajustar el modelo a un dataset} \\
+id\_rsa.pub \> \textit{Clave rsa para comunicación con la aplicación web} \\
+inceptionv3* \> \textit{Modelo y clases} \\
+maybe\_start\_retrain.py \> \textit{Script que comprueba si la petición ya se esta} \\ 
+\> \textit{ejecutando o no} \\
+run\_inference.py \> \textit{Script para inferir la clase de una imagen} \\
+\end{tabbing}
+
+\subsection{Docker compose}
+Hay dos archivos que se han hecho fuera de las dos anteriores y estos son los docker-compose.yml que coordinan ambos servicios. 
+
+Uno esta en la raíz de ambas estructuras, este hace la construcción del servicio contando con los fuentes.
+
+El otro que esta en docker-compose-hub/docker-compose.yml, y este usa los contenedores disponibles en dockerhub en vez de construirlos desde los fuentes.
+
+
 \section{Manual del programador}
 
-Se recomienda usar un IDE aunque no es necesario. Con el \emph{script} `run.py' podemos ejecutar la aplicación para \emph{debug}. 
-
-Para añadir cosas a la página web necesitaremos de conocimientos de Flask o de un \emph{framework} web similar, Spring (Java) es similar a como funciona Flask, aunque como cabe esperar tiene diferencias considerables.
-
-Tras conocer Flask debemos conocer sus \emph{blueprints}. Estas son una herramienta que principalmente nos deja descomponer el código en varios apartados permitiendo mantener distintas partes de la aplicación por distintas personas.
-
-Para añadir la \emph{blueprint} a la aplicación nos debemos dirigir a WhatAClass/app.py ya que es el archivo donde esta la factoría de la aplicación. Ya hay ejemplos codificados de esto en `app.py' y solo tenemos que verlos y los lugares de donde hemos importado esas \emph{blueprints} para saber cómo seguir desarrollando sistemas similares.
+En la siguiente sección se expondrá como se puede continuar desarrollando la aplicación. Primero preparando el entorno de desarrollo y el código del proyecto, cómo ejecutar tanto el proyecto como los test y cómo servir el proyecto.
 
 
- 
+\subsection{Entorno de desarrollo}
 
-\section{Compilación, instalación y ejecución del proyecto}
+Los siguientes elementos son necesarios para trabajar en el proyecto de forma efectiva:
 
-Se recomienda usar un gestor de entornos virtuales como venv, pyenv, conda\ldots
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Python 3.5 o 3.6
+\item Git
+\item Gestor de paquetes
+\item Entorno virtual
+\item IDE o editor de texto
+\item Docker
+\end{itemize}
 
-Para este ejemplo usaremos el recomendado por la documentación oficial de python venv: 
-	
-Para crearlo: `python3 -m venv ./venv'
-	
-Para activarlo: `source venv/bin/activate'
+\subsection{Python}
 
-Para desactivarlo: `deactivate'
+El lenguaje de programación más popular en este momento, tanto para web, como para aplicaciones de empresa es Python \cite{ppl}.
 
-Los pasos para instalar el servicio web son:
+El proyecto se inició con Python 3.5 aunque se ha mantenido la compatibilidad con Python 3.6. Debido a algunos cambios que se han hecho en Python 3.6 con los diccionarios en Python se recomienda esta versión, ya que proporciona un aumento de rendimiento.
+
+Se puede obtener esta versión (3.6) en \cite{py}. Hay que elegir correctamente la versión y sistema operativo. Después de seguir el manual de instalación tendremos Python instalado.
+
+\subsection{Git}
+
+La forma más simple y útil de descargar y trabajar con el código fuente es a través de un sistema de control de versiones como es Git.
+
+Este programa permite movernos a través de la evolución que ha tenido el código a lo largo del tiempo.
+
+Una vez lo tengamos instalado tenemos dos posibilidades: usar un soporte con GUI o usar un soporte en linea de comandos, por supuesto hay algunos programas que lo instalan automáticamente.
+
+De la primera opción están el proporcionado por Git en algunas instalaciones, los plugin o utilidades para IDEs o un programa especializado como GitKraken.
+
+La segunda opción es la que se recomienda porque ayuda a comprender el funcionamiento de Git de una manera más clara.
+
+
+\subsubsection{Obtención código fuente (Clonación del repositorio)}
+
+Con cualquier herramienta básica de git se puede clonar un repositorio, en algunas la opción se llama importar. En esta sección se expondrá cómo hacerlo en línea de comandos (en windows git bash). Primero abriremos la terminal o su equivalente.
+
+\begin{lstlisting}[language=bash]
+    $ mkdir <DIR>
+    $ cd <DIR>
+    $ git clone https://github.com/Jazriel/tfg
+    $ cd tfg
+    $ git clone https://github.com/Jazriel/WhatAClass
+\end{lstlisting}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{shgit.png}
+	\caption{Clonación de los repositorios}\label{fig:shgit.png}
+\end{figure}
+
+\subsection{Gestor de paquetes}
+
+El gestor de paquetes es una utilidad considerada necesaria para facilitar la instalación de paquetes (en este contexto significa un conjunto de software), ya que no solo instalamos el código fuente que pedimos sino que también instalamos las dependencias de dicho código.
+
+Las principales herramientas son pip, setuptools y wheel
+
+Si hemos instalado Python 2 con la versión 2.7.9+ o Python 3 con la versión 3.4+ ya tienen instalado pip y setuptools.
+
+En linux, ya que el sistema operativo tiene muchas veces tanto la versión 2.x y 3.x de Python para usar pip tendremos que usar pip2 o pip3 para saber que versión específica se esta usando.
+
+\subsubsection{Uso básico de pip}
+
+Para instalar un proyecto específico se hace con:
+
+\begin{lstlisting}[language=bash]
+    $ pip install <PROJECT>
+\end{lstlisting}
+
+Algunas opciones adicionales son las versiones específicas o compatibles:
+
+\begin{lstlisting}[language=bash, escapechar=\%]
+    $ pip install <PROJECT>==<SPECIFIC>
+    $ pip install <PROJECT>%$\sim$%=<COMPATIBLE>
+\end{lstlisting}
+
+Para actualizar un proyecto:
+
+\begin{lstlisting}[language=bash]
+    $ pip install --upgrade <PROJECT>
+\end{lstlisting}
+
+Por último cabe destacar que para un conjunto de dependencias la manera más simple de instalar todas es tenerlas en un archivo requirements.txt, para instalar a partir de ese archivo se usa el siguiente comando:
+
+\begin{lstlisting}[language=bash]
+    $ pip install -r requirements.txt
+\end{lstlisting}
+
+Para obtener este archivo el desarrollador anterior debe haber generado ese archivo usando pip, esto descargará las dependencias que tiene el entorno desde el que se ha generado.
+
+\begin{lstlisting}[language=bash]
+    $ pip freeze
+\end{lstlisting}
+
+
+
+\subsection{Entorno virtual}
+
+Usar un entorno virtual no es una necesidad a la hora de desarrollar programas en Python pero se recomienda encarecidamente debido a que eso nos permite encapsular nuestras dependencias. La excepción a la regla anterior es el caso de desarrollar dos programas con dependencias a las mismas bibliotecas en diferentes versiones.
+
+Algunos de los gestores de entornos virtuales más usados son venv, virtualenv y conda. Hay que tener en cuenta que los IDEs necesitan configuración adicional para trabajar con entornos virtuales. 
+
+Las características principales de las opciones anteriores son:
+
 \begin{list}{-}{}
-\item sudo apt install git python3-pip
-\item git clone https://github.com/Jazriel/WhatAClass.git
-\item cd WhatAClass
-\item sudo pip3 install -r requirements.txt
+\item \textbf{Venv}: viene incluido en la biblioteca standard de Python, no soporta Python 2.x.
+\item \textbf{Virtualenv}: es la biblioteca más recomendada por los principales tutoriales de Python y se encuentran disponibles envoltorios que facilitan o implementan funcionalidades adicionales, soporta Python 2.6+ y 3.3+.
+\item \textbf{Conda}: no solo es un gestor de entornos virtuales sino que también gestiona paquetes, soporta también 2.6+ y 3.3+.
 \end{list}
 
-La instalación se puede hacer desde los fuentes con `sudo pip3 install -r requirements.txt' o con `sudo pip3 install --editable .'. Esto usa o requirements.txt o setup.py para instalar las dependencias, ahora mismo se favorece la instalación con el primer comando. Al ser Python un lenguaje interpretado no necesitamos compilarlo manualmente, se compilará JIT (just in time).
+\subsubsection{Creación de un entorno virtual}
 
-Para ejecutar en desarrollo lo mejor sería usar el \emph{script} `run.py' (\emph{script} específico para desarrollo, no se puede usar en producción), aunque se puede usar un \emph{script} listo para producción no se recomienda ya que los errores son menos descriptivos y mucho más difíciles de solventar.
+Para este ejemplo pondremos como ejemplos a venv y virtualenv. Las palabras que están entre `\textless ' y `\textgreater ' son variables. 
+
+\hphantom{something\\}
+{\normalsize \textbf{Venv}}
+
+Para crear el entorno: 
+
+\begin{lstlisting}[language=bash]
+    $ python3 -m venv <DIR>
+\end{lstlisting}
+
+
+Para activarlo: 
+
+\begin{lstlisting}[language=bash]
+    $ source <DIR>/bin/activate
+\end{lstlisting}
+
+
+Para desactivarlo: 
+
+
+\begin{lstlisting}[language=bash]
+    $ deactivate
+\end{lstlisting}
+
+
+\hphantom{something\\}
+{\normalsize \textbf{Virtualenv}}
+
+Virtualenv al no estar incluido en Python deberemos instalarlo, para ello se recomienda tener un gestor de paquetes como pip instalado antes.
+
+Para instalar virtualenv valdrá con: 
+
+\begin{lstlisting}[language=bash]
+    $ pip install virtualenv
+\end{lstlisting}
+
+
+Para crear el entorno:
+
+\begin{lstlisting}[language=bash]
+    $ virtualenv -p /usr/bin/python<VERSION> <DIR>
+\end{lstlisting}
+
+
+	
+Para activarlo: sudo pip3 install -r requirements.txt
+
+\begin{lstlisting}[language=bash]
+    $ source <DIR>/bin/activate
+\end{lstlisting}
+
+
+Para desactivarlo:
+
+\begin{lstlisting}[language=bash]
+    $ deactivate
+\end{lstlisting}
+
+
+\subsubsection{Entorno virtual e instalación de las dependencias}
+
+Para este ejemplo crearemos un entorno virtual e instalaremos las dependencias de la parte de la aplicación web. Se continuará desde el punto donde lo hemos dejado en la parte de obtención del código fuente.
+
+\begin{lstlisting}[language=bash]
+    $ cd WhatAClass
+    $ virtualenv -p /usr/bin/python<VERSION> <DIR>
+    $ source <DIR>/bin/activate
+    $ pip install -r requirements.txt
+\end{lstlisting}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{shvenv.png}
+	\caption{Creación de entorno virtual e instalación de dependencias}\label{fig:shvenv.png}
+\end{figure}
+
+Otra forma de instalar las dependencias es usando el archivo `setup.py', este archivo esta pensado para poder usar pip como sistema de distribución del proyecto. No se ha visto necesario el subir el archivo a pip ya que no proporciona un servicio directo, sino que ayuda a proporcionar servicios. 
+
+Para comprobar como funciona pip freeze para la actualización de dependencias, se expondrá a continuación un ejemplo ejecutado como continuación del anterior.
+
+\begin{lstlisting}[language=bash]
+    $ mkdir freeze
+    $ cd freeze
+    $ pip freeze > requirements.txt
+\end{lstlisting}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{shfreeze.png}
+	\caption{Prueba de uso de pip freeze}\label{fig:shfreeze.png}
+\end{figure}
+
+
+Para actualizar las dependencias, como ya se ha comentado, solo debemos ejecutar este último comando y luego transcribirlo a `setup.py'.
+
+
+\subsection{IDE o editor de texto}
+
+Se recomienda usar un IDE aunque un editor de texto y una linea de comandos pueden hacer la misma función. En caso de usar un IDE hay que buscar la configuración para que pueda trabajar con el entorno virtual que hayamos creado o vayamos a crear.
+
+Si no estamos usando un IDE simplemente debemos entrar en el entorno virtual antes de hacer nada relacionado con la ejecución del proyecto.
+
+
+\subsubsection{Importar el proyecto desde Pycharm}
+
+Por la separación del proyecto en microservicios se recomienda el no trabajar con un solo proyecto, se recomienda importar cada servicio en un proyecto y así mantenerlos separados, esto facilita el uso de entornos virtuales.
+
+
+\begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Abrir PyCharm
+\item Desde la ventana de bienvenida, hacer click en abrir y abrir la localización tfg/WhatAClass
+\item Esperar a que PyCharm lea todos los archivos
+\item Ir abriendo los cuadros de dialogo y comprobando su importancia
+\end{enumerate}
+
+PyCharm ya esta preparado para trabajar con git, pip, entornos virtuales y docker, pero muchas veces hace falta configurar estas herramientas. Para configurarlas los cuadros de dialogo son muy utiles ya que proporcionan una buena cantidad de ayuda, facilitando la instalación de dependencias no instaladas, permitiendo tener docker como opción de ejecución predeterminada, llevando el control de versiones por ti y avisando si algo no sale como se espera.
+
+Por último tenemos que añadir como \emph{script} de depuración `run.py' y como \emph{script} de prueba `test.py' o la carpeta de `test/' como objetivo.
+
+\subsubsection{Añadir características}
+
+Para añadir características al programa debemos, en primer momento plantearnos que funcionalidad proveen, si cuadra dentro de una de las categorías que tenemos definidas (home, control de usuarios y tensorflow) o no. 
+
+Si cuadra con alguna de las categorías definidas nos será suficiente con añadir más rutas disponibles dentro de la blueprint de esa sección. Si no cuadra, lo que tendremos que hacer será crear esa blueprint que vayamos a implementar. 
+
+Sea cual sea la opción que elijamos acabaremos creando funciones decoradas con `@route' o `@blueprint.route'. Estas funciones serán nuestros controladores, lo que devuelvan será lo que vea el cliente, principalmente deberíamos devolver la función `render\_template' invocada con la plantilla correspondiente. Para la internacionalización debemos importar de `flask\_babel' la función `gettext', normalmente se importa como `\_' de manera que el texto internacionalizable pasa antes por esa función.
+
+Como ejemplo de la mayoría de conocimientos requeridos para implementar una funcionalidad nueva se expone la función de login, excesivamente comentada, a continuación.
+
+\lstset{style=blockstyle}
+\begin{lstlisting}[language=Python]
+ from flask import (Blueprint, flash, render_template, 
+                    url_for, redirect)
+ from flask_login import current_user
+
+ from flask_babel import gettext as _
+ 
+ from WhatAClass.forms import LoginForm 
+ from WhatAClass.models import User
+
+ user_mng = Blueprint('user_mng', __name__)
+ 
+ # El decorador que da una ruta de acceso
+ @user_mng.route('/login', methods=['GET', 'POST'])
+ def login():
+ 
+     # Ruta desde la carpeta templates hasta el archivo
+     # de la vista     
+     view = 'user_mng/login.html'
+
+     # Usuario actual
+     if current_user.is_authenticated:
+         # Función _ para permitir internacionalización
+         flash(_('There is a logged in user already.'))
+         return redirect(url_for('index.base'))
+
+     form = LoginForm()
+
+     # Si el formulario esta siendo subido (POST)
+     if form.validate_on_submit():
+
+         # Hacemos una petición a la base de datos
+         user = User.query.filter_by(
+                     email=form.email.data).first()
+
+         # Intentamos hacer login al usuario
+         if not check_and_login(
+                     form.password.data, user):
+                     
+             return render_template(view, form=form)
+
+         flash(_('Logged in successfully.'))
+         return redirect(url_for('index.base'))
+
+     # Salida de una petición GET
+     return render_template(view, form=form)
+\end{lstlisting}
+
+Como se puede ver, lo que en otras tecnologías es una clase, lo que aquí es la \emph{blueprint}, esto hace que no sean tan útiles los diagramas uml.
+
+Si se dese a usar git para integrar el cambio, hacer un fork del proyecto y luego una pull request sería lo más adecuado. 
+
+
+\subsection{Compilación}
+
+Python es un lenguaje interpretado y no necesita compilación previa, pero algunas partes de nuestro proyecto sí que pueden necesitar ser compiladas. De momento solo las traducciones necesitan ser compiladas.
+
+\subsubsection{Babel}
+
+Para traducir con Babel, como ya se ha introducido anteriormente, usaremos gettext y \_. Una vez todo nuestro texto este en llamadas a esas funciones solo nos queda extraerlo para traducirlo, generar el catálogo del idioma y compilar ese catálogo para que sea de uso más eficiente.
+
+A continuación se expondrá como se lleva a cabo este proceso:
+
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+    $ pybabel extract -F babel.cfg -o messages.pot WhatAClass/
+\end{lstlisting}
+
+Este primer comando lo que lleva a cabo es la extracción de todos los mensajes a ser traducidos al archivo `messages.pot'. Debemos abrir ese archivo con un editor de texto o nuestra IDE para añadir las traducciones correspondientes. Una vez estén añadidas es hora de generar el catálogo del idioma correspondiente. 
+
+\begin{lstlisting}[language=bash]
+    $ pybabel init -i messages.pot 
+                   -d WhatAClass/translations 
+                   -l es
+\end{lstlisting}
+
+Con esto estamos especificando que la entrada es messages.pot, la salida estará en WhatAClass/translations y el lenguaje es el español, para otros idiomas habría que buscar sus extensiones. Por último se compilan las traducciones para que babel pueda usarlas de manera eficiente
+
+\begin{lstlisting}[language=bash]
+    $ pybabel compile -d WhatAClass/translations
+\end{lstlisting}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{translations.png}
+	\caption{Proceso de traducción}\label{fig:translations.png}
+\end{figure}
+
+
+
+
+
+\subsection{Docker}
+
+Como ya se ha hablado Docker se usa para facilitar el despliegue en cualquier servidor que lo tenga instalado. Para poder disfrutar las ventajas que nos da el uso de este servicio de virtualización debemos configurar el contenedor cómo si fuese un sistema operativo normal y corriente. Esto se lleva a cabo en un archivo llamado `Dockerfile'.
+
+Cómo no sería rentable invertir el tiempo de instalar un sistema operativo en un contenedor, la opción que nos da Docker es el equivalente en git a hacer un fork, replica todo el sistema que pidamos y a partir de el podemos usar el sistema como queramos. Cómo se hace esto se verá a continuación explicado en las siguientes secciones.
+
+Antes de poder ejecutar un contenedor debemos construirlo, para ello debemos situarnos en la carpeta que contenga nuestro proyecto, tras eso ejecutaremos el comando siguiente:
+
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+    $ docker build . [-t <name>[:<version>]]
+\end{lstlisting}
+
+Si por cualquier razón no estuviese el `Dockerfile' en la carpeta raíz del proyecto deberíamos cambiar el `\textbf{.}' por la ruta hasta el directorio.
+
+Para lanzar un contenedor y ponerlo en ejecución se puede hacer con el siguiente comando:
+
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+    $ docker run -i -t <image_id>
+\end{lstlisting}
+
+O el siguiente si queremos usar el nombre del contenedor:
+
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+    $ docker run -i -t <image_name>:<version>
+\end{lstlisting}
+
+Si no nos acordásemos de que imágenes o que nombres tienen, ya que es difícil de acordarnos tanto de las ids como de los nombres auto-generados podemos usar:
+
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+    $ docker images
+\end{lstlisting}
+
+Para todos estos comandos existen muchas variaciones pero para su uso básico esta información es suficiente.
+
+
+\subsubsection{Aplicación web}
+
+En el siguiente ejemplo se muestra un archivo Dockerfile, específicamente el de la aplicación web, lo que hace cada línea se verá comentado en el propio código. 
+
+Dado que necesita usar una base de datos que no se lanza en el mismo contenedor no podemos usar este archivo de forma individual. Si quisiésemos poder usarlo de forma individual podríamos configurar un volumen, que es la unidad de almacenamiento persistente de docker, para almacenar una base de datos SQLite, esto se podría añadir en los archivos de configuración para que funcionase.
+
+
+\lstset{style=blockstyle}
+\begin{lstlisting}[language=dockerfile]
+FROM tiangolo/uwsgi-nginx-flask:flask-python3.5
+# De que <usuario>/<imagen>:<version> estamos`heredando'
+# Es un link a dockerhub de manera implícita.
+
+MAINTAINER Javier Martinez "javyermartinez@gmail.com"
+# Quién mantiene la imagen.
+
+WORKDIR /app
+# Directorio de trabajo, 
+# el equivalente a cd /app de linux
+
+# Copiamos el código fuente 
+COPY ./WhatAClass ./WhatAClass
+
+# Copiamos la parte estática a una carpeta 
+# especialmente configurada para que nginx 
+# pueda servirlo más rápidamente
+COPY ./WhatAClass/static ./static
+# Copy es un comando que copia desde nuestra maquina y 
+# directorio hasta el contenedor y directorio de trabajo.
+
+RUN mkdir -p ./static/images
+# Podemos ejecutar comandos del sistema operativo 
+# con run, en este caso creamos un directorio.
+
+# {...
+# ...}
+
+# Añadimos una variable de estado con env
+ENV PYTHONPATH ``$PYTHONPATH:
+                 /WhatAClass:
+                 /WhatAClass/WhatAClass''
+
+# Instalamos las dependencias
+RUN pip3 install --editable .
+\end{lstlisting}
+
+
+\subsubsection{Tensorflow}
+
+El contenedor de tensorflow es heredado de una instalación de tensorflow, a partir de ese punto añadimos un daemon de ssh.
+
+En este archivo tenemos un par de comandos distintos a los del otro que explicaremos a continuación.
+
+
+\begin{lstlisting}[language=dockerfile]
+
+FROM gcr.io/tensorflow/tensorflow:latest-devel-py3
+# Imagen de tensorflow y con un link explicito a grc.io
+
+RUN apt-get update && apt-get install -y openssh-server
+# Instalar el daemon de ssh
+
+# {...
+# ...}
+
+EXPOSE 22
+# Exponemos un puerto para que se pueda 
+# acceder a el más facilmente
+
+CMD ["/usr/sbin/sshd", "-D"]
+# CMD es parecido a run, pero en algunos casos 
+# simplifica la operación.
+
+\end{lstlisting}
+
+
+\subsubsection{Docker compose}
+
+Para coordinar ambos contenedores en el momento que queramos ejecutar la aplicación debemos usar un servicio de orquestración, como ya estamos usando docker, la opción más fácil y, de momento, profesional es docker compose.
+
+La forma de usar docker compose es con un archivo `docker-compose.yml'. En el se especifican todas las configuraciones adicionales que se necesiten. A continuación se mostraran un par de ejemplos del mismo.
+
+\begin{lstlisting}[language=dockercompose]
+# Versión del archivo docker compose 
+# para permitir retrocompatibilidad
+version: '3'
+
+# Servicios que se desplegarán 
+services:
+  # Nombre arbitrario del servicio  
+  web:
+    # Directorio de construcción
+    build: ./
+    # Puertos
+    ports:
+     - "80:80"
+    # Redes internas a las que puede acceder
+    networks:
+     - backend
+    # Servicios de los que depende, no funciona
+    # suficientemente bien.
+    depends_on:
+     - database
+    # Variables de entorno
+    environment:
+     # Como se puede ver tras el @ accedemos a 
+     # database como una dirección de red, esto
+     # se debe a que su dirección interna es el 
+     # nombre de su servicio.
+     - DATABASE_URL=postgresql://postgres@database #{...}
+  database:
+    # Imagen que usamos ya que no la construimos.
+    image: "postgres"
+    networks:
+     - backend
+# Redes existentes
+networks:
+  backend:
+\end{lstlisting}
+
+`depends\_on' no funciona de forma correcta ya que no espera a ninguna señal del servicio del que depende. Por lo que los servicios no tienen porque estar preparados para recibir clientes, pudiendo causar errores. Esto llega a ser un problema sobre todo en los sistemas que pueden tardar mucho en encenderse como las bases de datos.
+
+Se ha solucionado añadiendo una espera de hasta 25 segundos en la aplicación web para la base de datos.
+
+Otro ejemplo de docker compose algo más complejo, pero casi idéntico:
+
+
+\begin{lstlisting}[language=dockercompose]
+version: '3'
+services:
+  web:
+    # {...}
+    environment:
+     - DATABASE_URL=postgresql:// # {...}
+     # Se puede cambiar el despliegue de forma simple
+     # mediante variables de entorno, si se mantiene la 
+     # configuración.
+     - WORKER_HOST_NAME=worker
+     - WORKER_PORT=22
+     - WORKER_USER=root
+     - WORKER_PASSWORD=screencast
+     - TENSORFLOW=True
+    volumes:
+     # Donde se monta el volumen 
+     # <nombre_del_volumen>:<directorio donde se monta>
+     - images:/app/static/images
+ 
+  database:
+    # {...}  
+  worker:
+    # {...}
+networks:
+  backend:
+# Volúmenes compartidos
+volumes:
+  # Volumen con nombre
+  images:
+\end{lstlisting}
+
+
+Una vez tenemos el archivo `docker-compose.yml' podemos usar los siguientes comandos para hacer la construcción de los contenedores y para desplegarlos:
+
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+    $ docker-compose build
+    $ docker-compose up
+\end{lstlisting}
+
+Este proceso es lento y a no ser que queramos probar como se integran los servicios no conviene usar este método de depuración.
+
+\subsection{Integración continua}
+
+En el repositorio se han configurado ciertos servicios para facilitar el trabajo sobre el proyecto, de manera que si hay algún tipo de problema sea lo más fácil de ver posible. 
+
+A continuación se describe cada servicio y porqué se ha integrado.
+
+\subsubsection{Travis CI}
+
+Travis CI (Continuos Integration) es una herramienta en la nube que ejecuta tu proyecto como tu le digas, normalmente esto supone la ejecución de test. Es gratuita para proyectos Open Source y funciona automáticamente cada vez que se realiza un \emph{commit}.
+
+La forma de configurar este servicio es con el fichero `.travis.yml', el siguiente ejemplo ilustra cómo se ha usado en nuestro proyecto en concreto.
+
+
+\lstset{style=blockstyle}
+\begin{lstlisting}[language=travisyml]
+language: python
+python:
+  - "3.5"
+  - "3.6"
+
+install: "pip install -r requirements.txt"
+
+addons:
+  code_climate:
+    repo_token: d115b35656471f {...}
+
+
+notifications:
+  slack:
+    rooms:
+      - javiermartineztfg:Ij6ci{...}#tools
+
+script:
+  - coverage run test.py
+
+after_success:
+  - codeclimate-test-reporter --token d115b3565{...}
+
+\end{lstlisting}
+
+Language sirve para decir en que lenguaje estamos trabajando y como trabajamos en python decimos en que versiones se ha de probar que funciona el proyecto.
+
+Install le dice a Travis que debe ejecutar antes de script que normalmente son los test.
+
+Addons son complementos, en este caso el de CodeClimate, para proporcionar el cubrimiento que hacen los test en comparación con nuestro código. 
+
+Notifications es a que servicios debe notificar, en este caso notifica a slack.
+
+Script es el comando para ejecutar los test, como se puede ver lo envolvemos en coverage para que también halle en recubrimiento.
+
+After\_success es la directiva que dice que se ejecuta si los test pasan, en este caso envía el cubrimiento a CodeClimate.
+
+\subsubsection{CodeClimate}
+
+CodeClimate es una herramienta que realiza revisiones de código automáticamente, y guarda una serie de historiales a lo largo del tiempo. 
+
+Se configura con un archivo .codeclimate.yml pero como no se ha necesitado modificar la configuración básica no se ha creado. El sistema de puntuación usado es GPA, más propio de Estados Unidos, que va del 0 al 4, y que en las notas parciales usa un sistema de puntuación con una escala ordinal, A siendo la mejor. 
+
+\subsubsection{VersionEye}
+
+VersionEye es una herramienta de monitorización de versiones, de manera que vigila las dependencias del proyecto y avisa cuando alguna de ellas queda desactualizada o tiene problemas de seguridad.
+
+También lleva a cabo una comprobación de la compatibilidad de las licencias entre la del proyecto propio y la de las dependencias.
+
+\subsubsection{Slack}
+
+Slack es un servicio de comunicación entre trabajadores, principalmente sirve para comunicación en equipos, pero en este proyecto ha tenido un uso un tanto diferente. Se han configurado el resto de servicios para que reportasen en un canal concreto, de esta manera la información resumida del proyecto estaba disponible en un solo lugar, en vez de tener que estar buscándola entre diferentes servicios.
 
 \section{Despliegue}
 
-Para desplegar esta preparado para ser desplegado con docker cuya instalación se puede encontrar en el siguiente enlace:  \href{https://docs.docker.com/engine/installation}{instalación de docker} 
-	
+Para hacer un despliegue en un lugar en el que no este disponible el código fuente la manera más simple es instalar docker y ejecutar un comando de los dos siguientes:
 
-Se puede ejecutar con docker pero se recomienda usar docker-compose:
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+$ wget 'URL' -O docker-compose.yml && docker-compose up
+\end{lstlisting}
 
-user@machine:~/folder\$ docker-compose build \& \& docker-compose up 
+\lstset{style=linestyle}
+\begin{lstlisting}[language=bash]
+$ curl 'URL' >> docker-compose.yml && docker-compose up
+\end{lstlisting}
 
-Esto nos permite saltarnos toda la instalación de programador, ya que todo eso se hace automáticamente.
+Siendo `\textbf{https://raw.githubusercontent.com/Jazriel/TFG/master/docker-compose-hub/docker-compose.yml}' la url.
+\hphantom{sin esto quedaba mal}\\
 
-Hay gente que avoca por tener el entorno de programación dentro de un contenedor. Según las necesidades de la persona y del proyecto en particular esto puede ser una buena idea. 
-
+Si ya hubiésemos el archivo alojado en esa url, bastaría con hacer `\textbf{docker-compose up}' en el mismo directorio.
 
 \section{Pruebas del sistema}
 
 Las pruebas se pueden ejecutar con test.py que lanza los tests de la carpeta tests/. si queremos ver el recubrimiento de el codigo podemos usar una herramienta como coverage y ejecutar test.py a traves de esa herramienta.  
 
 
-\section{Microservicios}
-
-Todo esto es sólo la estructura de la parte web y de control de sesión de la aplicación, ya que se dispone de la parte de minería la cual tiene su propia estructura de archivos...
-
-Al ser tan simple como es, no se ha considerado necesario explicar todo lo que contiene. Los .py son \eng{scripts} para ejecutar las funciones necesarias, la carpeta test tiene los test y el Dockerfile, como en el punto anterior, tiene los pasos para la construcción del contenedor.

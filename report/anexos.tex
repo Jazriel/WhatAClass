@@ -3,6 +3,7 @@
 % Castellano
 \usepackage[spanish,es-tabla]{babel}
 \selectlanguage{spanish}
+
 \usepackage[utf8]{inputenc}
 \usepackage{placeins}
 \usepackage{longtable}
@@ -204,7 +205,7 @@
       \hline
       \multicolumn{#3}{r}{\small\sl continúa en la página siguiente}\\
     }
-    \tablelasttail{
+    \tablelasttail{special
       \hline
     }
     \bottomcaption{#1}
@@ -337,7 +338,11 @@
     \noindent\LARGE
     Presentado por \@author{}\\ 
     en Universidad de Burgos --- \@date{}\\
-    Tutor: \@tutor{}\\
+    \begin{tabbing}
+      Tutores: \= Dr. José Francisco Díez Pastor \\
+               \> Dr. César Ignacio García Osorio
+    \end{tabbing}
+    
   }%
   \end{center}%
   \null
@@ -346,11 +351,74 @@
 \makeatother
 
 
+
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{linestyle}{
+  showstringspaces=false,
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  frame=none,
+  keywordstyle=\color{black},
+  numbers=none,
+  extendedchars=true,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1,
+}
+
+\lstset{style=linestyle}
+
+\lstdefinestyle{blockstyle}{
+  showstringspaces=false,
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  frame=single,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{codegray},
+  rulecolor=\color{black},
+  extendedchars=true,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1,
+}
+
+
+
+\lstdefinelanguage{dockerfile}{
+  morekeywords={FROM, MAINTAINER, WORKDIR, COPY, RUN, ENV, CMD, EXPOSE},
+  sensitive=false,
+  morecomment=[l]{\#},
+}
+
+\lstdefinelanguage{dockercompose}{
+  morekeywords={version, networks, services, build, ports, depends\_on, environment, image, volumes},
+  sensitive=false,
+  morecomment=[l]{\#},
+}
+
+\lstdefinelanguage{travisyml}{
+  morekeywords={language, python, install, addons, notifications, script, after_success},
+  sensitive=false,
+}
+
+
+
+
+
+
+
+
+\newcommand{\mytitle}{Framework web de uso de sistemas de machine learning.}
 % Datos de portada
-\title{título del TFG \\Documentación Técnica}
-\author{nombre alumno}
-\tutor{nombre tutor}
+\title{\mytitle \\Documentación Técnica}
+\author{Javier Martínez Riberas}
 \date{\today}
+\tutor{Dr. José Francisco Díez Pastor y  \\
+Dr. César Ignacio García Osorio}
 
 \begin{document}
 
@@ -362,6 +430,7 @@
 
 
 
+\newpage\null\thispagestyle{empty}\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \noindent Copyright (C)  2017  Javier Martínez Riberas.
@@ -381,6 +450,7 @@ Permission is granted to copy, distribute and/or modify this document under the 
 \tableofcontents
 
 \clearpage
+
 
 \listoffigures
 
