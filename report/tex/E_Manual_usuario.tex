@@ -16,45 +16,12 @@ Navegadores con los que se ha comprobado:
 \section{Instalación}
 Al proporcionar nuestro servicio como una página web no necesitamos que el cliente o usuario instale la aplicación. 
 
-Si de todas las maneras se hubiese decidido que cada usuario tiene la aplicación en su ordenador se pueden seguir las siguientes instrucciones.
-
-
-\begin{enumerate}
-\setlength{\itemsep}{1pt}
-\setlength{\parskip}{0pt}
-\setlength{\parsep}{0pt}
-\item Se debe comprobar que el ordenador permita la virtualización.
-\item Instalar un navegador.
-\item Instalar \hfoot{https://docs.docker.com/engine/installation/}{Docker CE}
-\item Descargar este archivo \hfoot{https://raw.githubusercontent.com/Jazriel/TFG/master/docker-compose-hub/docker-compose.yml}{Docker compose}.
-\item Ejecutar el siguiente comando en un lugar con acceso a internet.
-
-\lstset{style=linestyle}
-\begin{lstlisting}[language=bash]
-    $ docker-compose pull 
-\end{lstlisting}
-
-\item Levantar el servicio con el comando posterior cuando queramos ejecutarlo.
-
-\lstset{style=linestyle}
-\begin{lstlisting}[language=bash]
-    $ docker-compose up
-\end{lstlisting}
-
-\end{enumerate}
-
-Si ejecutamos el 6 con internet se ejecutan tanto el 5 como el 6 ahorrando un mínimo de trabajo.
-
-Cabe destacar que esta instalación es igual para windows y para linux.
- 
-[captura linux y captura powershell]
-
+Si de todas las maneras se hubiese decidido que cada usuario tiene la aplicación en su ordenador, se pueden seguir las instrucciones del manual de instalación para usuarios avanzados [\ref{sec:ins}].
 
 \section{Manual del usuario}
-El manual de usuario es más simple que otras aplicaciones, esto se debe a que el enfoque del proyecto no ha sido tanto a tener una aplicación con muchas funcionalidades sino a cómo hacerla.
+El manual de usuario es más simple que otras aplicaciones, esto se debe a que el enfoque del proyecto no ha sido tanto tener una aplicación con muchas funcionalidades, sino seguir un proceso de desarrollo que permitiera utilizar algunas de las tecnologías de desarrollo más en boga actualmente. He querido aprovechar la realización del proyecto como una oportunidad de formación y aprendizaje adicional al realizado en el grado, y de este modo mejorar mi preparación de cara a la inserción en el mercado laboral.
 
 El usuario generalmente llegará a la aplicación por su índice o portada. A esta página generalmente se accede con la dirección IP 127.0.0.1 si la ejecución es local.
-
 
 \begin{figure}
 	\centering
@@ -63,7 +30,6 @@ El usuario generalmente llegará a la aplicación por su índice o portada. A es
 \end{figure}
 
 Para usar la aplicación a partir de ese punto necesita registrarse o iniciar sesión con una de las opciones de inicio de sesión alternativas.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{signup.png}
@@ -71,7 +37,6 @@ Para usar la aplicación a partir de ese punto necesita registrarse o iniciar se
 \end{figure}
 
 Tras registrarse como usuario o tripulante, si esta preparado el correo, se envía un correo electrónico a su dirección personal.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{login.png}

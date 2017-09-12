@@ -5,7 +5,7 @@
 La planificación es un punto importante en cualquier proyecto. Estimar el trabajo, el tiempo y el dinero que va a suponer la realización del proyecto, aunque vaya a cambiar más tarde, es interesante para saber si puede haber posibilidades de que sea viable. Para ello, debemos analizar cuidadosamente los componentes del proyecto. Con este análisis pretendemos conocer los requisitos del proyecto y pretendemos que mediante modificaciones siga sirviendo en un futuro.
 
 \section{Planificación temporal}
-En un principio se planteó seguir una metodología ágil, esta sería \eng{Scrum} ya que existía experiencia anterior. Por supuesto, no se pudo usar completamente ya que no se tenía un equipo, no se hicieron reuniones diarias\ldots
+En un principio se planteó seguir una metodología ágil, esta sería \eng{Scrum} \cite{scrum} ya que existía experiencia anterior. Por supuesto, no se pudo usar completamente ya que no se tenía un equipo, no se hicieron reuniones diarias\ldots
 
 Se empezó a usar ZenHub como tablero kanban donde se situarían las tareas con sus costes. Este tipo de planificación con \emph{milestones} e \emph{issues} no ha sido seguido la mayor parte del tiempo, ya que no era la metodología más adecuada. Las labores de investigación que no tenían ningún entregable claro no se incluyeron en el repositorio a partir de cierto punto para no acumular demasiada información innecesaria.
 
@@ -35,23 +35,26 @@ Se empezó a generar documentación fuera de código. Este \emph{sprint} fue len
 \subsubsection{Sprint 4-6}
 En esta serie de \emph{sprints} se planteó la elección del \emph{framework} de \emph{Machine Learning}  que usar. Se investigaron tres alternativas \hfoot{http://scikit-learn.org/stable/}{sklearn}, \hfoot{http://www.deeplearning.net/software/theano/}{Theano} y \hfoot{https://www.tensorflow.org/}{Tensorflow}, aunque de tener la opción ahora se hubiese elegido \hfoot{https://keras.io/}{Keras}.
 
-Keras parece una muy buena opción debido a que tiene una \eng{API} de alto nivel y muy intuitiva, si se quiere ver un ejemplo el siguiente \hfoot{https://github.com/fchollet/keras/blob/master/examples/mnist_cnn.py}{\eng{script}} quizá sea un buen ejemplo de lo sencillo que puede ser el usar Keras. Además proporciona estabilidad en la \eng{API} y permite usar o Tensorflow, Theano o CNTK (\eng{Microsoft Cognitive Toolkit}) \eng{backends}.
+Keras parece una muy buena opción debido a que tiene una \eng{API} de alto nivel y muy intuitiva, si se quiere ver un ejemplo el siguiente \hfoot{https://github.com/fchollet/keras/blob/master/examples/mnist\_cnn.py}{script de Keras} quizá sea un buen ejemplo de lo sencillo que puede ser el usar Keras. 
+Además proporciona estabilidad en la \eng{API} y permite usar Tensorflow, Theano o \hfoot{https://docs.microsoft.com/en-us/cognitive-toolkit/}{CNTK} (\eng{Microsoft Cognitive Toolkit}) \eng{backends}.
 
 También se empezó a implementar la integración, algo que no se pudo cumplir y que acabó resultando mucho más costoso de lo que se había pensado previamente.
+
+
 
 \subsubsection{Sprint 7}
 En este \emph{sprint} se pretendía mejorar la aplicación y documentar mucho de los \emph{sprints} anteriores.
 En este punto se empiezan a tener problemas con el seguimiento de las tareas de manera online.
 
 \subsubsection{Docker}
-Tras investigar sobre el tema, se decidió poner algo de énfasis en el despliegue, ya que ya se había intentado y llevado a cabo con \emph{Heroku}. De los contenedores existentes se tubo que investigar y decir si usarlos y cuál. La decisión fue \emph{Docker}, al ser la única alternativa que tenía proyectos en producción. En el momento de la elección era totalmente \emph{open source}, algo que cambió con el tiempo y tras lo cuál hubo que hacer otra investigación de cómo influía el cambio. Resultó no influir apenas, puede ser que una vez maduren otras alternativas haya que intentar deshacerse de \emph{Docker}
+Tras investigar sobre el tema, se decidió poner algo de énfasis en el despliegue, ya que ya se había intentado y llevado a cabo con \emph{Heroku}. De los contenedores existentes se tubo que investigar y decir si usarlos y cuál. La decisión fue \emph{Docker} , al ser la única alternativa que tenía proyectos en producción. En el momento de la elección era totalmente \emph{open source}, algo que cambió con el tiempo y tras lo cuál hubo que hacer otra investigación de cómo influía el cambio. Resultó no influir apenas, puede ser que una vez maduren otras alternativas haya que intentar deshacerse de \emph{Docker}.\cite{learndock}
 
 \subsubsection{Transfer learning}
 Tras investigar un poco sobre cómo se podía hacer la integración con Tensorflow, se vió que el \emph{transfer learning} de un modelo como inception v3 era suficientemente simple como para intentar llevarlo a cabo.
 Se desarrollaron los \emph{scripts} para predecir clases a partir de imágenes.
 
 \subsubsection{Docker Compose y Swarm}
-\emph{Docker Compose} y \emph{Docker Swarm} fueron una de las razones por las que se eligió \emph{Docker} en vez de otras alternativas, pero aún así la barrera de entrada a estas tecnologías estaba lo suficientemente alta como para que \emph{Swarm} acabase siendo inalcanzable.
+\emph{Docker Compose} y \emph{Docker Swarm} fueron una de las razones por las que se eligió \emph{Docker} en vez de otras alternativas, pero aún así la barrera de entrada a estas tecnologías estaba lo suficientemente alta como para que \emph{Swarm} acabase siendo inalcanzable. \cite{orchdock}
 
 \subsubsection{Microservicios}
 Los microservicios se empezaron a conocer gracias a \emph{Docker}, ya que son una alternativa muy usada en este tipo de sistemas, al tener una relación simbiótica. Cada uno beneficia al otro.
@@ -67,12 +70,13 @@ El proyecto incurre en distintos tipos de costes
 
 \subsubsection{Costes de personal}
 El proyecto se lleva a cabo por un desarrollador junior empleado a tiempo parcial (30h/semana) durante cuatro meses. Se considera el siguiente salario:
+
 \FloatBarrier
 \begin{table}[]
 \centering
 \begin{tabular}{@{}ll@{}}
 \toprule
-Concepto & Coste \\ \midrule
+Concepto & Coste (\euro{}) \\ \midrule
 Salario neto & 1000 \\
 Retención IRPF (19 \%) & 360.53 \\
 Seguridad social (28,30 \%) & 537.00 \\
@@ -82,18 +86,18 @@ Salario bruto & 1897.53 \\ \midrule
 \caption{Costes de personal}
 \label{Salario}
 \end{table}
-\FloatBarrier
+
 \subsubsection{Costes de material: hardware y software}
 
 Como material podemos considerar lo mínimo necesario para llevar un proyecto así:
 
-Un único coste puntual (ordenador portátil) que aproximamos en 600€ y en la tabla se pondrá su coste amortizado contando con una amortización a 4 años. Se ha comprobado que internet está incluido en el alquiler de la oficina.
+Un único coste puntual (ordenador portátil) que aproximamos en 600\euro{} y en la tabla se pondrá su coste amortizado contando con una amortización a 4 años. Se ha comprobado que internet está incluido en el alquiler de la oficina.
 \FloatBarrier
 \begin{table}[]
 \centering
 \begin{tabular}{@{}ll@{}}
 \toprule
-Concepto & Coste \\ \midrule
+Concepto & Coste (\euro{}) \\ \midrule
 Ordenador portátil & 25 \\
 Alquiler de oficina & 99 \\
 1 mes & 124 \\ \midrule
@@ -102,30 +106,30 @@ Alquiler de oficina & 99 \\
 \caption{Costes de material al mes}
 \label{Costes mensualmente}
 \end{table}
-\FloatBarrier
+
 
 \subsubsection{Costes totales}
-El sumatorio de todos los costes es de 6188,59€. Podríamos recortar más en ciertos puntos, pero debido a que no se va a llevar a cabo como está planteado aquí, esto solo es una aproximación del coste de oportunidad.
+El sumatorio de todos los costes es de 6188,59\euro{}. Podríamos recortar más en ciertos puntos, pero debido a que no se va a llevar a cabo como está planteado aquí, esto solo es una aproximación del coste de oportunidad.
 
 
 
 
 \subsection{Beneficios}
-Si nuestro interés fuese vender el proyecto, este no sería el proyecto que venderíamos, tendríamos que añadir medidas de tiempo computacional en cada operación.
+Si nuestro interés fuese vender el proyecto, este no sería el proyecto que venderíamos, tendríamos que añadir medidas de tiempo computacional en cada operación, de manera que cada clasificación o re-entrenamiento cobrásemos cierta cantidad de dinero en relación al tiempo computacional usado. Esto se traduce a una explotación del tipo SaaS (Software as a Service).
 
-Una vez consigamos calcular tiempos de computación podemos restringir a cada usuario una cantidad de tiempo. De esta manera podemos crear planes para cada usuario, podemos plantearnos hacer un plan gratuito y varios planes de pago según cantidad de tiempo computacional que se le permita usar al cliente. 
+De esta manera podemos crear planes para cada usuario, podemos plantearnos hacer un plan gratuito y varios planes de pago según cantidad de tiempo computacional que se le permita usar al cliente.
 
 
 \subsection{Viabilidad legal}
 
-La licencia necesaria para nuestro proyecto debido a las dependencias que tiene tendrá que ser compatible con aquellas de las bibliotecas que hemos usado, la licencia más restrictiva que hemos usado es la de paramiko siendo LGPL (2.1 y 3.0)\cite{LGPL} , esta licencia esta pensada para librerías e incluye el siguiente párrafo:
+La licencia necesaria para nuestro proyecto, debido a las dependencias que tiene, tendrá que ser compatible con aquellas de las bibliotecas que hemos usado. La licencia más restrictiva que hemos usado es la de paramiko siendo LGPL (2.1 y 3.0)\cite{LGPL}, esta licencia está pensada para librerías e incluye el siguiente párrafo:
 
 \begin{quotation}5. A program that contains no derivative of any portion of the Library, but is designed to work with the Library by being compiled or linked with it, is called a "work that uses the Library". Such a work, in isolation, is not a derivative work of the Library, and therefore falls outside the scope of this License.
 \end{quotation}
 
-Por lo que las restricciones de esa licencia no se nos aplican. Esto quiere decir que podemos publicar nuestro codigo bajo la licencia que mejor nos parezca o incluso podríamos mantenerlo privado como un Secreto de negocio (Trade Secret) ya que proporcionamos SaaS (Software as a Service). Basandome en las licencias más comunes open source, ya que me parece interesante el hecho de que otras personas puedan usar el código, y con ayuda de las recomendaciones de gnu\cite{gnurecs}, se ha decidido usar la GNU GPL 3.0.
+Por lo que las restricciones de esa licencia no se nos aplican. Esto quiere decir que podemos publicar nuestro código bajo la licencia que mejor nos parezca o incluso podríamos mantenerlo privado como un Secreto de negocio (\eng{trade secret}) ya que proporcionamos SaaS. Basándome en las licencias \eng{open source} más comunes, ya que me parece interesante el hecho de que otras personas puedan usar el código, y con ayuda de las recomendaciones de GNU \cite{gnurecs}, se ha decidido usar la GNU GPL 3.0.
 
-Para la documentación se ha decidido que la mejor licencia para las necesidades era la GNU FDL (GNU Free Documentation License). La otra alternativa más interesante era Creative Commons.
+Para la documentación se ha decidido que la mejor licencia para las necesidades era la GNU FDL (GNU Free Documentation License). La segunda alternativa más interesante era Creative Commons.
 
 Para completar la documentación sobre la viabilidad legal se adjunta una tabla con todas las dependencias del proyecto.
 \FloatBarrier

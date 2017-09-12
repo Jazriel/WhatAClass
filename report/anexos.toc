@@ -6,7 +6,7 @@
 \contentsline {appendix}{\chapternumberline {A}Plan de Proyecto Software}{1}{appendix.Alph1}
 \contentsline {section}{\numberline {A.1}Introducci\IeC {\'o}n}{1}{section.Alph1.1}
 \contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n temporal}{1}{section.Alph1.2}
-\contentsline {subsection}{Sistema de \emph {sprints}}{2}{section*.4}
+\contentsline {subsection}{Sistema de \emph {sprints}}{1}{section*.4}
 \contentsline {subsubsection}{Sprints antes del cuatrimestre}{2}{section*.5}
 \contentsline {subsubsection}{Sprint 1}{2}{section*.6}
 \contentsline {subsubsection}{Sprint 2}{2}{section*.7}
@@ -15,76 +15,78 @@
 \contentsline {subsubsection}{Sprint 7}{3}{section*.10}
 \contentsline {subsubsection}{Docker}{3}{section*.11}
 \contentsline {subsubsection}{Transfer learning}{3}{section*.12}
-\contentsline {subsubsection}{Docker Compose y Swarm}{3}{section*.13}
+\contentsline {subsubsection}{Docker Compose y Swarm}{4}{section*.13}
 \contentsline {subsubsection}{Microservicios}{4}{section*.14}
 \contentsline {subsubsection}{Escalabilidad y despliegue de p\IeC {\'a}ginas web}{4}{section*.15}
 \contentsline {section}{\numberline {A.3}Estudio de viabilidad}{4}{section.Alph1.3}
 \contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{4}{section*.16}
 \contentsline {subsubsection}{Costes de personal}{4}{section*.17}
-\contentsline {subsubsection}{Costes de material: hardware y software}{4}{section*.18}
+\contentsline {subsubsection}{Costes de material: hardware y software}{5}{section*.18}
 \contentsline {subsubsection}{Costes totales}{5}{section*.19}
 \contentsline {subsection}{Beneficios}{5}{section*.20}
 \contentsline {subsection}{Viabilidad legal}{5}{section*.21}
-\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{7}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{7}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Objetivos generales}{7}{section.Alph2.2}
-\contentsline {section}{\numberline {B.3}Catalogo de requisitos}{7}{section.Alph2.3}
-\contentsline {subsection}{Requisitos funcionales}{7}{section*.22}
-\contentsline {subsection}{Requisitos no funcionales}{8}{section*.23}
-\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{8}{section.Alph2.4}
-\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{14}{appendix.Alph3}
-\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{14}{section.Alph3.1}
-\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{14}{section.Alph3.2}
-\contentsline {subsection}{Paso de datos}{15}{section*.24}
-\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{15}{section.Alph3.3}
-\contentsline {subsection}{Model View Controller (MVC)}{15}{section*.25}
-\contentsline {subsection}{Builder}{16}{section*.26}
-\contentsline {subsection}{Iterator}{16}{section*.27}
-\contentsline {subsection}{Null Object}{16}{section*.28}
+\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{8}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{8}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Objetivos generales}{8}{section.Alph2.2}
+\contentsline {section}{\numberline {B.3}Cat\IeC {\'a}logo de requisitos}{8}{section.Alph2.3}
+\contentsline {subsection}{Requisitos funcionales}{8}{section*.22}
+\contentsline {subsection}{Requisitos no funcionales}{9}{section*.23}
+\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{9}{section.Alph2.4}
+\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{15}{appendix.Alph3}
+\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{15}{section.Alph3.1}
+\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{15}{section.Alph3.2}
+\contentsline {subsection}{Paso de datos}{16}{section*.24}
+\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{16}{section.Alph3.3}
+\contentsline {subsection}{Model View Controller (MVC)}{16}{section*.25}
+\contentsline {subsection}{Builder}{17}{section*.26}
+\contentsline {subsection}{Iterator}{17}{section*.27}
+\contentsline {subsection}{Null Object}{17}{section*.28}
 \contentsline {subsection}{Arquitectura final}{17}{section*.29}
-\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o procedimental}{17}{section.Alph3.4}
-\contentsline {section}{\numberline {C.5}Dise\IeC {\~n}o de paquetes}{18}{section.Alph3.5}
-\contentsline {subsection}{Descomposici\IeC {\'o}n funcional}{18}{section*.30}
-\contentsline {subsection}{Descomposici\IeC {\'o}n divisional}{19}{section*.31}
-\contentsline {subsection}{Descomposici\IeC {\'o}n de la aplicaci\IeC {\'o}n}{19}{section*.32}
-\contentsline {subsection}{Aplicaci\IeC {\'o}n}{20}{section*.33}
-\contentsline {subsection}{Configuraci\IeC {\'o}n}{20}{section*.34}
-\contentsline {subsection}{Tensorflow}{21}{section*.35}
-\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{22}{appendix.Alph4}
-\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{22}{section.Alph4.1}
-\contentsline {section}{\numberline {D.2}Estructura de directorios}{22}{section.Alph4.2}
-\contentsline {subsection}{Aplicaci\IeC {\'o}n web}{22}{section*.36}
-\contentsline {subsection}{Microservicio de tensorflow}{23}{section*.37}
-\contentsline {subsection}{Docker compose}{24}{section*.38}
-\contentsline {section}{\numberline {D.3}Manual del programador}{24}{section.Alph4.3}
-\contentsline {subsection}{Entorno de desarrollo}{24}{section*.39}
-\contentsline {subsection}{Python}{24}{section*.40}
-\contentsline {subsection}{Git}{25}{section*.41}
-\contentsline {subsubsection}{Obtenci\IeC {\'o}n c\IeC {\'o}digo fuente (Clonaci\IeC {\'o}n del repositorio)}{25}{section*.42}
-\contentsline {subsection}{Gestor de paquetes}{25}{section*.43}
-\contentsline {subsubsection}{Uso b\IeC {\'a}sico de pip}{26}{section*.44}
-\contentsline {subsection}{Entorno virtual}{27}{section*.45}
-\contentsline {subsubsection}{Creaci\IeC {\'o}n de un entorno virtual}{27}{section*.46}
-\contentsline {subsubsection}{Entorno virtual e instalaci\IeC {\'o}n de las dependencias}{28}{section*.47}
-\contentsline {subsection}{IDE o editor de texto}{29}{section*.48}
-\contentsline {subsubsection}{Importar el proyecto desde Pycharm}{29}{section*.49}
-\contentsline {subsubsection}{A\IeC {\~n}adir caracter\IeC {\'\i }sticas}{30}{section*.50}
-\contentsline {subsection}{Compilaci\IeC {\'o}n}{31}{section*.51}
-\contentsline {subsubsection}{Babel}{31}{section*.52}
-\contentsline {subsection}{Docker}{32}{section*.53}
-\contentsline {subsubsection}{Aplicaci\IeC {\'o}n web}{34}{section*.54}
-\contentsline {subsubsection}{Tensorflow}{35}{section*.55}
-\contentsline {subsubsection}{Docker compose}{35}{section*.56}
-\contentsline {subsection}{Integraci\IeC {\'o}n continua}{37}{section*.57}
-\contentsline {subsubsection}{Travis CI}{38}{section*.58}
-\contentsline {subsubsection}{CodeClimate}{39}{section*.59}
-\contentsline {subsubsection}{VersionEye}{39}{section*.60}
-\contentsline {subsubsection}{Slack}{39}{section*.61}
-\contentsline {section}{\numberline {D.4}Despliegue}{39}{section.Alph4.4}
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{40}{section.Alph4.5}
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{41}{appendix.Alph5}
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{41}{section.Alph5.1}
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{41}{section.Alph5.2}
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{41}{section.Alph5.3}
-\contentsline {section}{\numberline {E.4}Manual del usuario}{41}{section.Alph5.4}
-\contentsline {chapter}{Bibliograf\'{\i }a}{44}{section*.63}
+\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o procedimental}{18}{section.Alph3.4}
+\contentsline {section}{\numberline {C.5}Dise\IeC {\~n}o de paquetes}{19}{section.Alph3.5}
+\contentsline {subsection}{Descomposici\IeC {\'o}n funcional}{19}{section*.30}
+\contentsline {subsection}{Descomposici\IeC {\'o}n divisional}{20}{section*.31}
+\contentsline {subsection}{Descomposici\IeC {\'o}n de la aplicaci\IeC {\'o}n}{20}{section*.32}
+\contentsline {subsection}{Aplicaci\IeC {\'o}n}{21}{section*.33}
+\contentsline {subsection}{Configuraci\IeC {\'o}n}{21}{section*.34}
+\contentsline {subsection}{Tensorflow}{22}{section*.35}
+\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de instalaci\IeC {\'o}n}{23}{appendix.Alph4}
+\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{23}{section.Alph4.1}
+\contentsline {section}{\numberline {D.2}Manual de instalaci\IeC {\'o}n para programadores}{23}{section.Alph4.2}
+\contentsline {subsection}{Entorno de desarrollo}{23}{section*.36}
+\contentsline {subsection}{Obtenci\IeC {\'o}n c\IeC {\'o}digo fuente (Clonaci\IeC {\'o}n del repositorio)}{24}{section*.37}
+\contentsline {subsection}{Entorno virtual e instalaci\IeC {\'o}n de las dependencias}{24}{section*.38}
+\contentsline {subsection}{Docker}{26}{section*.39}
+\contentsline {subsubsection}{Docker compose}{26}{section*.40}
+\contentsline {section}{\numberline {D.3}Instalaci\IeC {\'o}n para uso local}{26}{section.Alph4.3}
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{28}{appendix.Alph5}
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{28}{section.Alph5.1}
+\contentsline {section}{\numberline {E.2}Estructura de directorios}{28}{section.Alph5.2}
+\contentsline {subsection}{Aplicaci\IeC {\'o}n web}{28}{section*.41}
+\contentsline {subsection}{Microservicio de tensorflow}{29}{section*.42}
+\contentsline {subsection}{Docker compose}{30}{section*.43}
+\contentsline {section}{\numberline {E.3}Manual del programador}{30}{section.Alph5.3}
+\contentsline {subsection}{Entorno de desarrollo}{30}{section*.44}
+\contentsline {subsection}{Python}{30}{section*.45}
+\contentsline {subsection}{Git}{31}{section*.46}
+\contentsline {subsection}{Gestor de paquetes}{31}{section*.47}
+\contentsline {subsubsection}{Uso b\IeC {\'a}sico de pip}{31}{section*.48}
+\contentsline {subsection}{Entorno virtual}{32}{section*.49}
+\contentsline {subsubsection}{Creaci\IeC {\'o}n de un entorno virtual}{32}{section*.50}
+\contentsline {subsection}{IDE o editor de texto}{33}{section*.51}
+\contentsline {subsubsection}{Importar el proyecto desde Pycharm}{33}{section*.52}
+\contentsline {subsubsection}{A\IeC {\~n}adir caracter\IeC {\'\i }sticas}{34}{section*.53}
+\contentsline {subsection}{Compilaci\IeC {\'o}n}{35}{section*.54}
+\contentsline {subsubsection}{Babel}{35}{section*.55}
+\contentsline {subsection}{Docker}{36}{section*.56}
+\contentsline {subsubsection}{Aplicaci\IeC {\'o}n web}{38}{section*.57}
+\contentsline {subsubsection}{Tensorflow}{39}{section*.58}
+\contentsline {subsubsection}{Docker compose}{39}{section*.59}
+\contentsline {section}{\numberline {E.4}Despliegue}{42}{section.Alph5.4}
+\contentsline {section}{\numberline {E.5}Pruebas del sistema}{42}{section.Alph5.5}
+\contentsline {appendix}{\chapternumberline {F}Documentaci\IeC {\'o}n de usuario}{43}{appendix.Alph6}
+\contentsline {section}{\numberline {F.1}Introducci\IeC {\'o}n}{43}{section.Alph6.1}
+\contentsline {section}{\numberline {F.2}Requisitos de usuarios}{43}{section.Alph6.2}
+\contentsline {section}{\numberline {F.3}Instalaci\IeC {\'o}n}{43}{section.Alph6.3}
+\contentsline {section}{\numberline {F.4}Manual del usuario}{43}{section.Alph6.4}
+\contentsline {chapter}{Bibliograf\'{\i }a}{46}{section*.61}

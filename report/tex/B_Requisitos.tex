@@ -4,13 +4,13 @@
 Este apartado consistirá en una descripción de los propósitos y requerimientos de la aplicación.
 
 \section{Objetivos generales}
-El objetivo principal del proyecto es el crear una aplicación web, esta debe tener control de usuarios y capacidad de clasificar imágenes mediante una red neuronal. Por último debe ser capaz de re-entrenar el modelo de clasificación de imágenes.
+El objetivo principal del proyecto es el crear una aplicación web, esta debe tener control de usuarios y capacidad de clasificar imágenes mediante una red neuronal. Por último, debe ser capaz de re-entrenar el modelo de clasificación de imágenes.
 
-La red neuronal a usar es inception v3 y el conjunto de datos es Imagenet.
+La red neuronal a usar es Inception v3 y el conjunto de datos es Imagenet.
 
 Además se pide que todo esto se haga de una manera escalable, desplegable y con un enfoque que reduzca la deuda técnica.
 
-\section{Catalogo de requisitos}
+\section{Catálogo de requisitos}
 \subsection{Requisitos funcionales}
 \begin{itemize}
 \tightlist
@@ -26,7 +26,7 @@ Además se pide que todo esto se haga de una manera escalable, desplegable y con
   \item
     \textbf{RF-1.3 Logout:} el usuario debe poder finalizar una sesión.
   \item
-    \textbf{RF-1.4 Integración con Google:} en caso de que el usuario tenga cuenta de google podrá usarla para hacer el login.
+    \textbf{RF-1.4 Integración con Google:} en caso de que el usuario tenga cuenta de Google, podrá usarla para hacer el login.
   \end{itemize}
 \item
   \textbf{RF-2 Uso de aprendizaje automático:} se debe permitir el uso de un sistema de aprendizaje automático basado en una red neuronal.
@@ -113,7 +113,7 @@ Ninguna.\strut
 \item
   El usuario rellena el formulario de registro (email y contraseña).
 \item
-  Si esta configurada la confirmación por email se necesita confirmar para terminar el registro.
+  Si está configurada la confirmación por email, se necesita confirmar para terminar el registro.
 \end{enumerate}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
@@ -127,7 +127,7 @@ El usuario se registra en la base de datos.\strut
 \begin{itemize}
 \tightlist
 \item
-  Fallo de la configuración de email. (Si no hay no se da)
+  Fallo de la configuración de email. (Si no hay, no se da)
 \end{itemize}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
@@ -177,7 +177,7 @@ El usuario debe de estar registrado.\strut
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  El usuario rellena el formulario de login (email y contraseña). O el equivalente en google.
+  El usuario rellena el formulario de login (email y contraseña). O el equivalente en Google.
 \end{enumerate}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
@@ -301,7 +301,7 @@ El usuario debe de estar autenticado.\strut
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  El usuario sube una foto.
+  El usuario sube una imagen.
 \item 
   Opcional. El usuario elige un re-entrenamiento específico.
 \end{enumerate}\strut
@@ -437,7 +437,7 @@ El usuario debe de estar autenticado y haber subido un dataset.\strut
 \item
   El usuario elige un dataset.
 \item
-  El usuario debe esperar una cantidad decente de tiempo (mínimo media hora) y tendrá el modelo disponible.
+  Tras el tiempo requerido por los algoritmos de re-entrenamiento, el usuario tendrá disponible un modelo re-entrenado.
 \end{enumerate}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
@@ -464,8 +464,8 @@ Media-Alta\strut
 \end{longtable}
 
 \newpage
-Por último se expone el diagrama de casos de uso como resumen de la especificación de requisitos.
-
+Por último, se expone el diagrama de casos de uso como resumen de la especificación de requisitos.
+\FloatBarrier
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{usecase.png}

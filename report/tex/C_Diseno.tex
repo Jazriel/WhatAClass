@@ -1,17 +1,17 @@
 \apendice{Especificación de diseño}
 
 \section{Introducción}
-En este anexo se expone el diseño que se ha usado para llevar a cavo los objetivos anteriores. Como se manejan los datos, la arquitectura y modelos.
+En este anexo se expone el diseño que se ha usado para llevar a cabo los objetivos anteriores. Como se manejan los datos, la arquitectura y modelos.
 
 \section{Diseño de datos}
-La aplicación cuenta con el modelado de los siguientes:
+La aplicación cuenta con el modelado de los siguientes elementos:
 
 \begin{itemize}
-\item \textbf{Usuario:} la entidad del usuario es una entidad simple la cual tiene un id auto-generado para poder identificar a cualquier usuario. También dispone de email, contraseña y confirmación del email. Por último dispone de un campo para posibles \emph{tokenes} de \emph{oauth} de manera que se puedan añadir distintas maneras de registrar usuarios sin tener que cambiar constantemente el modelo de la base de datos.
+\item \textbf{Usuario:} la entidad del usuario es una entidad simple la cual tiene un id auto-generado para poder identificar a cualquier usuario. También dispone de email, contraseña y confirmación del email. Por último, dispone de un campo para posibles \emph{tokenes} de \emph{oauth} de manera que se puedan añadir distintas maneras de registrar usuarios sin tener que cambiar constantemente el modelo de la base de datos.
 
-\item \textbf{Red neuronal:} la red neuronal solo tiene lo que podríamos considerar \emph{primary key} en una base de datos y el objeto de bytes. Su identificador se compone de el nombre del usuario y de el nombre del conjunto de datos que se ha usado para entrenarlo. 
+\item \textbf{Red neuronal:} la red neuronal solo tiene lo que podríamos considerar \emph{primary key} en una base de datos y el objeto de bytes. Su identificador se compone del nombre de usuario y del nombre de conjunto de datos que se ha usado para entrenarlo. 
 
-\item \textbf{Conjunto de datos:} el conjunto de datos se identifica mediante su nombre y del usuario que lo ha subido. Tiene un objeto de bytes asociado que guardamos debido a la lentitud del entrenamiento de una red neuronal y si este entrenamiento se interrumpe no queremos repetir la subida del conjunto de datos al servidor.
+\item \textbf{Conjunto de datos:} el conjunto de datos se identifica mediante su nombre y del usuario que lo ha subido. Tiene un objeto de bytes asociado que guardamos debido a la lentitud del entrenamiento de una red neuronal y si este entrenamiento se interrumpe, no queremos repetir la subida del conjunto de datos al servidor.
 
 \end{itemize}
 
@@ -22,12 +22,12 @@ La aplicación cuenta con el modelado de los siguientes:
 \end{figure}
 
 
-Dentro de esta configuración tentemos que tener en cuenta que sólo el modelo del usuario esta dentro de la base de datos de manera que el resto se controla por software y se guarda dentro de los volúmenes de \emph{docker}
+Dentro de esta configuración tenemos que tener en cuenta que sólo el modelo del usuario está dentro de la base de datos de manera que el resto se controla por software y se guarda dentro de los volúmenes de \emph{docker}
 
 
 \subsection{Paso de datos}
 
-El paso de datos entre los servicios se hace a través de SSH, esto se hace ya que nos proporciona seguridad. Otra opción es tener micro servidores de flask para exponer una \emph{API Rest} que nos permita hacer las operaciones de una forma más elegante. Esto dificulta algo la configuración interna poniendo más peso en el equipo de \emph{devops} pero nos permite tener un sistema mucho más desacoplado lo cual facilita el mantenimiento de ambas partes por separado. Si se quisiera tener seguridad tras ese cambio las comunicaciones se deberían hacer con SSL. 
+Para proporcionar mayor seguridad el paso de datos entre los servicios se hace a través de SSH. Otra opción es tener micro servidores de Flask para exponer una \emph{API Rest} que nos permita hacer las operaciones de una forma más elegante. Esto dificulta algo la configuración interna poniendo más peso en el equipo de \emph{devops}, pero nos permite tener un sistema mucho más desacoplado lo cual facilita el mantenimiento de ambas partes por separado. Si se quisiera tener seguridad tras ese cambio, las comunicaciones se deberían hacer con SSL. 
 
 
 \section{Diseño arquitectónico}
@@ -52,22 +52,22 @@ En nuestra estructura de archivos las vistas están bajo WhatAClass/WhatAClass/t
 
 \subsection{Builder}
 
-En la aplicación que hemos creado se ha usado un builder para permitir la creación de varias instancias de la aplicación de manera sencilla, ya que la aplicación es un agregado de varios compuestos. Ademas permite que se pueda escalar verticalmente (añadiendo más recursos en la misma máquina).
+En la aplicación que hemos creado se ha usado un builder para permitir la creación de varias instancias de la aplicación de manera sencilla, ya que la aplicación es un agregado de varios compuestos. Además permite que se pueda escalar verticalmente (añadiendo más recursos en la misma máquina).
 
-Esto también facilita la creación de la aplicación para programadores nuevos que desconozcan nuestro proyecto. Esto se debe a que los componentes están bien establecidos y un programador que no conozca toda la aplicación puede solo añadir un par de líneas en el método que corresponda, si las necesidades cambian mucho entre varios despliegues, lo suficiente para que no solo se tengan que hacer un par de cambios triviales, podríamos mantener varios métodos builder.
+Esto también facilita la creación de la aplicación para programadores nuevos que desconozcan nuestro proyecto. Esto se debe a que los componentes están bien establecidos, lo cual permite añadir nuevos componentes o quitar otros de manera fácil.
 
 
 \subsection{Iterator}
-Aunque no se ha implementado explicitamente python permite la iteración sobre elementos de una colección de manera transparente. Esto podría no considerarse como un patrón de diseño ya que está incorporado en el lenguaje.
+Aunque no se ha implementado explícitamente Python permite la iteración sobre elementos de una colección de manera transparente. Esto podría no considerarse como un patrón de diseño ya que está incorporado en el lenguaje.
 
 
 \subsection{Null Object}
-El objeto de comunicación con el servidor de E-mail hace la función de un objeto nulo cuando esta funcionalidad no está habilitada. Esto permite un cambio de comportamiento de manera simple sin condicionales excesivas en sitios inadecuados para tratar con el cambio en el comportamiento al estar habilitada la funcionalidad.
+El objeto de comunicación con el servidor de correo electrónico responde como un Null Object cuando esta funcionalidad no está habilitada. Esto permite un cambio de comportamiento de manera simple sin condicionales excesivas en sitios inadecuados para tratar con el cambio en el comportamiento al estar habilitada la funcionalidad.
 
 
 \subsection{Arquitectura final}
 
-El diseño arquitectónico final es uno muy parecido a los que se usan en muchas páginas web para permitir mayor escalabilidad y picos de servicio sin caída del mismo. Simplemente se basa en permitir ejecutar múltiples instancias de los mismos objetos. Se podría ampliar la escalabilidad mediante \emph{reverse proxies} en distintos puntos de la arquitectura y con un servicio de caché como \href{https://redis.io/}{\emph{Redis}} antes de las bases de datos para permitir mayor velocidad de acceso. Si quisiésemos replicar micro servicios deberíamos poner un \emph{load balancer} o unirlos desde el que ya está.
+El diseño arquitectónico final es uno muy parecido a los que se usan en muchas páginas web para permitir mayor escalabilidad y picos de servicio sin caída del mismo. Simplemente se basa en permitir ejecutar múltiples instancias de los mismos objetos. Se podría ampliar la escalabilidad mediante \emph{reverse proxies} en distintos puntos de la arquitectura y con un servicio de caché como \hfoot{https://redis.io/}{\emph{Redis}} antes de las bases de datos para permitir mayor velocidad de acceso. Si quisiésemos replicar microservicios, deberíamos poner un \emph{load balancer} o unirlos desde el que ya está.
 
 
 \begin{figure}
@@ -87,7 +87,7 @@ En este apartado se expondrá que flujo sigue la información de forma general c
 	\caption{Diagrama de secuencia}\label{fig:Seq.png}
 \end{figure}
 
-Como se puede observar la secuencia pasa por nginx para poder servir archivos estáticos a gran velocidad y para poder si se quisiese balancear la carga entre varios servidores de aplicación (uWSGI).
+Como se puede observar la secuencia pasa por nginx para poder servir archivos estáticos a gran velocidad y para poder, si se quisiese, balancear la carga entre varios servidores de aplicación (uWSGI).
 
 
 \section{Diseño de paquetes}
@@ -131,9 +131,9 @@ your\= app/ \\
 \end{tabbing}
 
 \subsection{Descomposición de la aplicación}
-La que se ha elegido en el proyecto es la funcional. 
+La descomposición que se ha elegido en el proyecto es la funcional. 
 
-Como se puede ver, python no necesita una clase para guardar código, esto resulta en un diagrama de clases más simple que en otros lenguajes como java.
+Como se puede ver, Python no necesita una clase para guardar código, esto resulta en un diagrama de clases más simple que en otros lenguajes como Java.
 
 
 \begin{tabbing}
@@ -187,15 +187,15 @@ WhatAClass/ \\
 
 
 \subsection{Aplicación}
-Como se puede ver la aplicación esta descompuesta en el builder (``app.py''), extensiones, formularios(``templates''), modelo, utilidades y controladores.
+Como se puede ver la aplicación está descompuesta en el builder (``app.py''), extensiones, formularios (``templates''), modelo, utilidades y controladores.
 
-Los controladores están en la carpeta blueprints pero se incluyen dentro de ``controllers.py'' para reducir el acoplamiento.
+Los controladores están en la carpeta blueprints, pero se incluyen dentro de ``controllers.py'' para reducir el acoplamiento.
 
 Las utilidades tienen una configuración parecida a los controladores, las utilidades están el ``utils'' y se importan con ``util.py''.
 
 
 \subsection{Configuración}
-En la jerarquía de carpetas superior al código de la aplicación esta la carpeta ``config'' usada por el patrón builder para generar la aplicación.
+En la jerarquía de carpetas superior al código de la aplicación está la carpeta ``config'', usada por el patrón builder para generar la aplicación.
 
 En este momento solo se dispone de una configuración (default) esto se debe a que gracias al uso de \emph{docker} y \emph{docker compose} podemos cambiar la configuración mediante las variables de entorno que estos pueden modificar, esto simplifica las configuraciones situacionales, ya que de esta manera toda la configuración que debamos cambiar podemos cambiarla en el archivo ``docker-compose.yml''.
 

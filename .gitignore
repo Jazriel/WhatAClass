@@ -95,6 +95,4 @@ provenv/
 # Idea files
 .idea/
 
-# Files that may not see the light of day
-/scraped
 

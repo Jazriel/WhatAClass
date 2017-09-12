@@ -1,12 +1,61 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{gnurecs}
 License recommendations.
+\newblock \url{https://www.gnu.org/licenses/license-recommendations.html}.
+
+\bibitem{py}
+Python download.
+\newblock \url{https://www.python.org/downloads/}.
 
 \bibitem{LGPL}
 Gnu lesser general public license, 1999.
+\newblock \url{https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html}.
 
 \bibitem{ppl}
 The top programming languages 2017, 2017.
+\newblock
+  \url{http://spectrum.ieee.org/static/interactive-the-top-programming-languages-2017}.
+
+\bibitem{orchdock}
+Shrikrishna Holla.
+\newblock {\em Orchestrating docker}.
+\newblock Packt Publishing Ltd, 2015.
+
+\bibitem{pip}
+\href{https://www.pypa.io/}{Equipo de desarrollo PyPA: https://www.pypa.io/}.
+\newblock pip.
+\newblock \url{https://pypi.python.org/pypi/pip}.
+
+\bibitem{venv}
+\href{https://www.pypa.io/}{Equipo de desarrollo PyPA: https://www.pypa.io/}.
+\newblock Virtualenv.
+\newblock \url{https://pypi.python.org/pypi/virtualenv/}.
+
+\bibitem{learndock}
+Pethuru Raj, Jeeva~S Chelladhurai, and Vinod Singh.
+\newblock {\em Learning Docker}.
+\newblock Packt Publishing Ltd, 2015.
+
+\bibitem{scrum}
+Jeff Sutherland and JJ~Sutherland.
+\newblock {\em Scrum: the art of doing twice the work in half the time}.
+\newblock Crown Business, 2014.
+
+\bibitem{dock}
+Docker Team.
+\newblock Docker.
+\newblock \href{https://www.docker.com/}{Docker:
+  https://www.docker.com/}\\\href{https://store.docker.com/search?offering=community\&type=edition}{Descarga:
+  https://store.docker.com/search?offering=community\&type=edition}.
+
+\bibitem{git}
+Linus~Torvalds y~la~comunidad Open~Source.
+\newblock Git.
+\newblock \href{https://git-scm.com/}{Git:
+  https://git-scm.com/}\\\href{http://ndpsoftware.com/git-cheatsheet.html}{Tutorial
+  recomendado (básico y visual):
+  http://ndpsoftware.com/git-cheatsheet.html}\\\href{https://git-scm.com/downloads}{Descargar
+  git: https://git-scm.com/downloads}.
 
 \end{thebibliography}

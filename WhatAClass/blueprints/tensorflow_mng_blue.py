@@ -36,10 +36,13 @@ def upload_dataset():
         try:
             mkdir(path.join('/app/static/images', str(current_user.id)))
         except FileExistsError:
-            pass
+            flash(_('A file with the same name already exists.'))
+            return render_template('tensorflow_mng/upload_ds.html', form=form)
         # TODO technical debt move images path to env variable to reduce coupling
         try:
             save_file(path.join('/app/static/images', str(current_user.id)))
+            flash(_('Dataset successfully saved.'))
+            return redirect(url_for('tensorflow_mng.retrain'))
         except NotSavedError:
             flash(_('There was an error while saving the dataset, please try again.'))
             return redirect(url_for('tensorflow_mng.upload_dataset'))
@@ -56,12 +59,19 @@ def retrain():
 
     if request.method == 'POST':
         ssh = init_ssh()
-        _, stdout, stderr = ssh.exec_command(
+        ssh_client, stdout, stderr = ssh.exec_command(
             'python3 '
             '/scripts/maybe_start_retrain.py'
             ' {} {} '.format(current_user.id, dataset_select.choice.data))
         output = stdout.read().decode()
         ssh.close()
+
+        if 'True' in output:
+            flash(_('Retrain started.'))
+            return render_template('tensorflow_mng/retrain.html', form=dataset_select, datasets=list(get_datasets()))
+        else:
+            flash(_('A model was already trained or queued to train with that dataset.'))
+            return render_template('tensorflow_mng/retrain.html', form=dataset_select, datasets=list(get_datasets()))
 
     return render_template('tensorflow_mng/retrain.html', form=dataset_select, datasets=list(get_datasets()))
 
@@ -69,7 +79,7 @@ def retrain():
 @tensorflow_mng.route('/predict', methods=['GET', 'POST'])
 @login_required
 def predict():
-    """Page where users are going to upload files to get their predictions."""
+    """Page where users are going to upload files to get their predictions on the default model."""
 
     # TODO technical debt: refactor SSH out of the blueprints
     form = UploadForm()
@@ -85,6 +95,39 @@ def predict():
         classes, probs, output, stderr = ssh_predict(filename)
         print(classes, probs)
         
+        if len(classes) < 3 or len(probs) < 3:
+            print(output)
+            print(stderr.read().decode())
+            return render_template('error.html')
+
+        return render_template('tensorflow_mng/predicted.html',
+                               classes=classes,
+                               probs=probs,
+                               image_path=path.join('images', filename))
+
+    return render_template('tensorflow_mng/predict.html', form=form)
+
+
+@tensorflow_mng.route('/select-predict', methods=['GET', 'POST'])
+@login_required
+def select_predict():
+    """Page where users are going to upload files to get their predictions on their models."""
+
+    # TODO technical debt: refactor SSH out of the blueprints
+    form = UploadForm()
+    dataset_select = SelectDatasetForm()
+
+    if request.method == 'POST':
+        try:
+            filename = save_file('/app/static/images')
+        except NotSavedError:
+            return redirect(url_for('tensorflow_mng.select_predict'))
+
+        print(filename)
+
+        classes, probs, output, stderr = ssh_predict(filename)
+        print(classes, probs)
+
         if len(classes) < 3 or len(probs) < 3:
             print(output)
             print(stderr.read().decode())

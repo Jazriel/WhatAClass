@@ -21,6 +21,9 @@ RUN cp id_rsa ~/.ssh/id_rsa && cp id_rsa ~/.ssh/known_hosts && rm id_rsa
 # Directory for file uploads
 RUN mkdir -p /images
 
+# nginx configuration for larger file sizes
+COPY nginx.conf /etc/nginx/
+
 
 # Database initialization script
 COPY create_db.py .
