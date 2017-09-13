@@ -611,3 +611,25 @@ Si ya tuviésemos ese archivo descargado bastaría con ejecutar `\textbf{docker-
 Las pruebas se pueden ejecutar con test.py que lanza los tests de la carpeta tests/. Si queremos ver el recubrimiento del código, podemos usar una herramienta como coverage y ejecutar test.py a traves de esa herramienta.  
 
 
+\section{Configuración de Oauth}
+
+Para configurar \emph{oauth} para una aplicación debemos pedir un \emph{token} y un secreto, esto en Google se hace a través de la sección de desarrolladores o \hfoot{https://console.developers.google.com/}{Google APIs}. Estos valores se especifican en `config/default.py'
+
+\section{Configuración del servidor de correo electrónico}
+
+Para configurar el correo electrónico debemos comprobar que el servidor permite el uso de SMTP para la comunicación, una vez esta configurado de esta manera debemos proporcionar:
+
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Dirección propia (usuario@proovedor.exten)
+\item Contraseña
+\item Dirección del servidor
+\item Puerto
+\end{itemize}
+
+
+
+
+
