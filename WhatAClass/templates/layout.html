@@ -50,6 +50,7 @@
                                         <li><a href="{{ url_for('tensorflow_mng.upload_dataset') }}">{{ _('Upload dataset') }}</a></li>
                                         <li><a href="{{ url_for('tensorflow_mng.retrain') }}">{{ _('Retrain model') }}</a></li>
                                         <li><a href="{{ url_for('tensorflow_mng.predict') }}">{{ _('Classify image') }}</a></li>
+                                        <li><a href="{{ url_for('tensorflow_mng.select_predict') }}">{{ _('Classify image with') }} <br/> {{ _('a trained model') }}</a></li>
                                     </ul>
                                 </li>
                             {% endif %}

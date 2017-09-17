@@ -15,10 +15,13 @@
 \addvspace {10pt}
 \contentsline {figure}{\numberline {E.1}{\ignorespaces Proceso de traducci\IeC {\'o}n}}{37}{figure.Alph5.1}
 \addvspace {10pt}
-\addvspace {10pt}
-\contentsline {figure}{\numberline {G.1}{\ignorespaces Punto de entrada a la aplicaci\IeC {\'o}n}}{46}{figure.Alph7.1}
-\contentsline {figure}{\numberline {G.2}{\ignorespaces Pantalla de registro de usuario}}{46}{figure.Alph7.2}
-\contentsline {figure}{\numberline {G.3}{\ignorespaces Pantalla de inicio de sesi\IeC {\'o}n}}{46}{figure.Alph7.3}
-\contentsline {figure}{\numberline {G.4}{\ignorespaces Inicios de sesi\IeC {\'o}n alternativos}}{47}{figure.Alph7.4}
-\contentsline {figure}{\numberline {G.5}{\ignorespaces Cambio de las zonas accesibles al iniciar sesi\IeC {\'o}n}}{47}{figure.Alph7.5}
-\contentsline {figure}{\numberline {G.6}{\ignorespaces Pantalla de acceso al servicio de clasificaci\IeC {\'o}n}}{47}{figure.Alph7.6}
+\contentsline {figure}{\numberline {F.1}{\ignorespaces Punto de entrada a la aplicaci\IeC {\'o}n}}{47}{figure.Alph6.1}
+\contentsline {figure}{\numberline {F.2}{\ignorespaces Pantalla de registro de usuario}}{47}{figure.Alph6.2}
+\contentsline {figure}{\numberline {F.3}{\ignorespaces Pantalla de inicio de sesi\IeC {\'o}n}}{48}{figure.Alph6.3}
+\contentsline {figure}{\numberline {F.4}{\ignorespaces Inicios de sesi\IeC {\'o}n alternativos}}{48}{figure.Alph6.4}
+\contentsline {figure}{\numberline {F.5}{\ignorespaces Cambio de las zonas accesibles al iniciar sesi\IeC {\'o}n}}{48}{figure.Alph6.5}
+\contentsline {figure}{\numberline {F.6}{\ignorespaces Pantalla de acceso al servicio de clasificaci\IeC {\'o}n}}{49}{figure.Alph6.6}
+\contentsline {figure}{\numberline {F.7}{\ignorespaces Pantalla de subida del dataset}}{49}{figure.Alph6.7}
+\contentsline {figure}{\numberline {F.8}{\ignorespaces Pantalla de reentrenamiento del modelo}}{50}{figure.Alph6.8}
+\contentsline {figure}{\numberline {F.9}{\ignorespaces Pantalla del servicio de clasificaci\IeC {\'o}n tras el reentrenado}}{50}{figure.Alph6.9}
+\contentsline {figure}{\numberline {F.10}{\ignorespaces Pantalla de clasificaci\IeC {\'o}n tras reentrenado del modelo}}{51}{figure.Alph6.10}

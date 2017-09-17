@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import link_google_images with context %}
+{% block title %}{{ _('WhatAClass: Predicted') }}{% endblock %}
+{% block body %}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">{{ _('The photo was classified') }}!</h1>
+        <br/>
+        <br/>
+        <img src="{{ url_for('static', filename=image_path) }}" class="img-thumbnail" alt="{ _('Previously submitted image') }" width="304" height="236">
+        <br/>
+        <br/>
+        <p>
+            {{ _('The foto is a ') }} {{  link_google_images(classes[0]) }}  {{ _(' with probability ') + probs[0] }}
+            <br/>
+            {{ _('Could also be a ') }}  {{ link_google_images(classes[1]) }}  {{ _(' with probability ') + probs[1] }}
+        </p>
+        <br/>
+        <br/>
+        <!-- iframe >google doesnt like this.</iframe -->
+    </div>
+{% endblock %}

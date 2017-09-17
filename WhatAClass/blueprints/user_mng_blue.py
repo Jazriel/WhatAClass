@@ -9,18 +9,19 @@
 """
 
 from flask import (Blueprint, flash, render_template, url_for, abort,
-                   redirect, session)
+                   redirect, session, request)
 from flask_login import login_user, logout_user, current_user
 from itsdangerous import BadSignature
 from flask_babel import gettext as _
 from sqlalchemy.exc import IntegrityError
 
-from WhatAClass.forms import LoginForm, SignUpForm, EmailForm, PasswordForm
-from WhatAClass.models import User
-from WhatAClass.util import email_server
-from WhatAClass.extensions import db, ts, login_manager
+from ..utils import is_safe_url, email_server
+from ..forms import LoginForm, SignUpForm, EmailForm, PasswordForm
+from ..models import User
+from ..extensions import db, ts, login_manager
 
-user_mng = Blueprint('user_mng', __name__)
+
+user_mng = Blueprint('user_mng', __name__, template_folder='templates')
 
 
 @login_manager.user_loader
@@ -32,6 +33,8 @@ def load_user(id):
 def login():
     """Try to log in the user with the information provided."""
     view = 'user_mng/login.html'
+
+    next_ = request.args.get('next')
 
     if current_user.is_authenticated:
         flash(_('There is a logged in user already.'))
@@ -47,7 +50,11 @@ def login():
             return render_template(view, form=form)
 
         flash(_('Logged in successfully.'))
-        return redirect(url_for('index.base'))
+
+        if not is_safe_url(request, next_):
+            return redirect(url_for('index.base'))
+
+        return redirect(next_ or url_for('index.base'))
 
     return render_template(view, form=form)
 
@@ -70,6 +77,7 @@ def check_and_login(password, user):
 @user_mng.route('/logout')
 def logout():
     """Logs the user out, has no effect if there was no one logged in."""
+    flash(_('Logged out successfully.'))
     logout_user()
     session.clear()
     return redirect(url_for('index.base'))
@@ -122,6 +130,9 @@ def sign_up():
         flash(_('Signed up successfully.'))
 
         return redirect(url_for('user_mng.login'))
+
+    if form.is_submitted():
+        flash(_('Email or password were not valid.'))
 
     return render_template(view, form=form)
 

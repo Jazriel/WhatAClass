@@ -49,7 +49,13 @@ class PasswordForm(FlaskForm):
 
 class SelectDatasetForm(FlaskForm):
     """Select form consists of just one select field for a dataset."""
-    choice = SelectField(u'Dataset')
+    choice = SelectField(u'Dataset', validators=[DataRequired()])
+
+
+class SelectUploadForm(FlaskForm):
+    """Form to select a dataset and upload an image to classify with it."""
+    choice = SelectField(u'Dataset', validators=[DataRequired()])
+    file = FileField(u'File', validators=[DataRequired()])
 
 
 

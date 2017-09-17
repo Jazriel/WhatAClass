@@ -2,7 +2,7 @@
 
 \section{Idea e inicio}
 
-Se eligió un proyecto con relación con el \eng{deep learning}, ya que existía un interés previo, tanto a nivel personal, como a nivel profesional. La gran versatilidad de este tipo de redes, ya sea en clasificación, con los modelos profundos, compresión, con los \eng{autoencoders}, o incluso generación de imágenes, con las revolucionarias GAN, está claramente demostrada, ahora queda buscarles nuevos usos que supongan una aplicación práctica más directa y útil. 
+Se eligió un proyecto relacionado con el \eng{deep learning}, ya que existía un interés previo, tanto a nivel personal, como a nivel profesional. La gran versatilidad de este tipo de redes, ya sea en clasificación, con los modelos profundos, compresión, con los \eng{autoencoders}, o incluso generación de imágenes, con las revolucionarias GAN, está claramente demostrada, ahora queda buscarles nuevos usos que supongan una aplicación práctica más directa y útil. 
 
 A nivel personal, la importancia que tienen las redes neuronales en el mundo actual, hizo que surgiese una gran curiosidad. Un ejemplo de la aplicación de este tipo de tecnología podrían ser los coches automáticos o aplicaciones surgidas últimamente, como la viral durante un par de días \href{https://www.faceapp.com/}{FaceApp}. 
 
@@ -11,7 +11,7 @@ A nivel profesional, el \eng{deep learning} se ha posicionado como uno de los al
 
 
 \section{Formación}
-El proyecto requería una serie de conocimientos de los que no se disponía en un principio, como es normal en cualquier proyecto no trivial. Algunos de los conocimientos necesarios se aprendieron durante la carrera, pero por supuesto en un campo tan grande y cambiante como es la informática, la gran mayoría de tecnologías se tuvieron que investigar y aprender por cuenta propia.
+El proyecto requería una serie de conocimientos de los que no se disponía en un principio, como es normal en cualquier proyecto no trivial. Algunos de los conocimientos necesarios se aprendieron durante la carrera, pero por supuesto, en un campo tan grande y cambiante como es la informática, la gran mayoría de tecnologías se tuvieron que investigar y aprender por cuenta propia.
 
 Lo necesario para llevar a cabo el proyecto se expondrá en las siguientes secciones. Se intentaran omitir detalles que parezcan triviales o de muy poco interés para el lector, de manera que la lectura no sea demasiado pesada.
 
@@ -23,7 +23,7 @@ Los materiales alternativos a este libro han sido  generalmente entradas de blog
 
 Otras cosas que se han tenido que aprender han sido \hfoot{https://www.tensorflow.org/}{Tensorflow} y metodologías de uso de Git\cite{vin10}. 
 
-Tensorflow se estudió con los tutoriales oficiales relevantes para las partes a los que se quería dar uso. Aunque quizá no fuese necesario también se revisó la Tensorflow Dev Summit \cite{tfds} para comprobar tanto la escalabilidad como las posibilidades más punteras en servidor y de distribución de los modelos en otros dispositivos.
+Tensorflow se estudió con los tutoriales oficiales relevantes para las partes a los que se quería dar uso. Aunque quizá no fuese necesario, también se revisó la Tensorflow Dev Summit \cite{tfds} para comprobar tanto la escalabilidad como las posibilidades más punteras en servidor y de distribución de los modelos en otros dispositivos.
 
 Gitflow se siguió conforme a la explicación más antigua que se conoce, presentada en 2010, por Vincent Driessen\cite{vin10}.
 
@@ -33,7 +33,7 @@ No se conocía el desarrollo web con Python ni con Flask. Para adquirir el conoc
 
 Hay que tener cuidado porque el primer tutorial está en Python2. Esto generalmente no da casi ningún problema,ya que Flask se ocupa de muchos de los problemas de versión, pero a la hora de usar SQLAlchemy los hash de las contraseñas en Python2 se pueden guardar como string, pero en Python3 se deben guardar como objetos de bytes.
 
-Una de las lecciones más importantes aprendidas de estos tutoriales es la importancia del versionado del modelo de la base de datos. Esto se hace para poder migrar de una versión a otra de forma automática. 
+Una de las lecciones más importantes aprendidas de estos tutoriales es la relevancia del versionado del modelo de la base de datos. Esto se hace para poder migrar de una versión a otra de forma automática. 
 
 Es una manera bastante fácil de mantener la base de datos en buenas condiciones. Esto se debe a que si al hacer alguna migración falla, se cancela y no perdemos datos, de manera que si alguna migración falla, podemos añadir lógica al como migrar para facilitar el proceso.
 
@@ -75,24 +75,24 @@ Heroku en concreto funciona con contenedores, pero nos reduce gran parte del pes
 
 Tras conseguir completar el despliegue en Heroku y tener que integrar Tensorflow en el proyecto, para facilitar la integración, el despliegue en otros sistema y el mantenimiento del software, se decidió hacer los contenedores de forma explicita. La alternativa elegida fue \tool{\hfoot{https://www.docker.com/}{Docker}}, por ser la opción más madura. 
 
-Para aprender a usar \emph{Docker}, se usó la \hfoot{https://docs.docker.com/}{documentación oficial} y el libro \emph{Docker orchestration}\cite{ran17}. [hacer una explicación básica de Docker al estilo de la de alembic?]
+Para aprender a usar \emph{Docker}, se usó la \hfoot{https://docs.docker.com/}{documentación oficial} y el libro \emph{Docker orchestration}\cite{ran17}.
 
 \section{Docker Compose y microservicios}
 
 \tool{\hfoot{https://docs.docker.com/compose/}{Docker Compose}} sirve para organizar nuestros contenedores en despliegues concretos, de manera que se puedan usar en cualquier momento, por ejemplo, podríamos tener varios \emph{Docker Compose} con distintas configuraciones según nuestras necesidades, tanto para distintos servicios de alojamiento, como para distintas configuraciones de despliegue. Esto último es algo bastante complicado y que si nos propusiésemos hacerlo, tendría que ser con antelación o refactorizaciones decentemente grandes.
 
-El aprendizaje de \emph{Docker Compose} fue sobre todo mediante la documentación oficial, aunque el libro \cite{ran17} también se usó. [explicar docker compose al estilo de alembic si/no] 
+El aprendizaje de \emph{Docker Compose} fue sobre todo mediante la documentación oficial, aunque el libro \cite{ran17} también se usó.
 
-Se puede desplegar con \emph{Docker Compose}, pero con una gran limitación y es que no nos permite usar varios ordenadores de la manera que los servicios de orquestración nos lo permiten.
+Se puede desplegar con \emph{Docker Compose}, pero con una gran limitación y es que no nos permite usar varios ordenadores, mientras que los servicios de orquestración sí nos lo permiten.
 
 Los microservicios como arquitectura se conocieron debido a su popularidad actual, muchos blogs han hecho artículos sobre ellos y algunos \eng{newsletter} como el de O'Reilly o el de \tool{\hfoot{https://nginx.org/en/}{Nginx}} les han dado mucha importancia últimamente, adjuntando tutoriales y conferencias con las ultimas noticias.
 
 
 \section{Orquestación}
 
-Los conocidos como `\emph{orquestadores} nos facilitan, como su nombre indica, orquestar servicios entre varios ordenadores, lo cual nos permite elegir configuraciones más versátiles y acordes a nuestras necesidades. 
+Los conocidos como `\emph{orquestadores}' nos facilitan, como su nombre indica, orquestar servicios entre varios ordenadores, lo cual nos permite elegir configuraciones más versátiles y acordes a nuestras necesidades. 
 
-Los orquestadores son \emph{Docker Swarm}, \emph{Kubernetes} y \emph{OpenShift}. [explicar kubernetes... si/no?]
+Los orquestadores son \emph{Docker Swarm}, \emph{Kubernetes} y \emph{OpenShift}.
 
 \tool{\hfoot{https://docs.docker.com/engine/swarm/}{Docker swarm}} fue el servicio que se intentó usar, debido a la existencia de secretos, que son ficheros con contraseñas o archivos que no deberían ser públicos. Estos secretos no están en \emph{Docker Compose}, pero sí en \emph{Swarm}, aunque el tamaño del enjambre sea uno, que es equivalente a \emph{Compose}, lo que parece una estrategia comercial más que un diseño bien planteado.
 
@@ -105,11 +105,11 @@ Usar \emph{Docker Swarm} dio gran cantidad de problemas y, tras una investigaci�
 
 \emph{Gitflow} es un sistema complejo y que requiere conocimiento medio de \emph{Git} para poder llevarse a cabo. Realmente no se necesita para proyectos tan pequeños como los de una sola persona y el trabajo que requiere realmente se vio que no merecía la pena. Aunque parece beneficiosa para equipos, no se ha podido comprobar y cabe considerar que existen críticas de la metodología en cuestión \cite{gfharm}.
 
-\emph{Scrum} también es parecido, se ha visto como funciona en otros entornos y es sin duda beneficioso sobre todo para equipos de tamaño mediano. Una cosa que sí que merece la pena de \emph{Scrum} es el tablero \emph{kanban}, aunque solo seas una persona, merece la pena como forma de tener claras que partes del proyecto están hechas hasta que punto.
+\emph{Scrum} también es parecido, se ha visto como funciona en otros entornos y es, sin duda, beneficioso, sobre todo para equipos de tamaño mediano. Un elemento de \emph{Scrum} que merece la pena es el tablero \emph{kanban}, aunque solo seas una persona, sirve como método para tener claras que partes del proyecto están hechas y hasta que punto.
 
 \subsection{Tensorflow, versiones provisionales y tecnología punta}
 
-Tras aprender \emph{Tensorflow} el verano pasado y no seguir usándolo tan activamente durante el primer cuatrimestre, se presento un problema, \emph{Tensorflow} era una biblioteca en desarrollo inestable, al sacar la versión 1.0 se perdió parte del conocimiento adquirido, la \eng{API} cambió, algunos de los \eng{scripts} dejaron de funcionar y se desarrollaron bibliotecas más maduras y de más alto nivel, dejando otra parte del conocimiento adquirido parcialmente obsoleto.
+Tras aprender \emph{Tensorflow} el verano pasado y no seguir usándolo tan activamente durante el primer cuatrimestre, se presento un problema. \emph{Tensorflow} era una biblioteca en desarrollo inestable, al sacar la versión 1.0 se perdió parte del conocimiento adquirido, la \eng{API} cambió, algunos de los \eng{scripts} dejaron de funcionar, y se desarrollaron bibliotecas más maduras y de más alto nivel, dejando otra parte del conocimiento adquirido parcialmente obsoleto.
 
 Como ya se ha comentado, \emph{Docker Swarm} también dio problemas, la suposición es que se hizo algo incorrecto en \emph{Docker} o \emph{Docker Compose} que hizo que \emph{Swarm} no funcionase correctamente. Al ser tecnología punta no hay tanta información disponible en \hfoot{https://stackoverflow.com/}{Stack Overflow} u otros foros similares sobre el tipo de problemas que nos encontramos.
 
@@ -118,8 +118,8 @@ Como ya se ha comentado, \emph{Docker Swarm} también dio problemas, la suposici
 
 \subsection{Microservicios}
 
-Los microservicios, como hemos hablado, tienen una cantidad de aplicaciones muy diversa, y son una arquitectura muy capaz, sobre todo cuando estamos proporcionando SaaS, o un sistema que necesita de muchas partes semi independientes. 
+Los microservicios, como hemos hablado, tienen una cantidad de aplicaciones muy diversa, y son una arquitectura muy capaz, sobre todo cuando estamos proporcionando SaaS (\emph{Software as a Service}), o un sistema que necesita de muchas partes semi-independientes. 
 
 En el ámbito universitario, parece que la aplicación más clara que tienen, es la de que varios alumnos sean capaces de colaborar en un proyecto común. Esto se introduce ya que parece común el hecho de que varios alumnos quieran trabajar en un proyecto común y no puedan hacerlo por limitaciones en el sistema universitario. Con una arquitectura de microservicios podemos facilitar que se vea la distinción entre el trabajo de cada uno de manera que superamos esa limitación. También al ser más probable que un proyecto común acabe creciendo más allá de uno individual, esta arquitectura nos ayuda a tener una transición suave, sin excesivo trabajo, ni demasiadas complicaciones, al desplegar en producción.
 
-Si no se piensa llevar el proyecto hasta unos niveles de complejidad elevados, o mantener una cantidad no trivial de servicios durante una cantidad de tiempo media-larga, no merece la pena, ya que fuerza más trabajo al equipo sin conseguir la mayoría de beneficios.
+Si no se piensa llevar el proyecto hasta unos niveles de complejidad elevados, o mantener una cantidad no trivial de servicios durante una cantidad de tiempo media-larga, no merece la pena, ya que fuerza más trabajo al equipo sin conseguir la mayoría de beneficios. Martin Fowler ha escrito una entrada en su página web que explora cuándo y cómo usar los microservicios, el cuál se recomienda encarecidamente a aquel que quiera usarlos \cite{fow15}.

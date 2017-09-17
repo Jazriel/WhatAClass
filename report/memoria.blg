@@ -9,44 +9,46 @@ A level-1 auxiliary file: ./tex/5_Aspectos_relevantes_del_desarrollo_del_proyect
 A level-1 auxiliary file: ./tex/6_Conclusiones_Lineas_de_trabajo_futuras.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
-You've used 24 entries,
+Warning--to sort, need author or key in ppl
+You've used 28 entries,
             2118 wiz_defined-function locations,
-            619 strings with 7790 characters,
-and the built_in function-call counts, 5982 in all, are:
-= -- 564
-> -- 222
+            632 strings with 8526 characters,
+and the built_in function-call counts, 6746 in all, are:
+= -- 632
+> -- 244
 < -- 2
-+ -- 93
-- -- 68
-* -- 259
-:= -- 982
-add.period$ -- 73
-call.type$ -- 24
-change.case$ -- 101
++ -- 104
+- -- 74
+* -- 281
+:= -- 1097
+add.period$ -- 83
+call.type$ -- 28
+change.case$ -- 116
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 235
-empty$ -- 580
-format.name$ -- 68
-if$ -- 1297
+cite$ -- 29
+duplicate$ -- 263
+empty$ -- 669
+format.name$ -- 74
+if$ -- 1468
 int.to.chr$ -- 0
-int.to.str$ -- 24
+int.to.str$ -- 28
 missing$ -- 14
-newline$ -- 122
-num.names$ -- 48
-pop$ -- 209
+newline$ -- 140
+num.names$ -- 54
+pop$ -- 246
 preamble$ -- 1
-purify$ -- 82
+purify$ -- 93
 quote$ -- 0
-skip$ -- 187
+skip$ -- 217
 stack$ -- 0
-substring$ -- 243
-swap$ -- 46
+substring$ -- 264
+swap$ -- 50
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 86
-warning$ -- 0
-while$ -- 58
-width$ -- 26
-write$ -- 242
+type$ -- 102
+warning$ -- 1
+while$ -- 64
+width$ -- 30
+write$ -- 276
+(There was 1 warning)

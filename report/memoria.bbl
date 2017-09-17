@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{ppl}
+The top programming languages 2017, 2017.
+\newblock
+  \url{http://spectrum.ieee.org/static/interactive-the-top-programming-languages-2017}.
+
 \bibitem{scala09}
 Martin~L Abbott and Michael~T Fisher.
 \newblock {\em The art of scalability: Scalable web architecture, processes,
@@ -58,6 +63,12 @@ Martin Fowler.
   2014.
 \newblock \url{https://martinfowler.com/articles/microservices.html}.
 
+\bibitem{fow15}
+Martin Fowler.
+\newblock \href{https://martinfowler.com/bliki/MonolithFirst.html}{Monolith
+  First}, 2015.
+\newblock \url{https://martinfowler.com/bliki/MonolithFirst.html}.
+
 \bibitem{rst}
 David Goodger.
 \newblock
@@ -85,6 +96,12 @@ Mark~D Hill.
 \href{http://image-net.org/about-people}{Image-net Team}.
 \newblock \href{http://image-net.org/}{Image-net}.
 \newblock \url{http://image-net.org/}.
+
+\bibitem{tf}
+\href{https://github.com/tensorflow/tensorflow/graphs/contributors}{Multiple
+  authors: https://github.com/tensorflow/tensorflow/graphs/contributors}.
+\newblock \href{https://github.com/tensorflow/tensorflow}{Tensorflow:
+  https://github.com/tensorflow/tensorflow}.
 
 \bibitem{svless}
 \href{https://serverless.com/company/team/}{Serverless Team}.
@@ -144,5 +161,12 @@ Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and
   Zbig-niew Wojna.
 \newblock Rethinking the inception architecture for computer vision. corr
   abs/1512.00567 (2015), 2015.
+
+\bibitem{dock}
+Docker Team.
+\newblock Docker.
+\newblock \href{https://www.docker.com/}{Docker:
+  https://www.docker.com/}\\\href{https://store.docker.com/search?offering=community\&type=edition}{Descarga:
+  https://store.docker.com/search?offering=community\&type=edition}.
 
 \end{thebibliography}

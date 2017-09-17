@@ -11,7 +11,7 @@
 <div class="form-group">
     {{ form.email.label(class='col-md-5 col-sm-5 col-xs-4 text-right') }}
     <div class="col-md-3 col-sm-4 col-xs-8">
-        {{ form.email(placeholder=_('email@company.domain'), class='form-control')}}
+        {{ form.email(placeholder=_('email@company.domain'), type='email', class='form-control')}}
     </div>
 </div>
 {% endmacro %}
@@ -67,18 +67,9 @@
 
 {% from "js_upload.html" import js_upload %}
 {% macro dd_upload(form, action) %}
-<form method="POST" action="{{ action }}" enctype="multipart/form-data">
+<form method="post" action="{{ action }}" enctype="multipart/form-data">
     <input id="file-input" name="file" type="file" />
     {{ submit_button(_('Upload files')) }}
-    <!-- TODO maybe
-    <div id="holder" style="min-height: 11em;margin-top: 50px;margin-bottom: 50px;border: dashed 3px #C1C3C5;text-align: center;">
-        Drag and drop here!
-    </div>
-    <p id="filereader">File API and FileReader API not supported</p>
-    <p id="formdata">XHR2's FormData is not supported</p>
-    <p id="progress">XHR2's upload progress isn't supported</p>
-    <p>Upload progress: <div class="progress"><div id="uploadprogress" class="progress-bar" style="width:0%"></div></div></p>
-    -->
     {{ form.csrf_token }}
 </form>
 {{ js_upload() }}
@@ -91,12 +82,34 @@
 
 {% macro select_form(form, options, button_value) %}
 <form class="form-horizontal" action="{{ action }}" method="post" id="form">
-    <select title="options_title" name="options" required>
-        <option autofocus disabled value="{{ _('None') }}">{{ _('None') }}</option>
+    <select name="choice" title="options_title" name="options" required>
         {% for option in options %}
             <option value="{{ option }}"> {{ option }} </option>
         {% endfor %}
     </select>
+    {{ submit_button(button_value) }}
+    {{ form.csrf_token }}
+</form>
+{% endmacro %}
+
+
+{% from "js_upload.html" import js_upload %}
+{% macro select_upload_form(form, options, button_value) %}
+<form class="form-horizontal" action="{{ action }}" method="post" id="form" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-3">
+            <select name="choice" title="options_title" name="options" required>
+                {% for option in options %}
+                    <option value="{{ option }}"> {{ option }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input id="file-input" name="file" type="file" />
+        </div>
+    </div>
+    <br/>
+    <br/>
     {{ submit_button(button_value) }}
     {{ form.csrf_token }}
 </form>

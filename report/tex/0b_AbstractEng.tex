@@ -1,15 +1,17 @@
-Recently, most software centered companies are trying to improve their services with an 'AI first' approach, this is more prevalent in large companies trying to apply Marchine Learning more widely. 
+The main objective of this project is to create a web application, which must have a basic user control and capacity to classify images using a neural net. It must be able to re-train the neural net used to classify images.
 
-Scalability is a concept with a clear but very abstract definition \cite{hill90}, the best definition that has been found is attributed to Bondi \cite{bondi00} who defined it as the ability of a system to be able to expand to handle an increasing work load. 
+Another requirement is for it to be done in a scalable manner and to be able to deploy it. The approach used should reduce the technical debt.
 
-From the point of view of maintenance, a scalable system is that can be maintaned or whose functionality can be increased without incurring in a technical debt too large, allowing a faster development. 
+Scalability is a clear but abstract concept \cite{hill90}, Bondi \cite{bondi00} defines it as the capacity of a system to be able to be extended to manage a larger amount of workload. 
 
-Scalability is a complex property in the software world as there are several places where a system can be expanded. The most common way of providing scalability is by increasing the number of copies of running software, on the same computer or on different computers. Another approach it to divide the system into the smallest subsystems possible so that the complexity decreases making the system easier to maintain. Finally, it is possible to separate the services in different partitions so that each partition is in charge of providing part of the results.
+From a manteinance perspective a scalable system is that which can be modified to correct, extend or change attributes with ease.
 
-These three scaling options are called the `\emph{cube of scalability}' in the book \emph{The Art of Scaling}\cite{scala09}. 
+Scalability is a complex property in software, there are many ways to scale a system. To increase the number of copies of software being executed,locally of in a distributed system. Decomposing the main system in many subsystems makes them easier to mantain and scale to the needs. The last option is to divide the services in diferent partitions, so that each partition provides service to a subset of the userbase.
 
-In this work we seek to scale a system using the first two scaling axes. We will achieve the scaling in the first axis or dimension by using containers, the system we will use is docker. The scaling in the second dimension will be obtained with the microservice architecture.
+This three scaling options are denominated in the book \emph{The Art of Scaling} \cite{scala09} as `\emph{the cube of scalability}'. 
 
-This seeks to facilitate access to the solution of a common problem in the field of Machine Learning that is the image classification. This is done by using Tensorflow. This way of proceed gives an example of one of the ways to avoid scalability problems, a quite common problem in the world of software development. This scalability is both in performance and maintenance. It seeks to provide an architecture easily scalable in both directions that avoid increasing the complexity of the code to facilitate its future reuse and learning. It also attempts to provide a skeleton so that it can be used by future projects that need to use a basic user control, investing the time released in other parts or topics of greater interest. 
+The objective is to get a system scalable in the first two axis. Using virtualization with containers we can obtain the first axis. The second we will obtain with the microservice architecture. 
 
-To illustrate how the challenge of adding more services is solved, a service that uses Deep Learning has been implemented to classify images on a set of classes, such as Imagenet \cite{imnet}. 
+All this knowledge is used to create a system to provide image classification, this is due to the recent interest in machine learning and the aproach `AI first'. This is achieved with \eng{Tensorflow} \cite{tf}. The neural net to be used is Inception v3 \cite{incep} and the dataset Imagenet \cite{imnet}.
+
+The system's scalability is wanted to be of performance and mantainability. This system's architedture should be easily scalable in both ways, and so the code shouldn't be complex to allow for future maintenance. 

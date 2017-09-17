@@ -84,14 +84,16 @@
 \contentsline {subsubsection}{Docker compose}{39}{section*.59}
 \contentsline {section}{\numberline {E.4}Despliegue}{42}{section.Alph5.4}
 \contentsline {section}{\numberline {E.5}Pruebas del sistema}{42}{section.Alph5.5}
-\contentsline {section}{\numberline {E.6}Configuraci\IeC {\'o}n de Oauth}{42}{section.Alph5.6}
-\contentsline {section}{\numberline {E.7}Configuraci\IeC {\'o}n del servidor de correo electr\IeC {\'o}nico}{42}{section.Alph5.7}
-\contentsline {appendix}{\chapternumberline {F}Subproducto: Seshat}{43}{appendix.Alph6}
-\contentsline {section}{\numberline {F.1}Estructura de directorios}{43}{section.Alph6.1}
-\contentsline {section}{\numberline {F.2}Manual del programador}{44}{section.Alph6.2}
-\contentsline {appendix}{\chapternumberline {G}Documentaci\IeC {\'o}n de usuario}{45}{appendix.Alph7}
-\contentsline {section}{\numberline {G.1}Introducci\IeC {\'o}n}{45}{section.Alph7.1}
-\contentsline {section}{\numberline {G.2}Requisitos de usuarios}{45}{section.Alph7.2}
-\contentsline {section}{\numberline {G.3}Instalaci\IeC {\'o}n}{45}{section.Alph7.3}
-\contentsline {section}{\numberline {G.4}Manual del usuario}{45}{section.Alph7.4}
-\contentsline {chapter}{Bibliograf\'{\i }a}{48}{section*.61}
+\contentsline {section}{\numberline {E.6}Configuraci\IeC {\'o}n}{42}{section.Alph5.6}
+\contentsline {subsection}{Base de datos}{42}{section*.60}
+\contentsline {subsection}{OAuth}{43}{section*.61}
+\contentsline {subsection}{Servidor de correo electr\IeC {\'o}nico}{43}{section*.62}
+\contentsline {section}{\numberline {E.7}Subproducto: Seshat}{44}{section.Alph5.7}
+\contentsline {subsection}{Estructura de directorios}{44}{section*.63}
+\contentsline {subsection}{Manual del programador}{44}{section*.64}
+\contentsline {appendix}{\chapternumberline {F}Documentaci\IeC {\'o}n de usuario}{46}{appendix.Alph6}
+\contentsline {section}{\numberline {F.1}Introducci\IeC {\'o}n}{46}{section.Alph6.1}
+\contentsline {section}{\numberline {F.2}Requisitos de usuarios}{46}{section.Alph6.2}
+\contentsline {section}{\numberline {F.3}Instalaci\IeC {\'o}n}{46}{section.Alph6.3}
+\contentsline {section}{\numberline {F.4}Manual del usuario}{46}{section.Alph6.4}
+\contentsline {chapter}{Bibliograf\'{\i }a}{52}{section*.66}

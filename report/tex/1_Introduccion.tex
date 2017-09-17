@@ -1,16 +1,43 @@
 \capitulo{1}{Introducción}
 
+El objetivo principal es crear una aplicación web con control de usuarios y funcionalidad de clasificación de imágenes. Por último, debe ser capaz de re-entrenar el modelo de clasificación de imágenes.
 
-El uso mayoritario del aprendizaje automático o \eng{Machine Learning} (ML) se puede ver en empresas como Google que ha pasado de buscar el término exacto pedido por el usuario a intentar, con la información de que disponen, de averiguar en que contexto se está buscando, por ejemplo, si predice que eres programador y buscas R, probablemente los primeros resultados sean del lenguaje de programación.
+Otro requerimiento es que todo se lleve a cabo de una manera escalable, desplegable y con un enfoque que reduzca la deuda técnica.
 
-El desarrollo de este proyecto consiste en dar un servicio de \eng{Machine Learning} por la actualidad y relevancia de la tecnología. El proyecto consistirá en un clasificador que agrupará las imágenes en los conjuntos de Imagenet \cite{imnet}.
+EL modelo se ha decidido que será una red neuronal y en concreto será Inception v3 \cite{incep} y el conjunto de datos Imagenet \cite{imnet}.
 
-Actualmente, la escalabilidad es muy importante en el desarrollo software debido a la necesidad de hacer sistemas cada vez más grandes y complejos que a la vez no consuman recursos de manera excesiva. Esto se puede conseguir con ciertas arquitecturas como los microservicios. Otras arquitecturas que proporcionan este tipo de ventajas son los \eng{Serverless} \cite{svlops, svless}.
+El incremento del uso del aprendizaje automático o \eng{Machine Learning} (ML) se puede apreciar en empresas como Google que ha pasado de buscar el término exacto pedido por el usuario a intentar, con la información de que disponen, de averiguar en que contexto se está buscando. Por ejemplo, si predice que eres programador de php y buscas symphony, probablemente las sugerencias alternativas te propongan \hfoot{https://symfony.com/}{Symfony}.
+
+Actualmente, la escalabilidad es muy importante en el desarrollo software. Esto se debe a la necesidad de hacer sistemas cada vez más grandes y complejos, que a su vez no consuman recursos de manera excesiva. Esto se puede conseguir con ciertas arquitecturas como los microservicios. Otras arquitecturas que proporcionan este tipo de ventajas son \eng{Serverless} \cite{svlops, svless}.
 
 Este trabajo se orienta a conseguir un sistema escalable. Se intentará que los métodos para conseguir este sistema sean lo más actuales, prestigiosos y usados, ya que probablemente esos métodos serán fundamentales el día de mañana. También se persigue adquirir los conocimientos necesarios para poder replicar este sistema sobre proyectos ya creados.
 
-El sistema en cuestión será una página web, ya que es un sistema altamente accesible (desde casi cualquier plataforma) con mayor facilidad de mantenimiento que la mayor parte de aplicaciones específicas a un dispositivo concreto. Otra ventaja que proporcionan las páginas web es que tendremos acceso a todos los errores y fallos que surjan en ejecución.
+El sistema en cuestión será una página web, ya que es un sistema altamente accesible (desde casi cualquier plataforma) con mayor facilidad de mantenimiento que la mayor parte de aplicaciones específicas a un dispositivo concreto. Otra ventaja que proporcionan las páginas web es que tendremos acceso a todos los errores y fallos que surjan durante la ejecución.
 
-Se usarán tecnologías puntas para conseguir estos objetivos. Como docker, para la escalabilidad y reducción de deuda técnica, gracias a la arquitectura de microservicios que facilita.
+Se usarán tecnologías puntas para conseguir estos objetivos. Como docker \cite{dock}, para la escalabilidad y reducción de deuda técnica (en la cual se profundizará más adelante), gracias a la arquitectura de microservicios que los contenedores facilitan.
 
-La metodología que se usará será la integración continua ya que permite reducir la deuda técnica derivada de la integración de distintos servicios entre sí. Esta consiste básicamente en intentar integrar los servicios que se disponen a cada paso que se da en la creación de software. En proyectos grandes, esto podría ser cada día, y en proyectos pequeños, cada \eng{commit}.
+La metodología que se usará será la integración continua ya que permite reducir la deuda técnica derivada de la integración de distintos servicios entre sí. Esta consiste básicamente en intentar integrar los servicios existentes a cada paso que se da en la creación de software. En proyectos grandes, esto podría ser cada día, y en proyectos pequeños, cada \eng{commit}.
+
+
+\subsection{Materiales entregados}
+
+Los materiales entregados son:
+
+\begin{itemize}
+	\item Clones de los siguientes repositorios:
+	\begin{itemize}
+		\item \hfoot{https://github.com/Jazriel/TFG}{TFG}: usado para versionar tanto el microservicio de Tensorflow, como las utilidades de instalación.
+		\item \hfoot{https://github.com/Jazriel/WhatAClass}{WhatAClass}: repositorio donde se guarda la aplicación web. Esta incluido como un subdirectorio de TFG.
+		\item \hfoot{https://github.com/cgosorio/SeshatAuth}{SeshatAuth}: aplicación web Seshat con autenticación y ejemplo de despliegue en un servidor Apache con cgi.
+		\item \hfoot{https://github.com/Jazriel/auth-that}{auth-that}: repositorio que guarda el código necesario para añadir a cualquier aplicación de \hfoot{http://flask.pocoo.org/}{Flask} con un control de usuarios básico en un mínimo de tiempo.
+	\end{itemize}
+	\item Documentación en formato \LaTeX{} y \textit{PDF}:
+	\begin{itemize}
+		\item Memoria.
+		\item Anexos.
+		\item Licencia.
+	\end{itemize}
+\end{itemize}
+
+
+

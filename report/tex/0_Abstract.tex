@@ -1,17 +1,15 @@
-Recientemente, la mayoría de empresas que usan productos informáticos están intentando mejorar sus servicios con un enfoque `AI first', esto es más prevalente en los grandes del sector que  tratan de aplicar el aprendizaje automático de manera más amplia.
+El objetivo principal del proyecto es el crear una aplicación web, esta debe tener control de usuarios y capacidad de clasificar imágenes mediante una red neuronal. Por último, debe ser capaz de re-entrenar el modelo de clasificación de imágenes.
 
-La escalabilidad es un concepto con una definición clara pero muy abstracta \cite{hill90}, la mejor definición que se ha encontrado se atribuye a Bondi \cite{bondi00} y la define como la capacidad de un sistema para ser capaz de ampliarse para manejar mayor cantidad de trabajo. 
+Además se pide que todo esto se haga de una manera escalable, desplegable y con un enfoque que reduzca la deuda técnica.
 
-Desde el punto de vista de mantenimiento, un sistema escalable es aquel al que podemos mantener o incrementar su funcionalidad sin incurrir en una cantidad de deuda técnica demasiado grande, permitiendo un desarrollo más rápido.
+La escalabilidad es un concepto claro pero muy abstracto \cite{hill90}, Bondi \cite{bondi00} la define como la capacidad de un sistema para ser capaz de ampliarse para manejar mayor cantidad de trabajo. 
 
-La escalabilidad es una propiedad compleja en el mundo software ya que existen varias fuentes de ampliación del sistema, la más común es la escalabilidad aumentando el número de copias del software que se ejecutan, en el mismo ordenador o en distintos ordenadores. Se puede descomponer el sistema en los subsistemas más pequeños posibles, de manera que la complejidad disminuye convirtiendo el sistema en más fácil de mantener. También existe una última, que es separar los servicios en particiones distintas, de manera que cada partición se encarga de dar servicio a parte de los resultados.
+Desde el punto de vista de mantenimiento, un sistema escalable es aquel que podemos modificar para corregir, ampliar o cambiar atributos con facilidad. En el mundo software es una propiedad compleja ya que existen varias fuentes de ampliación del sistema. La primera de ellas, aumentando el número de copias del software que se ejecutan, de forma local o distribuida. Otra forma es descomponer el sistema en subsistemas, estos más reducidos son más fácil de mantener y de escalar a la medida necesaria. La última es separar los servicios en particiones distintas, de manera que cada partición se encarga de dar servicio a una subconjunto de los usuarios.
 
 Estas tres opciones de escalado se denominan en el libro \emph{The Art of Scaling} \cite{scala09} como el `\emph{cubo de la escalabilidad}'. 
 
-En este trabajo se busca obtener un sistema escalable en los dos primeros ejes de escalado. El primer eje o dimensión lo vamos a conseguir con contenedores, el sistema que usaremos es docker. La segunda dimensión la obtendremos con la arquitectura de microservicios. 
+Se busca obtener un sistema escalable en los dos primeros ejes de escalado. Al usar virtualización por medio de contenedores podremos ejecutar el numero de copias del software que queramos. La segunda dimensión la obtendremos con la arquitectura de microservicios. 
 
-Esto busca facilitar el acceso a la solución de un problema común en el campo del aprendizaje automático que es la clasificación de imágenes. Esto se hace mediante \eng{Tensorflow}.
+Todo este conocimiento se usa para crear un sistema que facilite la clasificación de imágenes, debido al reciente interes por el aprendizaje automático y el enfoque `AI first'. Esto se hace usando \eng{Tensorflow} \cite{tf}. La red neuronal a usar es Inception v3 \cite{incep} y el conjunto de datos es Imagenet \cite{imnet}.
 
-Con esto se pretende dar un ejemplo de una de las  maneras de evitar problemas de escalabilidad, un problema bastante común en el mundo del desarrollo software. Esta escalabilidad es tanto de rendimiento como de mantenimiento. Se busca proporcionar una arquitectura fácilmente escalable en ambos sentidos cuyo reflejo en código no es complejo para el futuro aprendizaje. También se intenta proporcionar un esqueleto que pueda ser usado por los futuros proyectos que necesiten un control básico de usuarios, pudiendo invertir el tiempo liberado en otras partes o temas de mayor interés.
-
-Para ilustrar cómo se resuelve el reto de añadir más servicios, se ha implementado un servicio que usa \eng{Deep Learning} para clasificar imágenes sobre un conjunto de clases, como por ejemplo Imagenet \cite{imnet}.
+La escalabilidad que se plantea que alcance este sistema es tanto de rendimiento como de mantenimiento. Se busca proporcionar una arquitectura fácilmente escalable en ambos sentidos, cuyo reflejo en código no sea complejo  para facilitar el futuro mantenimiento. 

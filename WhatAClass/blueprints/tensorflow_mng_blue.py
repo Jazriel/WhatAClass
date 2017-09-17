@@ -18,8 +18,8 @@ from werkzeug.utils import secure_filename
 from os import path, mkdir
 from glob import glob
 
-from WhatAClass.forms import UploadForm, SelectDatasetForm
-from WhatAClass.util import ssh_config
+from ..forms import UploadForm, SelectDatasetForm, SelectUploadForm
+from ..utils import ssh_config
 
 
 tensorflow_mng = Blueprint('tensorflow_mng', __name__)
@@ -36,11 +36,11 @@ def upload_dataset():
         try:
             mkdir(path.join('/app/static/images', str(current_user.id)))
         except FileExistsError:
-            flash(_('A file with the same name already exists.'))
-            return render_template('tensorflow_mng/upload_ds.html', form=form)
+            pass
         # TODO technical debt move images path to env variable to reduce coupling
         try:
             save_file(path.join('/app/static/images', str(current_user.id)))
+            print('Saved dataset')
             flash(_('Dataset successfully saved.'))
             return redirect(url_for('tensorflow_mng.retrain'))
         except NotSavedError:
@@ -55,16 +55,21 @@ def upload_dataset():
 def retrain():
     """Page where users are going to retrain the model to fit their dataset."""
     dataset_select = SelectDatasetForm()
-    # dataset_select.choice.choices = [datasets_to_encoded_pairs(split_zip(get_datasets()))]
 
     if request.method == 'POST':
+        print('Remote command: python3 /scripts/maybe_start_retrain.py {} {} '.format(current_user.id, dataset_select.choice.data))
+
         ssh = init_ssh()
         ssh_client, stdout, stderr = ssh.exec_command(
             'python3 '
             '/scripts/maybe_start_retrain.py'
             ' {} {} '.format(current_user.id, dataset_select.choice.data))
         output = stdout.read().decode()
+        err = stderr.read().decode()
         ssh.close()
+
+        print('The output from the worker was: ' + output)
+        print('The stderr was: ' + err)
 
         if 'True' in output:
             flash(_('Retrain started.'))
@@ -90,10 +95,11 @@ def predict():
         except NotSavedError:
             return redirect(url_for('tensorflow_mng.predict'))
 
-        print(filename)
+        print('Saved: ', filename)
 
         classes, probs, output, stderr = ssh_predict(filename)
-        print(classes, probs)
+
+        print('Classes: ', classes, '; Probs', probs)
         
         if len(classes) < 3 or len(probs) < 3:
             print(output)
@@ -114,42 +120,57 @@ def select_predict():
     """Page where users are going to upload files to get their predictions on their models."""
 
     # TODO technical debt: refactor SSH out of the blueprints
-    form = UploadForm()
-    dataset_select = SelectDatasetForm()
+    select_upload_form = SelectUploadForm()
 
     if request.method == 'POST':
         try:
             filename = save_file('/app/static/images')
-        except NotSavedError:
+        except NotSavedError as e:
+            flash(_('There was a problem saving the file: ' + str(e)))
             return redirect(url_for('tensorflow_mng.select_predict'))
 
-        print(filename)
+        print('Saved: ', filename)
 
-        classes, probs, output, stderr = ssh_predict(filename)
-        print(classes, probs)
+        graph_path='/images/{}/{}/out_graph.pb'.format(current_user.id, select_upload_form.choice.data)
+        label_path='/images/{}/{}/out_labels.txt'.format(current_user.id, select_upload_form.choice.data)
 
-        if len(classes) < 3 or len(probs) < 3:
+        classes, probs, output, stderr = ssh_predict(filename,
+                                                     graph_path=graph_path,
+                                                     label_path=label_path,
+                                                     layer='final_result:0',
+                                                     label_map_path='')
+
+        print('Classes: ', classes, '; Probs', probs)
+
+        if len(classes) < 2 or len(probs) < 2:
             print(output)
             print(stderr.read().decode())
             return render_template('error.html')
 
-        return render_template('tensorflow_mng/predicted.html',
+        return render_template('tensorflow_mng/predicted-custom.html',
                                classes=classes,
                                probs=probs,
                                image_path=path.join('images', filename))
 
-    return render_template('tensorflow_mng/predict.html', form=form)
+    return render_template('tensorflow_mng/select-predict.html',
+                           sel_up_form=select_upload_form,
+                           datasets=list(get_trained_models()))
 
 
-def ssh_predict(filename):
+def ssh_predict(filename,
+                graph_path='/graphs/inceptionv3_model.pb',
+                label_path='/graphs/inceptionv3_labels.txt',
+                layer='softmax:0',
+                label_map_path='/graphs/inceptionv3_label_map_proto.pbtxt'):
     ssh = init_ssh()
     _, stdout, stderr = ssh.exec_command(
         'python3 '
         '/scripts/run_inference.py'
-        ' {} {} {} {} '.format(path.join('/images', filename),
-                              '/graphs/inceptionv3_model.pb',
-                              '/graphs/inceptionv3_labels.txt',
-                              '/graphs/inceptionv3_label_map_proto.pbtxt'))
+        ' {} {} {} {} {} '.format(path.join('/images', filename),
+                                  graph_path,
+                                  label_path,
+                                  layer,
+                                  label_map_path))
     output = stdout.read().decode()
     print(output)
     pairs = output.split(';')
@@ -193,22 +214,16 @@ def save_file(path_):
     return filename
 
 
+
 def get_datasets():
     """Get all the datasets of the current user"""
     for dataset in glob(path.join('/app/static/images', str(current_user.id), '*.zip')):
         yield dataset.split('/')[-1].split('.zip')[0]
 
-
-def datasets_to_encoded_pairs(datasets):
-    for dataset in datasets:
-        encoded = dataset.encode()
-        yield (encoded, encoded)
-
-
-def split_zip(strings):
-    for string in strings:
-        yield string.split('.')[0]
-
+def get_trained_models():
+    """Get all trained models of the current user"""
+    for model_path in glob(path.join('/app/static/images', str(current_user.id), '**', 'out_graph.pb')):
+        yield model_path.split('/')[-2]
 
 class NotSavedError(RuntimeError):
     pass

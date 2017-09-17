@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import select_upload_form with context %}
+{% block title %}{{ _('WhatAClass: Custom Predict') }}{% endblock %}
+{% block body %}
+    <div class="well col-md-8 col-md-offset-2">
+        <h1 class="text-center">{{ _('Upload an image to predict, and select the model') }}!</h1>
+        <br/>
+        {{ select_upload_form(sel_up_form, datasets, _('Upload image')) }}
+    </div>
+{% endblock %}

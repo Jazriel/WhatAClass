@@ -125,7 +125,7 @@ def configure_oauth(app, oauth):
 
 def configure_email_and_ssh(app):
     """Configure email and ssh, loading configuration from the configuration of the app."""
-    from .util import email_server, ssh_config
+    from .utils import email_server, ssh_config
 
     email_server.config = app.config['EMAIL_CONF']
 

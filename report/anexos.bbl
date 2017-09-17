@@ -22,6 +22,11 @@ Shrikrishna Holla.
 \newblock {\em Orchestrating docker}.
 \newblock Packt Publishing Ltd, 2015.
 
+\bibitem{imnet}
+\href{http://image-net.org/about-people}{Image-net Team}.
+\newblock \href{http://image-net.org/}{Image-net}.
+\newblock \url{http://image-net.org/}.
+
 \bibitem{pip}
 \href{https://www.pypa.io/}{Equipo de desarrollo PyPA: https://www.pypa.io/}.
 \newblock pip.
@@ -41,6 +46,12 @@ Pethuru Raj, Jeeva~S Chelladhurai, and Vinod Singh.
 Jeff Sutherland and JJ~Sutherland.
 \newblock {\em Scrum: the art of doing twice the work in half the time}.
 \newblock Crown Business, 2014.
+
+\bibitem{incep}
+Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and
+  Zbig-niew Wojna.
+\newblock Rethinking the inception architecture for computer vision. corr
+  abs/1512.00567 (2015), 2015.
 
 \bibitem{dock}
 Docker Team.

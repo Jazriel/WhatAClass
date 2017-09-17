@@ -11,7 +11,7 @@ De \concept{DevOps} se ha extraído la \eng{toolchain} (cadena de herramientas) 
 
 De \concept{Scrum} recogemos las herramientas como los \eng{sprint} y las reuniones tras cada \eng{sprint}, tanto para concretar el siguiente \eng{sprint}, como para hacer una retrospectiva del anterior. 
 
-Se ha estudiado también \concept{extreme programming} (XP) y se ha visto que no es viable para el proyecto por la cantidad de esfuerzo que requiere para una sola persona hacer el trabajo de dos como es el \concept{pair programming}. 
+Se ha estudiado también \concept{extreme programming} (XP) y se ha visto que no es viable para el proyecto, por la cantidad de esfuerzo que requiere para una sola persona hacer el trabajo de dos, como es el \concept{pair programming}. 
 
 De todos los métodos ágiles se ha adquirido la mentalidad de no intentar planificar todo desde el principio e intentar planear las cosas con el conocimiento adquirido en cada iteración. Se intenta decidir en todo lo más tarde posible, para intentar conseguir el máximo conocimiento posible, para mejorar las decisiones.
 
@@ -29,9 +29,9 @@ El patrón modelo vista controlador nos ayuda a simplificar mucho la estructura 
 
 \section{Control de versiones}
 
-El control de versiones es una necesidad hoy en día tanto en sistemas compuestos de un desarrollador, como los compuestos de múltiples desarrolladores, esto nos permite poder dejar sin terminar ciertas funcionalidades que empecemos a implementar y se identifiquen como muy complejas, para seguir con otras que den más valor al cliente y luego continuar con las complejas o dejarlas de lado según beneficie o no al cliente.
+El control de versiones es una necesidad hoy en día, tanto en sistemas compuestos de un desarrollador, como los compuestos de múltiples desarrolladores. Esto nos permite poder dejar sin terminar ciertas funcionalidades que empecemos a implementar y se identifiquen como muy complejas, para seguir con otras que den más valor al cliente y luego continuar con las complejas o dejarlas de lado según beneficie o no al cliente.
 
-Este solo es un ejemplo de las ventajas, entre las que se cuentan también otras como: recuperación de versiones estables, visualización de los cambios que han dado resultado a un defecto de programación...
+Este solo es un ejemplo de las ventajas, entre las cuales también se incluyen: recuperación de versiones estables, visualización de los cambios que han dado resultado a un defecto de programación...
 
 El sistema de \eng{hosting} lo usaremos para facilitar el acceso a la información contenida en el sistema, también, al ser externo (no estar en el mismo ordenador que se use) nos servirá de sistema de copias de seguridad.
 
@@ -88,13 +88,13 @@ La documentación se ha basado en dos sistemas: en código y fuera de código.
 
 \subsection{En código}
 
-En el código se ha usado la documentación recomendada por la comunidad de python en el PEP 287\cite{pep287}, este recomienda usar \tool{reStructuredText\footnote{Es un lenguaje de marcado con indicaciones intuitivas para marcar la estructura de un documento ver \cite{rst}} } (rst).
+En el código se ha usado la documentación recomendada por la comunidad de Python en el PEP 287\cite{pep287}, este recomienda usar \tool{reStructuredText\footnote{Es un lenguaje de marcado con indicaciones intuitivas para marcar la estructura de un documento ver \cite{rst}} } (rst).
 
 Se han seguido las \emph{guidelines} (guías) de un equipo de programadores de la comunidad de Python: pocoo\cite{pocoo}, esto es para poder usar \hfoot{http://www.sphinx-doc.org/en/stable/index.html}{Sphinx} (generador de documentación) para transformar esas cadenas de documentación en una documentación tanto en html o en \LaTeX  si hiciese falta.
 
 \subsection{Fuera de código}
 
-Para la documentación que se está leyendo se ha usado la plantilla propuesta por el tribunal de evaluación de TFG para crear documentos \LaTeX aunque se ha considerado usar rst al igual que en el código, ya que si hiciese falta, se podría transformar a \LaTeX o a html, siendo mucho más flexible. No se ha hecho por que no existe una plantilla y la barrera de entrada es algo alta.
+Para la documentación que se está leyendo se ha usado la plantilla propuesta por el tribunal de evaluación de TFG para crear documentos \LaTeX , aunque se ha considerado usar rst al igual que en el código, ya que si hiciese falta, se podría transformar a \LaTeX o a html, siendo mucho más flexible. No se ha hecho por que no existe una plantilla y la barrera de entrada es algo alta.
 
 
 \section{Editor de texto}
@@ -112,7 +112,7 @@ Se ha usado \hfoot{http://flask.pocoo.org/}{Flask} como \eng{microframework}, ya
 
 Para facilitar ciertas funcionalidades como control de usuarios, seguridad... se han usado las extensiones: \hfoot{https://github.com/python-babel/flask-babel}{flask-babel} y \hfoot{http://babel.pocoo.org/en/latest/}{babel} (internacionalización), \hfoot{https://flask-login.readthedocs.io/en/latest/}{flask-login} (control de usuarios), \hfoot{https://flask-oauthlib.readthedocs.io/en/latest/}{flask-oauthlib} y \hfoot{https://oauthlib.readthedocs.io/en/latest/index.html}{oauthlib} (uso de oauth simplificado), \hfoot{http://flask-sqlalchemy.pocoo.org/2.1/}{flask-sqlalchemy}, \hfoot{https://www.sqlalchemy.org/}{sqlalchemy} y \hfoot{http://initd.org/psycopg/}{psycopg2} (acceso a la base de datos), \hfoot{https://flask-wtf.readthedocs.io/en/stable/}{flask-wtf} y \hfoot{https://wtforms.readthedocs.io/en/latest/}{WTForms} (Formularios html) y \hfoot{https://flask-bcrypt.readthedocs.io/en/latest/}{flask-bcrypt} y \hfoot{https://pypi.python.org/pypi/bcrypt/3.1.0}{Bcrypt} para encriptación.
 
-Como podemos ver, muchas de estas extensiones de flask tienen el mismo nombre pero con flask añadido, esto se debe a que son envoltorios (también llamados \eng{wrappers}) de la biblioteca en cuestión, pero adaptados para inicializarse con Flask (generalmente añaden un constructor y un constructor \eng{lazy}).
+Como podemos ver, muchas de estas extensiones de flask tienen el mismo nombre, pero con flask añadido, esto se debe a que son envoltorios (también llamados \eng{wrappers}) de la biblioteca en cuestión, pero adaptados para inicializarse con Flask (generalmente añaden un constructor y un constructor \eng{lazy}).
 
 Se ha usado el módulo \hfoot{http://www.paramiko.org/}{Paramiko} para simplificar el control de errores de SSH.
 

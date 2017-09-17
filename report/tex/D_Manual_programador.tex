@@ -65,19 +65,19 @@ wsgi.py  \> \> \> \> \> \textit{Punto de entrada para uwsgi}\\
 \subsection{Microservicio de tensorflow}
 \begin{tabbing}
 
-\hphantom{tab tab tab tab tab tab tab tab }\= \kill\\
-dataset/ \> \textit{Estructura de archivos en producción para facilitar} \\
-\> \textit{los test} \\
-graphs/ \> \textit{Estructura de archivos de producción para los test} \\
-images/ \> \textit{Estructura de archivos de producción para los test} \\
-test/ \> \textit{Carpeta donde se guardan los test} \\
-Dockerfile \> \textit{Descripción de construcción del contenedor} \\
-fit\_dataset.py \> \textit{Script para ajustar el modelo a un dataset} \\
-id\_rsa.pub \> \textit{Clave rsa para comunicación con la aplicación web} \\
-inceptionv3* \> \textit{Modelo y clases} \\
-maybe\_start\_retrain.py \> \textit{Script que comprueba si la petición ya se está} \\ 
-\> \textit{ejecutando o no} \\
-run\_inference.py \> \textit{Script para inferir la clase de una imagen} \\
+\hphantom{tab }\= \hphantom{tab tab tab tab tab tab tab }\= \kill\\
+dataset/ \> \> \textit{Estructura de archivos en producción para facilitar} \\
+\> \> \textit{los test} \\
+graphs/ \> \> \textit{Modelo y clases.} \\
+images/ \> \> \textit{Estructura de archivos de producción para los test} \\
+resources/id\_rsa.pub \> \> \textit{Clave rsa para comunicación con la aplicación web} \\
+scripts/ \> \> \textit{Localización de los scripts} \\
+\> fit\_dataset.py \> \textit{Script para ajustar el modelo a un dataset} \\
+\> maybe\_start\_retrain.py \> \textit{Script que comprueba si la petición ya se está} \\ 
+\> \> \textit{ejecutando o no} \\
+\> run\_inference.py \> \textit{Script para inferir la clase de una imagen} \\
+test/ \> \> \textit{Carpeta donde se guardan los test} \\
+Dockerfile \> \> \textit{Descripción de construcción del contenedor} \\
 \end{tabbing}
 
 \subsection{Docker compose}
@@ -611,11 +611,53 @@ Si ya tuviésemos ese archivo descargado bastaría con ejecutar `\textbf{docker-
 Las pruebas se pueden ejecutar con test.py que lanza los tests de la carpeta tests/. Si queremos ver el recubrimiento del código, podemos usar una herramienta como coverage y ejecutar test.py a traves de esa herramienta.  
 
 
-\section{Configuración de Oauth}
+\section{Configuración}
 
-Para configurar \emph{oauth} para una aplicación debemos pedir un \emph{token} y un secreto, esto en Google se hace a través de la sección de desarrolladores o \hfoot{https://console.developers.google.com/}{Google APIs}. Estos valores se especifican en `config/default.py'
+La configuración esta pensada para poder ser diferente en cada despliegue desde el archivo `docker-compose.yml', esto se logra importando variables de entorno con valores por defecto si la variable de entorno no estuviese definida. Los valores por defecto se configuran en el archivo `config/default.py'.
 
-\section{Configuración del servidor de correo electrónico}
+
+\subsection{Base de datos}
+La base de datos necesita solo la uri para estar configurada, principalmente la forma de una de este tipo es:
+
+
+\lstset{style=linestyle}
+\begin{lstlisting}
+  postgresql://scott:tiger@localhost:5432/mydatabase
+\end{lstlisting}
+
+Las distintas partes a tener en cuenta son:
+
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Protocolo: la mayoría de bases de datos cuentan con uno propio con su nombre. En este caso \textit{postgresql} es la base de datos y el protocolo.
+\item Usuario: esta vez \textit{scott}
+\item Contraseña: \textit{tiger}
+\item Host: dirección con la que nos comunicamos. Hay que tener en cuenta que si usamos Docker Compose la red interna cuenta con un DNS de manera que podemos especificar el nombre del otro servicio. En esta ocasión será: \textit{localhost}
+\item Puerto: puerto a usar para la conexión. \textit{5432} es el puerto por defecto de PostqreSQL.
+\item Base de datos: por supuesto se pueden tener varias bases de datos en un servidor por lo que tenemos que proporcionar el nombre de la que nos interese. Aquí es \textit{mydatabase}.
+\end{itemize}
+
+Como alternativa a tener una base de datos alojada en un servidor tenemos SQLite, que es una base de datos que se puede incrustar, al contrario que muchas otras alternativas. En este caso tendremos que tener en cuenta que SQLote necesita permisos de lectura y de escritura del archivo de la base de datos y del directorio en el que se sitúa dicho archivo.
+
+Las direcciones de SQLite son algo diferentes al ser una base de datos incrustada.
+
+\lstset{style=linestyle}
+\begin{lstlisting}
+  sqlite:////path/to/the/database.db
+\end{lstlisting}
+
+Simplemente son la dirección de la base de datos en el sistema de archivos. Una consideración a tener en cuenta es que usan cuatro `/' una de ellas escapa la raíz del sistema de archivos.   
+
+La variable usada es \textit{DATABASE\_URL}.
+
+\subsection{OAuth}
+
+Para configurar \emph{OAuth} para una aplicación debemos pedir un \emph{token} y un secreto, esto en Google se hace a través de la sección de desarrolladores o \hfoot{https://console.developers.google.com/}{Google APIs}. Estos valores se especifican en `config/default.py' tienen los nombres \textit{GOOGLE\_CLIENT\_ID} y \textit{GOOGLE\_SECRET}.
+
+
+\subsection{Servidor de correo electrónico}
 
 Para configurar el correo electrónico debemos comprobar que el servidor permite el uso de SMTP para la comunicación, una vez esta configurado de esta manera debemos proporcionar:
 
@@ -629,7 +671,84 @@ Para configurar el correo electrónico debemos comprobar que el servidor permite
 \item Puerto
 \end{itemize}
 
+Estos se proporcionan en las siguientes variables: \textit{EMAIL\_FROM}, \textit{EMAIL\_PASS}, \textit{EMAIL\_HOST} y \textit{EMAIL\_PORT}.
 
+
+
+
+\section{Subproducto: Seshat}
+
+Como subproducto del proyecto se ha integrado la autenticación de usuarios a el proyecto Seshat en el repositorio \hfoot{https://github.com/cgosorio/SeshatAuth}{SeshatAuth}. Este repositorio es privado y se necesita permiso de acceso, aun así se incluye un clon del mismo en las copias digitales por facilidad de acceso.
+
+Este subproducto también se ha subido de forma minimizada al repositorio \hfoot{https://github.com/Jazriel/auth-that}{auth-that}. 
+
+\subsection{Estructura de directorios}
+La estructura de directorios se ha mantenido, simplemente se han añadido los archivos necesarios. En la carpeta Servidor están todos los archivos añadidos, se comentan solo aquellos archivos que han sido modificados o añadidos.
+
+
+\begin{tabbing}
+\hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{tab }\= \hphantom{quadruple tabula}\= \kill\\
+config/default.py \> \> \> \> \> \textit{Archivo donde se almacena la configuración} \\
+src/ \> \> \> \> \> \\
+\> server/ \> \> \> \> \\
+\> \> templates/ \> \> \> \textit{Se ha modificado el formulario maestro para} \\
+\> \> \> \> \> \textit{poder devolver mensajes} \\
+\> user\_control/ \> \> \> \> \textit{Localización del código} \\
+
+\> user\_server.py \> \> \> \> \textit{Principal archivo donde se integra la autenticación.} \\
+test/ \> \> \> \> \> \\
+.gitignore \> \> \> \> \> \textit{Se ignoran los archivos .idea} \\
+debug.py \> \> \> \> \> \textit{Ejecución en depuración} \\
+requirements.txt \> \> \> \> \> \textit{Cambio de las dependencias} \\
+run.py \> \> \> \> \> \textit{Ejecución en producción} \\
+\end{tabbing}
+
+\subsection{Manual del programador}
+
+La serie de pasos para pasar de tener el subproducto auth-that y Seshat se detallan a continuación, como consideración los dos proyectos en un principio deberían estar independientes:
+
+\begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item En auth-that: refactorizar project\_name/ a  src/, en otros proyectos serían otros nombres.
+\item Eliminar los archivos `placeholder' como `src/\_\_init\_\_.py' y `src/project.py'
+\item Copiar todo el proyecto auth-that a la raíz del código fuente otro proyecto.
+\item Cambiar la importación en `user\_server.py' para que importe la app de flask de la otra aplicación.
+\item Configurar la base de datos(uri), servidor de email y \textit{token} de Google. Esto se puede hacer en `config/default.py' o `src/user\_server.py'.
+\end{enumerate}
+
+Generalmente no debería haber problemas, pero debido a que no se pueden asumir casi nada de que tenía la aplicación que hemos importado puede ser que den problemas, principalmente, dos cosas:
+
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item Extensiones de Flask iguales
+\item Rutas iguales
+\end{itemize}
+
+Aunque normalmente las extensiones de Flask no tendrían porque dar problemas podrían hacerlo. Tristemente no hay una solución fácil y uniforme para esta clase de problema. Hay que arreglarlo a mano.
+
+Las rutas hay que comprobarlas manualmente, o podemos añadir un prefijo al subproducto de autenticación en `user\_server.py':
+
+
+\lstset{style=blockstyle}
+\begin{lstlisting}[language=Python]
+from .user_control.controllers import user_mng
+
+app.register_blueprint(user_mng)
+# Se cambia esta linea por:
+app.register_blueprint(user_mng, url_prefix='/user')
+# O
+app.register_blueprint(user_mng, subdomain='user')
+\end{lstlisting}
+
+La primera direccionará las rutas del tipo: `\textit{pagina.com/user/login}'
+
+La segunda lo hará de la siguiente manera: `\textit{user.pagina.com/login}'
+
+Ademas de estos pequeños inconvenientes la persona responsable de desplegar el proyecto deberá configurar tanto la base de datos, el servicio de correo electrónico y los valores para OAuth. Todo esto se puede hacer de la misma manera que en la otra aplicación pero el archivo esta situado en `Servidor/config/default.py'.
 
 
 
